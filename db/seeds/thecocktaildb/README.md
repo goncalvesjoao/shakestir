@@ -15,3 +15,7 @@ To refresh the cache, run:
 Seeds fill missing descriptions and histories, including existing cocktails whose imported recipes have since been curated. They preserve nonblank text. Source fields are populated only when the entire source group is blank, so curated citations are never mixed with seeded citations. Dates describe source publication, not the cocktail's invention; unknown dates remain empty.
 
 Imported recipes belong to the public `@shakestir` account, while retaining TheCocktailDB attribution. Every recipe requires an author; all authors follow the same recipe rules. Re-running seeds preserves existing imports and recipes reassigned to other users. The seed account receives a random password.
+
+## Ingredient image cache
+
+The Pineapple Juice image is cached as `images/ingredients/pineapple-juice.png` from <https://www.thecocktaildb.com/images/ingredients/Pineapple%20Juice.png>. All 11 ingredients in the Python seed catalog now have cached images. Re-run `uv run db-seed` from `shakestir-fastapi/` to attach newly available cache images to existing ingredients.

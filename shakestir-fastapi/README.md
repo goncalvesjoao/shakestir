@@ -31,7 +31,7 @@ Ingredient images are imported from the shared cache during seeding and copied t
 
 Each ingredient stores an `image_key`, with files named by their SHA-256 hash. `GET /ingredients/{ingredient_id}/image` serves the public image with its media type and standard file response headers. The catalog returns an absolute `image_url` when the file exists, otherwise `null`; missing images return 404. Configure proxy headers appropriately if deploying behind a proxy. There is no upload endpoint or image resizing yet.
 
-Seed reruns preserve existing images and only restore missing files when the cached bytes match their stored key. Missing source images are logged and do not block catalog import. The current catalog contains 11 ingredients with 10 cached images; Pineapple Juice has no cached image. Database changes are transactional; copied files can remain unreferenced if a seed transaction fails, and later reruns reuse them. Recipe/step associations remain outside this implementation.
+Seed reruns preserve existing images and only restore missing files when the cached bytes match their stored key. Missing source images are logged and do not block catalog import. The current catalog contains 11 ingredients, each with a cached image. Database changes are transactional; copied files can remain unreferenced if a seed transaction fails, and later reruns reuse them. Recipe/step associations remain outside this implementation.
 
 ## Seeds and project commands
 

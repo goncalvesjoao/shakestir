@@ -94,3 +94,19 @@ def test_missing_stored_file_returns_404(test_session, test_client):
         )["image_url"]
         is None
     )
+
+
+def test_pineapple_juice_has_a_cached_image_and_backfills_existing_records(
+    test_session, test_client
+):
+    ingredient = Ingredient(name="Pineapple Juice")
+    test_session.add(ingredient)
+    test_session.commit()
+    seed_ingredients(test_session)
+    test_session.commit()
+    test_session.refresh(ingredient)
+    assert ingredient.image_key is not None
+    source = DEFAULT_SEED_FILE.parent / "images/ingredients/pineapple-juice.png"
+    response = test_client.get(f"/ingredients/{ingredient.id}/image")
+    assert response.status_code == 200
+    assert response.content == source.read_bytes()

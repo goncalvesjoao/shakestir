@@ -14,20 +14,20 @@ uv run db-setup
 uv run dev
 ```
 
-The default database is a separate SQLite file at `shakestir-fastapi/data/shakestir.db`, resolved relative to the project regardless of the working directory. `DATABASE_URL` overrides it. This project does not modify or import the Rails database. The setup script migrates and seeds the shared ingredient catalog.
+The default database is a separate SQLite file at `shakestir-fastapi/data/shakestir.db`, resolved relative to the project regardless of the working directory. `DATABASE_URL` overrides it. The setup script migrates and seeds the shared ingredient catalog.
 
 ```sh
 curl http://localhost:8000/ingredients
 # Returns the seeded ingredient catalog.
 ```
 
-`GET /ingredients` requires no authentication, matching the Rails public catalog. Results contain `id`, `name`, `description`, and `image_url`, sorted by lowercase name and then ID. Interactive documentation is available at `/docs`.
+`GET /ingredients` requires no authentication. Results contain `id`, `name`, `description`, and `image_url`, sorted by lowercase name and then ID. Interactive documentation is available at `/docs`.
 
 ## Ingredient model
 
-The model and initial migration mirror `shakestir-rails`' ingredient fields: name, description, normalized name, category (default `other`), alcohol status (default `unknown`), decimal ABV, and timestamps. Category/status enums and the inclusive 0–100 ABV range are enforced by database checks. Normalized names are indexed, but not unique, matching Rails. ORM inserts and updates require a nonblank name and apply Rails' NFKC/lowercase/whitespace normalization. Names retain their submitted spelling.
+The model and initial migration define the ingredient fields: name, description, normalized name, category (default `other`), alcohol status (default `unknown`), decimal ABV, and timestamps. Category/status enums and the inclusive 0–100 ABV range are enforced by database checks. Normalized names are indexed, but not unique. ORM inserts and updates require a nonblank name and apply Unicode NFKC, lowercase, and whitespace normalization. Names retain their submitted spelling.
 
-Ingredient images are imported from the shared cache during seeding and copied to local storage at `data/storage/` (ignored by Git). `STORAGE_PATH` overrides this directory; relative paths resolve against `shakestir-fastapi/`. Keep this directory on a persistent volume when deploying and back it up alongside the database. Rails storage is untouched.
+Ingredient images are imported from the shared cache during seeding and copied to local storage at `data/storage/` (ignored by Git). `STORAGE_PATH` overrides this directory; relative paths resolve against `shakestir-fastapi/`. Keep this directory on a persistent volume when deploying and back it up alongside the database.
 
 Each ingredient stores an `image_key`, with files named by their SHA-256 hash. `GET /ingredients/{ingredient_id}/image` serves the public image with its media type and standard file response headers. The catalog returns an absolute `image_url` when the file exists, otherwise `null`; missing images return 404. Configure proxy headers appropriately if deploying behind a proxy. There is no upload endpoint or image resizing yet.
 
@@ -49,7 +49,7 @@ All shortcuts are project entry points in `pyproject.toml`, backed by code in `s
 
 The ingredient loader reads `../db/seeds/thecocktaildb/ingredients.json` offline, resolved from the project directory rather than the working directory. It matches normalized names, skips blank names and duplicate identities, creates missing ingredients, and fills missing descriptions, category (`other`), alcohol status (`unknown`), and ABV. Existing names, curated values, IDs, and timestamps on unchanged records are preserved. A failed import rolls back the entire seed transaction.
 
-Category matching follows the Rails loader. The FastAPI loader also imports descriptions and decimal ABV and recognizes the source's `Yes`/`No` alcohol flags. Unlike Rails, it does not require a cached image to import an ingredient; ingredients without an image still appear with `image_url: null`. Shared source IDs are not used as database primary keys.
+The ingredient loader imports descriptions and decimal ABV and recognizes the source's `Yes`/`No` alcohol flags. It does not require a cached image to import an ingredient; ingredients without an image still appear with `image_url: null`. Shared source IDs are not used as database primary keys.
 
 For an alternate catalog with the same JSON format:
 

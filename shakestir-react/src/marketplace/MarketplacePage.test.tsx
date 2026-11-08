@@ -32,7 +32,7 @@ function mount(
       );
     const body = url.includes("session.json")
       ? { data: null, metadata: { csrf_token: "test" } }
-      : url.includes("ingredients.json")
+      : url.includes("ingredients")
         ? {
             data: [
               { id: 1, name: "Gin" },
@@ -77,7 +77,7 @@ function mount(
 }
 afterEach(() => vi.unstubAllGlobals());
 
-test("restores Rails filters from a URL and requests the matching API page", async () => {
+test("restores recipe filters from a URL and requests the matching API page", async () => {
   const fetcher = mount(
     "/?q=Negroni&ingredient_ids[]=1&ingredient_mode=only&utensil_ids[]=3",
   );

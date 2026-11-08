@@ -32,7 +32,7 @@ export function MarketplacePage() {
   const ingredients = useQuery({
     queryKey: ["ingredients"],
     queryFn: ({ signal }) =>
-      getJson<OptionsResponse>("/ingredients.json", signal),
+      getJson<OptionsResponse>("/ingredients", signal),
     staleTime: 300_000,
   });
   const utensils = useQuery({

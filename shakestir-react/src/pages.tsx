@@ -87,7 +87,7 @@ export function Catalog({
         data: (Option & { slug?: string })[];
         metadata?: { next_page: number | null };
       }>
-        path={`/${kind}.json?${params}`}
+        path={kind === "ingredients" ? "/ingredients" : `/${kind}.json?${params}`}
       >
         {(data) => (
           <>
@@ -1272,7 +1272,7 @@ function RecipeForm({ recipe: r }: { recipe?: Recipe }) {
     sourness: r?.sourness ?? "",
     bitterness: r?.bitterness ?? "",
   });
-  const ingredients = useResource<{ data: Option[] }>("/ingredients.json");
+  const ingredients = useResource<{ data: Option[] }>("/ingredients");
   const utensils = useResource<{ data: Option[] }>("/utensils.json");
   const guides = useResource<{ data: Technique[] }>("/techniques.json");
   function field(key: number, patch: Partial<IngredientLine>) {

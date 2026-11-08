@@ -1,6 +1,6 @@
 # ShakeStir React — the bar notebook
 
-Scope: `shakestir-react` only. Rails' existing design documentation and HTML remain independent.
+Scope: `shakestir-react` only. This document describes the frontend design; API-backed workflows other than the ingredient catalog are awaiting backend implementation.
 
 ## Product and audience
 
@@ -30,7 +30,7 @@ Applied `/Users/goncalvesjoao/.agents/skills/ui-ux-pro-max/SKILL.md` on 2026-11-
 
 ## Taste discovery
 
-Optional author-provided `sweetness`, `sourness`, `bitterness`: integer 0 (none), 1 (very low), 2 (low), 3 (moderate), 4 (high), 5 (very high). SQL NULL explicitly means not assessed, not zero. These are subjective intensity notes, not ratings or calculated scores. Ordinary recipes remain unknown until their owner supplies values. The 30 imported and five fictional demo seed preparations now have explicit recipe-specific, untested editorial expectations documented in `../db/seeds/taste/README.md`; these are not TheCocktailDB scores or tasting results. Seed backfills require unchanged exact specs and seed ownership, fill only NULL fields, and preserve existing zeroes and other curation. Recipe prose and source credits remain unchanged. Discovery combines exact selected intensities (AND across selected dimensions), or unknown, with existing eligibility/name/availability filters. Owners edit taste alongside their preparation. Scales are documented here as a first product vocabulary and can evolve through explicit migrations.
+Optional author-provided `sweetness`, `sourness`, `bitterness`: integer 0 (none), 1 (very low), 2 (low), 3 (moderate), 4 (high), 5 (very high). SQL NULL explicitly means not assessed, not zero. These are subjective intensity notes, not ratings or calculated scores. Ordinary recipes remain unknown until their owner supplies values. The 24 imported and five fictional demo seed preparations now have explicit recipe-specific, untested editorial expectations documented in `../db/seeds/taste/README.md`; these are not TheCocktailDB scores or tasting results. Seed backfills require unchanged exact specs and seed ownership, fill only NULL fields, and preserve existing zeroes and other curation. Recipe prose and source credits remain unchanged. Discovery combines exact selected intensities (AND across selected dimensions), or unknown, with existing eligibility/name/availability filters. Owners edit taste alongside their preparation. Scales are documented here as a first product vocabulary and can evolve through explicit migrations.
 
 ## Photography
 

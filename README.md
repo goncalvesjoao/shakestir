@@ -8,21 +8,21 @@ The Rails application is the working prototype and behavioral reference. Develop
 
 | Project | Role | Current state |
 | --- | --- | --- |
-| [`shakestir-fastapi/`](shakestir-fastapi/README.md) | Python backend using FastAPI, SQLAlchemy, and Alembic | Standalone public ingredient catalog and image delivery; other prototype workflows are not implemented yet. |
-| [`shakestir-react/`](shakestir-react/README.md) | React and TypeScript frontend | Implements discovery and account/recipe workflows against the Rails API. |
-| [`shakestir-rails/`](shakestir-rails/README.md) | Rails prototype and current frontend backend | Provides the API that React currently uses. |
+| [`shakestir-fastapi/`](shakestir-fastapi/README.md) | Python backend using FastAPI, SQLAlchemy, and Alembic | Public ingredient catalog and image delivery, used by React; other prototype workflows are not implemented yet. |
+| [`shakestir-react/`](shakestir-react/README.md) | React and TypeScript frontend | Uses FastAPI for the ingredient catalog; other API-backed workflows await Python endpoints. |
+| [`shakestir-rails/`](shakestir-rails/README.md) | Rails prototype | Working behavioral reference, independent of the React–Python setup. |
 | `shakestir-nextjs/` (planned) | Future Next.js project | Will be added to the monorepo; not available yet. |
 | `shakestir-vuejs/` (planned) | Future Vue.js project | Will be added to the monorepo; not available yet. |
 | [`db/seeds/`](db/seeds/README.md) | Shared offline seed data and images | Keep this directory alongside the application directories; Python resolves its default seed files here. |
 
-**React is not connected to FastAPI yet.** Starting both projects does not produce a complete application: React currently proxies `/api` to Rails at `http://localhost:3000`. FastAPI runs independently at `http://127.0.0.1:8000` and exposes `/ingredients` and `/ingredients/{ingredient_id}/image`. React expects additional endpoints, including `/ingredients.json`, `/recipes.json`, and `/session.json`; changing the proxy port alone is insufficient.
+**React now connects to FastAPI.** The ingredient catalog at `/ingredients` works with the Python backend, including available images and local name filtering. Other API-backed pages remain unfinished: the frontend retains their requests, but FastAPI does not implement those endpoints yet.
 
 ## Prerequisites
 
 - Git.
 - Python 3.11 or newer and [uv](https://docs.astral.sh/uv/getting-started/installation/). The Python project pins 3.11 in `.python-version`.
 - Node.js 24.15 or newer in the 24.x release line, or Node.js 26+, with npm. These versions satisfy the current frontend development dependencies.
-- Ruby and the Rails dependencies only if you want to exercise the frontend's API-backed workflows. See the [Rails setup instructions](shakestir-rails/README.md#local-development).
+- Ruby is not required for React or FastAPI. To run the separate prototype, follow the [Rails setup instructions](shakestir-rails/README.md#local-development).
 
 Clone the repository and enter its root:
 
@@ -85,26 +85,17 @@ cp .env.example .env
 npm run dev
 ```
 
-As with Python, preserve an existing `.env`. Open the URL Vite prints, normally <http://localhost:5173>.
+As with Python, preserve an existing `.env`. Open <http://localhost:5173/ingredients>, using the port Vite prints. This is the currently supported API-backed page; the default recipe homepage awaits backend implementation.
 
 The default settings are:
 
 ```dotenv
 VITE_API_BASE_URL=/api
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=http://127.0.0.1:8000
+API_PROXY_TARGET=http://127.0.0.1:8000
 ```
 
-The Vite development proxy forwards `/api/*` to Rails with the prefix removed. `VITE_BACKEND_URL` helps rewrite media URLs; it does not change the proxy target. Restart Vite after changing environment settings.
-
-To use the frontend's current discovery, authentication, recipe, and collection workflows, also start the Rails backend in a third terminal. From the repository root, after installing the Rails prerequisites:
-
-```sh
-cd shakestir-rails
-mise exec -- ruby bin/setup --skip-server
-mise exec -- ruby bin/rails server
-```
-
-Rails runs at <http://localhost:3000>. Follow its [README](shakestir-rails/README.md) for database, seed, and system dependency details. FastAPI can run alongside it, but currently does not serve React's workflows.
+The Vite development proxy forwards `/api/*` to FastAPI with the prefix removed. `API_PROXY_TARGET` controls its target; `VITE_BACKEND_URL` identifies backend-generated media URLs to rewrite through the proxy. Restart Vite after environment changes. No prototype server is required.
 
 ## Run the checks
 
@@ -126,12 +117,14 @@ npm run lint
 npm test
 ```
 
-The build checks TypeScript and creates `dist/`. Unit tests do not require Rails. Browser tests require a seeded Rails server at port 3000, Vite at port 5173, and Playwright Chromium:
+The build checks TypeScript and creates `dist/`. Unit tests use mocked APIs. The ingredient browser test requires a seeded FastAPI server at port 8000, Vite at port 5173, and Playwright Chromium:
 
 ```sh
 npx playwright install chromium
-npm run test:e2e
+npx playwright test e2e/ingredients.spec.ts
 ```
+
+Other browser workflow tests cover endpoints not yet implemented by FastAPI and are not expected to pass.
 
 ## Common setup issues
 
@@ -139,10 +132,10 @@ npm run test:e2e
 | --- | --- |
 | Python reports a missing table | Run `uv run db-migrate` from `shakestir-fastapi/`, then `uv run db-seed`. |
 | Python cannot find its seed catalog | Preserve the repository layout, including `db/seeds/` beside `shakestir-fastapi/`. |
-| React loads but requests fail | Confirm Rails is running at port 3000. FastAPI does not yet implement React's API contract. |
-| `/ingredients.json` returns 404 on FastAPI | The Python endpoint is `/ingredients`; the `.json` route belongs to Rails. |
+| React loads but requests fail | Confirm FastAPI is running at port 8000. Only ingredient listing and images are supported so far. |
+| `/ingredients.json` returns 404 on FastAPI | The Python endpoint is `/ingredients`; use that path. |
 | npm reports an unsupported Node version | Use a Node version listed in the prerequisites, then rerun `npm ci`. |
-| Browser tests cannot connect | Start both Rails and Vite and seed the Rails database; these tests do not use FastAPI. |
+| Browser tests cannot connect | Start FastAPI and Vite, seed the Python database, and run the ingredient browser test. |
 
 ## Further reading
 

@@ -2,8 +2,8 @@ const apiBase = (import.meta.env.VITE_API_BASE_URL || "/api").replace(
   /\/$/,
   "",
 );
-export const railsBase = (
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
+export const backendBase = (
+  import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8000"
 ).replace(/\/$/, "");
 let csrf = "";
 export class ApiError extends Error {
@@ -64,7 +64,7 @@ export const getJson = <T>(path: string, signal?: AbortSignal) =>
 export interface Option {
   id: number;
   name: string;
-  description?: string;
+  description?: string | null;
   image_url?: string | null;
 }
 export interface Technique extends Option {
@@ -162,7 +162,7 @@ export interface Collection {
 }
 
 export function mediaUrl(url: string) {
-  return url.startsWith(railsBase + "/")
-    ? apiBase + url.slice(railsBase.length)
+  return url.startsWith(backendBase + "/")
+    ? apiBase + url.slice(backendBase.length)
     : url;
 }

@@ -21,7 +21,7 @@ DEFAULT_SEED_FILE = (
     Path(__file__).resolve().parents[4] / "db/seeds/thecocktaildb/ingredients.json"
 )
 
-# Preserve the Rails loader's category matching order for the shared catalog.
+# Match specific ingredient categories before general ones in the shared catalog.
 CATEGORY_PATTERNS = (
     ("spirit", r"spirit|rum|gin|vodka|whiskey|bourbon|brandy|tequila|mezcal|cognac"),
     ("liqueur", r"liqueur|amaro|cordial|triple sec|apercitif"),

@@ -1,4 +1,4 @@
-"""Create ingredients with the Rails catalog fields and constraints."""
+"""Create ingredients with catalog fields and constraints."""
 
 import sqlalchemy as sa
 from alembic import op

@@ -20,7 +20,8 @@ The Rails application is the working prototype and behavioral reference. Develop
 ## Prerequisites
 
 - Git.
-- Python 3.11 or newer and [uv](https://docs.astral.sh/uv/getting-started/installation/). The Python project pins 3.11 in `.python-version`.
+- Python 3.11 or newer. The Python project pins 3.11 in `.python-version`.
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed and available in your terminal (`uv --version`). It runs the Python backend and the root snapshot and seed-generation scripts.
 - Node.js 24.15 or newer in the 24.x release line, or Node.js 26+, with npm. These versions satisfy the current frontend development dependencies.
 - Ruby is not required for React or FastAPI. To run the separate prototype, follow the [Rails setup instructions](shakestir-rails/README.md#local-development).
 
@@ -101,7 +102,7 @@ The Vite development proxy forwards `/api/*` to FastAPI with the prefix removed.
 
 The shared [demo dataset](db/seeds/demo/README.md) contains original fictional recipes and generated transparent images. It includes six cocktail families, a parent/variant relationship, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions and public/private collections. FastAPI currently loads only the ingredient catalog; the remaining entities are fixtures for the prototype and future Python endpoints.
 
-Run `npm run seed:build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
+Run `uv run seed-build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
 
 Seeding preserves existing content. To avoid mixing previously imported data with the new fixtures, use a fresh local database and storage directory. Do not reset a database containing work you need to keep.
 
@@ -160,17 +161,19 @@ Other browser workflow tests cover endpoints not yet implemented by FastAPI and 
 From the repository root, run:
 
 ```sh
-npm run snapshot
+uv run snapshot
 ```
 
-Requires Git and Python 3.11+. This writes a ZIP and a companion file-list manifest to the ignored `snapshots/` directory. It packages the current Python and React source, shared seeds, snapshot tooling, and selected root documents. Both tracked files and nonignored new files are included, using current working contents rather than the last commit.
+Requires Git, uv, and Python 3.11+. The root Python project exposes these utility commands without a `src/` directory. uv installs the local utilities automatically on first use; the scripts themselves use only Python’s standard library. This writes a ZIP and a companion file-list manifest to the ignored `snapshots/` directory. It packages the current Python and React source, shared seeds, snapshot tooling, and selected root documents. Both tracked files and nonignored new files are included, using current working contents rather than the last commit.
+
+The archive uses [`scripts/snapshot/README.md`](scripts/snapshot/README.md) as its root README, with setup instructions scoped to the included Python and React projects. The full monorepo README and `PRODUCT.md` implementation record are not copied. The manifest records this README source mapping.
 
 The snapshot excludes the prototype, historical reports, design documents, agent tooling, Git history, dependencies, build output, caches, local environment files, and runtime data. Example environment files and dependency lockfiles are retained. Repository structure is preserved so shared seed paths still work. Source and ZIP sizes must each stay below 100 MB.
 
 For a custom destination:
 
 ```sh
-npm run snapshot -- --output snapshots/shakestir-review.zip
+uv run snapshot --output snapshots/shakestir-review.zip
 ```
 
 Existing outputs are never overwritten. Review the manifest and extracted contents before uploading; this command does not establish that all data or third-party assets are permitted for submission and does not upload anything. Running the snapshot command itself requires a Git checkout; the extracted snapshot can run the applications without Git history.

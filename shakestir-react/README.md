@@ -50,7 +50,7 @@ npx playwright test e2e/ingredients.spec.ts
 
 The remaining browser workflows in `e2e/workflows.spec.ts` require endpoints FastAPI does not implement yet. `npm run test:e2e` includes those tests and is not expected to pass until backend coverage expands. Unit tests use mocked API responses and do not establish backend support for those workflows.
 
-Screenshots and browser reports are ignored generated artifacts. See [API implementation status](ROUTE_PARITY.md) and [frontend design](DESIGN.md).
+Screenshots and browser reports are ignored generated artifacts. See [API implementation status](ROUTE_PARITY.md).
 
 ## Deployment
 

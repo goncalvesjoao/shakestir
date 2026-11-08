@@ -152,3 +152,8 @@ vite.config.ts.timestamp-*
 
 # Source snapshots
 /snapshots/
+
+# Python utility environment and caches
+.venv/
+__pycache__/
+*.egg-info/

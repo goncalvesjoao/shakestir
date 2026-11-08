@@ -6,15 +6,7 @@
 
 Shakers, strainers, mixing glasses, a blender and bar spoons support the original demo preparations. Coupes, highballs, rocks glasses, a margarita glass and a hurricane glass cover their serving formats. Additional basic tools remain available for authoring examples. The hurricane glass illustration was generated from text on a transparent background alongside the new cocktail and ingredient illustrations; see `../demo/image_prompts.json`.
 
-This is seed-file pruning. Re-running the Rails seeder preserves existing database utensils and their recipe/step associations; it does not delete entries removed from this catalog.
-
-Run the complete seeds with `mise exec ruby@4.0.9 -- ruby bin/rails db:seed`, or just this catalog with (from `shakestir-rails/`):
-
-```sh
-mise exec ruby@4.0.9 -- ruby bin/rails runner 'require Rails.root.join("db/seeds/utensils"); UtensilsSeeder.seed!'
-```
-
-The seeder matches normalized names, creates each utensil with its own Active Storage photo, and fills missing descriptions/photos. Existing names, descriptions, categories, capacities and photos are preserved. It preflights all image files before writing. Renaming a seeded name changes its matching identity; keep seed names stable to avoid re-creating renamed records.
+This catalog is shared fixture data. The current Python backend does not implement utensils or load these records. The JSON and image files are retained so future implementations can connect recipe requirements to canonical tools and serving vessels. Keep names and slugs stable when building those associations.
 
 ## Editorial references
 

@@ -14,8 +14,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIRS = {"shakestir-fastapi", "shakestir-react", "db", "scripts"}
 ROOT_FILES = {
-    "README.md", "PRODUCT.md", "PRODUCT_VISION.md", "GLOSSARY.md",
-    "LICENSE", "THIRD_PARTY_LICENSES.md", ".gitignore", "package.json",
+    "README.md", "PRODUCT_VISION.md", "GLOSSARY.md",
+    "LICENSE", "THIRD_PARTY_LICENSES.md", ".gitignore", "pyproject.toml", "uv.lock",
 }
 EXCLUDED_DIRS = {
     ".git", ".agents", ".claude", ".codex", ".impeccable", ".github", ".kamal",
@@ -27,6 +27,7 @@ EXCLUDED_DIRS = {
 EXCLUDED_FILES = {"AGENTS.md", "CLAUDE.md", "SKILL.md", ".DS_Store", "DESIGN.md"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo", ".log", ".db", ".sqlite", ".sqlite3", ".pem", ".key", ".tsbuildinfo", ".zip"}
 MAX_BYTES = 100_000_000
+FILE_SOURCES = {"README.md": "scripts/snapshot/README.md"}
 
 
 def included(name):
@@ -62,7 +63,7 @@ def source_files():
             raise ValueError(f"Refusing symlink: {name}")
         if path.is_file():
             files.append(name)
-    required = {"LICENSE", "README.md", "shakestir-fastapi/pyproject.toml",
+    required = {"LICENSE", "README.md", "scripts/snapshot/README.md", "shakestir-fastapi/pyproject.toml",
                 "shakestir-react/package.json", "db/seeds/demo/ingredients.json"}
     missing = required.difference(files)
     if missing:
@@ -82,7 +83,7 @@ def main():
     if output.exists() or manifest_path.exists():
         raise ValueError(f"Output already exists: {output}")
     files = source_files()
-    total = sum((ROOT / name).stat().st_size for name in files)
+    total = sum((ROOT / FILE_SOURCES.get(name, name)).stat().st_size for name in files)
     if total > MAX_BYTES:
         raise ValueError(f"Source exceeds the 100 MB limit: {total / 1_000_000:.2f} MB")
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -91,7 +92,7 @@ def main():
         archive = Path(temporary) / "snapshot.zip"
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
             for name in files:
-                zipped.write(ROOT / name, name)
+                zipped.write(ROOT / FILE_SOURCES.get(name, name), name)
         size = archive.stat().st_size
         if size > MAX_BYTES:
             raise ValueError(f"ZIP exceeds the 100 MB limit: {size / 1_000_000:.2f} MB")
@@ -101,18 +102,23 @@ def main():
         # Exclusive creation prevents overwriting an existing destination.
         with output.open("xb") as destination, archive.open("rb") as source:
             shutil.copyfileobj(source, destination)
-    manifest = {"archive": output.name, "files": files, "source_bytes": total, "zip_bytes": size}
+    manifest = {"archive": output.name, "files": files, "source_bytes": total, "zip_bytes": size, "file_sources": FILE_SOURCES}
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"Created {output}")
     print(f"{len(files)} files; source {total / 1_000_000:.2f} MB; ZIP {size / 1_000_000:.2f} MB")
     print(f"Review file list: {manifest_path}")
     print("Includes current working files, including uncommitted changes. No upload was performed.")
+    print("Archive README uses scripts/snapshot/README.md; the monorepo overview is not copied.")
     print("Review contents for sensitive data and third-party permissions before uploading.")
 
 
-if __name__ == "__main__":
+def cli():
     try:
         main()
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         print(f"Snapshot failed: {error}", file=sys.stderr)
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    cli()

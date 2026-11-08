@@ -4,7 +4,7 @@ Shared offline fixtures and original images live here. The [original demo datase
 
 From `shakestir-fastapi/`, run `uv run db-setup` to migrate and seed the 15-ingredient catalog, or `uv run db-seed` after migrations. Its loader reads `demo/ingredients.json` and copies the generated transparent ingredient images into local storage. The Python implementation does not yet seed recipes, users, tools or collections.
 
-From `shakestir-rails/`, run `bin/rails db:seed` to load the complete graph: system and fictional author accounts, six cocktail families, 29 recipes, tools, techniques, ordered steps, mentions and collections. All required data and images are checked in; seeding requires no network calls or image-generation credentials.
+The remaining shared JSON describes a larger graph: fictional accounts, six cocktail families, 29 recipes, tools, techniques, ordered steps, mentions and collections. These files are fixtures for implementations that support those entities; they are not loaded by the current Python backend. All data and images are checked in, with no download or image-generation credentials required.
 
 The [taste notes](taste/README.md), [technique catalog](techniques/README.md), [utensil catalog](utensils/README.md), and [fictional avatars](avatars/README.md) document their scope and provenance. Dummy credentials and `.example` addresses are development fixtures only.
 

@@ -31,7 +31,7 @@ Ingredient images are imported from the shared cache during seeding and copied t
 
 Each ingredient stores an `image_key`, with files named by their SHA-256 hash. `GET /ingredients/{ingredient_id}/image` serves the public image with its media type and standard file response headers. The catalog returns an absolute `image_url` when the file exists, otherwise `null`; missing images return 404. Configure proxy headers appropriately if deploying behind a proxy. There is no upload endpoint or image resizing yet.
 
-Seed reruns preserve existing images and only restore missing files when the cached bytes match their stored key. Missing source images are logged and do not block catalog import. The current catalog contains 11 ingredients, each with a cached image. Database changes are transactional; copied files can remain unreferenced if a seed transaction fails, and later reruns reuse them. Recipe/step associations remain outside this implementation.
+Seed reruns preserve existing images and only restore missing files when the cached bytes match their stored key. Missing source images are logged and do not block catalog import. The current catalog contains 15 original demo ingredients, each with an AI-generated transparent image. Database changes are transactional; copied files can remain unreferenced if a seed transaction fails, and later reruns reuse them. Recipe/step associations remain outside this implementation.
 
 ## Seeds and project commands
 
@@ -47,9 +47,9 @@ Run these commands from `shakestir-fastapi/`:
 
 All shortcuts are project entry points in `pyproject.toml`, backed by code in `scripts/` outside the runtime package. `dev` and `start` run Uvicorn; database commands use the modules in `scripts/db/`.
 
-The ingredient loader reads `../db/seeds/thecocktaildb/ingredients.json` offline, resolved from the project directory rather than the working directory. It matches normalized names, skips blank names and duplicate identities, creates missing ingredients, and fills missing descriptions, category (`other`), alcohol status (`unknown`), and ABV. Existing names, curated values, IDs, and timestamps on unchanged records are preserved. A failed import rolls back the entire seed transaction.
+The ingredient loader reads `../db/seeds/demo/ingredients.json` offline, resolved from the project directory rather than the working directory. It matches normalized names, skips blank names and duplicate identities, creates missing ingredients, and fills missing descriptions, category (`other`), alcohol status (`unknown`), and ABV. Existing names, curated values, IDs, and timestamps on unchanged records are preserved. A failed import rolls back the entire seed transaction.
 
-The ingredient loader imports descriptions and decimal ABV and recognizes the source's `Yes`/`No` alcohol flags. It does not require a cached image to import an ingredient; ingredients without an image still appear with `image_url: null`. Shared source IDs are not used as database primary keys.
+The ingredient loader imports descriptions and decimal ABV and recognizes the source's `Yes`/`No` alcohol flags. It does not require a cached image to import an ingredient; ingredients without an image still appear with `image_url: null`. The original fixture format uses `name`, `description`, `type`, `alcohol` and `abv`; there are no external source IDs.
 
 For an alternate catalog with the same JSON format:
 

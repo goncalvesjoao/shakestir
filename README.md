@@ -97,6 +97,14 @@ API_PROXY_TARGET=http://127.0.0.1:8000
 
 The Vite development proxy forwards `/api/*` to FastAPI with the prefix removed. `API_PROXY_TARGET` controls its target; `VITE_BACKEND_URL` identifies backend-generated media URLs to rewrite through the proxy. Restart Vite after environment changes. No prototype server is required.
 
+## Demo content
+
+The shared [demo dataset](db/seeds/demo/README.md) contains original fictional recipes and generated transparent images. It includes six cocktail families, a parent/variant relationship, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions and public/private collections. FastAPI currently loads only the ingredient catalog; the remaining entities are fixtures for the prototype and future Python endpoints.
+
+Run `npm run seed:build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
+
+Seeding preserves existing content. To avoid mixing previously imported data with the new fixtures, use a fresh local database and storage directory. Do not reset a database containing work you need to keep.
+
 ## Run the checks
 
 Python, from `shakestir-fastapi/`:

@@ -9,10 +9,14 @@ module TasteEstimatesSeeder
     .fetch("accounts").map { |entry| entry.fetch("email_address") }.freeze
 
   def self.entries
-    @entries ||= JSON.parse(Rails.root.parent.join("db/seeds/taste/recipe_estimates.json").read).fetch("recipes").tap do |entries|
-      entries.each_value do |entry|
-        raise "Invalid editorial taste entry" unless FIELDS.all? { |field| entry[field].is_a?(Integer) && (0..5).cover?(entry[field]) } && entry.fetch("rationale").present?
-      end
+    @entries ||= begin
+      root = Rails.root.parent.join("db/seeds")
+      system = JSON.parse(root.join("demo/recipes.json").read).fetch("recipes").map { |spec| [ "https://shakestir.example/recipes/#{spec.fetch("id")}", spec ] }
+      demo = JSON.parse(root.join("demo_accounts.json").read).fetch("recipes").map { |spec| [ "demo:#{spec.fetch("user")}:#{spec.fetch("name")}", spec ] }
+      (system + demo).filter_map do |key, spec|
+        next unless spec["taste"]
+        [ key, spec.fetch("taste").merge("spec_fingerprint" => spec.fetch("spec_fingerprint"), "rationale" => "Deliberate synthetic UI fixture values, not measured tasting results.") ]
+      end.to_h
     end
   end
 
@@ -30,8 +34,8 @@ module TasteEstimatesSeeder
     stored_recipe = Recipe.find(recipe.id)
     stored_recipe.with_lock do
       return unless stored_recipe.user_id == owner.id
-      if key.start_with?("https://www.thecocktaildb.com/drink/")
-        return unless owner == User.shakestir_account && stored_recipe.source_url == key && stored_recipe.source_reference == "TheCocktailDB"
+      if key.start_with?("https://shakestir.example/recipes/")
+        return unless owner == User.shakestir_account && stored_recipe.source_url == key && stored_recipe.source_reference == "ShakeStir original demo"
       else
         return unless DEMO_EMAILS.include?(owner.email_address) && key == "demo:#{owner.email_address}:#{stored_recipe.name}" && stored_recipe.source_url.blank?
       end

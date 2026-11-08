@@ -18,10 +18,10 @@ class TechniqueSeedTest < ActiveSupport::TestCase
   end
 
   test "reviewed links apply only to untouched system imports and preserve assignments" do
-    drink = JSON.parse(Rails.root.parent.join("db/seeds/thecocktaildb/cocktails.json").read).fetch("drinks").find { |entry| entry["strDrink"] == "Daiquiri" }
-    recipe = recipes(:one)
-    recipe.update!(user: users(:shakestir), source_url: "https://www.thecocktaildb.com/drink/#{drink.fetch("idDrink")}")
-    recipe.recipe_steps.sole.update!(body: drink.fetch("strInstructions").strip)
+    load Rails.root.join("db/seeds.rb")
+    spec = DemoCatalogSeeder.load_json("recipes.json").fetch("recipes").find { |entry| entry["id"] == "citrus-lantern-01" }
+    recipe = Recipe.find_by!(source_url: "#{DemoCatalogSeeder::URL_PREFIX}#{spec.fetch("id")}")
+    recipe.recipe_techniques.destroy_all
     TechniquesSeeder.seed!
     assert_equal %w[shake strain], recipe.techniques.pluck(:slug)
     recipe.techniques = [ techniques(:stir) ]
@@ -32,7 +32,7 @@ class TechniqueSeedTest < ActiveSupport::TestCase
     TechniquesSeeder.seed!
     assert_empty recipe.reload.techniques
     recipe.update!(user: users(:shakestir))
-    recipe.recipe_steps.sole.update!(body: "A curated preparation.")
+    recipe.recipe_steps.first.update!(body: "A curated preparation.")
     TechniquesSeeder.seed!
     assert_empty recipe.reload.techniques
   end

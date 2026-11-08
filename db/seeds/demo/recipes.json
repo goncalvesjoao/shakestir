@@ -1,0 +1,2139 @@
+{
+  "recipes": [
+    {
+      "id": "citrus-lantern-01",
+      "name": "Citrus Lantern",
+      "cocktail": "Citrus Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "45 ml Tequila",
+          "quantity": "45",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids with a Jigger into a Boston shaker.",
+        "Add Ice and shake until the tins feel cold.",
+        "Strain into a chilled Coupe glass without serving ice. An optional lime wheel and partial salt rim are styling suggestions."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547"
+    },
+    {
+      "id": "citrus-lantern-02",
+      "name": "Soft Citrus Lantern",
+      "cocktail": "Citrus Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "45 ml Tequila",
+          "quantity": "45",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10.0 ml Sugar Syrup",
+          "quantity": "10.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids with a Jigger into a Boston shaker.",
+        "Add Ice and shake until the tins feel cold.",
+        "Strain into a chilled Coupe glass without serving ice. An optional lime wheel and partial salt rim are styling suggestions."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 3,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "57c28c8a047019abae0e4446c109c8644c5dfbbd2968b2da70a78d9e8096b1cf"
+    },
+    {
+      "id": "citrus-lantern-03",
+      "name": "Dry Citrus Lantern",
+      "cocktail": "Citrus Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "45 ml Tequila",
+          "quantity": "45",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "2.0 ml Sugar Syrup",
+          "quantity": "2.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids with a Jigger into a Boston shaker.",
+        "Add Ice and shake until the tins feel cold.",
+        "Strain into a chilled Coupe glass without serving ice. An optional lime wheel and partial salt rim are styling suggestions."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 1,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "f7a8f08947543d49b5c123785dd4d24993efa06d0685fcac6975892d454cac81"
+    },
+    {
+      "id": "citrus-lantern-04",
+      "name": "Notebook Citrus Lantern",
+      "cocktail": "Citrus Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "45 ml Tequila",
+          "quantity": "45",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids with a Jigger into a Boston shaker.",
+        "Add Ice and shake until the tins feel cold.",
+        "Strain into a chilled Coupe glass without serving ice. An optional lime wheel and partial salt rim are styling suggestions."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": null,
+      "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547"
+    },
+    {
+      "id": "garden-spark-01",
+      "name": "Garden Spark",
+      "cocktail": "Garden Spark",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "submitted_text": "40 ml Gin",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "20 ml Lime Juice",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "15 ml Sugar Syrup",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Soda Water",
+          "submitted_text": "100 ml Soda Water",
+          "quantity": "100",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "6 leaf Mint",
+          "quantity": "6",
+          "measuring_unit": "leaf",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "1 sprig Mint",
+          "quantity": "1",
+          "measuring_unit": "sprig",
+          "optional": true,
+          "role": "garnish",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Muddler",
+          "submitted_text": "Muddler",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Highball glass",
+          "submitted_text": "Highball glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Gently press Mint with the syrup in a Highball glass using a Muddler.",
+        "Add the base spirit, lime juice and Ice; lift once with a Bar spoon.",
+        "Add Soda Water gently and finish with a small optional Mint sprig."
+      ],
+      "techniques": [
+        "muddle",
+        "build"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "1739a573d0192ab599ae8daaacd097541ba3b300dd3aeff83271335d1d3787e6"
+    },
+    {
+      "id": "garden-spark-02",
+      "name": "Soft Garden Spark",
+      "cocktail": "Garden Spark",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "submitted_text": "40 ml Gin",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "20 ml Lime Juice",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "20.0 ml Sugar Syrup",
+          "quantity": "20.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Soda Water",
+          "submitted_text": "100 ml Soda Water",
+          "quantity": "100",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "6 leaf Mint",
+          "quantity": "6",
+          "measuring_unit": "leaf",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "1 sprig Mint",
+          "quantity": "1",
+          "measuring_unit": "sprig",
+          "optional": true,
+          "role": "garnish",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Muddler",
+          "submitted_text": "Muddler",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Highball glass",
+          "submitted_text": "Highball glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Gently press Mint with the syrup in a Highball glass using a Muddler.",
+        "Add the base spirit, lime juice and Ice; lift once with a Bar spoon.",
+        "Add Soda Water gently and finish with a small optional Mint sprig."
+      ],
+      "techniques": [
+        "muddle",
+        "build"
+      ],
+      "taste": {
+        "sweetness": 3,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "518aad4510052db432a420c1f4ebc64320e644651a68467a27ea8b7a8c076e81"
+    },
+    {
+      "id": "garden-spark-03",
+      "name": "Dry Garden Spark",
+      "cocktail": "Garden Spark",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "submitted_text": "40 ml Gin",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "20 ml Lime Juice",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "12.0 ml Sugar Syrup",
+          "quantity": "12.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Soda Water",
+          "submitted_text": "100 ml Soda Water",
+          "quantity": "100",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "6 leaf Mint",
+          "quantity": "6",
+          "measuring_unit": "leaf",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "1 sprig Mint",
+          "quantity": "1",
+          "measuring_unit": "sprig",
+          "optional": true,
+          "role": "garnish",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Muddler",
+          "submitted_text": "Muddler",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Highball glass",
+          "submitted_text": "Highball glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Gently press Mint with the syrup in a Highball glass using a Muddler.",
+        "Add the base spirit, lime juice and Ice; lift once with a Bar spoon.",
+        "Add Soda Water gently and finish with a small optional Mint sprig."
+      ],
+      "techniques": [
+        "muddle",
+        "build"
+      ],
+      "taste": {
+        "sweetness": 1,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "052ca755f0c8126a31b9d64cea0bf1c2debaae50692a12190d397c4179895e15"
+    },
+    {
+      "id": "garden-spark-04",
+      "name": "Notebook Garden Spark",
+      "cocktail": "Garden Spark",
+      "ingredients": [
+        {
+          "name": "Lime Juice",
+          "submitted_text": "20 ml Lime Juice",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "15 ml Sugar Syrup",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Soda Water",
+          "submitted_text": "100 ml Soda Water",
+          "quantity": "100",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "6 leaf Mint",
+          "quantity": "6",
+          "measuring_unit": "leaf",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Mint",
+          "submitted_text": "1 sprig Mint",
+          "quantity": "1",
+          "measuring_unit": "sprig",
+          "optional": true,
+          "role": "garnish",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Muddler",
+          "submitted_text": "Muddler",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Highball glass",
+          "submitted_text": "Highball glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Gently press Mint with the syrup in a Highball glass using a Muddler.",
+        "Add Lime Juice and Ice without any spirit; lift once with a Bar spoon.",
+        "Add Soda Water gently and finish with a small optional Mint sprig."
+      ],
+      "techniques": [
+        "muddle",
+        "build"
+      ],
+      "taste": null,
+      "spec_fingerprint": "aa0abe3887ffb64fa29c7211d939a315583bb690b815977645aa9638f17943f4"
+    },
+    {
+      "id": "island-drift-01",
+      "name": "Island Drift",
+      "cocktail": "Island Drift",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "submitted_text": "40 ml Rum",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Pineapple Juice",
+          "submitted_text": "90 ml Pineapple Juice",
+          "quantity": "90",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "15 ml Lime Juice",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10 ml Sugar Syrup",
+          "quantity": "10",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Hurricane glass",
+          "submitted_text": "Hurricane glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Rum, Pineapple Juice, Lime Juice and syrup into a Boston shaker.",
+        "Shake with Ice until chilled.",
+        "Strain over crushed Ice in a Hurricane glass. An optional pineapple wedge matches the serving illustration."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 3,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "3cde25966a9d1ded230aa5486fb4081359deaa0c429d19cf96edb106304eac91"
+    },
+    {
+      "id": "island-drift-02",
+      "name": "Soft Island Drift",
+      "cocktail": "Island Drift",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "submitted_text": "40 ml Rum",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Pineapple Juice",
+          "submitted_text": "90 ml Pineapple Juice",
+          "quantity": "90",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "15 ml Lime Juice",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "15.0 ml Sugar Syrup",
+          "quantity": "15.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Hurricane glass",
+          "submitted_text": "Hurricane glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Rum, Pineapple Juice, Lime Juice and syrup into a Boston shaker.",
+        "Shake with Ice until chilled.",
+        "Strain over crushed Ice in a Hurricane glass. An optional pineapple wedge matches the serving illustration."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 4,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "a40e5fd3655329d040847459258d234d70a6c247c3e890b7e38f95bc3dbe6b3f"
+    },
+    {
+      "id": "island-drift-03",
+      "name": "Dry Island Drift",
+      "cocktail": "Island Drift",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "submitted_text": "40 ml Rum",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Pineapple Juice",
+          "submitted_text": "90 ml Pineapple Juice",
+          "quantity": "90",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "15 ml Lime Juice",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "7.0 ml Sugar Syrup",
+          "quantity": "7.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Hurricane glass",
+          "submitted_text": "Hurricane glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Rum, Pineapple Juice, Lime Juice and syrup into a Boston shaker.",
+        "Shake with Ice until chilled.",
+        "Strain over crushed Ice in a Hurricane glass. An optional pineapple wedge matches the serving illustration."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 3,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "b156d5019b684a9d7352a6cb39b74985f0e17c7b17e07689a3686f7fb1d10bfd"
+    },
+    {
+      "id": "island-drift-04",
+      "name": "Notebook Island Drift",
+      "cocktail": "Island Drift",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "submitted_text": "40 ml Rum",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Pineapple Juice",
+          "submitted_text": "90 ml Pineapple Juice",
+          "quantity": "90",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "15 ml Lime Juice",
+          "quantity": "15",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10 ml Sugar Syrup",
+          "quantity": "10",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Hurricane glass",
+          "submitted_text": "Hurricane glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Rum, Pineapple Juice, Lime Juice and syrup into a Boston shaker.",
+        "Shake with Ice until chilled.",
+        "Strain over crushed Ice in a Hurricane glass. An optional pineapple wedge matches the serving illustration."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": null,
+      "spec_fingerprint": "3cde25966a9d1ded230aa5486fb4081359deaa0c429d19cf96edb106304eac91"
+    },
+    {
+      "id": "amber-evening-01",
+      "name": "Amber Evening",
+      "cocktail": "Amber Evening",
+      "ingredients": [
+        {
+          "name": "Bourbon",
+          "submitted_text": "50 ml Bourbon",
+          "quantity": "50",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Bitters",
+          "submitted_text": "2 dash Bitters",
+          "quantity": "2",
+          "measuring_unit": "dash",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Mixing glass",
+          "submitted_text": "Mixing glass",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Rocks glass",
+          "submitted_text": "Rocks glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Bourbon, syrup and Bitters into a Mixing glass.",
+        "Add Ice and stir gently with a Bar spoon until cold.",
+        "Strain into a Rocks glass over one large clear ice cube."
+      ],
+      "techniques": [
+        "stir",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 1,
+        "sourness": 0,
+        "bitterness": 3
+      },
+      "spec_fingerprint": "5979643af71d08097e6b89b86f1275fe7fef5ec0bbc467c7732cacdb07a38b14"
+    },
+    {
+      "id": "amber-evening-02",
+      "name": "Soft Amber Evening",
+      "cocktail": "Amber Evening",
+      "ingredients": [
+        {
+          "name": "Bourbon",
+          "submitted_text": "50 ml Bourbon",
+          "quantity": "50",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10.0 ml Sugar Syrup",
+          "quantity": "10.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Bitters",
+          "submitted_text": "2 dash Bitters",
+          "quantity": "2",
+          "measuring_unit": "dash",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Mixing glass",
+          "submitted_text": "Mixing glass",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Rocks glass",
+          "submitted_text": "Rocks glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Bourbon, syrup and Bitters into a Mixing glass.",
+        "Add Ice and stir gently with a Bar spoon until cold.",
+        "Strain into a Rocks glass over one large clear ice cube."
+      ],
+      "techniques": [
+        "stir",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 0,
+        "bitterness": 3
+      },
+      "spec_fingerprint": "cadf4c51c6a0e883cf3464be72eb590ae2060362233fdbf013af66c028bd5178"
+    },
+    {
+      "id": "amber-evening-03",
+      "name": "Dry Amber Evening",
+      "cocktail": "Amber Evening",
+      "ingredients": [
+        {
+          "name": "Bourbon",
+          "submitted_text": "50 ml Bourbon",
+          "quantity": "50",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "2.0 ml Sugar Syrup",
+          "quantity": "2.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Bitters",
+          "submitted_text": "2 dash Bitters",
+          "quantity": "2",
+          "measuring_unit": "dash",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Mixing glass",
+          "submitted_text": "Mixing glass",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Rocks glass",
+          "submitted_text": "Rocks glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Bourbon, syrup and Bitters into a Mixing glass.",
+        "Add Ice and stir gently with a Bar spoon until cold.",
+        "Strain into a Rocks glass over one large clear ice cube."
+      ],
+      "techniques": [
+        "stir",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 0,
+        "sourness": 0,
+        "bitterness": 3
+      },
+      "spec_fingerprint": "e8ff578b4e2627ccfc6299a6597ffc7cfbd5fc794f37a42a238e7bac7cdaeec7"
+    },
+    {
+      "id": "amber-evening-04",
+      "name": "Notebook Amber Evening",
+      "cocktail": "Amber Evening",
+      "ingredients": [
+        {
+          "name": "Bourbon",
+          "submitted_text": "50 ml Bourbon",
+          "quantity": "50",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Bitters",
+          "submitted_text": "2 dash Bitters",
+          "quantity": "2",
+          "measuring_unit": "dash",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Mixing glass",
+          "submitted_text": "Mixing glass",
+          "role": "preparation"
+        },
+        {
+          "name": "Bar spoon",
+          "submitted_text": "Bar spoon",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Rocks glass",
+          "submitted_text": "Rocks glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Bourbon, syrup and Bitters into a Mixing glass.",
+        "Add Ice and stir gently with a Bar spoon until cold.",
+        "Strain into a Rocks glass over one large clear ice cube."
+      ],
+      "techniques": [
+        "stir",
+        "strain"
+      ],
+      "taste": null,
+      "spec_fingerprint": "5979643af71d08097e6b89b86f1275fe7fef5ec0bbc467c7732cacdb07a38b14"
+    },
+    {
+      "id": "midnight-cloud-01",
+      "name": "Midnight Cloud",
+      "cocktail": "Midnight Cloud",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "submitted_text": "35 ml Vodka",
+          "quantity": "35",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Coffee Liqueur",
+          "submitted_text": "25 ml Coffee Liqueur",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Espresso",
+          "submitted_text": "25 ml Espresso",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Vodka, Coffee Liqueur, cooled Espresso and syrup into a Boston shaker.",
+        "Add Ice and shake firmly to aerate the surface.",
+        "Strain into a chilled Coupe glass without ice. The illustration uses a few optional coffee beans on the light foam."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 3,
+        "sourness": 0,
+        "bitterness": 2
+      },
+      "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba"
+    },
+    {
+      "id": "midnight-cloud-02",
+      "name": "Soft Midnight Cloud",
+      "cocktail": "Midnight Cloud",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "submitted_text": "35 ml Vodka",
+          "quantity": "35",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Coffee Liqueur",
+          "submitted_text": "25 ml Coffee Liqueur",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Espresso",
+          "submitted_text": "25 ml Espresso",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10.0 ml Sugar Syrup",
+          "quantity": "10.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Vodka, Coffee Liqueur, cooled Espresso and syrup into a Boston shaker.",
+        "Add Ice and shake firmly to aerate the surface.",
+        "Strain into a chilled Coupe glass without ice. The illustration uses a few optional coffee beans on the light foam."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 4,
+        "sourness": 0,
+        "bitterness": 2
+      },
+      "spec_fingerprint": "72b723b99d87433058f2cd1d26cfdf30a5863fa7b8374c9ce530bdd65c70caf7"
+    },
+    {
+      "id": "midnight-cloud-03",
+      "name": "Dry Midnight Cloud",
+      "cocktail": "Midnight Cloud",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "submitted_text": "35 ml Vodka",
+          "quantity": "35",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Coffee Liqueur",
+          "submitted_text": "25 ml Coffee Liqueur",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Espresso",
+          "submitted_text": "25 ml Espresso",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "2.0 ml Sugar Syrup",
+          "quantity": "2.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Vodka, Coffee Liqueur, cooled Espresso and syrup into a Boston shaker.",
+        "Add Ice and shake firmly to aerate the surface.",
+        "Strain into a chilled Coupe glass without ice. The illustration uses a few optional coffee beans on the light foam."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 0,
+        "bitterness": 2
+      },
+      "spec_fingerprint": "f836762802e893746e82b77121e7a11ce19dfffda364f06f02bbf79de36607fe"
+    },
+    {
+      "id": "midnight-cloud-04",
+      "name": "Notebook Midnight Cloud",
+      "cocktail": "Midnight Cloud",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "submitted_text": "35 ml Vodka",
+          "quantity": "35",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Coffee Liqueur",
+          "submitted_text": "25 ml Coffee Liqueur",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Espresso",
+          "submitted_text": "25 ml Espresso",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "5 ml Sugar Syrup",
+          "quantity": "5",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "100 g Ice",
+          "quantity": "100",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Boston shaker",
+          "submitted_text": "Boston shaker",
+          "role": "preparation"
+        },
+        {
+          "name": "Hawthorne strainer",
+          "submitted_text": "Hawthorne strainer",
+          "role": "preparation"
+        },
+        {
+          "name": "Coupe glass",
+          "submitted_text": "Coupe glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure Vodka, Coffee Liqueur, cooled Espresso and syrup into a Boston shaker.",
+        "Add Ice and shake firmly to aerate the surface.",
+        "Strain into a chilled Coupe glass without ice. The illustration uses a few optional coffee beans on the light foam."
+      ],
+      "techniques": [
+        "shake",
+        "strain"
+      ],
+      "taste": null,
+      "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba"
+    },
+    {
+      "id": "frozen-lantern-01",
+      "name": "Frozen Lantern",
+      "cocktail": "Frozen Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "40 ml Tequila",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10 ml Sugar Syrup",
+          "quantity": "10",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "150 g Ice",
+          "quantity": "150",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Blender",
+          "submitted_text": "Blender",
+          "role": "preparation"
+        },
+        {
+          "name": "Margarita glass",
+          "submitted_text": "Margarita glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids into an ice-capable Blender.",
+        "Add the measured Ice, close the lid and blend to a smooth fine slush.",
+        "Pour into a Margarita glass. An optional lime wheel and partial salt rim match the illustration."
+      ],
+      "techniques": [
+        "blend"
+      ],
+      "taste": {
+        "sweetness": 3,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "d5ebb169b953a6c46bb2a98b19465d8b1b60c2aaab043362705b70aaa29d3aae"
+    },
+    {
+      "id": "frozen-lantern-02",
+      "name": "Soft Frozen Lantern",
+      "cocktail": "Frozen Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "40 ml Tequila",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "15.0 ml Sugar Syrup",
+          "quantity": "15.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "150 g Ice",
+          "quantity": "150",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Blender",
+          "submitted_text": "Blender",
+          "role": "preparation"
+        },
+        {
+          "name": "Margarita glass",
+          "submitted_text": "Margarita glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids into an ice-capable Blender.",
+        "Add the measured Ice, close the lid and blend to a smooth fine slush.",
+        "Pour into a Margarita glass. An optional lime wheel and partial salt rim match the illustration."
+      ],
+      "techniques": [
+        "blend"
+      ],
+      "taste": {
+        "sweetness": 4,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "1c39c9d06624cef557e956112f2cd55d30c1ceff12cfe3cfe10b3f9920058ff2"
+    },
+    {
+      "id": "frozen-lantern-03",
+      "name": "Dry Frozen Lantern",
+      "cocktail": "Frozen Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "40 ml Tequila",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "7.0 ml Sugar Syrup",
+          "quantity": "7.0",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "150 g Ice",
+          "quantity": "150",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Blender",
+          "submitted_text": "Blender",
+          "role": "preparation"
+        },
+        {
+          "name": "Margarita glass",
+          "submitted_text": "Margarita glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids into an ice-capable Blender.",
+        "Add the measured Ice, close the lid and blend to a smooth fine slush.",
+        "Pour into a Margarita glass. An optional lime wheel and partial salt rim match the illustration."
+      ],
+      "techniques": [
+        "blend"
+      ],
+      "taste": {
+        "sweetness": 2,
+        "sourness": 4,
+        "bitterness": 0
+      },
+      "spec_fingerprint": "c6f3d767ac9e0b0859c46787679c9ca327c875466806131b3492ae97ed7660e2"
+    },
+    {
+      "id": "frozen-lantern-04",
+      "name": "Notebook Frozen Lantern",
+      "cocktail": "Frozen Lantern",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "submitted_text": "40 ml Tequila",
+          "quantity": "40",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Triple Sec",
+          "submitted_text": "20 ml Triple Sec",
+          "quantity": "20",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Lime Juice",
+          "submitted_text": "25 ml Lime Juice",
+          "quantity": "25",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Sugar Syrup",
+          "submitted_text": "10 ml Sugar Syrup",
+          "quantity": "10",
+          "measuring_unit": "ml",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        },
+        {
+          "name": "Ice",
+          "submitted_text": "150 g Ice",
+          "quantity": "150",
+          "measuring_unit": "g",
+          "optional": false,
+          "role": "mixing",
+          "preparation_note": null
+        }
+      ],
+      "utensils": [
+        {
+          "name": "Jigger",
+          "submitted_text": "Jigger",
+          "role": "preparation"
+        },
+        {
+          "name": "Blender",
+          "submitted_text": "Blender",
+          "role": "preparation"
+        },
+        {
+          "name": "Margarita glass",
+          "submitted_text": "Margarita glass",
+          "role": "serving"
+        }
+      ],
+      "steps": [
+        "Measure the liquids into an ice-capable Blender.",
+        "Add the measured Ice, close the lid and blend to a smooth fine slush.",
+        "Pour into a Margarita glass. An optional lime wheel and partial salt rim match the illustration."
+      ],
+      "techniques": [
+        "blend"
+      ],
+      "taste": null,
+      "spec_fingerprint": "d5ebb169b953a6c46bb2a98b19465d8b1b60c2aaab043362705b70aaa29d3aae"
+    }
+  ]
+}

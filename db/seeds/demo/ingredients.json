@@ -1,0 +1,110 @@
+{
+  "provenance": "Original ShakeStir fictional UI fixtures; illustrative ABV values, not product specifications.",
+  "ingredients": [
+    {
+      "name": "Gin",
+      "type": "spirit",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Clear botanical spirit used as the base of the Garden Spark demo."
+    },
+    {
+      "name": "Vodka",
+      "type": "spirit",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Neutral clear spirit for the Midnight Cloud demo recipes."
+    },
+    {
+      "name": "Rum",
+      "type": "spirit",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Golden cane spirit giving the Island Drift demo a warm base."
+    },
+    {
+      "name": "Tequila",
+      "type": "spirit",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Pale agave spirit used in the two Lantern cocktail families."
+    },
+    {
+      "name": "Bourbon",
+      "type": "spirit",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Amber grain spirit for the stirred Amber Evening demo."
+    },
+    {
+      "name": "Lime Juice",
+      "type": "juice",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Cloudy pale-green juice that supplies acidity to these sample recipes."
+    },
+    {
+      "name": "Triple Sec",
+      "type": "liqueur",
+      "alcohol": "Yes",
+      "abv": "30",
+      "description": "Clear orange liqueur adding citrus sweetness to the Lantern demos."
+    },
+    {
+      "name": "Bitters",
+      "type": "spice",
+      "alcohol": "Yes",
+      "abv": "40",
+      "description": "Concentrated aromatic seasoning, measured by dashes in the amber demos."
+    },
+    {
+      "name": "Mint",
+      "type": "mint",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Fresh green leaves used for gentle muddling and optional garnishes."
+    },
+    {
+      "name": "Pineapple Juice",
+      "type": "juice",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Opaque yellow fruit juice giving Island Drift its color and body."
+    },
+    {
+      "name": "Sugar Syrup",
+      "type": "syrup",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "A simple sugar-and-water sweetener for the original demo formulations."
+    },
+    {
+      "name": "Coffee Liqueur",
+      "type": "liqueur",
+      "alcohol": "Yes",
+      "abv": "20",
+      "description": "Dark coffee-flavored liqueur providing the Midnight Cloud color."
+    },
+    {
+      "name": "Soda Water",
+      "type": "mixer",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Plain sparkling water added after mixing to retain its bubbles."
+    },
+    {
+      "name": "Espresso",
+      "type": "mixer",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Freshly brewed concentrated coffee providing the Midnight Cloud foam and aroma."
+    },
+    {
+      "name": "Ice",
+      "type": "ice",
+      "alcohol": "No",
+      "abv": "0",
+      "description": "Frozen water counted as an ingredient for chilling, dilution and frozen texture."
+    }
+  ]
+}

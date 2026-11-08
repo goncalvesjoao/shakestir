@@ -1,0 +1,70 @@
+{
+  "cocktails": [
+    {
+      "name": "Citrus Lantern",
+      "description": "A fictional citrus lantern prepared for ShakeStir interface testing and served in a coupe glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/citrus-lantern",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Coupe glass",
+      "image": "citrus-lantern.png",
+      "parent_cocktail": null
+    },
+    {
+      "name": "Garden Spark",
+      "description": "A fictional garden spark prepared for ShakeStir interface testing and served in a highball glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/garden-spark",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Highball glass",
+      "image": "garden-spark.png",
+      "parent_cocktail": null
+    },
+    {
+      "name": "Island Drift",
+      "description": "A fictional island drift prepared for ShakeStir interface testing and served in a hurricane glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/island-drift",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Hurricane glass",
+      "image": "island-drift.png",
+      "parent_cocktail": null
+    },
+    {
+      "name": "Amber Evening",
+      "description": "A fictional amber evening prepared for ShakeStir interface testing and served in a rocks glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/amber-evening",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Rocks glass",
+      "image": "amber-evening.png",
+      "parent_cocktail": null
+    },
+    {
+      "name": "Midnight Cloud",
+      "description": "A fictional midnight cloud prepared for ShakeStir interface testing and served in a coupe glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/midnight-cloud",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Coupe glass",
+      "image": "midnight-cloud.png",
+      "parent_cocktail": null
+    },
+    {
+      "name": "Frozen Lantern",
+      "description": "A fictional frozen lantern prepared for ShakeStir interface testing and served in a margarita glass.",
+      "history": "Created as an original ShakeStir demo family. The four example preparations explore sweetness and serving choices; this is not a historical cocktail account.",
+      "source_reference": "ShakeStir original demo",
+      "source_url": "https://shakestir.example/cocktails/frozen-lantern",
+      "source_date_note": "Fictional test content; no historical publication date.",
+      "glassware": "Margarita glass",
+      "image": "frozen-lantern.png",
+      "parent_cocktail": "Citrus Lantern"
+    }
+  ]
+}

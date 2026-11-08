@@ -1,0 +1,138 @@
+{
+  "provenance": "Original images generated from text without third-party image references. MIT project assets. Illustrations, not photographs of tested formulations.",
+  "assets": [
+    {
+      "asset": "db/seeds/demo/images/cocktails/citrus-lantern.png",
+      "prompt": "Use case: product-mockup. Create one photorealistic catalog cutout of a fictional cocktail named Citrus Lantern: a shaken pale yellow-green tequila, orange liqueur and lime sour served up WITHOUT ice in a delicate clear stemmed coupe, a thin partial salt rim and one small lime wheel clipped to rim. Subject fully visible including stem and foot, centered square framing with generous margins. Realistic drink color, authentic functional glassware, studio photography, soft natural reflections, no floor or cast shadow. Genuinely transparent background and appropriately transparent empty glass areas; preserve liquid opacity and real glass edges. No text, logos, branding, watermark, hands, extra objects or backdrop.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/cocktails/garden-spark.png",
+      "prompt": "Use case: product-mockup. Asset type: original ShakeStir cocktail catalog cutout. One photorealistic single drink, fully visible centered square framing, consistent premium studio photography, realistic proportions and ingredient colors. Genuine transparent alpha background, no floor or shadow, no text, no logo, no watermark, no labels or extra objects. Real glass reflections and transparent empty glass areas, opaque liquid as physically appropriate. Gin, mint, lime juice, sugar syrup and soda over ice in a slender clear highball glass, near-colorless with a very pale green tint, visible clear ice cubes and restrained small mint sprig, thin lime wheel. The glass base is visible.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/cocktails/island-drift.png",
+      "prompt": "Use case: product-mockup. Asset type: original ShakeStir cocktail catalog cutout. One photorealistic single drink, fully visible centered square framing, consistent premium studio photography, realistic proportions and ingredient colors. Genuine transparent alpha background, no floor or shadow, no text, no logo, no watermark, no labels or extra objects. Real glass reflections and transparent empty glass areas, opaque liquid as physically appropriate. Rum, pineapple juice, lime and a little sugar syrup shaken over crushed ice in a clear curved hurricane glass on a short stem and round foot. Opaque natural pineapple yellow liquid, small fresh pineapple wedge clipped on rim, no umbrella or straw.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/cocktails/amber-evening.png",
+      "prompt": "Use case: product-mockup. Asset type: original ShakeStir cocktail catalog cutout. One photorealistic single drink, fully visible centered square framing, consistent premium studio photography, realistic proportions and ingredient colors. Genuine transparent alpha background, no floor or shadow, no text, no logo, no watermark, no labels or extra objects. Real glass reflections and transparent empty glass areas, opaque liquid as physically appropriate. Bourbon, a little sugar syrup and two dashes bitters stirred and poured over one large clear ice cube in a heavy-bottomed short clear rocks glass. Deep transparent amber liquid, no fruit garnish.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/cocktails/midnight-cloud.png",
+      "prompt": "Use case: product-mockup. Asset type: original ShakeStir cocktail catalog cutout. One photorealistic single drink, fully visible centered square framing, consistent premium studio photography, realistic proportions and ingredient colors. Genuine transparent alpha background, no floor or shadow, no text, no logo, no watermark, no labels or extra objects. Real glass reflections and transparent empty glass areas, opaque liquid as physically appropriate. Vodka, coffee liqueur and sugar syrup shaken with ice and strained without ice into a shallow elegant clear stemmed coupe. Very dark brown drink with a thin natural light tan crema foam across the top, three coffee beans on foam. Whole stem and foot visible.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/cocktails/frozen-lantern.png",
+      "prompt": "Use case: product-mockup. Asset type: original ShakeStir cocktail catalog cutout. One photorealistic single drink, fully visible centered square framing, consistent premium studio photography, realistic proportions and ingredient colors. Genuine transparent alpha background, no floor or shadow, no text, no logo, no watermark, no labels or extra objects. Real glass reflections and transparent empty glass areas, opaque liquid as physically appropriate. Tequila, orange liqueur, lime juice and syrup blended with ice into a pale yellow-green frozen sour, served in a traditional clear wide stepped-bowl margarita glass with a short stem and round foot, thin partial salt rim and small lime wheel. Realistic fine frozen slush texture, not blue or neon.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/utensils/images/hurricane-glass.png",
+      "prompt": "Use case: product-mockup. Original cocktail utensil catalog cutout: one EMPTY CLEAR COLORLESS hurricane glass, curved bowl with narrow waist, flared rim, short stem and round foot. Accurate functional glassware, photorealistic premium studio product photography, centered fully visible square composition with generous margins. Genuine transparent alpha background, no floor, no shadow, no text, labels, logo, watermark, liquid, garnish, ice or other objects. Preserve glass edges and highlights with partial alpha; empty interior must be optically transparent, not opaque white.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/gin.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: an unbranded squat clear glass bottle with rounded shoulders holding colorless gin, simple plain cork, three juniper berries placed close beside its foot.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/vodka.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: one tall cylindrical unbranded clear glass bottle with plain silver cap containing colorless vodka; no other objects.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/rum.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: one unbranded round-shouldered clear glass bottle holding golden rum, plain cork, realistic amber transparent liquid.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/tequila.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: one unbranded straight-sided clear glass bottle with short neck and plain cork containing pale straw tequila; no extra objects.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/bourbon.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: one unbranded square-shouldered clear glass bottle containing deep amber bourbon, plain dark cap.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/lime-juice.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: a small clear glass carafe filled with cloudy pale green fresh lime juice, one halved lime beside it.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/triple-sec.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photo for ShakeStir. Photorealistic studio product photography, fully visible centered single item on genuine transparent alpha background with generous square margins. No floor, no cast shadow, no text, no labels, no branding, no watermark. Realistic material transparency and reflections. Ingredient: one unbranded clear glass bottle of colorless orange liqueur, plain cap and one small orange wedge beside its base.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/bitters.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: one small unbranded amber glass bitters bottle with plain dark dropper cap, containing dark brown aromatic bitters.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/mint.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: three fresh green mint sprigs grouped naturally, crisp recognizable serrated leaves, no glass, container or other objects.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/pineapple-juice.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: a small clear glass carafe filled with opaque natural golden-yellow pineapple juice with one fresh pineapple wedge beside it; no packaging.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/sugar-syrup.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: one small unbranded clear glass pour bottle with plain stopper containing colorless simple sugar syrup, no extra objects.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true,
+      "refinement_prompt": "Edit this catalog cutout so the entire stopper, bottle and base fit inside the frame with at least 10 percent transparent margin above and below. The current stopper is cut off at the top: complete its natural rounded clear-glass top and zoom the whole bottle out slightly. Keep the same realistic colorless sugar syrup and unbranded glass decanter, same lighting and realistic transparent materials. Genuine transparent background; no new objects, text, floor or shadow."
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/coffee-liqueur.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: one unbranded clear short-neck glass bottle filled with very dark brown coffee liqueur, plain cork, five coffee beans clustered beside its foot.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/soda-water.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: one slender unbranded clear glass bottle containing colorless sparkling soda water with tiny visible rising bubbles and a plain silver cap.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/ice.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog photograph for ShakeStir. Photorealistic studio lighting, fully visible centered subject with square framing and margins. Genuine transparent alpha background, no floor or cast shadow, no text, no labels, logos, branding or watermark. Realistic liquid colors, transparent glass and natural reflections. Ingredient: three clean transparent ice cubes loosely clustered, realistic refractive edges and small internal bubbles, no glass or container, no puddle.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    },
+    {
+      "asset": "db/seeds/demo/images/ingredients/espresso.png",
+      "prompt": "Use case: product-mockup. One original ingredient catalog cutout for ShakeStir: a small simple unbranded white ceramic espresso cup with a short handle, filled with freshly extracted dark brown espresso and a thin natural golden crema. No saucer or spoon. Photorealistic studio product photograph, entire cup and handle visible, centered square framing with generous margins. Genuine transparent alpha background, no floor, no cast shadow, no text, labels, logos or watermark.",
+      "tool": "built-in image_gen.imagegen",
+      "transparent_background": true
+    }
+  ]
+}

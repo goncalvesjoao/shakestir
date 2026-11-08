@@ -15,7 +15,8 @@ def test_seed_images_are_copied_and_served(test_session, test_client):
     for record in records:
         slug = record.name.lower().replace(" ", "-")
         cached = DEFAULT_SEED_FILE.parent / f"images/ingredients/{slug}.png"
-        assert bool(record.image_key) == cached.is_file()
+        assert cached.is_file(), record.name
+        assert record.image_key is not None, record.name
     gin = next(record for record in records if record.name == "Gin")
     source = DEFAULT_SEED_FILE.parent / "images/ingredients/gin.png"
     assert image_path(gin.image_key).read_bytes() == source.read_bytes()
@@ -70,7 +71,7 @@ def test_missing_seed_image_does_not_prevent_import(
     test_session, test_client, tmp_path
 ):
     seed = tmp_path / "ingredients.json"
-    seed.write_text(json.dumps({"ingredients": [{"strIngredient": "Missing picture"}]}))
+    seed.write_text(json.dumps({"ingredients": [{"name": "Missing picture"}]}))
     seed_ingredients(test_session, seed)
     test_session.commit()
     record = test_session.scalars(select(Ingredient)).one()

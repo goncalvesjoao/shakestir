@@ -2,6 +2,7 @@
   "name": "shakestir",
   "private": true,
   "scripts": {
-    "snapshot": "python3 scripts/create_snapshot.py"
+    "snapshot": "python3 scripts/create_snapshot.py",
+    "seed:build": "python3 scripts/build_demo_data.py"
   }
 }

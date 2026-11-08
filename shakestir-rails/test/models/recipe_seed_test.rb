@@ -20,7 +20,7 @@ class RecipeSeedTest < ActiveSupport::TestCase
     assert_operator home.collections.where.not(name: "Favorites").minimum(:id), :>, 0
     assert home.collections.where.not(name: "Favorites").all? { |collection| collection.recipes.count >= 3 }
     assert bartender.collections.find_by!(name: "Halloween Special").recipes.where(user: users(:shakestir)).exists?
-    assert_equal TheCocktailDbSeeder.find_cocktail("Sidecar"), TheCocktailDbSeeder.find_cocktail("Boston Sidecar").parent_cocktail
+    assert_equal DemoCatalogSeeder.find_cocktail("Citrus Lantern"), DemoCatalogSeeder.find_cocktail("Frozen Lantern").parent_cocktail
     counts = [ User.count, Recipe.count, Collection.count, CollectionRecipe.count ]
     DemoAccountsSeeder.seed!
     assert_equal counts, [ User.count, Recipe.count, Collection.count, CollectionRecipe.count ]
@@ -28,15 +28,17 @@ class RecipeSeedTest < ActiveSupport::TestCase
 
   test "cached imports publish complete system recipes and repeat without duplication or overwriting curation" do
     load Rails.root.join("db/seeds.rb")
-    imported = Recipe.where(source_reference: "TheCocktailDB")
+    imported = Recipe.where(source_reference: "ShakeStir original demo")
     assert_operator imported.marketplace.count, :>, 0
     assert imported.all? { |recipe| recipe.user == users(:shakestir) }
     recipe = imported.marketplace.first
     assert recipe.cocktail.present?
     assert imported.all? { |entry| entry.cocktail.image.attached? }
-    content = TheCocktailDbSeeder.load_json("canonical_cocktails.json")
-    assert_equal TheCocktailDbSeeder.load_json("cocktails.json").fetch("drinks").map { |drink| drink.fetch("strDrink") }.sort, content.keys.sort
-    content.each do |name, attributes|
+    content = DemoCatalogSeeder.load_json("cocktails.json").fetch("cocktails")
+    assert_equal 6, content.length
+    assert_equal 4, imported.where(cocktail: DemoCatalogSeeder.find_cocktail("Citrus Lantern")).count
+    content.each do |attributes|
+      name = attributes.fetch("name")
       cocktail = Cocktail.find_by!(normalized_name: LookupName.normalize(name))
       assert cocktail.description.present?, name
       assert cocktail.history.present?, name
@@ -51,28 +53,28 @@ class RecipeSeedTest < ActiveSupport::TestCase
     photo_id = recipe.cocktail.image.blob.id
     assert recipe.recipe_steps.any?
     assert recipe.recipe_ingredients.any?
-    assert recipe.source_url.start_with?("https://www.thecocktaildb.com/drink/")
+    assert recipe.source_url.start_with?("https://shakestir.example/recipes/")
     published_at = recipe.published_at
     counts = [ Cocktail.count, Recipe.count, RecipeIngredient.count, RecipeStep.count, ActiveStorage::Attachment.count ]
-    TheCocktailDbSeeder.seed!
+    DemoCatalogSeeder.seed!
     assert_equal counts, [ Cocktail.count, Recipe.count, RecipeIngredient.count, RecipeStep.count, ActiveStorage::Attachment.count ]
     assert_equal published_at, recipe.reload.published_at
     assert_equal photo_id, recipe.cocktail.image.blob.id
     recipe.update!(user: users(:shakestir), name: "Curated recipe")
-    TheCocktailDbSeeder.seed!
+    DemoCatalogSeeder.seed!
     assert_equal "Curated recipe", recipe.reload.name
   end
 
   test "seeds preserve existing imports and leave user owned recipes unchanged" do
     load Rails.root.join("db/seeds.rb")
-    imported = Recipe.find_by!(source_url: "https://www.thecocktaildb.com/drink/11007")
-    owned = Recipe.find_by!(source_url: "https://www.thecocktaildb.com/drink/12198")
+    imported = Recipe.find_by!(source_url: "https://shakestir.example/recipes/citrus-lantern-01")
+    owned = Recipe.find_by!(source_url: "https://shakestir.example/recipes/frozen-lantern-01")
     owned.update!(user: users(:one), name: "Personal variation")
 
-    TheCocktailDbSeeder.seed!
+    DemoCatalogSeeder.seed!
     assert_equal users(:shakestir), imported.reload.user
     assert_equal users(:shakestir).id, imported.user_id
-    assert_equal "TheCocktailDB", imported.source_reference
+    assert_equal "ShakeStir original demo", imported.source_reference
     assert_equal users(:one), owned.reload.user
     assert_equal users(:one), owned.user
     assert_equal "Personal variation", owned.name
@@ -80,21 +82,21 @@ class RecipeSeedTest < ActiveSupport::TestCase
 
   test "canonical content backfills curated imports and preserves curated content and citations" do
     load Rails.root.join("db/seeds.rb")
-    recipe = Recipe.find_by!(source_url: "https://www.thecocktaildb.com/drink/11007")
+    recipe = Recipe.find_by!(source_url: "https://shakestir.example/recipes/citrus-lantern-01")
     recipe.update!(user: users(:shakestir))
     cocktail = recipe.cocktail
     cocktail.update!(description: "Curated description", history: nil)
     cocktail.update!(source_reference: nil, source_url: nil, source_published_on: nil, source_date_note: nil)
 
-    TheCocktailDbSeeder.seed!
-    expected = TheCocktailDbSeeder.load_json("canonical_cocktails.json").fetch("Margarita")
+    DemoCatalogSeeder.seed!
+    expected = DemoCatalogSeeder.load_json("cocktails.json").fetch("cocktails").find { |entry| entry.fetch("name") == "Citrus Lantern" }
     assert_equal "Curated description", cocktail.reload.description
     assert_equal expected.fetch("history"), cocktail.history
     assert_equal expected.fetch("source_url"), cocktail.reload.source_url
 
     cocktail.update!(history: "Curated history")
     cocktail.update!(source_reference: "Curated source", source_url: nil, source_date_note: nil)
-    TheCocktailDbSeeder.seed_canonical_content!
+    DemoCatalogSeeder.seed_canonical_content!
     assert_equal "Curated history", cocktail.reload.history
     assert_equal "Curated source", cocktail.reload.source_reference
     assert_nil cocktail.source_url

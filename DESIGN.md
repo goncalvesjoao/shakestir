@@ -111,7 +111,6 @@ components:
 
 ShakeStir retains its warm ivory and olive interface on the Semanticus foundation. System sans-serif typography, recognizable native controls and restrained panels support finding a drink and reading its preparation while mixing.
 
-Photographs lead discovery; working surfaces stay quiet. Existing seed photography and cached assets originate from TheCocktailDB, with credits retained in cocktail and recipe records. This document describes the Rails implementation, including static recovery pages.
 
 **Key Characteristics:**
 - Warm ivory ground and olive actions.

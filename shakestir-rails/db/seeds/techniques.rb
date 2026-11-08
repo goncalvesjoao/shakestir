@@ -17,22 +17,16 @@ module TechniquesSeeder
   end
 
   def self.seed_recipe_links!
-    # Only apply reviewed mappings to unchanged system imports. Never infer
-    # technique assignments from arbitrary user prose or rewrite curated links.
-    links = JSON.parse(ROOT.join("recipe_links.json").read)
-    drinks = JSON.parse(Rails.root.parent.join("db/seeds/thecocktaildb/cocktails.json").read).fetch("drinks")
+    return unless defined?(DemoCatalogSeeder)
     system_user = User.find_by(system_key: "shakestir")
     return unless system_user
-
-    drinks.each do |drink|
-      slugs = links[drink.fetch("strDrink")]
-      next unless slugs
-      recipe = system_user.recipes.find_by(source_url: "https://www.thecocktaildb.com/drink/#{drink.fetch("idDrink")}")
-      next unless recipe && recipe.steps == drink.fetch("strInstructions").strip
+    DemoCatalogSeeder.load_json("recipes.json").fetch("recipes").each do |spec|
+      recipe = system_user.recipes.find_by(source_url: "#{DemoCatalogSeeder::URL_PREFIX}#{spec.fetch("id")}")
+      next unless recipe && recipe.source_reference == DemoCatalogSeeder::SOURCE
+      next unless recipe.recipe_steps.map(&:body) == spec.fetch("steps")
       next if recipe.recipe_techniques.exists?
-
       recipe.transaction do
-        slugs.each { |slug| recipe.recipe_techniques.create!(technique: Technique.find_by!(slug: slug)) }
+        spec.fetch("techniques").each { |slug| recipe.recipe_techniques.create!(technique: Technique.find_by!(slug: slug)) }
       end
     end
   end

@@ -17,7 +17,7 @@ def write_seed(tmp_path, rows):
 
 def test_shared_catalog_and_rerun(test_session, test_client):
     expected_names = {
-        row["strIngredient"].strip()
+        row["name"].strip()
         for row in json.loads(DEFAULT_SEED_FILE.read_text())["ingredients"]
     }
     first = seed_ingredients(test_session)
@@ -58,18 +58,18 @@ def test_fills_missing_fields_and_preserves_curation(
         tmp_path,
         [
             {
-                "strIngredient": "Gin",
-                "strDescription": "Imported",
-                "strType": "Gin",
-                "strAlcohol": "Yes",
-                "strABV": "40",
+                "name": "Gin",
+                "description": "Imported",
+                "type": "Gin",
+                "alcohol": "Yes",
+                "abv": "40",
             },
             {
-                "strIngredient": "Rum",
-                "strDescription": "Imported",
-                "strType": "Rum",
-                "strAlcohol": "Yes",
-                "strABV": "40",
+                "name": "Rum",
+                "description": "Imported",
+                "type": "Rum",
+                "alcohol": "Yes",
+                "abv": "40",
             },
         ],
     )
@@ -98,10 +98,10 @@ def test_normalized_duplicates_and_blank_names(test_session, tmp_path):
     path = write_seed(
         tmp_path,
         [
-            {"strIngredient": "  ＧＩＮ "},
-            {"strIngredient": "gin"},
-            {"strIngredient": "  "},
-            {"strIngredient": None},
+            {"name": "  ＧＩＮ "},
+            {"name": "gin"},
+            {"name": "  "},
+            {"name": None},
         ],
     )
     result = seed_ingredients(test_session, path)
@@ -112,9 +112,7 @@ def test_normalized_duplicates_and_blank_names(test_session, tmp_path):
 
 
 def test_non_alcoholic_source_flag(test_session, tmp_path):
-    path = write_seed(
-        tmp_path, [{"strIngredient": "Juice", "strAlcohol": "No", "strType": "Juice"}]
-    )
+    path = write_seed(tmp_path, [{"name": "Juice", "alcohol": "No", "type": "Juice"}])
     seed_ingredients(test_session, path)
     ingredient = test_session.scalars(select(Ingredient)).one()
     assert ingredient.alcohol_status == "non_alcoholic"
@@ -126,8 +124,8 @@ def test_failure_rolls_back_entire_import(test_engine, tmp_path, abv):
     path = write_seed(
         tmp_path,
         [
-            {"strIngredient": "Gin", "strABV": "40"},
-            {"strIngredient": "Invalid", "strABV": abv},
+            {"name": "Gin", "abv": "40"},
+            {"name": "Invalid", "abv": abv},
         ],
     )
     with Session(test_engine) as session, pytest.raises(ValueError), session.begin():

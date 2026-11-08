@@ -1,13 +1,11 @@
 # Seed data
 
-Shared seed catalogs, images, and source notes live here. Rails seed loaders remain in `shakestir-rails/db/seeds.rb` and `shakestir-rails/db/seeds/` and resolve this directory relative to the repository root.
+Shared offline fixtures and original images live here. The [original demo dataset](demo/README.md) describes the fictional cocktail families, ingredients, recipes and relationship coverage. The repository's MIT license covers this demo content; no external cocktail database is bundled.
 
-From `shakestir-rails/`, run `bin/rails db:seed` to load the checked-in data offline.
+From `shakestir-fastapi/`, run `uv run db-setup` to migrate and seed the 15-ingredient catalog, or `uv run db-seed` after migrations. Its loader reads `demo/ingredients.json` and copies the generated transparent ingredient images into local storage. The Python implementation does not yet seed recipes, users, tools or collections.
 
-From `shakestir-fastapi/`, run `uv run db-setup` to migrate and seed the ingredient catalog, or `uv run db-seed` after migrations. The FastAPI loader reads `thecocktaildb/ingredients.json`, fills missing catalog fields, and preserves curated values on reruns. See the [backend seed documentation](../../shakestir-fastapi/README.md#seeds-and-project-commands) for its current scope.
+From `shakestir-rails/`, run `bin/rails db:seed` to load the complete graph: system and fictional author accounts, six cocktail families, 29 recipes, tools, techniques, ordered steps, mentions and collections. All required data and images are checked in; seeding requires no network calls or image-generation credentials.
 
-Recipe-specific [editorial taste expectations](taste/README.md) cover cached imported and fictional demo recipes, with explicit provenance and conservative fill-missing behavior.
+The [taste notes](taste/README.md), [technique catalog](techniques/README.md), [utensil catalog](utensils/README.md), and [fictional avatars](avatars/README.md) document their scope and provenance. Dummy credentials and `.example` addresses are development fixtures only.
 
-Seed photo reruns preserve uploads, fill missing attachments for known system/demo recipes and their matching canonical identities, and restore a missing original file only when the local cache has the exact same checksum and size as its existing blob. Nonmatching lost uploads are not replaced with unrelated pictures. Missing cache assets are logged. Demo photos intentionally use the relevant canonical cached photograph (for example, Snowfall Sidecar uses `thecocktaildb/images/cocktails/sidecar.jpg`); no external replacement asset is needed.
-
-Taste backfills lock a separate recipe instance so they do not clear ActiveStorage's pending uploads before an outer seed transaction commits. The committed-file regression test uses an isolated database and storage service because transactional fixture tests cannot prove after-commit file delivery.
+Reruns preserve existing records, curation, assigned authors and uploaded images. Missing stored seed files are restored only when their bytes match the existing image identity. Seeding does not remove data from earlier datasets; use a fresh local database/storage pair for a clean demo.

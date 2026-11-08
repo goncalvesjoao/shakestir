@@ -63,7 +63,7 @@ def source_files():
         if path.is_file():
             files.append(name)
     required = {"LICENSE", "README.md", "shakestir-fastapi/pyproject.toml",
-                "shakestir-react/package.json", "db/seeds/thecocktaildb/ingredients.json"}
+                "shakestir-react/package.json", "db/seeds/demo/ingredients.json"}
     missing = required.difference(files)
     if missing:
         raise ValueError(f"Missing required source files: {', '.join(sorted(missing))}")

@@ -73,7 +73,6 @@ Previous UI work used the Apple design skill. No new palette, typography, or vis
 
 ## Evidence on Hand
 
-The Rails application, views, models, tests, and `shakestir-rails/README.md` document current implementation behavior. The root `README.md` records the product vision. Seed content and cached photos originate from TheCocktailDB; source credits are part of recipe and cocktail records.
 
 The audience and product direction above come from the product owner's init interview. No user-study results, adoption metrics, testimonials, or competitive superiority claims have been supplied.
 

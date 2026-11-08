@@ -238,7 +238,7 @@ small,
   margin-bottom: 28px;
 }
 .hero-photo {
-  background: url("./assets/hero-cocktail.jpg") center/cover;
+  background: url("./assets/hero-cocktail.png") center/contain no-repeat;
   min-height: 480px;
   border-radius: 46% 46% 3px 3px;
 }
@@ -440,7 +440,7 @@ legend {
 .catalog-grid article img {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 4px;
 }
 .catalog-grid h2 a {

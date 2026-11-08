@@ -21,25 +21,25 @@ class SeedImageDeliveryTest < ActiveSupport::TestCase
         def check(value, message)
           raise message unless value
         end
-        check(Recipe.count == 35, "Expected all 35 seed recipes")
+        check(Recipe.count == 29, "Expected all 29 seed recipes")
         (Recipe.all.to_a + Cocktail.all.to_a).each do |record|
           check(record.image.attached?, "Missing attachment: #{record.name}")
           check(record.image.blob.service.exist?(record.image.blob.key), "Missing committed original: #{record.name}")
           check(Digest::MD5.base64digest(record.image.download) == record.image.blob.checksum, "Wrong bytes: #{record.name}")
         end
-        snow = Recipe.find_by!(name: "Snowfall Sidecar")
-        imported = Recipe.find_by!(source_url: "https://www.thecocktaildb.com/drink/11007")
+        snow = Recipe.find_by!(name: "Snowfall Lantern")
+        imported = Recipe.find_by!(source_url: "https://shakestir.example/recipes/citrus-lantern-01")
         canonical = imported.cocktail
         original_key = snow.image.blob.key
         snow.image.blob.service.delete(original_key)
         imported.image.purge
         canonical.image.purge
-        weekend = Recipe.find_by!(name: "My Weekend Margarita")
+        weekend = Recipe.find_by!(name: "My Weekend Lantern")
         weekend.image.purge
         # A real upload differs from the cached illustration and must survive.
-        ruby = Recipe.find_by!(name: "Ruby Masquerade")
-        upload_path = Rails.root.parent.join("db/seeds/thecocktaildb/images/cocktails/blue-margarita.jpg")
-        ruby.image.attach(io: StringIO.new(upload_path.binread), filename: "my-upload.jpg", content_type: "image/jpeg")
+        ruby = Recipe.find_by!(name: "Garden Notebook")
+        upload_path = Rails.root.parent.join("db/seeds/demo/images/cocktails/amber-evening.png")
+        ruby.image.attach(io: StringIO.new(upload_path.binread), filename: "my-upload.png", content_type: "image/png")
         upload_id = ruby.image.blob_id
         upload_checksum = ruby.image.blob.checksum
         snow.update!(source_reference: "Curated credit", sweetness: 0)

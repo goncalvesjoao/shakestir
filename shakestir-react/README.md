@@ -54,4 +54,4 @@ Screenshots and browser reports are ignored generated artifacts. See [API implem
 
 Serve React deep links and proxy `/api/*` to FastAPI with the prefix removed. Configure backend image URL generation and `VITE_BACKEND_URL` consistently with your public proxy. Vite's development proxy is not included in the production build or `vite preview`.
 
-The hero photograph is a cached TheCocktailDB Negroni image. Google Fonts has local system fallbacks.
+The hero image and ingredient illustrations are original AI-generated transparent PNGs; prompts and provenance are recorded in `../db/seeds/demo/image_prompts.json`. Google Fonts has local system fallbacks.

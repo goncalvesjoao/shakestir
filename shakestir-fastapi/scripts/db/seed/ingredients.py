@@ -18,11 +18,12 @@ from shakestir.models.ingredient import normalize_name
 from shakestir.storage import image_path, store_image
 
 DEFAULT_SEED_FILE = (
-    Path(__file__).resolve().parents[4] / "db/seeds/thecocktaildb/ingredients.json"
+    Path(__file__).resolve().parents[4] / "db/seeds/demo/ingredients.json"
 )
 
 # Match specific ingredient categories before general ones in the shared catalog.
 CATEGORY_PATTERNS = (
+    ("ice", r"^ice$"),
     ("spirit", r"spirit|rum|gin|vodka|whiskey|bourbon|brandy|tequila|mezcal|cognac"),
     ("liqueur", r"liqueur|amaro|cordial|triple sec|apercitif"),
     ("wine", r"wine|vermouth|sherry|champagne"),
@@ -111,17 +112,17 @@ def seed_ingredients(
     result = SeedResult()
     seen = set()
     for row in rows:
-        name = (row.get("strIngredient") or "").strip()
+        name = (row.get("name") or "").strip()
         normalized = normalize_name(name)
         if not normalized or normalized in seen:
             result.skipped += 1
             continue
         seen.add(normalized)
-        abv = parse_abv(row.get("strABV"))
+        abv = parse_abv(row.get("abv"))
         attributes = {
-            "description": row.get("strDescription") or None,
-            "category": normalize_category(row.get("strType")),
-            "alcohol_status": normalize_alcohol_status(row.get("strAlcohol"), abv),
+            "description": row.get("description") or None,
+            "category": normalize_category(row.get("type")),
+            "alcohol_status": normalize_alcohol_status(row.get("alcohol"), abv),
             "alcohol_by_volume": abv,
         }
         ingredient = session.scalars(

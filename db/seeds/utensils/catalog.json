@@ -173,5 +173,12 @@
     "category": "glassware",
     "description": "A handled mug associated with Mule cocktails. Use a food-safe lined mug for acidic drinks.",
     "image_subject": "empty copper Moscow Mule mug with visible stainless steel lining and curved handle"
+  },
+  {
+    "slug": "hurricane-glass",
+    "name": "Hurricane glass",
+    "category": "glassware",
+    "description": "A curved, footed serving glass for long fruit drinks and crushed ice.",
+    "image_subject": "empty clear hurricane cocktail glass with short stem and round foot"
   }
 ]

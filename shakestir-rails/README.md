@@ -74,13 +74,9 @@ Availability checks required ingredient and utensil identities, ignores optional
 
 ## Seeds
 
-`bin/rails db:seed` reads the checked-in TheCocktailDB JSON and cached photos without network calls. It imports system-managed recipes with source URLs, ingredient lines containing the original measurements, and preparation instructions. Imported recipes are public when complete and explicitly linked to canonical identities by normalized English name. Seeds preserve all existing recipes and avoid duplicate recipes, requirements, steps, and attachments on repeated runs.
+`bin/rails db:seed` loads the original offline fixtures in [`../db/seeds/demo/`](../db/seeds/demo/README.md). Six fictional cocktail families have 24 system recipes and five author recipes, including private drafts and a nonalcoholic preparation. Structured ingredients, quantities, optional garnishes, required tools, techniques, ordered steps, mentions, collections and original transparent images exercise model relationships.
 
-Ingredient photos must exist in the cache for referenced ingredients. Refresh using `ruby ../db/seeds/thecocktaildb/build_seed_cache.rb`, which downloads the selected cocktail responses plus ingredients and photos required by those recipes. Imported measurement wording is preserved in `submitted_text`; numeric quantities are not inferred from ambiguous source measurements.
-
-The seeds also load a [29-entry utensil catalog](../db/seeds/utensils/README.md) with original English descriptions and a separate generated photo for each entry. It covers tools and glassware for the current seeded recipes plus a small essential bar kit. Repeat runs preserve existing utensil curation and fill missing descriptions or photos. All assets are checked in; seeding needs no image-generation credentials or network access.
-
-The [technique catalog](../db/seeds/techniques/README.md) contains 17 beginner guides with names, descriptions, instructions and optional tips. `RecipeTechnique` links multiple techniques to each recipe. Authors choose techniques in the recipe form; readers open their guides below Preparation, with a standalone page as the no-JavaScript fallback. Guide content is maintained through seeds or trusted model access. Reviewed seed mappings connect 29 eligible, unchanged system imports to their techniques; arbitrary recipe prose is not classified automatically.
+Source URLs use the reserved `shakestir.example` domain and identify synthetic records rather than external publications. The dataset contains original prose and generated images, not an imported recipe database. Existing records and uploaded images are preserved; use a fresh local database and storage for a clean demo.
 
 ## Photos
 
@@ -123,7 +119,6 @@ Public discovery at `/` lists individual marketplace recipes with search, availa
 
 Nullable integer `sweetness`, `sourness` and `bitterness` live in the original `CreateRecipes` migration, with SQL checks enforcing NULL or 0–5. The separate additive taste migration was removed at the product owner's explicit request for a fresh database rebuild; the schema version is `20261106000000`, the newest remaining migration. This history rewrite is not an automatic incremental upgrade for an old database. No developer database is dropped by the seed loader.
 
-The [editorial taste mapping](../db/seeds/taste/README.md) covers all 30 cached imported preparations and five fictional demo preparations. Each exact spec has deterministic values, a rationale and a fingerprint. These are **untested editorial sensory expectations**, not TheCocktailDB-provided scores or tasting results. NULL means unknown; 0 means an expected absence. The seed loader fills only NULL fields on matching unchanged specs belonging to the system/demo owner; existing zeroes and other populated values, changed specs, reassigned recipes, source credits and original prose are preserved. Unmatched recipes receive no default scores.
 
 ### Seed photo recovery
 

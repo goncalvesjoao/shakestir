@@ -5,10 +5,10 @@ These fictional formulations, names, descriptions and background notes were crea
 ## Files and relationships
 
 - `ingredients.json`: 15 canonical ingredients, including spirits, nonalcoholic mixers, mint and ice. Names retain their spelling; the loaders normalize identities separately.
-- `cocktails.json`: six fictional canonical families. Frozen Lantern is a child of Citrus Lantern. Background text explicitly describes fictional origins.
+- `cocktails.json`: 30 fictional canonical families (two pages at 24 per page). Frozen Lantern is a child of Citrus Lantern; 24 additional siblings link to their base family and share its preparation and illustration. Background text explicitly describes fictional origins.
 - `recipes.json`: four preparations per family, with stable IDs, structured ingredient quantities, optional garnish lines, required tools, ordered steps, techniques, taste values and spec fingerprints. Notebook variants leave taste unknown; Notebook Garden Spark omits gin for a nonalcoholic example.
 - `../demo_accounts.json`: two fictional authors, three public recipes, two private drafts, and public/private collections containing recipes from multiple authors.
-- `images/`: original AI-generated transparent PNGs for all ingredients and cocktail families. Recipe variations share their family's illustration; optional garnishes are illustrative styling, not additional required ingredients.
+- `images/`: original AI-generated transparent PNGs for all ingredients and the six base cocktail families. Additional families reuse their base illustration. Recipe variations share their family's illustration; optional garnishes are illustrative styling, not additional required ingredients.
 - `image_prompts.json`: the exact image generation prompts, tool and output assignments. Images were generated from text without third-party image references. They are illustrations of plausible servings, not photographs of tested recipes.
 
 The system account and demo passwords are dummy development credentials. All account email addresses and source URLs use reserved `.example` domains. They are not real people, contact addresses, live accounts or external references.

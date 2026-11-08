@@ -88,7 +88,7 @@ Checks and tests also have individual `fastapi:check`, `react:check`, `fastapi:t
 
 ## Demo data and unfinished models
 
-The [original demo dataset](db/seeds/demo/README.md) has six fictional cocktail families, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions, and public/private collections. It includes a parent/variant relationship, shared ingredients, structured quantities, optional garnishes, and unknown versus explicit zero taste values.
+The [original demo dataset](db/seeds/demo/README.md) has 30 fictional cocktail families, 120 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions, and public/private collections. It includes a parent/variant relationship, shared ingredients, structured quantities, optional garnishes, and unknown versus explicit zero taste values.
 
 **FastAPI currently loads only ingredients and their images.** The other JSON files describe related fixture data for future model and endpoint work; their presence does not mean the corresponding backend features are implemented. Taste and ABV values are illustrative fixtures, not measured results or branded product specifications. Images are generated illustrations of plausible servings.
 

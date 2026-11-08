@@ -113,7 +113,7 @@ Checks and tests also have individual `fastapi:check`, `react:check`, `fastapi:t
 
 ## Demo content
 
-The shared [demo dataset](db/seeds/demo/README.md) contains original fictional recipes and generated transparent images. It includes six cocktail families, a parent/variant relationship, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions and public/private collections. FastAPI currently loads only the ingredient catalog; the remaining entities are fixtures for the prototype and future Python endpoints.
+The shared [demo dataset](db/seeds/demo/README.md) contains original fictional recipes and generated transparent images. It includes 30 cocktail families, a parent/variant relationship, 120 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions and public/private collections. FastAPI currently loads only the ingredient catalog; the remaining entities are fixtures for the prototype and future Python endpoints.
 
 Run `npm run seed-build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
 

@@ -299,6 +299,17 @@ def main():
             [3, 4, 0],
         ),
     ]
+    # Keep more than one 24-item cocktail page visible in the Rails marketplace.
+    # These fictional siblings share their base preparation and illustration.
+    base_families = families.copy()
+    image_names = {family[0]: f"{slug(family[0])}.png" for family in base_families}
+    parents = {"Frozen Lantern": "Citrus Lantern"}
+    for prefix in ("Twilight", "Moonlit", "Golden", "Summer"):
+        for base in base_families:
+            name = f"{prefix} {base[0]}"
+            families.append((name, *base[1:]))
+            image_names[name] = image_names[base[0]]
+            parents[name] = base[0]
     cocktails, recipes = [], []
     for name, glass, tools, techniques, spec, steps, taste in families:
         key = slug(name)
@@ -311,10 +322,8 @@ def main():
                 "source_url": f"https://shakestir.example/cocktails/{key}",
                 "source_date_note": "Fictional test content; no historical publication date.",
                 "glassware": glass,
-                "image": f"{key}.png",
-                "parent_cocktail": "Citrus Lantern"
-                if name == "Frozen Lantern"
-                else None,
+                "image": image_names[name],
+                "parent_cocktail": parents.get(name),
             }
         )
         for index, label in enumerate(["", "Soft", "Dry", "Notebook"]):
@@ -325,16 +334,16 @@ def main():
                         float(item["quantity"]) + (5 if index == 1 else -3)
                     )
                     item["submitted_text"] = f"{item['quantity']} ml Sugar Syrup"
-            if name == "Garden Spark":
+            if name.endswith("Garden Spark"):
                 lines += [
                     line("Mint", 6, "leaf"),
                     line("Mint", 1, "sprig", True, "garnish"),
                 ]
                 if index == 3:
                     lines = [i for i in lines if i["name"] != "Gin"]
-            lines.append(line("Ice", 150 if name == "Frozen Lantern" else 100, "g"))
+            lines.append(line("Ice", 150 if name.endswith("Frozen Lantern") else 100, "g"))
             own_steps = steps.copy()
-            if name == "Garden Spark" and index == 3:
+            if name.endswith("Garden Spark") and index == 3:
                 own_steps[1] = (
                     "Add Lime Juice and Ice without any spirit; lift once with a Bar spoon."
                 )
@@ -374,6 +383,7 @@ def main():
                 source_url=f"https://shakestir.example/recipes/{recipe['id']}",
                 source_reference="ShakeStir original demo",
             ))
+            recipe["image"] = image_names[name]
             recipe["spec_fingerprint"] = fingerprint(recipe)
             recipes.append(recipe)
     write(DEMO / "cocktails.json", {"cocktails": cocktails})

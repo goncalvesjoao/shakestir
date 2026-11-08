@@ -105,6 +105,16 @@ Run `npm run seed:build` to rebuild the JSON deterministically without network a
 
 Seeding preserves existing content. To avoid mixing previously imported data with the new fixtures, use a fresh local database and storage directory. Do not reset a database containing work you need to keep.
 
+## Example data and credentials
+
+The repository intentionally includes synthetic development and test values:
+
+- `db/seeds/system_account.json` and `db/seeds/demo_accounts.json` contain fictional accounts at `shakestir@shakestir.example`, `leo@shakestir.example`, and `alex@shakestir.example`, all with the dummy password `password`. Profile names, biographies, and avatars are fictional.
+- `shakestir-react/e2e/workflows.spec.ts` creates temporary QA users with addresses such as `react-qa-<timestamp>@example.com` and the dummy password `Reviewable!Password9`. Mock API responses use `test` as a dummy CSRF token.
+- The Python and React `.env.example` files contain local database/storage paths and localhost service URLs, with no real service credentials. Source references under `https://shakestir.example/` are fictional fixture identifiers.
+
+These values are examples, not credentials for real external accounts or personal contact information. Use them only in local development or isolated tests, and never reuse the dummy passwords for real accounts. Source snapshots retain these documented fixtures and example environment files while excluding actual `.env` files and runtime databases. If an upload requires disclosure of retained dummy values, identify them yourself and review any scan warnings before submission.
+
 ## Run the checks
 
 Python, from `shakestir-fastapi/`:

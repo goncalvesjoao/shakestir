@@ -21,7 +21,9 @@ class SeedImageDeliveryTest < ActiveSupport::TestCase
         def check(value, message)
           raise message unless value
         end
-        check(Recipe.count == 29, "Expected all 29 seed recipes")
+        system_specs = DemoCatalogSeeder.load_json("recipes.json").fetch("recipes")
+        author_specs = DemoAccountsSeeder.data.fetch("recipes")
+        check(Recipe.count == system_specs.size + author_specs.size, "Some seed recipes were not loaded")
         (Recipe.all.to_a + Cocktail.all.to_a).each do |record|
           check(record.image.attached?, "Missing attachment: #{record.name}")
           check(record.image.blob.service.exist?(record.image.blob.key), "Missing committed original: #{record.name}")

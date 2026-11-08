@@ -39,7 +39,14 @@ test("shows an empty ingredient catalog", async () => {
   expect(await screen.findByText("No entries found.")).toBeInTheDocument();
 });
 
-test("reports ingredient API failures with a retry action", async () => {
-  mountIngredients([], 500);
-  expect(await screen.findByRole("button", { name: "Try again" })).toBeInTheDocument();
+test("recovers from an ingredient API failure when the user retries", async () => {
+  const fetcher = mountIngredients([], 500);
+  const retry = await screen.findByRole("button", { name: "Try again" });
+  fetcher.mockImplementation(async () => new Response(JSON.stringify({
+    data: [{ id: 1, name: "Gin", description: null, image_url: null }],
+    metadata: { total_count: 1 },
+  })));
+  await userEvent.setup().click(retry);
+  expect(await screen.findByRole("heading", { name: "Gin" })).toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: "Try again" })).not.toBeInTheDocument();
 });

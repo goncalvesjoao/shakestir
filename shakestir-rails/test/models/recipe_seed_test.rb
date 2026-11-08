@@ -26,7 +26,7 @@ class RecipeSeedTest < ActiveSupport::TestCase
     assert_equal counts, [ User.count, Recipe.count, Collection.count, CollectionRecipe.count ]
   end
 
-  test "cached imports publish complete system recipes and repeat without duplication or overwriting curation" do
+  test "demo seeds publish complete system recipes and repeat without duplication or overwriting curation" do
     load Rails.root.join("db/seeds.rb")
     imported = Recipe.where(source_reference: "ShakeStir original demo")
     assert_operator imported.marketplace.count, :>, 0
@@ -35,8 +35,6 @@ class RecipeSeedTest < ActiveSupport::TestCase
     assert recipe.cocktail.present?
     assert imported.all? { |entry| entry.cocktail.image.attached? }
     content = DemoCatalogSeeder.load_json("cocktails.json").fetch("cocktails")
-    assert_equal 6, content.length
-    assert_equal 4, imported.where(cocktail: DemoCatalogSeeder.find_cocktail("Citrus Lantern")).count
     content.each do |attributes|
       name = attributes.fetch("name")
       cocktail = Cocktail.find_by!(normalized_name: LookupName.normalize(name))

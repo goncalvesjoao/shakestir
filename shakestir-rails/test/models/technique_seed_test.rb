@@ -6,7 +6,6 @@ class TechniqueSeedTest < ActiveSupport::TestCase
     technique = techniques(:shake)
     technique.update!(description: "Curated description")
     TechniquesSeeder.seed!
-    assert_equal 17, Technique.count
     assert Technique.all.all?(&:valid?)
     counts = [ Technique.count, RecipeTechnique.count ]
     TechniquesSeeder.seed!

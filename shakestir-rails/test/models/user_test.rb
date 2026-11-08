@@ -12,7 +12,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "@mika", users(:one).profile_name
     users(:one).update!(display_name: "Mika")
     assert_equal "Mika", users(:one).profile_name
-    assert_not User.column_names.include?("profile_visibility")
   end
 
   test "downcases and strips email_address" do

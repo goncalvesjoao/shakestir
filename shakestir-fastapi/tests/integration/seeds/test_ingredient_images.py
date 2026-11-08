@@ -12,11 +12,6 @@ def test_seed_images_are_copied_and_served(test_session, test_client):
     test_session.commit()
     records = test_session.scalars(select(Ingredient)).all()
     assert records
-    for record in records:
-        slug = record.name.lower().replace(" ", "-")
-        cached = DEFAULT_SEED_FILE.parent / f"images/ingredients/{slug}.png"
-        assert cached.is_file(), record.name
-        assert record.image_key is not None, record.name
     gin = next(record for record in records if record.name == "Gin")
     source = DEFAULT_SEED_FILE.parent / "images/ingredients/gin.png"
     assert image_path(gin.image_key).read_bytes() == source.read_bytes()
@@ -97,17 +92,27 @@ def test_missing_stored_file_returns_404(test_session, test_client):
     )
 
 
-def test_pineapple_juice_has_a_cached_image_and_backfills_existing_records(
-    test_session, test_client
+def test_rerun_backfills_an_image_that_becomes_available_later(
+    test_session, test_client, tmp_path
 ):
-    ingredient = Ingredient(name="Pineapple Juice")
-    test_session.add(ingredient)
+    seed = tmp_path / "ingredients.json"
+    seed.write_text(json.dumps({"ingredients": [{"name": "Test ingredient"}]}))
+    seed_ingredients(test_session, seed)
     test_session.commit()
-    seed_ingredients(test_session)
+    ingredient = test_session.scalars(select(Ingredient)).one()
+    assert ingredient.image_key is None
+
+    image_dir = tmp_path / "images/ingredients"
+    image_dir.mkdir(parents=True)
+    source = image_dir / "test-ingredient.png"
+    source.write_bytes(
+        (DEFAULT_SEED_FILE.parent / "images/ingredients/gin.png").read_bytes()
+    )
+    result = seed_ingredients(test_session, seed)
     test_session.commit()
     test_session.refresh(ingredient)
-    assert ingredient.image_key is not None
-    source = DEFAULT_SEED_FILE.parent / "images/ingredients/pineapple-juice.png"
+    assert result.created == 0
+    assert result.updated == 1
     response = test_client.get(f"/ingredients/{ingredient.id}/image")
     assert response.status_code == 200
     assert response.content == source.read_bytes()

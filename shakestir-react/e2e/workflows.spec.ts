@@ -34,10 +34,6 @@ test("desktop discovery, exact recipe, queue and mobile navigation", async ({
         ),
     )
     .toBe(true);
-  await page.screenshot({
-    path: "artifacts/discovery-desktop.png",
-    fullPage: true,
-  });
   await page.locator(".recipe-card h2 a").first().click();
   await expect(
     page.getByRole("heading", { name: "Preparation", exact: true }),
@@ -88,10 +84,6 @@ test("desktop discovery, exact recipe, queue and mobile navigation", async ({
         ),
     )
     .toBe(true);
-  await page.screenshot({
-    path: "artifacts/discovery-mobile.png",
-    fullPage: true,
-  });
 });
 
 test("new account creates a published recipe, manages collections and deletes account", async ({
@@ -160,10 +152,6 @@ test("new account creates a published recipe, manages collections and deletes ac
   await expect(
     page.getByText("Finish with a twist.", { exact: true }),
   ).toBeVisible();
-  await page.screenshot({
-    path: "artifacts/recipe-desktop.png",
-    fullPage: true,
-  });
   await page.getByRole("link", { name: "New collection", exact: true }).click();
   await page.getByLabel("Name", { exact: true }).fill("QA collection");
   await page.getByRole("button", { name: "Save collection" }).click();

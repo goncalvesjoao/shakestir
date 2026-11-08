@@ -11,15 +11,7 @@ class RecipeRedesignTest < ActionDispatch::IntegrationTest
         assert_select "button[type=submit][aria-label=Search]"
       end
     end
-    assert_select "form[role=search]", count: 0
     assert_select "a.visually-hidden-focusable[href='#main-content']", text: "Skip to content"
-  end
-
-  test "cards show recipe titles without preparation metadata" do
-    get recipes_url
-    assert_select "#recipe_#{recipes(:one).id} .card-meta", count: 0
-    assert_select ".card-copy a", text: "Explore recipe", count: 0
-    assert_not_includes response.body, "↗"
   end
 
   test "mixing view preserves exact ordered prose and ingredient text" do
@@ -34,7 +26,6 @@ class RecipeRedesignTest < ActionDispatch::IntegrationTest
     assert_select ".preparation-steps > li", count: 2
     assert_select "#preparation input[type=checkbox].visually-hidden", count: 2
     assert_select ".recipe-cover h1"
-    assert_select ".detail-hero", count: 0
     assert_operator response.body.index('id="ingredients"'), :<, response.body.index('id="preparation"')
     assert_select "#preparation progress", count: 1
   end

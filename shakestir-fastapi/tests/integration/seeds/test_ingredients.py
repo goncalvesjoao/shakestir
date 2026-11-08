@@ -132,3 +132,14 @@ def test_failure_rolls_back_entire_import(test_engine, tmp_path, abv):
         seed_ingredients(session, path)
     with Session(test_engine) as session:
         assert session.scalar(select(func.count()).select_from(Ingredient)) == 0
+
+
+def test_ice_is_a_non_alcoholic_ingredient(test_session, tmp_path):
+    path = write_seed(
+        tmp_path, [{"name": "Ice", "type": "ice", "alcohol": "No", "abv": "0"}]
+    )
+    seed_ingredients(test_session, path)
+    ice = test_session.scalars(select(Ingredient)).one()
+    assert ice.category == "ice"
+    assert ice.alcohol_status == "non_alcoholic"
+    assert ice.alcohol_by_volume == 0

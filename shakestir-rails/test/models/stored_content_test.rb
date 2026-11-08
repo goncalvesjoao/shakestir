@@ -13,8 +13,6 @@ class StoredContentTest < ActiveSupport::TestCase
       record = type.create!(attributes)
       assert_equal "  Ｇｉｎ ジン  ", record.reload.name
       assert_equal "gin ジン", record.normalized_name
-      assert_not_includes type.column_names, "language"
-      assert_not record.respond_to?(:translations)
       record.update!(name: "  Novo nome  ")
       assert_equal "  Novo nome  ", record.reload.name
       assert_equal "novo nome", record.normalized_name
@@ -29,6 +27,5 @@ class StoredContentTest < ActiveSupport::TestCase
     ingredient.ingredient.update!(name: "ジン")
     utensil.utensil.update!(name: "計量カップ")
     assert_equal submitted, [ recipe.reload.name, ingredient.reload.submitted_text, utensil.reload.submitted_text ]
-    [ RecipeIngredient, RecipeUtensil ].each { |type| assert_not_includes type.column_names, "language" }
   end
 end

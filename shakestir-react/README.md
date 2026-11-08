@@ -2,6 +2,8 @@
 
 React and TypeScript frontend for ShakeStir, using React Router, TanStack Query, Vitest, and Playwright. It connects to the FastAPI backend. The ingredient catalog and ingredient images work; the other API-backed workflows remain in the frontend while their Python endpoints are being built and will currently fail with 404 responses.
 
+The build uses Vite 7.3 and the standard React plugin, without React Compiler. CSS processing uses PostCSS and the default esbuild minifier; Lightning CSS is not installed. Vite stays on the supported 7.3 line to keep that dependency optional.
+
 ## Run locally
 
 See the [root README](../README.md) for prerequisites. Start the backend in one terminal, from the repository root:

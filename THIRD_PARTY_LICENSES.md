@@ -6,51 +6,75 @@ ShakeStir application code and original demo content use the root [MIT license](
 
 ## Findings that need attention
 
-- `lightningcss` and its platform packages are MPL-2.0. `npm explain lightningcss` identifies Vite as the dependency path. They are frontend development/build dependencies and are not copied into the source snapshot. [Mozilla describes MPL as file-level copyleft](https://www.mozilla.org/en-US/MPL/2.0/FAQ/). Do not describe the entire dependency tree as permissively licensed; an external rule banning copyleft may distinguish repository source from build dependencies.
+- The frontend uses supported Vite 7.3 with the standard React plugin. Lightning CSS is an optional Vite peer and is not installed or resolved as a package in the lockfile. No locked Node package declares an MPL, GPL, LGPL or AGPL license in the reviewed metadata. Optional peer declarations are capabilities, not installed packages.
 - `caniuse-lite` declares CC-BY-4.0 and is a development dependency. Its attribution requirements remain applicable when redistributing it.
 - Installed `uvloop` metadata declares MIT and ships both MIT and Apache-2.0 license texts; consult the packaged files when redistributing it.
 
 ## React lockfile inventory
 
-The table lists all 288 distinct package/version pairs in `shakestir-react/package-lock.json`, including optional platform packages that are not installed on every machine. License identifiers come from that lockfile. Runtime/development classification follows the root manifest and lockfile flags.
+The table lists all 289 distinct package/version pairs in `shakestir-react/package-lock.json`, including optional platform packages that are not installed on every machine. License identifiers come from that lockfile. Runtime/development classification follows the root manifest and lockfile flags.
 
 | Declared license | Package/version pairs |
 | --- | ---: |
-| 0BSD | 1 |
-| Apache-2.0 | 21 |
+| Apache-2.0 | 20 |
 | BSD-2-Clause | 8 |
 | BSD-3-Clause | 3 |
 | BlueOak-1.0.0 | 2 |
 | CC-BY-4.0 | 1 |
 | ISC | 11 |
-| MIT | 229 |
-| MPL-2.0 | 12 |
+| MIT | 244 |
 
 | Package | Version | Declared license | Role |
 | --- | --- | --- | --- |
 | [@adobe/css-tools](https://www.npmjs.com/package/@adobe/css-tools/v/4.5.0) | 4.5.0 | MIT | transitive development |
 | [@babel/code-frame](https://www.npmjs.com/package/@babel/code-frame/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/compat-data](https://www.npmjs.com/package/@babel/compat-data/v/7.29.7) | 7.29.7 | MIT | transitive development |
-| [@babel/core](https://www.npmjs.com/package/@babel/core/v/7.29.13) | 7.29.13 | MIT | direct development |
+| [@babel/core](https://www.npmjs.com/package/@babel/core/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/generator](https://www.npmjs.com/package/@babel/generator/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/helper-compilation-targets](https://www.npmjs.com/package/@babel/helper-compilation-targets/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/helper-globals](https://www.npmjs.com/package/@babel/helper-globals/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/helper-module-imports](https://www.npmjs.com/package/@babel/helper-module-imports/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/helper-module-transforms](https://www.npmjs.com/package/@babel/helper-module-transforms/v/7.29.13) | 7.29.13 | MIT | transitive development |
+| [@babel/helper-plugin-utils](https://www.npmjs.com/package/@babel/helper-plugin-utils/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/helper-string-parser](https://www.npmjs.com/package/@babel/helper-string-parser/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/helper-validator-identifier](https://www.npmjs.com/package/@babel/helper-validator-identifier/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/helper-validator-option](https://www.npmjs.com/package/@babel/helper-validator-option/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/helpers](https://www.npmjs.com/package/@babel/helpers/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/parser](https://www.npmjs.com/package/@babel/parser/v/7.29.13) | 7.29.13 | MIT | transitive development |
+| [@babel/plugin-transform-react-jsx-self](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-self/v/7.29.7) | 7.29.7 | MIT | transitive development |
+| [@babel/plugin-transform-react-jsx-source](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/runtime](https://www.npmjs.com/package/@babel/runtime/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/template](https://www.npmjs.com/package/@babel/template/v/7.29.7) | 7.29.7 | MIT | transitive development |
 | [@babel/traverse](https://www.npmjs.com/package/@babel/traverse/v/7.29.13) | 7.29.13 | MIT | transitive development |
 | [@babel/types](https://www.npmjs.com/package/@babel/types/v/7.29.11) | 7.29.11 | MIT | transitive development |
 | [@cacheable/memory](https://www.npmjs.com/package/@cacheable/memory/v/2.2.0) | 2.2.0 | MIT | transitive development |
 | [@cacheable/utils](https://www.npmjs.com/package/@cacheable/utils/v/2.5.0) | 2.5.0 | MIT | transitive development |
-| [@emnapi/core](https://www.npmjs.com/package/@emnapi/core/v/2.0.0-beta.2) | 2.0.0-beta.2 | MIT | transitive development |
-| [@emnapi/runtime](https://www.npmjs.com/package/@emnapi/runtime/v/2.0.0-beta.2) | 2.0.0-beta.2 | MIT | transitive development |
-| [@emnapi/wasi-threads](https://www.npmjs.com/package/@emnapi/wasi-threads/v/2.2.0) | 2.2.0 | MIT | transitive development |
+| [@esbuild/aix-ppc64](https://www.npmjs.com/package/@esbuild/aix-ppc64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/android-arm](https://www.npmjs.com/package/@esbuild/android-arm/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/android-arm64](https://www.npmjs.com/package/@esbuild/android-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/android-x64](https://www.npmjs.com/package/@esbuild/android-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/darwin-arm64](https://www.npmjs.com/package/@esbuild/darwin-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/darwin-x64](https://www.npmjs.com/package/@esbuild/darwin-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/freebsd-arm64](https://www.npmjs.com/package/@esbuild/freebsd-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/freebsd-x64](https://www.npmjs.com/package/@esbuild/freebsd-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-arm](https://www.npmjs.com/package/@esbuild/linux-arm/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-arm64](https://www.npmjs.com/package/@esbuild/linux-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-ia32](https://www.npmjs.com/package/@esbuild/linux-ia32/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-loong64](https://www.npmjs.com/package/@esbuild/linux-loong64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-mips64el](https://www.npmjs.com/package/@esbuild/linux-mips64el/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-ppc64](https://www.npmjs.com/package/@esbuild/linux-ppc64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-riscv64](https://www.npmjs.com/package/@esbuild/linux-riscv64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-s390x](https://www.npmjs.com/package/@esbuild/linux-s390x/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/linux-x64](https://www.npmjs.com/package/@esbuild/linux-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/netbsd-arm64](https://www.npmjs.com/package/@esbuild/netbsd-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/netbsd-x64](https://www.npmjs.com/package/@esbuild/netbsd-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/openbsd-arm64](https://www.npmjs.com/package/@esbuild/openbsd-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/openbsd-x64](https://www.npmjs.com/package/@esbuild/openbsd-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/openharmony-arm64](https://www.npmjs.com/package/@esbuild/openharmony-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/sunos-x64](https://www.npmjs.com/package/@esbuild/sunos-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/win32-arm64](https://www.npmjs.com/package/@esbuild/win32-arm64/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/win32-ia32](https://www.npmjs.com/package/@esbuild/win32-ia32/v/0.28.2) | 0.28.2 | MIT | transitive development |
+| [@esbuild/win32-x64](https://www.npmjs.com/package/@esbuild/win32-x64/v/0.28.2) | 0.28.2 | MIT | transitive development |
 | [@eslint-community/eslint-utils](https://www.npmjs.com/package/@eslint-community/eslint-utils/v/4.10.1) | 4.10.1 | MIT | transitive development |
 | [@eslint-community/regexpp](https://www.npmjs.com/package/@eslint-community/regexpp/v/4.12.2) | 4.12.2 | MIT | transitive development |
 | [@eslint/config-array](https://www.npmjs.com/package/@eslint/config-array/v/0.23.5) | 0.23.5 | Apache-2.0 | transitive development |
@@ -72,53 +96,43 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [@jridgewell/trace-mapping](https://www.npmjs.com/package/@jridgewell/trace-mapping/v/0.3.31) | 0.3.31 | MIT | transitive development |
 | [@keyv/bigmap](https://www.npmjs.com/package/@keyv/bigmap/v/1.3.1) | 1.3.1 | MIT | transitive development |
 | [@keyv/serialize](https://www.npmjs.com/package/@keyv/serialize/v/1.1.1) | 1.1.1 | MIT | transitive development |
-| [@napi-rs/wasm-runtime](https://www.npmjs.com/package/@napi-rs/wasm-runtime/v/1.2.6) | 1.2.6 | MIT | transitive development |
-| [@oxc-project/types](https://www.npmjs.com/package/@oxc-project/types/v/0.156.0) | 0.156.0 | MIT | transitive development |
-| [@oxc-project/types](https://www.npmjs.com/package/@oxc-project/types/v/0.157.0) | 0.157.0 | MIT | transitive development |
 | [@playwright/test](https://www.npmjs.com/package/@playwright/test/v/1.65.0) | 1.65.0 | Apache-2.0 | direct development |
 | [@remix-run/route-pattern](https://www.npmjs.com/package/@remix-run/route-pattern/v/0.22.1) | 0.22.1 | MIT | transitive runtime |
-| [@rolldown/binding-android-arm-eabi](https://www.npmjs.com/package/@rolldown/binding-android-arm-eabi/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-android-arm-eabi](https://www.npmjs.com/package/@rolldown/binding-android-arm-eabi/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-android-arm64](https://www.npmjs.com/package/@rolldown/binding-android-arm64/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-android-arm64](https://www.npmjs.com/package/@rolldown/binding-android-arm64/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-darwin-arm64](https://www.npmjs.com/package/@rolldown/binding-darwin-arm64/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-darwin-arm64](https://www.npmjs.com/package/@rolldown/binding-darwin-arm64/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-darwin-x64](https://www.npmjs.com/package/@rolldown/binding-darwin-x64/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-darwin-x64](https://www.npmjs.com/package/@rolldown/binding-darwin-x64/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-freebsd-x64](https://www.npmjs.com/package/@rolldown/binding-freebsd-x64/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-freebsd-x64](https://www.npmjs.com/package/@rolldown/binding-freebsd-x64/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-arm-gnueabihf](https://www.npmjs.com/package/@rolldown/binding-linux-arm-gnueabihf/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-arm-gnueabihf](https://www.npmjs.com/package/@rolldown/binding-linux-arm-gnueabihf/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-arm64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-arm64-gnu/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-arm64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-arm64-gnu/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-arm64-musl](https://www.npmjs.com/package/@rolldown/binding-linux-arm64-musl/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-arm64-musl](https://www.npmjs.com/package/@rolldown/binding-linux-arm64-musl/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-ppc64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-ppc64-gnu/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-ppc64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-ppc64-gnu/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-s390x-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-s390x-gnu/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-s390x-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-s390x-gnu/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-x64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-x64-gnu/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-x64-gnu](https://www.npmjs.com/package/@rolldown/binding-linux-x64-gnu/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-linux-x64-musl](https://www.npmjs.com/package/@rolldown/binding-linux-x64-musl/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-linux-x64-musl](https://www.npmjs.com/package/@rolldown/binding-linux-x64-musl/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-openharmony-arm64](https://www.npmjs.com/package/@rolldown/binding-openharmony-arm64/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-openharmony-arm64](https://www.npmjs.com/package/@rolldown/binding-openharmony-arm64/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-wasm32-wasi](https://www.npmjs.com/package/@rolldown/binding-wasm32-wasi/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-win32-arm64-msvc](https://www.npmjs.com/package/@rolldown/binding-win32-arm64-msvc/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-win32-arm64-msvc](https://www.npmjs.com/package/@rolldown/binding-win32-arm64-msvc/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/binding-win32-x64-msvc](https://www.npmjs.com/package/@rolldown/binding-win32-x64-msvc/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [@rolldown/binding-win32-x64-msvc](https://www.npmjs.com/package/@rolldown/binding-win32-x64-msvc/v/1.3.0) | 1.3.0 | MIT | transitive development |
-| [@rolldown/plugin-babel](https://www.npmjs.com/package/@rolldown/plugin-babel/v/0.3.0) | 0.3.0 | MIT | direct development |
-| [@rolldown/pluginutils](https://www.npmjs.com/package/@rolldown/pluginutils/v/1.0.1) | 1.0.1 | MIT | transitive development |
+| [@rolldown/pluginutils](https://www.npmjs.com/package/@rolldown/pluginutils/v/1.0.0-rc.3) | 1.0.0-rc.3 | MIT | transitive development |
+| [@rollup/rollup-android-arm-eabi](https://www.npmjs.com/package/@rollup/rollup-android-arm-eabi/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-android-arm64](https://www.npmjs.com/package/@rollup/rollup-android-arm64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-android-x64](https://www.npmjs.com/package/@rollup/rollup-android-x64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-darwin-arm64](https://www.npmjs.com/package/@rollup/rollup-darwin-arm64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-darwin-x64](https://www.npmjs.com/package/@rollup/rollup-darwin-x64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-freebsd-arm64](https://www.npmjs.com/package/@rollup/rollup-freebsd-arm64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-freebsd-x64](https://www.npmjs.com/package/@rollup/rollup-freebsd-x64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-arm-gnueabihf](https://www.npmjs.com/package/@rollup/rollup-linux-arm-gnueabihf/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-arm-musleabihf](https://www.npmjs.com/package/@rollup/rollup-linux-arm-musleabihf/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-arm64-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-arm64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-arm64-musl](https://www.npmjs.com/package/@rollup/rollup-linux-arm64-musl/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-loong64-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-loong64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-loong64-musl](https://www.npmjs.com/package/@rollup/rollup-linux-loong64-musl/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-ppc64-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-ppc64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-ppc64-musl](https://www.npmjs.com/package/@rollup/rollup-linux-ppc64-musl/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-riscv64-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-riscv64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-riscv64-musl](https://www.npmjs.com/package/@rollup/rollup-linux-riscv64-musl/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-s390x-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-s390x-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-x64-gnu](https://www.npmjs.com/package/@rollup/rollup-linux-x64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-linux-x64-musl](https://www.npmjs.com/package/@rollup/rollup-linux-x64-musl/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-openbsd-x64](https://www.npmjs.com/package/@rollup/rollup-openbsd-x64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-openharmony-arm64](https://www.npmjs.com/package/@rollup/rollup-openharmony-arm64/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-win32-arm64-msvc](https://www.npmjs.com/package/@rollup/rollup-win32-arm64-msvc/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-win32-ia32-msvc](https://www.npmjs.com/package/@rollup/rollup-win32-ia32-msvc/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-win32-x64-gnu](https://www.npmjs.com/package/@rollup/rollup-win32-x64-gnu/v/4.68.0) | 4.68.0 | MIT | transitive development |
+| [@rollup/rollup-win32-x64-msvc](https://www.npmjs.com/package/@rollup/rollup-win32-x64-msvc/v/4.68.0) | 4.68.0 | MIT | transitive development |
 | [@tanstack/query-core](https://www.npmjs.com/package/@tanstack/query-core/v/5.107.1) | 5.107.1 | MIT | transitive runtime |
 | [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query/v/5.107.1) | 5.107.1 | MIT | direct runtime |
 | [@testing-library/dom](https://www.npmjs.com/package/@testing-library/dom/v/10.4.2) | 10.4.2 | MIT | transitive development |
 | [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom/v/7.0.1) | 7.0.1 | MIT | direct development |
 | [@testing-library/react](https://www.npmjs.com/package/@testing-library/react/v/16.3.3) | 16.3.3 | MIT | direct development |
 | [@testing-library/user-event](https://www.npmjs.com/package/@testing-library/user-event/v/14.6.8) | 14.6.8 | MIT | direct development |
-| [@tybys/wasm-util](https://www.npmjs.com/package/@tybys/wasm-util/v/0.10.4) | 0.10.4 | MIT | transitive development |
 | [@types/aria-query](https://www.npmjs.com/package/@types/aria-query/v/5.0.4) | 5.0.4 | MIT | transitive development |
-| [@types/babel__core](https://www.npmjs.com/package/@types/babel__core/v/7.20.5) | 7.20.5 | MIT | direct development |
+| [@types/babel__core](https://www.npmjs.com/package/@types/babel__core/v/7.20.5) | 7.20.5 | MIT | transitive development |
 | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator/v/7.27.0) | 7.27.0 | MIT | transitive development |
 | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template/v/7.4.4) | 7.4.4 | MIT | transitive development |
 | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse/v/7.28.0) | 7.28.0 | MIT | transitive development |
@@ -140,7 +154,7 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree/v/8.72.1) | 8.72.1 | MIT | transitive development |
 | [@typescript-eslint/utils](https://www.npmjs.com/package/@typescript-eslint/utils/v/8.72.1) | 8.72.1 | MIT | transitive development |
 | [@typescript-eslint/visitor-keys](https://www.npmjs.com/package/@typescript-eslint/visitor-keys/v/8.72.1) | 8.72.1 | MIT | transitive development |
-| [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react/v/6.2.1) | 6.2.1 | MIT | direct development |
+| [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react/v/5.2.0) | 5.2.0 | MIT | direct development |
 | [@vitest/mocker](https://www.npmjs.com/package/@vitest/mocker/v/5.1.0) | 5.1.0 | MIT | transitive development |
 | [@vitest/spy](https://www.npmjs.com/package/@vitest/spy/v/5.1.0) | 5.1.0 | MIT | transitive development |
 | [acorn](https://www.npmjs.com/package/acorn/v/8.19.0) | 8.19.0 | MIT | transitive development |
@@ -149,9 +163,7 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [ansi-regex](https://www.npmjs.com/package/ansi-regex/v/5.0.1) | 5.0.1 | MIT | transitive development |
 | [ansi-styles](https://www.npmjs.com/package/ansi-styles/v/5.2.0) | 5.2.0 | MIT | transitive development |
 | [aria-query](https://www.npmjs.com/package/aria-query/v/5.3.0) | 5.3.0 | Apache-2.0 | transitive development |
-| [artichokie](https://www.npmjs.com/package/artichokie/v/0.4.5) | 0.4.5 | MIT | transitive development |
 | [assertion-error](https://www.npmjs.com/package/assertion-error/v/2.0.1) | 2.0.1 | MIT | transitive development |
-| [babel-plugin-react-compiler](https://www.npmjs.com/package/babel-plugin-react-compiler/v/1.0.0) | 1.0.0 | MIT | direct development |
 | [balanced-match](https://www.npmjs.com/package/balanced-match/v/4.0.4) | 4.0.4 | MIT | transitive development |
 | [baseline-browser-mapping](https://www.npmjs.com/package/baseline-browser-mapping/v/2.11.35) | 2.11.35 | Apache-2.0 | transitive development |
 | [bcp-47](https://www.npmjs.com/package/bcp-47/v/2.1.2) | 2.1.2 | MIT | transitive development |
@@ -171,12 +183,12 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [decimal.js](https://www.npmjs.com/package/decimal.js/v/10.6.0) | 10.6.0 | MIT | transitive development |
 | [deep-is](https://www.npmjs.com/package/deep-is/v/0.1.4) | 0.1.4 | MIT | transitive development |
 | [dequal](https://www.npmjs.com/package/dequal/v/2.0.3) | 2.0.3 | MIT | transitive development |
-| [detect-libc](https://www.npmjs.com/package/detect-libc/v/2.1.2) | 2.1.2 | Apache-2.0 | transitive development |
 | [dom-accessibility-api](https://www.npmjs.com/package/dom-accessibility-api/v/0.5.16) | 0.5.16 | MIT | transitive development |
 | [dom-accessibility-api](https://www.npmjs.com/package/dom-accessibility-api/v/0.6.3) | 0.6.3 | MIT | transitive development |
 | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium/v/1.5.478) | 1.5.478 | ISC | transitive development |
 | [entities](https://www.npmjs.com/package/entities/v/9.0.0) | 9.0.0 | BSD-2-Clause | transitive development |
 | [es-module-lexer](https://www.npmjs.com/package/es-module-lexer/v/2.3.2) | 2.3.2 | MIT | transitive development |
+| [esbuild](https://www.npmjs.com/package/esbuild/v/0.28.2) | 0.28.2 | MIT | transitive development |
 | [escalade](https://www.npmjs.com/package/escalade/v/3.2.0) | 3.2.0 | MIT | transitive development |
 | [escape-string-regexp](https://www.npmjs.com/package/escape-string-regexp/v/4.0.0) | 4.0.0 | MIT | transitive development |
 | [eslint](https://www.npmjs.com/package/eslint/v/10.14.0) | 10.14.0 | MIT | direct development |
@@ -229,18 +241,6 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [json5](https://www.npmjs.com/package/json5/v/2.2.3) | 2.2.3 | MIT | transitive development |
 | [keyv](https://www.npmjs.com/package/keyv/v/5.6.0) | 5.6.0 | MIT | transitive development |
 | [levn](https://www.npmjs.com/package/levn/v/0.4.1) | 0.4.1 | MIT | transitive development |
-| [lightningcss](https://www.npmjs.com/package/lightningcss/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-android-arm64](https://www.npmjs.com/package/lightningcss-android-arm64/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-darwin-arm64](https://www.npmjs.com/package/lightningcss-darwin-arm64/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-darwin-x64](https://www.npmjs.com/package/lightningcss-darwin-x64/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-freebsd-x64](https://www.npmjs.com/package/lightningcss-freebsd-x64/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-linux-arm-gnueabihf](https://www.npmjs.com/package/lightningcss-linux-arm-gnueabihf/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-linux-arm64-gnu](https://www.npmjs.com/package/lightningcss-linux-arm64-gnu/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-linux-arm64-musl](https://www.npmjs.com/package/lightningcss-linux-arm64-musl/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-linux-x64-gnu](https://www.npmjs.com/package/lightningcss-linux-x64-gnu/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-linux-x64-musl](https://www.npmjs.com/package/lightningcss-linux-x64-musl/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-win32-arm64-msvc](https://www.npmjs.com/package/lightningcss-win32-arm64-msvc/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
-| [lightningcss-win32-x64-msvc](https://www.npmjs.com/package/lightningcss-win32-x64-msvc/v/1.33.0) | 1.33.0 | MPL-2.0 | transitive development |
 | [locate-path](https://www.npmjs.com/package/locate-path/v/6.0.0) | 6.0.0 | MIT | transitive development |
 | [lru-cache](https://www.npmjs.com/package/lru-cache/v/11.5.3) | 11.5.3 | BlueOak-1.0.0 | transitive development |
 | [lru-cache](https://www.npmjs.com/package/lru-cache/v/5.1.1) | 5.1.1 | ISC | transitive development |
@@ -272,10 +272,10 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [react](https://www.npmjs.com/package/react/v/19.3.1) | 19.3.1 | MIT | direct runtime |
 | [react-dom](https://www.npmjs.com/package/react-dom/v/19.3.1) | 19.3.1 | MIT | direct runtime |
 | [react-is](https://www.npmjs.com/package/react-is/v/17.0.2) | 17.0.2 | MIT | transitive development |
+| [react-refresh](https://www.npmjs.com/package/react-refresh/v/0.18.0) | 0.18.0 | MIT | transitive development |
 | [react-router](https://www.npmjs.com/package/react-router/v/8.5.1) | 8.5.1 | MIT | direct runtime |
 | [redent](https://www.npmjs.com/package/redent/v/3.0.0) | 3.0.0 | MIT | transitive development |
-| [rolldown](https://www.npmjs.com/package/rolldown/v/1.2.16) | 1.2.16 | MIT | transitive development |
-| [rolldown](https://www.npmjs.com/package/rolldown/v/1.3.0) | 1.3.0 | MIT | transitive development |
+| [rollup](https://www.npmjs.com/package/rollup/v/4.68.0) | 4.68.0 | MIT | transitive development |
 | [saxes](https://www.npmjs.com/package/saxes/v/6.0.0) | 6.0.0 | ISC | transitive development |
 | [scheduler](https://www.npmjs.com/package/scheduler/v/0.28.0) | 0.28.0 | MIT | transitive runtime |
 | [semver](https://www.npmjs.com/package/semver/v/6.3.2) | 6.3.2 | ISC | transitive development |
@@ -293,7 +293,6 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [tough-cookie](https://www.npmjs.com/package/tough-cookie/v/6.1.0) | 6.1.0 | BSD-3-Clause | transitive development |
 | [tr46](https://www.npmjs.com/package/tr46/v/7.0.0) | 7.0.0 | MIT | transitive development |
 | [ts-api-utils](https://www.npmjs.com/package/ts-api-utils/v/2.5.0) | 2.5.0 | MIT | transitive development |
-| [tslib](https://www.npmjs.com/package/tslib/v/2.9.1) | 2.9.1 | 0BSD | transitive development |
 | [type-check](https://www.npmjs.com/package/type-check/v/0.4.0) | 0.4.0 | MIT | transitive development |
 | [typescript](https://www.npmjs.com/package/typescript/v/6.0.3) | 6.0.3 | Apache-2.0 | direct development |
 | [typescript-eslint](https://www.npmjs.com/package/typescript-eslint/v/8.72.1) | 8.72.1 | MIT | direct development |
@@ -301,7 +300,7 @@ The table lists all 288 distinct package/version pairs in `shakestir-react/packa
 | [undici-types](https://www.npmjs.com/package/undici-types/v/7.24.6) | 7.24.6 | MIT | transitive development |
 | [update-browserslist-db](https://www.npmjs.com/package/update-browserslist-db/v/1.3.4) | 1.3.4 | MIT | transitive development |
 | [uri-js](https://www.npmjs.com/package/uri-js/v/4.4.1) | 4.4.1 | BSD-2-Clause | transitive development |
-| [vite](https://www.npmjs.com/package/vite/v/8.3.6) | 8.3.6 | MIT | direct development |
+| [vite](https://www.npmjs.com/package/vite/v/7.3.7) | 7.3.7 | MIT | direct development |
 | [vitest](https://www.npmjs.com/package/vitest/v/5.1.0) | 5.1.0 | MIT | direct development |
 | [w3c-xmlserializer](https://www.npmjs.com/package/w3c-xmlserializer/v/6.0.0) | 6.0.0 | MIT | transitive development |
 | [webidl-conversions](https://www.npmjs.com/package/webidl-conversions/v/8.0.1) | 8.0.1 | BSD-2-Clause | transitive development |

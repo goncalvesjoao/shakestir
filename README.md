@@ -1,64 +1,157 @@
 # ShakeStir
 
-ShakeStir is a cocktail "marketplace" for discovery, with no buying or selling. This monorepo is intended to contain multiple implementations of the same product.
+ShakeStir helps people discover, create, and organize cocktail recipes, including finding drinks they can make with their available ingredients and tools. It is a recipe marketplace with no buying or selling.
 
-The [FastAPI backend](shakestir-fastapi/README.md) provides an initial public ingredient catalog endpoint, with a SQLAlchemy model and Alembic migrations.
+The Rails application is the working prototype and behavioral reference. Development is moving toward a React frontend and a Python backend, reproducing the prototype's workflows and adding new functionality.
 
-This README records the initial product vision. It does not describe the current implementation status.
+## Current implementation
 
-## Product vision
+| Project | Role | Current state |
+| --- | --- | --- |
+| [`shakestir-fastapi/`](shakestir-fastapi/README.md) | Python backend using FastAPI, SQLAlchemy, and Alembic | Standalone public ingredient catalog and image delivery; other prototype workflows are not implemented yet. |
+| [`shakestir-react/`](shakestir-react/README.md) | React and TypeScript frontend | Implements discovery and account/recipe workflows against the Rails API. |
+| [`shakestir-rails/`](shakestir-rails/README.md) | Rails prototype and current frontend backend | Provides the API that React currently uses. |
+| `shakestir-nextjs/` (planned) | Future Next.js project | Will be added to the monorepo; not available yet. |
+| `shakestir-vuejs/` (planned) | Future Vue.js project | Will be added to the monorepo; not available yet. |
+| [`db/seeds/`](db/seeds/README.md) | Shared offline seed data and images | Keep this directory alongside the application directories; Python resolves its default seed files here. |
 
-Users create accounts and add their own cocktail recipes. Different users can have their own variations of the same cocktail.
+**React is not connected to FastAPI yet.** Starting both projects does not produce a complete application: React currently proxies `/api` to Rails at `http://localhost:3000`. FastAPI runs independently at `http://127.0.0.1:8000` and exposes `/ingredients` and `/ingredients/{ingredient_id}/image`. React expects additional endpoints, including `/ingredients.json`, `/recipes.json`, and `/session.json`; changing the proxy port alone is insufficient.
 
-Recipes have separate visibility and publication readiness states. Visibility is private or public. Publication readiness is draft or published; drafts are recipes that are not ready to publish.
+## Prerequisites
 
-Landing-page searches return individual complete, public, published recipes with author handles and exact recipe links. Recipe names and linked cocktail names are searchable. Every recipe belongs to an author; seeded recipes belong to `@shakestir` and follow the same filtering and permission rules as all other recipes. Owners find private recipes and drafts in My Recipes.
+- Git.
+- Python 3.11 or newer and [uv](https://docs.astral.sh/uv/getting-started/installation/). The Python project pins 3.11 in `.python-version`.
+- Node.js 24.15 or newer in the 24.x release line, or Node.js 26+, with npm. These versions satisfy the current frontend development dependencies.
+- Ruby and the Rails dependencies only if you want to exercise the frontend's API-backed workflows. See the [Rails setup instructions](shakestir-rails/README.md#local-development).
 
-## Search by availability
+Clone the repository and enter its root:
 
-Users can enter the ingredients and utensils currently available to them, for example three ingredients plus their equipment. ShakeStir resolves that input to canonical ingredient and utensil identities.
+```sh
+git clone https://github.com/goncalvesjoao/shakestir.git
+cd shakestir
+```
 
-The marketplace returns public, published recipe variations whose required ingredients and utensils are all available. It checks each variation's own requirements. Extra available items do not disqualify a recipe. Ice counts as an ingredient.
+The commands below start from this directory unless stated otherwise. Initial dependency installation requires internet access; the checked-in seed data can be loaded offline afterward.
 
-## Domain concepts
+## Set up the Python backend
 
-| Concept | Meaning |
+In one terminal:
+
+```sh
+cd shakestir-fastapi
+uv sync --locked --extra dev
+cp .env.example .env
+uv run db-setup
+uv run dev
+```
+
+Copy the example environment file only on first setup; keep an existing `.env` if you have already configured it. Defaults use SQLite and local image storage, with no external database service or API credentials required.
+
+`db-setup` applies Alembic migrations and seeds the ingredient catalog without resetting the database. The defaults are:
+
+- Database: `shakestir-fastapi/data/shakestir.db`.
+- Images: `shakestir-fastapi/data/storage/`.
+
+Both paths are local runtime data ignored by Git. Set `DATABASE_URL` and `STORAGE_PATH` in `.env` to override them. Python storage and database files are independent of Rails.
+
+With the server running, open:
+
+- API documentation: <http://127.0.0.1:8000/docs>.
+- Ingredient catalog: <http://127.0.0.1:8000/ingredients>.
+
+Or check it from another terminal:
+
+```sh
+curl http://127.0.0.1:8000/ingredients
+```
+
+The catalog response contains `data` and `metadata.total_count`. Ingredients without a cached image have `image_url: null`.
+
+For later schema or seed updates, run these from `shakestir-fastapi/`:
+
+```sh
+uv run db-migrate
+uv run db-seed
+```
+
+## Set up the React frontend
+
+In another terminal, starting from the repository root:
+
+```sh
+cd shakestir-react
+npm ci
+cp .env.example .env
+npm run dev
+```
+
+As with Python, preserve an existing `.env`. Open the URL Vite prints, normally <http://localhost:5173>.
+
+The default settings are:
+
+```dotenv
+VITE_API_BASE_URL=/api
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+The Vite development proxy forwards `/api/*` to Rails with the prefix removed. `VITE_BACKEND_URL` helps rewrite media URLs; it does not change the proxy target. Restart Vite after changing environment settings.
+
+To use the frontend's current discovery, authentication, recipe, and collection workflows, also start the Rails backend in a third terminal. From the repository root, after installing the Rails prerequisites:
+
+```sh
+cd shakestir-rails
+mise exec -- ruby bin/setup --skip-server
+mise exec -- ruby bin/rails server
+```
+
+Rails runs at <http://localhost:3000>. Follow its [README](shakestir-rails/README.md) for database, seed, and system dependency details. FastAPI can run alongside it, but currently does not serve React's workflows.
+
+## Run the checks
+
+Python, from `shakestir-fastapi/`:
+
+```sh
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+```
+
+Python tests migrate temporary SQLite databases; they do not require a running server or the Rails database.
+
+React, from `shakestir-react/`:
+
+```sh
+npm run build
+npm run lint
+npm test
+```
+
+The build checks TypeScript and creates `dist/`. Unit tests do not require Rails. Browser tests require a seeded Rails server at port 3000, Vite at port 5173, and Playwright Chromium:
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
+## Common setup issues
+
+| Symptom | Check |
 | --- | --- |
-| Cocktail | A canonical drink identity shared by recipes, with names, description and history. |
-| Recipe | A particular way to make a drink, optionally assigned to a cocktail and owned by a user. |
-| Canonical ingredient | A stable, unique ingredient identity shared across recipes. Ice is an ingredient. |
-| Utensil | An explicit domain object with its own database table or equivalent persistent collection. Utensils include jiggers, glasses and other glassware, and other cocktail equipment. |
-| Mention | Text in a preparation step associated with a system object, such as a canonical ingredient or utensil. The association preserves the submitted prose. |
+| Python reports a missing table | Run `uv run db-migrate` from `shakestir-fastapi/`, then `uv run db-seed`. |
+| Python cannot find its seed catalog | Preserve the repository layout, including `db/seeds/` beside `shakestir-fastapi/`. |
+| React loads but requests fail | Confirm Rails is running at port 3000. FastAPI does not yet implement React's API contract. |
+| `/ingredients.json` returns 404 on FastAPI | The Python endpoint is `/ingredients`; the `.json` route belongs to Rails. |
+| npm reports an unsupported Node version | Use a Node version listed in the prerequisites, then rerun `npm ci`. |
+| Browser tests cannot connect | Start both Rails and Vite and seed the Rails database; these tests do not use FastAPI. |
 
-## Preserve submitted text
+## Further reading
 
-Each recipe preserves every ingredient's exact submitted text, including names in any writing system and misspellings. Internally, that text maps to a canonical ingredient identity shared across recipes. Matching must not replace or correct what the user wrote.
+- [Product vision](PRODUCT_VISION.md): discovery rules, recipe concepts, content preservation, and proposed entity matching, moved from the original root README.
+- [Product record](PRODUCT.md): users, product direction, and prototype implementation evidence.
+- [Domain glossary](GLOSSARY.md).
+- [Shared seed data](db/seeds/README.md).
+- [React API contracts and route parity](shakestir-react/ROUTE_PARITY.md).
+- [FastAPI implementation and configuration](shakestir-fastapi/README.md).
+- [React development and deployment](shakestir-react/README.md).
 
-Original recipes need no canonical cocktail. Seeds or trusted model access maintain canonical identities and assignments; publishing does not automatically create a cocktail. Cocktails hold an optional photo, description, history, their sources and historical publication dates. Cached seeds populate missing cocktail photos independently of recipe photos and preserve existing uploads. Recipes retain optional source references and URLs crediting their quantities and instructions.
-
-Preparation steps remain ordered, free-text instructions. ShakeStir should recognize mentions within those steps and associate the relevant text with system objects while preserving the original prose. Utensil mentions should resolve to utensil identities.
-
-Canonical cocktail seed content includes researched English descriptions, histories and citations, with uncertainty stated explicitly. Re-running seeds fills missing content and preserves curated text and source groups; see the [seed source notes](db/seeds/thecocktaildb/CANONICAL_SOURCES.md).
-
-## Proposed entity matching
-
-Jev, identified by the user as the AI decision-making model developed by TypeSafe AI, is a proposed component for entity matching. Its task would be to associate submitted ingredient and utensil names with their unique canonical database representations, while preserving the original submitted text alongside the matches.
-
-Jev is optional. A sufficiently fast open-source alternative could serve the same purpose. No dependency has been chosen or integration implemented as part of this proposal. A proposed match does not guarantee the correct identity.
-
-## Open questions
-
-- How should ambiguous matches be resolved, and who confirms the intended identity?
-- What should happen when an ingredient, cocktail, or utensil mention has no match? When should ShakeStir create a new identity or leave a mention unresolved?
-
-Marketplace search expands from the navbar into searchable ingredient and utensil selections with removable chips. By default, results contain every selected ingredient and utensil, with additional items allowed. “Only show recipes I can make” instead treats selections as the user's available ingredients and utensils: all required items must be available, while optional ingredients are ignored. Text search combines with either mode; filters remain in detail and pagination links. Clearing filters returns to all marketplace recipes. Each closed ingredient and utensil picker shows “Add ingredients/utensils” when empty, a selected count for include mode, or an available count with “Only these” for availability mode; mode explanations remain inside the pickers.
-
-## Catalog maintenance
-
-Catalog records and canonical assignments are maintained through seeds or trusted model access. Authors manage their own recipes through the recipe editor.
-
-## Cocktail and recipe detail pages
-
-Cocktail pages show canonical background and a single list of public recipes from all authors. Search and availability filters apply equally to every recipe. Recipe pages focus on ingredients, tools and preparation, with canonical background in a collapsed “More about this cocktail” section below instructions. Related recipes exclude the current recipe, private recipes and drafts. Recipe photos fall back to the linked readable cocktail’s photo, then to a placeholder.
-
-History and sources use native disclosure controls. The layouts adapt to narrow screens and larger text, retain keyboard focus indicators, and respect reduced-motion, reduced-transparency and increased-contrast preferences.
+The repository is [MIT licensed](LICENSE). Seed source notes and asset provenance are documented in the seed directories.

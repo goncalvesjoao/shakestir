@@ -2,6 +2,8 @@
 
 A complete React frontend for ShakeStir's established Rails workflows, plus session mixing and optional author-supplied taste discovery. Uses React Router, TanStack Query, TypeScript, native accessible controls, Vitest and Playwright.
 
+For monorepo setup and the current Python–React integration status, start with the [root README](../README.md). This frontend currently uses Rails, not FastAPI.
+
 ## Run locally
 
 Start Rails with the project's mise Ruby. Taste columns are folded into the original recipe migration for fresh databases (the separate taste migration has been removed):
@@ -23,7 +25,7 @@ Open the printed Vite URL. The development `/api` proxy forwards requests to loc
 
 The frontend now implements discovery, exact recipes, canonical cocktail pages, technique/ingredient/tool catalogs, sessions/registration/recovery, private recipe authoring, collections, Favorites, profiles/photos and password-confirmed account deletion. See [route parity and contracts](ROUTE_PARITY.md) and [React design decisions](DESIGN.md).
 
-Taste intensity is optional recipe metadata. The 30 imported recipes and five fictional demo recipes receive explicitly curated, untested editorial expectations from their exact specs; these are not source-provided scores or tasting results. Reruns fill only missing fields of unchanged seed-owned specs and preserve populated values, including zero. Other recipes remain unknown unless their owners supply notes. See [seed taste provenance](../db/seeds/taste/README.md). The mixing queue uses this browser tab's session storage independently of collections, survives reloads and clears on sign out/account deletion. Seed values are explicitly documented editorial predictions; no tasting results are claimed.
+Taste intensity is optional recipe metadata. The 24 imported recipes and five fictional demo recipes receive explicitly curated, untested editorial expectations from their exact specs; these are not source-provided scores or tasting results. Reruns fill only missing fields of unchanged seed-owned specs and preserve populated values, including zero. Other recipes remain unknown unless their owners supply notes. See [seed taste provenance](../db/seeds/taste/README.md). The mixing queue uses this browser tab's session storage independently of collections, survives reloads and clears on sign out/account deletion. Seed values are explicitly documented editorial predictions; no tasting results are claimed.
 
 ## Verification
 

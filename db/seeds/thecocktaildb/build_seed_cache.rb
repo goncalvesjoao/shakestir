@@ -13,7 +13,7 @@ COCKTAILS = [
 
 INGREDIENTS = [
   "Gin", "Vodka", "Rum", "Tequila", "Bourbon", "Whiskey", "Lime Juice", "Simple Syrup",
-  "Triple Sec", "Bitters", "Mint", "Pineapple Juice", "Cranberry Juice", "Ginger Beer"
+  "Triple Sec", "Bitters", "Mint", "Pineapple Juice"
 ].freeze
 
 Dir.mkdir(File.join(ROOT, "images", "cocktails")) unless Dir.exist?(File.join(ROOT, "images", "cocktails"))
@@ -50,10 +50,12 @@ def ingredient_image_candidates(name)
   ]
 end
 
+EXCLUDED_DRINKS = ["Smashed Watermelon Margarita", "Mango Mojito", "Blueberry Mojito", "Banana Daiquiri", "Frozen Pineapple Daiquiri", "Banana Strawberry Shake Daiquiri"].freeze
+
 cocktails = []
 COCKTAILS.each do |drink_name|
   payload = fetch_json("/search.php?s=#{URI.encode_www_form_component(drink_name)}")
-  Array(payload["drinks"]).each { |drink| cocktails << drink }
+  Array(payload["drinks"]).each { |drink| cocktails << drink unless EXCLUDED_DRINKS.include?(drink["strDrink"]) }
 end
 File.write(File.join(ROOT, "cocktails.json"), JSON.pretty_generate({ "drinks" => cocktails }))
 

@@ -112,34 +112,6 @@
     "image_subject": "stainless steel ice scoop with deep bowl and short handle"
   },
   {
-    "slug": "lewis-bag",
-    "name": "Lewis bag",
-    "category": "other",
-    "description": "A sturdy canvas bag used with an ice mallet to crush ice while absorbing some surface moisture.",
-    "image_subject": "cream canvas Lewis ice crushing bag folded open at the top"
-  },
-  {
-    "slug": "ice-mallet",
-    "name": "Ice mallet",
-    "category": "other",
-    "description": "Crushes ice inside a Lewis bag for juleps, swizzles and other crushed-ice drinks.",
-    "image_subject": "solid wooden ice mallet with cylindrical head and handle"
-  },
-  {
-    "slug": "ice-mold",
-    "name": "Large ice mold",
-    "category": "other",
-    "description": "Freezes large cubes for drinks served over ice. Large pieces generally melt more slowly than the same mass of small ice under similar conditions.",
-    "image_subject": "black silicone four cavity large square ice cube mold empty"
-  },
-  {
-    "slug": "bottle-opener",
-    "name": "Bottle opener",
-    "category": "other",
-    "description": "Removes crown caps from bottled mixers, beer and other capped ingredients.",
-    "image_subject": "flat stainless steel bar blade bottle opener"
-  },
-  {
     "slug": "blender",
     "name": "Blender",
     "category": "mixing",

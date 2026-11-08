@@ -5,9 +5,9 @@ class TasteSeedTest < ActiveSupport::TestCase
 
   test "every exact imported and demo spec has a distinct documented expectation" do
     entries = TasteEstimatesSeeder.entries
-    assert_equal 35, entries.size
+    assert_equal 29, entries.size
     imported = Recipe.where(user: User.shakestir_account, source_reference: "TheCocktailDB")
-    assert_equal 30, imported.count
+    assert_equal 24, imported.count
     demo = Recipe.joins(:user).where(users: { email_address: TasteEstimatesSeeder::DEMO_EMAILS })
     assert_equal 5, demo.count
     (imported.to_a + demo.to_a).each do |recipe|

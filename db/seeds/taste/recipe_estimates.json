@@ -42,14 +42,6 @@
       "rationale": "Strawberry schnapps and triple sec sweeten the fruit, while 1 oz lemon gives a pronounced sour edge.",
       "spec_fingerprint": "3f3a28845d739a510745f3af195e3a309d244526cc356820dccdcfa2c7a0087f"
     },
-    "https://www.thecocktaildb.com/drink/178332": {
-      "name": "Smashed Watermelon Margarita",
-      "sweetness": 2,
-      "sourness": 3,
-      "bitterness": 2,
-      "rationale": "Watermelon lends modest sweetness, grapefruit and half a lime provide acidity, and grapefruit contributes a bitter edge; no syrup is listed.",
-      "spec_fingerprint": "eecca20043c811b9ca62c7c4c15cddfa3223232c198f4da7f5edb0d650d35835"
-    },
     "https://www.thecocktaildb.com/drink/11001": {
       "name": "Old Fashioned",
       "sweetness": 2,
@@ -74,22 +66,6 @@
       "rationale": "3 cl lemon and eight drops aromatic bitters accompany a large rum/soda pour, with no added sugar listed.",
       "spec_fingerprint": "6cc15621b0fe29d6cb0a93ebe059ded179c607d7dd0b9a9d26c8b1ec8d94b76b"
     },
-    "https://www.thecocktaildb.com/drink/178358": {
-      "name": "Mango Mojito",
-      "sweetness": 2,
-      "sourness": 4,
-      "bitterness": 0,
-      "rationale": "Three limes against one mango suggest high sourness tempered by ripe fruit, rum and soda; no syrup is specified.",
-      "spec_fingerprint": "c3b9653a007aefcb7f36e4c822ebb96f63cf0b6df3cc32ce592df954e6b4dc33"
-    },
-    "https://www.thecocktaildb.com/drink/178336": {
-      "name": "Blueberry Mojito",
-      "sweetness": 3,
-      "sourness": 3,
-      "bitterness": 0,
-      "rationale": "Lemon-lime soda and a dash of sugar sweeten blueberries, with one shot lime juice supplying clear acidity.",
-      "spec_fingerprint": "b90008446990f53b23c0345dcf63dca43b5ebaf94c3571099f49a889d1bc8ac1"
-    },
     "https://www.thecocktaildb.com/drink/11006": {
       "name": "Daiquiri",
       "sweetness": 2,
@@ -97,14 +73,6 @@
       "bitterness": 0,
       "rationale": "Only one teaspoon powdered sugar balances half a lime in 1.5 oz rum; expect a tart classic sour.",
       "spec_fingerprint": "2fb4e598c0f6cc2ace728e44eddbd54b06f9feca45e3e84275f3aecb0d5fd8c4"
-    },
-    "https://www.thecocktaildb.com/drink/11064": {
-      "name": "Banana Daiquiri",
-      "sweetness": 3,
-      "sourness": 4,
-      "bitterness": 0,
-      "rationale": "A banana, triple sec and a teaspoon sugar add sweetness/body, opposed by a substantial 1.5 oz lime.",
-      "spec_fingerprint": "eac85abdedece63b20c2ee69cfc9768eaf3ec0906106cbde5488f50c4ffabd85"
     },
     "https://www.thecocktaildb.com/drink/11387": {
       "name": "Frozen Daiquiri",
@@ -129,22 +97,6 @@
       "bitterness": 0,
       "rationale": "A tablespoon lime and teaspoon sugar in 2 oz rum gives a relatively restrained sweet-sour profile; mint is aromatic, not a bittering dose.",
       "spec_fingerprint": "47dc07fd03f256454669e7ec1beafa2476aea024ca50db7f90b9dae5e0e73f79"
-    },
-    "https://www.thecocktaildb.com/drink/11391": {
-      "name": "Frozen Pineapple Daiquiri",
-      "sweetness": 3,
-      "sourness": 2,
-      "bitterness": 0,
-      "rationale": "Four pineapple chunks and half a teaspoon sugar provide fruit sweetness with only a tablespoon lime; fruit ripeness remains uncertain.",
-      "spec_fingerprint": "766a24b15c3530c36bf5c6044f540f616927b9b0df5c2ecb20e710dc502288e1"
-    },
-    "https://www.thecocktaildb.com/drink/12658": {
-      "name": "Banana Strawberry Shake Daiquiri",
-      "sweetness": 4,
-      "sourness": 2,
-      "bitterness": 0,
-      "rationale": "Two cups apple juice and a banana sweeten frozen strawberries; no spirit, citrus juice or bittering ingredient is listed.",
-      "spec_fingerprint": "9260b673c4463f97edb6669aadfeb321c0b6ef885ee44b6b22c0936cb4a55332"
     },
     "https://www.thecocktaildb.com/drink/11003": {
       "name": "Negroni",

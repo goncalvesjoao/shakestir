@@ -38,14 +38,6 @@
     "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
     "parent_cocktail": "Margarita"
   },
-  "Smashed Watermelon Margarita": {
-    "description": "A tequila drink with muddled watermelon and mint, grapefruit and lime, served over ice for a juicy, herbal take on the Margarita.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Smashed Watermelon Margarita",
-    "source_url": "https://www.thecocktaildb.com/drink/178332",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Margarita"
-  },
   "Old Fashioned": {
     "description": "A whiskey cocktail with sugar, aromatic bitters and a little water, built over ice so the spirit remains central.",
     "history": "Kappeler’s Modern American Drinks records an Old-Fashioned Whiskey Cocktail in 1895 with sugar, water, bitters, lemon peel and whiskey. This documents an existing drink, without identifying its inventor.",
@@ -68,36 +60,12 @@
     "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
     "parent_cocktail": "Mojito"
   },
-  "Mango Mojito": {
-    "description": "A fruit variation on the Mojito with mango purée, white rum, mint and lime, lengthened with soda water.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Mango Mojito",
-    "source_url": "https://www.thecocktaildb.com/drink/178358",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Mojito"
-  },
-  "Blueberry Mojito": {
-    "description": "A dark-rum Mojito variation with muddled blueberries, lime and sugar, lengthened with lemon-lime soda.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Blueberry Mojito",
-    "source_url": "https://www.thecocktaildb.com/drink/178336",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Mojito"
-  },
   "Daiquiri": {
     "description": "A short rum sour made with lime and sugar, shaken cold and served without ice in the glass.",
     "history": "The University of Miami’s Carmen Puig Papers preserve an original Daiquiri recipe associated with Jennings Cox, an engineer working near Daiquirí in Cuba. The collection credits Cox with a reported 1898 creation. The surviving recipe uses citrus, rum, sugar, water and ice; today’s IBA version specifies lime.",
     "source_reference": "University of Miami Libraries — Carmen Puig Papers; International Bartenders Association — Daiquiri",
     "source_url": "https://digitalcollections.library.miami.edu/digital/collection/chc0484",
     "source_date_note": "1898 is the reported creation year in the collection description, not a precise publication date. Current definition: https://iba-world.com/iba-cocktail/daiquiri/"
-  },
-  "Banana Daiquiri": {
-    "description": "A banana variation on the rum-and-lime sour, with orange liqueur and sugar alongside the fruit.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Banana Daiquiri",
-    "source_url": "https://www.thecocktaildb.com/drink/11064",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Daiquiri"
   },
   "Frozen Daiquiri": {
     "description": "A blended Daiquiri variation combining rum, lime, sugar and orange liqueur with ice for a frozen texture.",
@@ -120,22 +88,6 @@
     "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
     "source_reference": "TheCocktailDB — Frozen Mint Daiquiri",
     "source_url": "https://www.thecocktaildb.com/drink/11390",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Daiquiri"
-  },
-  "Frozen Pineapple Daiquiri": {
-    "description": "A frozen rum sour combining pineapple, lime and sugar with crushed ice.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Frozen Pineapple Daiquiri",
-    "source_url": "https://www.thecocktaildb.com/drink/11391",
-    "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
-    "parent_cocktail": "Daiquiri"
-  },
-  "Banana Strawberry Shake Daiquiri": {
-    "description": "An alcohol-free blended fruit drink made with strawberries, banana and apple juice.",
-    "history": "The cited recipe documents this named variation, but does not establish its creator, place of invention, or date of origin.",
-    "source_reference": "TheCocktailDB — Banana Strawberry Shake Daiquiri",
-    "source_url": "https://www.thecocktaildb.com/drink/12658",
     "source_date_note": "Recipe record; no historical publication date or invention date is established. The database modification timestamp is not an origin date.",
     "parent_cocktail": "Daiquiri"
   },

@@ -20,11 +20,6 @@
     "shake",
     "strain"
   ],
-  "Smashed Watermelon Margarita": [
-    "muddle",
-    "strain",
-    "shake"
-  ],
   "Old Fashioned": [
     "build",
     "muddle"
@@ -37,21 +32,7 @@
     "build",
     "muddle"
   ],
-  "Mango Mojito": [
-    "blend",
-    "muddle",
-    "build",
-    "stir"
-  ],
-  "Blueberry Mojito": [
-    "muddle",
-    "build"
-  ],
   "Daiquiri": [
-    "shake",
-    "strain"
-  ],
-  "Banana Daiquiri": [
     "shake",
     "strain"
   ],
@@ -63,12 +44,6 @@
     "strain"
   ],
   "Frozen Mint Daiquiri": [
-    "blend"
-  ],
-  "Frozen Pineapple Daiquiri": [
-    "blend"
-  ],
-  "Banana Strawberry Shake Daiquiri": [
     "blend"
   ],
   "Negroni": [

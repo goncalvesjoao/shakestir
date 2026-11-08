@@ -1,13 +1,13 @@
 # Utensil catalog
 
-29 English entries cover the checked-in 30 TheCocktailDB recipes and five demo recipes, plus a small essential bar kit. Existing schema categories are retained: preparation and ice tools use `other`. Capacities remain unset because they vary by model.
+25 English entries cover the checked-in 24 TheCocktailDB recipes and five demo recipes, plus a small essential bar kit. Existing schema categories are retained: preparation and ice tools use `other`. Capacities remain unset because they vary by model.
 
 ## Selection rationale
 
 - Shaking and straining: Boston and cobbler shakers are common alternatives for Margaritas, Daiquiris, Sidecars and Espresso Martinis. The Hawthorne strainer serves the Boston shaker and mixing glass; the fine-mesh strainer supports the demo recipes' explicit double strains. A separate julep strainer and third shaker style are unnecessary here.
 - Stirring and muddling: mixing glass, bar spoon and muddler cover Manhattan, Negroni, Old Fashioned, Mojito and fruit variations.
-- Blending: the blender is required by the frozen Daiquiris, Whitecap Margarita, Mango Mojito and Pina Colada. A spindle drink mixer is not a replacement for these preparations.
-- Preparation and essentials: jigger, measuring cup and measuring spoons cover measures, including cups of crushed ice and teaspoons of sugar. Citrus press, Y-peeler, paring knife and cutting board cover juice, twists, wheels and wedges. Cocktail pick, ice scoop, large ice mold and bottle opener provide basic garnish, ice and bottled-mixer service. Lewis bag and mallet provide a manual crushed/cracked-ice option for Mojitos and frozen drinks; they are not required if suitable ice is already available.
+- Blending: the blender is required by the frozen Daiquiris, Whitecap Margarita, Pina Colada. A spindle drink mixer is not a replacement for these preparations.
+- Preparation and essentials: jigger, measuring cup and measuring spoons cover measures, including cups of crushed ice and teaspoons of sugar. Citrus press, Y-peeler, paring knife and cutting board cover juice, twists, wheels and wedges. Cocktail pick and ice scoop provide basic garnish and ice service. Recipes assume suitable ice is already available; the smaller catalog omits a large ice mold, bottle opener, Lewis bag and mallet.
 - Serving vessels: rocks, highball, Collins, coupe, martini, Margarita and flute glasses plus the lined copper mug cover current serving formats. Coupe and martini glasses are alternatives for generic “cocktail glass” instructions. Frozen Daiquiri explicitly uses a flute. The mug follows Moscow Mule's glass metadata, while its prose permits a highball. Jar-based preparations can use the retained shaker and highball/Collins vessels.
 
 Pruned specialist equipment includes the swizzle stick, filter bag, fine grater, garnish tweezers, ice pick, spindle mixer, siphons, smoking gun and absinthe spoon. Redundant prep/service accessories and glassware for drinks outside the current recipes are also omitted. Salt and sugar rims can be prepared on a small kitchen plate; bottled soda and original bitters bottles cover the current recipes without dedicated dispensing tools.

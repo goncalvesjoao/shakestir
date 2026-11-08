@@ -1,0 +1,36 @@
+{
+  "name": "shakestir",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "setup": "npm run fastapi:setup && npm run react:setup",
+    "check": "npm run fastapi:check && npm run react:check",
+    "test": "npm run fastapi:test && npm run react:test",
+    "build": "npm run react:build",
+    "fastapi:setup": "cd shakestir-fastapi && uv sync --locked --extra dev && (test -f .env || cp .env.example .env) && uv run db-setup",
+    "fastapi:dev": "cd shakestir-fastapi && uv run dev",
+    "fastapi:start": "cd shakestir-fastapi && uv run start",
+    "fastapi:db:setup": "cd shakestir-fastapi && uv run db-setup",
+    "fastapi:db:migrate": "cd shakestir-fastapi && uv run db-migrate",
+    "fastapi:db:seed": "cd shakestir-fastapi && uv run db-seed",
+    "fastapi:test": "cd shakestir-fastapi && uv run pytest",
+    "fastapi:lint": "cd shakestir-fastapi && uv run ruff check .",
+    "fastapi:format": "cd shakestir-fastapi && uv run ruff format .",
+    "fastapi:format:check": "cd shakestir-fastapi && uv run ruff format --check .",
+    "fastapi:check": "npm run fastapi:lint && npm run fastapi:format:check",
+    "react:setup": "cd shakestir-react && npm ci && (test -f .env || cp .env.example .env)",
+    "react:dev": "cd shakestir-react && npm run dev",
+    "react:build": "cd shakestir-react && npm run build",
+    "react:lint": "cd shakestir-react && npm run lint",
+    "react:preview": "cd shakestir-react && npm run preview",
+    "react:test": "cd shakestir-react && npm run test",
+    "react:test:watch": "cd shakestir-react && npm run test:watch",
+    "react:test:e2e": "cd shakestir-react && npm run test:e2e",
+    "react:check": "npm run react:lint && npm run react:build",
+    "snapshot": "python3 scripts/create_snapshot.py",
+    "seed-build": "python3 scripts/build_demo_data.py"
+  },
+  "engines": {
+    "node": "^24.15.0 || >=26.0.0"
+  }
+}

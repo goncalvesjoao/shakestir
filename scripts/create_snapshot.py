@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIRS = {"shakestir-fastapi", "shakestir-react", "db", "scripts"}
 ROOT_FILES = {
     "README.md", "PRODUCT_VISION.md", "GLOSSARY.md",
-    "LICENSE", "THIRD_PARTY_LICENSES.md", ".gitignore", "pyproject.toml", "uv.lock",
+    "LICENSE", "THIRD_PARTY_LICENSES.md", ".gitignore", "package.json",
 }
 EXCLUDED_DIRS = {
     ".git", ".agents", ".claude", ".codex", ".impeccable", ".github", ".kamal",
@@ -63,7 +63,7 @@ def source_files():
             raise ValueError(f"Refusing symlink: {name}")
         if path.is_file():
             files.append(name)
-    required = {"LICENSE", "README.md", "scripts/snapshot/README.md", "shakestir-fastapi/pyproject.toml",
+    required = {"package.json", "LICENSE", "README.md", "scripts/snapshot/README.md", "shakestir-fastapi/pyproject.toml",
                 "shakestir-react/package.json", "db/seeds/demo/ingredients.json"}
     missing = required.difference(files)
     if missing:

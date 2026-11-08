@@ -16,7 +16,7 @@ ShakeStir helps people discover, create, and organize cocktail recipes. This sou
 ## Prerequisites
 
 - Python 3.11 or newer. The Python project pins 3.11 in `.python-version`.
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed and available in your terminal (`uv --version`). It runs the Python backend and the root snapshot and seed-generation scripts.
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed and available in your terminal (`uv --version`). It runs the Python backend. Root snapshot and seed-generation scripts use `python3` directly.
 - Node.js 24.15 or newer in the 24.x release line, or Node.js 26+, with npm.
 
 Extract the archive and open a terminal in its root, where this README and both application directories are located. Git is not required to run the applications. Initial dependency installation needs internet access; database setup and seeding use checked-in files afterward.
@@ -26,11 +26,8 @@ Extract the archive and open a terminal in its root, where this README and both 
 From the extracted root, in one terminal:
 
 ```sh
-cd shakestir-fastapi
-uv sync --locked --extra dev
-cp .env.example .env
-uv run db-setup
-uv run dev
+npm run fastapi:setup
+npm run fastapi:dev
 ```
 
 Copy the example environment file only on first setup; preserve an existing `.env`. Defaults require no external database service or API credentials:
@@ -53,10 +50,8 @@ The response contains `data` and `metadata.total_count`; image URLs are present 
 From the extracted root, in another terminal:
 
 ```sh
-cd shakestir-react
-npm ci
-cp .env.example .env
-npm run dev
+npm run react:setup
+npm run react:dev
 ```
 
 Preserve an existing `.env`. Open **<http://localhost:5173/ingredients>**, using the port Vite prints if it differs.
@@ -73,6 +68,24 @@ Vite forwards `/api/*` to FastAPI and removes the prefix. `API_PROXY_TARGET` con
 
 The frontend uses Vite 7.3 and the standard React plugin without React Compiler. CSS processing uses PostCSS and the default esbuild minifier; Lightning CSS is not installed.
 
+## Root command shortcuts
+
+Run these from the repository root; the scripts enter the appropriate project directory automatically. `npm run setup` installs both projects, copies missing `.env` files without replacing existing settings, and migrates and seeds the FastAPI database. Then start `npm run fastapi:dev` and `npm run react:dev` in separate terminals. No root npm dependencies need installing.
+
+| Command | Purpose |
+| --- | --- |
+| `npm run fastapi:setup` / `npm run react:setup` | Set up one project |
+| `npm run fastapi:dev` / `npm run react:dev` | Start each development server |
+| `npm run fastapi:start` | Start FastAPI without reload |
+| `npm run fastapi:db:setup` | Migrate and seed the database |
+| `npm run fastapi:db:migrate` / `npm run fastapi:db:seed` | Run database tasks separately |
+| `npm run check` | Check Python lint/format and React lint/build |
+| `npm test` | Run Python and React unit tests |
+| `npm run build` | Build React |
+| `npm run react:preview` | Preview the React build |
+
+Checks and tests also have individual `fastapi:check`, `react:check`, `fastapi:test`, and `react:test` shortcuts. Run `npm run` to list all commands. Existing commands within each project remain available. Setup scripts use a POSIX shell (macOS, Linux, or WSL).
+
 ## Demo data and unfinished models
 
 The [original demo dataset](db/seeds/demo/README.md) has six fictional cocktail families, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions, and public/private collections. It includes a parent/variant relationship, shared ingredients, structured quantities, optional garnishes, and unknown versus explicit zero taste values.
@@ -82,7 +95,7 @@ The [original demo dataset](db/seeds/demo/README.md) has six fictional cocktail 
 From the extracted root, rebuild the JSON without downloading anything:
 
 ```sh
-uv run seed-build
+npm run seed-build
 ```
 
 This does not regenerate the checked-in images. Run `uv run db-seed` from `shakestir-fastapi/` to apply ingredient seed changes after migrations. Use a fresh database and storage directory for a clean demo; do not reset data you need to keep.
@@ -140,6 +153,6 @@ npx playwright test e2e/ingredients.spec.ts
 
 Original application code and demo content use the [MIT license](LICENSE). Dependencies retain their own licenses; the [third-party inventory](THIRD_PARTY_LICENSES.md) covers the Python/React dependency sets, fonts, and asset provenance.
 
-This archive excludes other implementations, installed dependencies, build output, runtime data, local `.env` files, historical reports, and agent tooling. Snapshot utilities are included for reference; `uv run snapshot` requires a full Git checkout and is not needed to run this extracted project.
+This archive excludes other implementations, installed dependencies, build output, runtime data, local `.env` files, historical reports, and agent tooling. Snapshot utilities are included for reference; `npm run snapshot` requires a full Git checkout and is not needed to run this extracted project.
 
 See the [product vision](PRODUCT_VISION.md) for intended behavior and the [glossary](GLOSSARY.md) for domain terminology. They describe product direction, not a claim that every feature is implemented.

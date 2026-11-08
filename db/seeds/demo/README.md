@@ -15,7 +15,7 @@ The system account and demo passwords are dummy development credentials. All acc
 
 ## Rebuild and seed
 
-Run `uv run seed-build` from the repository root to deterministically rebuild the JSON. This does not download or regenerate image files. The checked-in images are required for offline setup.
+Run `npm run seed-build` from the repository root to deterministically rebuild the JSON. This does not download or regenerate image files. The checked-in images are required for offline setup.
 
 FastAPI reads only `ingredients.json` and `images/ingredients/`; it does not implement the remaining domain models yet. From `shakestir-fastapi/`, run `uv run db-setup`. Existing ingredient names and curated fields/images are preserved on reruns.
 

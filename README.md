@@ -21,7 +21,7 @@ The Rails application is the working prototype and behavioral reference. Develop
 
 - Git.
 - Python 3.11 or newer. The Python project pins 3.11 in `.python-version`.
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed and available in your terminal (`uv --version`). It runs the Python backend and the root snapshot and seed-generation scripts.
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) installed and available in your terminal (`uv --version`). It runs the Python backend. Root snapshot and seed-generation scripts use `python3` directly.
 - Node.js 24.15 or newer in the 24.x release line, or Node.js 26+, with npm. These versions satisfy the current frontend development dependencies.
 - Ruby is not required for React or FastAPI. To run the separate prototype, follow the [Rails setup instructions](shakestir-rails/README.md#local-development).
 
@@ -39,11 +39,8 @@ The commands below start from this directory unless stated otherwise. Initial de
 In one terminal:
 
 ```sh
-cd shakestir-fastapi
-uv sync --locked --extra dev
-cp .env.example .env
-uv run db-setup
-uv run dev
+npm run fastapi:setup
+npm run fastapi:dev
 ```
 
 Copy the example environment file only on first setup; keep an existing `.env` if you have already configured it. Defaults use SQLite and local image storage, with no external database service or API credentials required.
@@ -68,11 +65,11 @@ curl http://127.0.0.1:8000/ingredients
 
 The catalog response contains `data` and `metadata.total_count`. Ingredients without a cached image have `image_url: null`.
 
-For later schema or seed updates, run these from `shakestir-fastapi/`:
+For later schema or seed updates, run these from the repository root:
 
 ```sh
-uv run db-migrate
-uv run db-seed
+npm run fastapi:db:migrate
+npm run fastapi:db:seed
 ```
 
 ## Set up the React frontend
@@ -80,10 +77,8 @@ uv run db-seed
 In another terminal, starting from the repository root:
 
 ```sh
-cd shakestir-react
-npm ci
-cp .env.example .env
-npm run dev
+npm run react:setup
+npm run react:dev
 ```
 
 As with Python, preserve an existing `.env`. Open <http://localhost:5173/ingredients>, using the port Vite prints. This is the currently supported API-backed page; the default recipe homepage awaits backend implementation.
@@ -98,11 +93,29 @@ API_PROXY_TARGET=http://127.0.0.1:8000
 
 The Vite development proxy forwards `/api/*` to FastAPI with the prefix removed. `API_PROXY_TARGET` controls its target; `VITE_BACKEND_URL` identifies backend-generated media URLs to rewrite through the proxy. Restart Vite after environment changes. No prototype server is required.
 
+## Root command shortcuts
+
+Run these from the repository root; the scripts enter the appropriate project directory automatically. `npm run setup` installs both projects, copies missing `.env` files without replacing existing settings, and migrates and seeds the FastAPI database. Then start `npm run fastapi:dev` and `npm run react:dev` in separate terminals. No root npm dependencies need installing.
+
+| Command | Purpose |
+| --- | --- |
+| `npm run fastapi:setup` / `npm run react:setup` | Set up one project |
+| `npm run fastapi:dev` / `npm run react:dev` | Start each development server |
+| `npm run fastapi:start` | Start FastAPI without reload |
+| `npm run fastapi:db:setup` | Migrate and seed the database |
+| `npm run fastapi:db:migrate` / `npm run fastapi:db:seed` | Run database tasks separately |
+| `npm run check` | Check Python lint/format and React lint/build |
+| `npm test` | Run Python and React unit tests |
+| `npm run build` | Build React |
+| `npm run react:preview` | Preview the React build |
+
+Checks and tests also have individual `fastapi:check`, `react:check`, `fastapi:test`, and `react:test` shortcuts. Run `npm run` to list all commands. Existing commands within each project remain available. Setup scripts use a POSIX shell (macOS, Linux, or WSL).
+
 ## Demo content
 
 The shared [demo dataset](db/seeds/demo/README.md) contains original fictional recipes and generated transparent images. It includes six cocktail families, a parent/variant relationship, 24 system recipes, five author recipes, 15 ingredients, tools, techniques, ordered steps, mentions and public/private collections. FastAPI currently loads only the ingredient catalog; the remaining entities are fixtures for the prototype and future Python endpoints.
 
-Run `uv run seed-build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
+Run `npm run seed-build` to rebuild the JSON deterministically without network access. Images are checked in separately; their exact prompts and provenance are recorded in the dataset. Taste and ABV values are illustrative fixtures, not tested sensory results or branded product specifications.
 
 Seeding preserves existing content. To avoid mixing previously imported data with the new fixtures, use a fresh local database and storage directory. Do not reset a database containing work you need to keep.
 
@@ -161,10 +174,10 @@ Other browser workflow tests cover endpoints not yet implemented by FastAPI and 
 From the repository root, run:
 
 ```sh
-uv run snapshot
+npm run snapshot
 ```
 
-Requires Git, uv, and Python 3.11+. The root Python project exposes these utility commands without a `src/` directory. uv installs the local utilities automatically on first use; the scripts themselves use only Python’s standard library. This writes a ZIP and a companion file-list manifest to the ignored `snapshots/` directory. It packages the current Python and React source, shared seeds, snapshot tooling, and selected root documents. Both tracked files and nonignored new files are included, using current working contents rather than the last commit.
+Requires Git, npm, and Python 3.11+ available as `python3`. The npm script runs the Python utility directly using only the standard library; no root Python package or virtual environment is needed. This writes a ZIP and a companion file-list manifest to the ignored `snapshots/` directory. It packages the current Python and React source, shared seeds, snapshot tooling, and selected root documents. Both tracked files and nonignored new files are included, using current working contents rather than the last commit.
 
 The archive uses [`scripts/snapshot/README.md`](scripts/snapshot/README.md) as its root README, with setup instructions scoped to the included Python and React projects. The full monorepo README and `PRODUCT.md` implementation record are not copied. The manifest records this README source mapping.
 
@@ -173,7 +186,7 @@ The snapshot excludes the prototype, historical reports, design documents, agent
 For a custom destination:
 
 ```sh
-uv run snapshot --output snapshots/shakestir-review.zip
+npm run snapshot -- --output snapshots/shakestir-review.zip
 ```
 
 Existing outputs are never overwritten. Review the manifest and extracted contents before uploading; this command does not establish that all data or third-party assets are permitted for submission and does not upload anything. Running the snapshot command itself requires a Git checkout; the extracted snapshot can run the applications without Git history.

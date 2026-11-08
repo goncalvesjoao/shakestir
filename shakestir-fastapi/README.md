@@ -4,6 +4,8 @@ A standalone backend implementation in the ShakeStir monorepo. Inspired by the b
 
 ## Run locally
 
+From the repository root, you can also use `npm run fastapi:setup` followed by `npm run fastapi:dev`. Setup preserves existing `.env` files. See the [root command shortcuts](../README.md#root-command-shortcuts) for checks and other tasks.
+
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
 ```sh

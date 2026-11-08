@@ -6,6 +6,8 @@ The build uses Vite 7.3 and the standard React plugin, without React Compiler. C
 
 ## Run locally
 
+From the repository root, you can also use `npm run react:setup` followed by `npm run react:dev`. Setup preserves existing `.env` files. See the [root command shortcuts](../README.md#root-command-shortcuts) for checks and other tasks.
+
 See the [root README](../README.md) for prerequisites. Start the backend in one terminal, from the repository root:
 
 ```sh

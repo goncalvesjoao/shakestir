@@ -8,8 +8,6 @@ require_relative "seeds/techniques"
 # Original offline demo content. Reruns preserve curation and unrelated records.
 module DemoCatalogSeeder
   ROOT = Rails.root.parent.join("db", "seeds", "demo") unless const_defined?(:ROOT)
-  SOURCE = "ShakeStir original demo" unless const_defined?(:SOURCE)
-  URL_PREFIX = "https://shakestir.example/recipes/" unless const_defined?(:URL_PREFIX)
 
   def self.load_json(filename)
     JSON.parse(ROOT.join(filename).read)
@@ -23,10 +21,10 @@ module DemoCatalogSeeder
     Cocktail.find_by(normalized_name: LookupName.normalize(name))
   end
 
-  def self.attach_seed_image!(record, collection, name)
+  def self.attach_seed_image!(record, collection, name, filename: nil)
     return true if record.attachment_changes["image"]
     return true if record.image.attached? && record.image.blob.service.exist?(record.image.blob.key)
-    path = ROOT.join("images", collection, "#{slugify(name)}.png")
+    path = ROOT.join("images", collection, filename || "#{slugify(name)}.png")
     raise "Missing original demo image: #{path}" unless path.file?
     bytes = path.binread
     if record.image.attached?
@@ -44,7 +42,7 @@ module DemoCatalogSeeder
       record = Ingredient.find_or_initialize_by(normalized_name: LookupName.normalize(entry.fetch("name")))
       record.name = entry.fetch("name") if record.new_record?
       record.description = entry.fetch("description") if record.description.blank?
-      category = entry.fetch("type") == "mint" ? "herb" : entry.fetch("type")
+      category = entry.fetch("type")
       record.category = category if record.new_record? || record.category == "other"
       record.alcohol_status = entry.fetch("alcohol") == "Yes" ? "alcoholic" : "non_alcoholic" if record.new_record? || record.alcohol_status == "unknown"
       record.alcohol_by_volume ||= entry.fetch("abv")
@@ -60,7 +58,7 @@ module DemoCatalogSeeder
       %w[description history].each { |field| record[field] = entry.fetch(field) if record[field].blank? }
       fields = %w[source_reference source_url source_published_on source_date_note]
       record.assign_attributes(entry.slice(*fields)) if fields.all? { |field| record[field].blank? }
-      attach_seed_image!(record, "cocktails", entry.fetch("name"))
+      attach_seed_image!(record, "cocktails", entry.fetch("name"), filename: entry.fetch("image"))
       record.save!
     end
     entries.each do |entry|
@@ -70,21 +68,21 @@ module DemoCatalogSeeder
     end
   end
 
-  def self.seed_recipe!(spec, owner:, source_url: nil)
+  def self.seed_recipe!(spec, owner:, source_url: spec.fetch("source_url"))
     recipe = source_url ? Recipe.find_by(source_url: source_url) : owner.recipes.find_by(id: Recipe.lookup(spec.fetch("name")).select(:id))
     key = source_url || "demo:#{owner.email_address}:#{spec.fetch("name")}"
     if recipe
-      if recipe.user == owner && (!source_url || recipe.source_reference == SOURCE)
-        attach_seed_image!(recipe, "cocktails", spec.fetch("cocktail"))
+      if recipe.user == owner && (!source_url || recipe.source_reference == spec.fetch("source_reference"))
+        attach_seed_image!(recipe, "cocktails", spec.fetch("cocktail"), filename: spec.fetch("image"))
       end
       TasteEstimatesSeeder.fill_missing!(recipe, key: key, owner: owner)
       return recipe
     end
     Recipe.transaction do
       recipe = owner.recipes.new(name: spec.fetch("name"), cocktail: find_cocktail(spec.fetch("cocktail")),
-        visibility: spec.fetch("visibility", "public"), publication_state: "draft", source_url: source_url,
-        source_reference: source_url ? SOURCE : nil)
-      attach_seed_image!(recipe, "cocktails", spec.fetch("cocktail"))
+        visibility: spec.fetch("visibility"), publication_state: "draft", source_url: source_url,
+        source_reference: spec.fetch("source_reference"))
+      attach_seed_image!(recipe, "cocktails", spec.fetch("cocktail"), filename: spec.fetch("image"))
       recipe.save!
       spec.fetch("ingredients").each_with_index do |line, position|
         ingredient = Ingredient.find_by!(normalized_name: LookupName.normalize(line.fetch("name")))
@@ -96,18 +94,17 @@ module DemoCatalogSeeder
       end
       spec.fetch("steps").each_with_index do |body, position|
         step = recipe.recipe_steps.create!(body: body, position: position)
-        # Explicit fixture mentions link prose to canonical objects without inference.
-        [ [ "Mint", :ingredient, Ingredient ], [ "Jigger", :utensil, Utensil ] ].each do |text, field, type|
-          offset = body.index(text)
-          identity = type.find_by(normalized_name: LookupName.normalize(text))
-          next unless offset && identity
-          step.step_mentions.create!(field => identity, start_offset: offset, end_offset: offset + text.length, quoted_text: text)
+        spec.fetch("step_mentions").select { |mention| mention.fetch("step_position") == position }.each do |mention|
+          field = mention.fetch("kind")
+          type = { "ingredient" => Ingredient, "utensil" => Utensil }.fetch(field)
+          identity = type.find_by!(normalized_name: LookupName.normalize(mention.fetch("name")))
+          step.step_mentions.create!(mention.slice("start_offset", "end_offset", "quoted_text").merge(field => identity))
         end
       end
       spec.fetch("techniques").each do |slug|
         recipe.recipe_techniques.create!(technique: Technique.find_by!(slug: slug))
       end
-      recipe.update!(publication_state: spec.fetch("publication_state", "published"))
+      recipe.update!(publication_state: spec.fetch("publication_state"))
       TasteEstimatesSeeder.fill_missing!(recipe, key: key, owner: owner)
       recipe
     end
@@ -121,7 +118,7 @@ module DemoCatalogSeeder
     TechniquesSeeder.seed!
     seed_canonical_content!
     load_json("recipes.json").fetch("recipes").each do |spec|
-      seed_recipe!(spec, owner: User.shakestir_account, source_url: "#{URL_PREFIX}#{spec.fetch("id")}")
+      seed_recipe!(spec, owner: User.find_by!(email_address: spec.fetch("user")))
     end
   end
 end

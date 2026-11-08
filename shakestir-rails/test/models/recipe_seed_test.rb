@@ -1,6 +1,34 @@
 require "test_helper"
 
 class RecipeSeedTest < ActiveSupport::TestCase
+  test "recipe metadata and explicit mentions come from shared fixtures" do
+    load Rails.root.join("db/seeds.rb")
+    specs = DemoCatalogSeeder.load_json("recipes.json").fetch("recipes") + DemoAccountsSeeder.data.fetch("recipes")
+    specs.each do |spec|
+      owner = User.find_by!(email_address: spec.fetch("user"))
+      recipe = DemoCatalogSeeder.seed_recipe!(spec, owner: owner)
+      assert_equal spec.fetch("visibility"), recipe.visibility
+      assert_equal spec.fetch("publication_state"), recipe.publication_state
+      %w[source_url source_reference].each do |field|
+        if spec.fetch(field).nil?
+          assert_nil recipe.public_send(field)
+        else
+          assert_equal spec.fetch(field), recipe.public_send(field)
+        end
+      end
+      actual = recipe.recipe_steps.flat_map do |step|
+        step.step_mentions.map do |mention|
+          kind = mention.ingredient_id ? "ingredient" : "utensil"
+          { "step_position" => step.position, "kind" => kind,
+            "name" => mention.public_send(kind).name, "start_offset" => mention.start_offset,
+            "end_offset" => mention.end_offset, "quoted_text" => mention.quoted_text }
+        end
+      end
+      assert_equal spec.fetch("step_mentions"), actual
+      assert_equal spec.fetch("image"), recipe.image.blob.filename.to_s
+    end
+  end
+
   test "demo accounts have public signatures and private drafts with repeatable collections" do
     load Rails.root.join("db/seeds.rb")
     bartender = User.find_by!(email_address: "leo@shakestir.example")

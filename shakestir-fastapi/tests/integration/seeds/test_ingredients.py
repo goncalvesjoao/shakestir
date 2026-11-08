@@ -30,6 +30,10 @@ def test_shared_catalog_and_rerun(test_session, test_client):
     assert gin.category == "spirit"
     assert gin.alcohol_status == "alcoholic"
     assert gin.alcohol_by_volume == Decimal("40.00")
+    assert {row.name: row.category for row in ingredients} == {
+        row["name"]: row["type"]
+        for row in json.loads(DEFAULT_SEED_FILE.read_text())["ingredients"]
+    }
     assert gin.description
     second = seed_ingredients(test_session)
     test_session.commit()

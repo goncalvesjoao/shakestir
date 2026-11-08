@@ -87,6 +87,22 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/citrus-lantern-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
       "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547"
     },
     {
@@ -176,6 +192,22 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/citrus-lantern-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
       "spec_fingerprint": "57c28c8a047019abae0e4446c109c8644c5dfbbd2968b2da70a78d9e8096b1cf"
     },
     {
@@ -265,6 +297,22 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/citrus-lantern-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
       "spec_fingerprint": "f7a8f08947543d49b5c123785dd4d24993efa06d0685fcac6975892d454cac81"
     },
     {
@@ -350,6 +398,22 @@
         "strain"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/citrus-lantern-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
       "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547"
     },
     {
@@ -457,6 +521,30 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/garden-spark-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "garden-spark.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 13,
+          "end_offset": 17,
+          "quoted_text": "Mint"
+        },
+        {
+          "step_position": 2,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 55,
+          "end_offset": 59,
+          "quoted_text": "Mint"
+        }
+      ],
       "spec_fingerprint": "1739a573d0192ab599ae8daaacd097541ba3b300dd3aeff83271335d1d3787e6"
     },
     {
@@ -564,6 +652,30 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/garden-spark-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "garden-spark.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 13,
+          "end_offset": 17,
+          "quoted_text": "Mint"
+        },
+        {
+          "step_position": 2,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 55,
+          "end_offset": 59,
+          "quoted_text": "Mint"
+        }
+      ],
       "spec_fingerprint": "518aad4510052db432a420c1f4ebc64320e644651a68467a27ea8b7a8c076e81"
     },
     {
@@ -671,6 +783,30 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/garden-spark-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "garden-spark.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 13,
+          "end_offset": 17,
+          "quoted_text": "Mint"
+        },
+        {
+          "step_position": 2,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 55,
+          "end_offset": 59,
+          "quoted_text": "Mint"
+        }
+      ],
       "spec_fingerprint": "052ca755f0c8126a31b9d64cea0bf1c2debaae50692a12190d397c4179895e15"
     },
     {
@@ -765,6 +901,30 @@
         "build"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/garden-spark-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "garden-spark.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 13,
+          "end_offset": 17,
+          "quoted_text": "Mint"
+        },
+        {
+          "step_position": 2,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 55,
+          "end_offset": 59,
+          "quoted_text": "Mint"
+        }
+      ],
       "spec_fingerprint": "aa0abe3887ffb64fa29c7211d939a315583bb690b815977645aa9638f17943f4"
     },
     {
@@ -854,6 +1014,13 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/island-drift-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "island-drift.png",
+      "step_mentions": [],
       "spec_fingerprint": "3cde25966a9d1ded230aa5486fb4081359deaa0c429d19cf96edb106304eac91"
     },
     {
@@ -943,6 +1110,13 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/island-drift-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "island-drift.png",
+      "step_mentions": [],
       "spec_fingerprint": "a40e5fd3655329d040847459258d234d70a6c247c3e890b7e38f95bc3dbe6b3f"
     },
     {
@@ -1032,6 +1206,13 @@
         "sourness": 3,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/island-drift-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "island-drift.png",
+      "step_mentions": [],
       "spec_fingerprint": "b156d5019b684a9d7352a6cb39b74985f0e17c7b17e07689a3686f7fb1d10bfd"
     },
     {
@@ -1117,6 +1298,13 @@
         "strain"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/island-drift-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "island-drift.png",
+      "step_mentions": [],
       "spec_fingerprint": "3cde25966a9d1ded230aa5486fb4081359deaa0c429d19cf96edb106304eac91"
     },
     {
@@ -1202,6 +1390,13 @@
         "sourness": 0,
         "bitterness": 3
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/amber-evening-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "amber-evening.png",
+      "step_mentions": [],
       "spec_fingerprint": "5979643af71d08097e6b89b86f1275fe7fef5ec0bbc467c7732cacdb07a38b14"
     },
     {
@@ -1287,6 +1482,13 @@
         "sourness": 0,
         "bitterness": 3
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/amber-evening-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "amber-evening.png",
+      "step_mentions": [],
       "spec_fingerprint": "cadf4c51c6a0e883cf3464be72eb590ae2060362233fdbf013af66c028bd5178"
     },
     {
@@ -1372,6 +1574,13 @@
         "sourness": 0,
         "bitterness": 3
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/amber-evening-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "amber-evening.png",
+      "step_mentions": [],
       "spec_fingerprint": "e8ff578b4e2627ccfc6299a6597ffc7cfbd5fc794f37a42a238e7bac7cdaeec7"
     },
     {
@@ -1453,6 +1662,13 @@
         "strain"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/amber-evening-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "amber-evening.png",
+      "step_mentions": [],
       "spec_fingerprint": "5979643af71d08097e6b89b86f1275fe7fef5ec0bbc467c7732cacdb07a38b14"
     },
     {
@@ -1542,6 +1758,13 @@
         "sourness": 0,
         "bitterness": 2
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/midnight-cloud-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
       "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba"
     },
     {
@@ -1631,6 +1854,13 @@
         "sourness": 0,
         "bitterness": 2
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/midnight-cloud-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
       "spec_fingerprint": "72b723b99d87433058f2cd1d26cfdf30a5863fa7b8374c9ce530bdd65c70caf7"
     },
     {
@@ -1720,6 +1950,13 @@
         "sourness": 0,
         "bitterness": 2
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/midnight-cloud-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
       "spec_fingerprint": "f836762802e893746e82b77121e7a11ce19dfffda364f06f02bbf79de36607fe"
     },
     {
@@ -1805,6 +2042,13 @@
         "strain"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/midnight-cloud-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
       "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba"
     },
     {
@@ -1888,6 +2132,13 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/frozen-lantern-01",
+      "source_reference": "ShakeStir original demo",
+      "image": "frozen-lantern.png",
+      "step_mentions": [],
       "spec_fingerprint": "d5ebb169b953a6c46bb2a98b19465d8b1b60c2aaab043362705b70aaa29d3aae"
     },
     {
@@ -1971,6 +2222,13 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/frozen-lantern-02",
+      "source_reference": "ShakeStir original demo",
+      "image": "frozen-lantern.png",
+      "step_mentions": [],
       "spec_fingerprint": "1c39c9d06624cef557e956112f2cd55d30c1ceff12cfe3cfe10b3f9920058ff2"
     },
     {
@@ -2054,6 +2312,13 @@
         "sourness": 4,
         "bitterness": 0
       },
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/frozen-lantern-03",
+      "source_reference": "ShakeStir original demo",
+      "image": "frozen-lantern.png",
+      "step_mentions": [],
       "spec_fingerprint": "c6f3d767ac9e0b0859c46787679c9ca327c875466806131b3492ae97ed7660e2"
     },
     {
@@ -2133,6 +2398,13 @@
         "blend"
       ],
       "taste": null,
+      "user": "shakestir@shakestir.example",
+      "visibility": "public",
+      "publication_state": "published",
+      "source_url": "https://shakestir.example/recipes/frozen-lantern-04",
+      "source_reference": "ShakeStir original demo",
+      "image": "frozen-lantern.png",
+      "step_mentions": [],
       "spec_fingerprint": "d5ebb169b953a6c46bb2a98b19465d8b1b60c2aaab043362705b70aaa29d3aae"
     }
   ]

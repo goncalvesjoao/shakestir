@@ -50,6 +50,31 @@ def fingerprint(recipe):
     ).hexdigest()
 
 
+def recipe_metadata(recipe, *, user, source_url=None, source_reference=None):
+    """Materialize fixture relationships; offsets count Unicode characters, from zero."""
+    return {
+        "user": user,
+        "visibility": "public",
+        "publication_state": "published",
+        "source_url": source_url,
+        "source_reference": source_reference,
+        "image": f"{slug(recipe['cocktail'])}.png",
+        "step_mentions": [
+            {
+                "step_position": position,
+                "kind": kind,
+                "name": text,
+                "start_offset": body.index(text),
+                "end_offset": body.index(text) + len(text),
+                "quoted_text": text,
+            }
+            for position, body in enumerate(recipe["steps"])
+            for text, kind in [("Mint", "ingredient"), ("Jigger", "utensil")]
+            if text in body
+        ],
+    }
+
+
 def main():
     ingredients = [
         (
@@ -110,7 +135,7 @@ def main():
         ),
         (
             "Mint",
-            "mint",
+            "herb",
             "No",
             "0",
             "Fresh green leaves used for gentle muddling and optional garnishes.",
@@ -344,6 +369,11 @@ def main():
                     )
                 ),
             }
+            recipe.update(recipe_metadata(
+                recipe, user="shakestir@shakestir.example",
+                source_url=f"https://shakestir.example/recipes/{recipe['id']}",
+                source_reference="ShakeStir original demo",
+            ))
             recipe["spec_fingerprint"] = fingerprint(recipe)
             recipes.append(recipe)
     write(DEMO / "cocktails.json", {"cocktails": cocktails})
@@ -366,6 +396,7 @@ def main():
         authored.append(
             {
                 **base,
+                **recipe_metadata(base, user=old["user"]),
                 "id": name.lower().replace(" ", "-"),
                 "name": name,
                 "user": old["user"],

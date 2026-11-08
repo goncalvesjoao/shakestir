@@ -20,3 +20,16 @@ Run `npm run seed-build` from the repository root to deterministically rebuild t
 FastAPI reads only `ingredients.json` and `images/ingredients/`; it does not implement the remaining domain models yet. From `shakestir-fastapi/`, run `uv run db-setup`. Existing ingredient names and curated fields/images are preserved on reruns.
 
 The remaining fixture graph describes authors, recipes, cocktail variants, tools, techniques, collections and ordered steps. The current Python backend does not load these entities; they are data for future model and endpoint work. Seeding is additive and does not erase old records or overwrite nonblank descriptions/images. Use a fresh local database and storage directory to see only this dataset; never reset a database containing work you need to keep.
+
+## Portable recipe metadata
+
+Every system and author recipe explicitly includes `user` (owner email), `visibility`,
+`publication_state`, `source_url`, `source_reference`, and `image` (a filename under
+`images/cocktails/`). Author recipes have null source fields. Ingredient `type`
+values are canonical categories, including `herb` for Mint.
+
+`step_mentions` contains explicit links with `step_position` (zero based), `kind`
+(`ingredient` or `utensil`), canonical `name`, `quoted_text`, and zero-based,
+end-exclusive Unicode character offsets into that step's text. Empty arrays mean
+no links. Loaders consume these entries without inferring mentions from prose.
+The build script materializes the original fixture mentions when rebuilding JSON.

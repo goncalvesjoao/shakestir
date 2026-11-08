@@ -101,10 +101,14 @@
         "sourness": 0,
         "bitterness": 2
       },
-      "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba",
       "user": "leo@shakestir.example",
       "visibility": "public",
-      "publication_state": "published"
+      "publication_state": "published",
+      "source_url": null,
+      "source_reference": null,
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
+      "spec_fingerprint": "b813d6293ee9cb719cb5e9ac4c09a29123e76e43a132780bb1fc463b6ef401ba"
     },
     {
       "id": "garden-notebook",
@@ -211,10 +215,31 @@
         "sourness": 3,
         "bitterness": 0
       },
-      "spec_fingerprint": "1739a573d0192ab599ae8daaacd097541ba3b300dd3aeff83271335d1d3787e6",
       "user": "leo@shakestir.example",
       "visibility": "public",
-      "publication_state": "published"
+      "publication_state": "published",
+      "source_url": null,
+      "source_reference": null,
+      "image": "garden-spark.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 13,
+          "end_offset": 17,
+          "quoted_text": "Mint"
+        },
+        {
+          "step_position": 2,
+          "kind": "ingredient",
+          "name": "Mint",
+          "start_offset": 55,
+          "end_offset": 59,
+          "quoted_text": "Mint"
+        }
+      ],
+      "spec_fingerprint": "1739a573d0192ab599ae8daaacd097541ba3b300dd3aeff83271335d1d3787e6"
     },
     {
       "id": "snowfall-lantern",
@@ -303,10 +328,23 @@
         "sourness": 4,
         "bitterness": 0
       },
-      "spec_fingerprint": "57c28c8a047019abae0e4446c109c8644c5dfbbd2968b2da70a78d9e8096b1cf",
       "user": "leo@shakestir.example",
       "visibility": "public",
-      "publication_state": "published"
+      "publication_state": "published",
+      "source_url": null,
+      "source_reference": null,
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
+      "spec_fingerprint": "57c28c8a047019abae0e4446c109c8644c5dfbbd2968b2da70a78d9e8096b1cf"
     },
     {
       "id": "my-weekend-lantern",
@@ -395,10 +433,23 @@
         "sourness": 4,
         "bitterness": 0
       },
-      "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547",
       "user": "alex@shakestir.example",
       "visibility": "private",
-      "publication_state": "draft"
+      "publication_state": "draft",
+      "source_url": null,
+      "source_reference": null,
+      "image": "citrus-lantern.png",
+      "step_mentions": [
+        {
+          "step_position": 0,
+          "kind": "utensil",
+          "name": "Jigger",
+          "start_offset": 27,
+          "end_offset": 33,
+          "quoted_text": "Jigger"
+        }
+      ],
+      "spec_fingerprint": "97a2b8d4a321ce933e2e76da914d8bbd28c61625dfe48f325335fd009eb9f547"
     },
     {
       "id": "after-dinner-experiment",
@@ -487,10 +538,14 @@
         "sourness": 0,
         "bitterness": 2
       },
-      "spec_fingerprint": "72b723b99d87433058f2cd1d26cfdf30a5863fa7b8374c9ce530bdd65c70caf7",
       "user": "alex@shakestir.example",
       "visibility": "private",
-      "publication_state": "draft"
+      "publication_state": "draft",
+      "source_url": null,
+      "source_reference": null,
+      "image": "midnight-cloud.png",
+      "step_mentions": [],
+      "spec_fingerprint": "72b723b99d87433058f2cd1d26cfdf30a5863fa7b8374c9ce530bdd65c70caf7"
     }
   ],
   "collections": [

@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from shakestir.db import engine
 from shakestir.models import Ingredient
-from shakestir.models.ingredient import normalize_name
+from shakestir.models.ingredient import IngredientCategory, normalize_name
 from shakestir.storage import image_path, store_image
 
 DEFAULT_SEED_FILE = (
@@ -46,6 +46,9 @@ class SeedResult:
 
 
 def normalize_category(value: str | None) -> str:
+    value = (value or "").strip().lower()
+    if value in {category.value for category in IngredientCategory}:
+        return value
     for category, pattern in CATEGORY_PATTERNS:
         if re.search(pattern, (value or "").lower()):
             return category

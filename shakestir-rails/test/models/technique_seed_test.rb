@@ -19,7 +19,7 @@ class TechniqueSeedTest < ActiveSupport::TestCase
   test "reviewed links apply only to untouched system imports and preserve assignments" do
     load Rails.root.join("db/seeds.rb")
     spec = DemoCatalogSeeder.load_json("recipes.json").fetch("recipes").find { |entry| entry["id"] == "citrus-lantern-01" }
-    recipe = Recipe.find_by!(source_url: "#{DemoCatalogSeeder::URL_PREFIX}#{spec.fetch("id")}")
+    recipe = Recipe.find_by!(source_url: spec.fetch("source_url"))
     recipe.recipe_techniques.destroy_all
     TechniquesSeeder.seed!
     assert_equal %w[shake strain], recipe.techniques.pluck(:slug)

@@ -21,8 +21,8 @@ module TechniquesSeeder
     system_user = User.find_by(system_key: "shakestir")
     return unless system_user
     DemoCatalogSeeder.load_json("recipes.json").fetch("recipes").each do |spec|
-      recipe = system_user.recipes.find_by(source_url: "#{DemoCatalogSeeder::URL_PREFIX}#{spec.fetch("id")}")
-      next unless recipe && recipe.source_reference == DemoCatalogSeeder::SOURCE
+      recipe = system_user.recipes.find_by(source_url: spec.fetch("source_url"))
+      next unless recipe && recipe.source_reference == spec.fetch("source_reference")
       next unless recipe.recipe_steps.map(&:body) == spec.fetch("steps")
       next if recipe.recipe_techniques.exists?
       recipe.transaction do

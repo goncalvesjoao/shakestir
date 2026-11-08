@@ -11,11 +11,11 @@ module TasteEstimatesSeeder
   def self.entries
     @entries ||= begin
       root = Rails.root.parent.join("db/seeds")
-      system = JSON.parse(root.join("demo/recipes.json").read).fetch("recipes").map { |spec| [ "https://shakestir.example/recipes/#{spec.fetch("id")}", spec ] }
+      system = JSON.parse(root.join("demo/recipes.json").read).fetch("recipes").map { |spec| [ spec.fetch("source_url"), spec ] }
       demo = JSON.parse(root.join("demo_accounts.json").read).fetch("recipes").map { |spec| [ "demo:#{spec.fetch("user")}:#{spec.fetch("name")}", spec ] }
       (system + demo).filter_map do |key, spec|
         next unless spec["taste"]
-        [ key, spec.fetch("taste").merge("spec_fingerprint" => spec.fetch("spec_fingerprint"), "rationale" => "Deliberate synthetic UI fixture values, not measured tasting results.") ]
+        [ key, spec.fetch("taste").merge(spec.slice("user", "source_url", "source_reference")).merge("spec_fingerprint" => spec.fetch("spec_fingerprint"), "rationale" => "Deliberate synthetic UI fixture values, not measured tasting results.") ]
       end.to_h
     end
   end
@@ -34,8 +34,8 @@ module TasteEstimatesSeeder
     stored_recipe = Recipe.find(recipe.id)
     stored_recipe.with_lock do
       return unless stored_recipe.user_id == owner.id
-      if key.start_with?("https://shakestir.example/recipes/")
-        return unless owner == User.shakestir_account && stored_recipe.source_url == key && stored_recipe.source_reference == "ShakeStir original demo"
+      if entry.fetch("source_url")
+        return unless owner.email_address == entry.fetch("user") && stored_recipe.source_url == key && stored_recipe.source_reference == entry.fetch("source_reference")
       else
         return unless DEMO_EMAILS.include?(owner.email_address) && key == "demo:#{owner.email_address}:#{stored_recipe.name}" && stored_recipe.source_url.blank?
       end

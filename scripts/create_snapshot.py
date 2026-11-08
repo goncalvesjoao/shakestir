@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIRS = {"shakestir-fastapi", "shakestir-react", "db", "scripts"}
 ROOT_FILES = {
     "README.md", "PRODUCT.md", "PRODUCT_VISION.md", "GLOSSARY.md",
-    "LICENSE", ".gitignore", "package.json",
+    "LICENSE", "THIRD_PARTY_LICENSES.md", ".gitignore", "package.json",
 }
 EXCLUDED_DIRS = {
     ".git", ".agents", ".claude", ".codex", ".impeccable", ".github", ".kamal",

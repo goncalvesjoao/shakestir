@@ -175,4 +175,8 @@ Existing outputs are never overwritten. Review the manifest and extracted conten
 - [FastAPI implementation and configuration](shakestir-fastapi/README.md).
 - [React development and deployment](shakestir-react/README.md).
 
-The repository is [MIT licensed](LICENSE). Seed source notes and asset provenance are documented in the seed directories.
+## Licensing
+
+ShakeStir's original application code and demo content use the [MIT license](LICENSE). Dependencies retain their own licenses; see the [third-party license inventory](THIRD_PARTY_LICENSES.md) for runtime, development and locked transitive packages, plus fonts and asset provenance.
+
+The frontend build toolchain includes MPL-2.0-licensed Lightning CSS. Its code is excluded from the source snapshot, but the dependency tree is not exclusively permissively licensed. Installed dependencies and compiled distributions must retain the upstream licenses and notices applicable to what they redistribute. The inventory documents the active Python/React projects; the separate Rails prototype has its own dependencies.

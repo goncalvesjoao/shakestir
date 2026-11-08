@@ -1,0 +1,7 @@
+{
+  "name": "shakestir",
+  "private": true,
+  "scripts": {
+    "snapshot": "python3 scripts/create_snapshot.py"
+  }
+}

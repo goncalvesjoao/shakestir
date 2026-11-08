@@ -137,6 +137,26 @@ Other browser workflow tests cover endpoints not yet implemented by FastAPI and 
 | npm reports an unsupported Node version | Use a Node version listed in the prerequisites, then rerun `npm ci`. |
 | Browser tests cannot connect | Start FastAPI and Vite, seed the Python database, and run the ingredient browser test. |
 
+## Create a source snapshot
+
+From the repository root, run:
+
+```sh
+npm run snapshot
+```
+
+Requires Git and Python 3.11+. This writes a ZIP and a companion file-list manifest to the ignored `snapshots/` directory. It packages the current Python and React source, shared seeds, snapshot tooling, and selected root documents. Both tracked files and nonignored new files are included, using current working contents rather than the last commit.
+
+The snapshot excludes the prototype, historical reports, design documents, agent tooling, Git history, dependencies, build output, caches, local environment files, and runtime data. Example environment files and dependency lockfiles are retained. Repository structure is preserved so shared seed paths still work. Source and ZIP sizes must each stay below 100 MB.
+
+For a custom destination:
+
+```sh
+npm run snapshot -- --output snapshots/shakestir-review.zip
+```
+
+Existing outputs are never overwritten. Review the manifest and extracted contents before uploading; this command does not establish that all data or third-party assets are permitted for submission and does not upload anything. Running the snapshot command itself requires a Git checkout; the extracted snapshot can run the applications without Git history.
+
 ## Further reading
 
 - [Product vision](PRODUCT_VISION.md): discovery rules, recipe concepts, content preservation, and proposed entity matching, moved from the original root README.

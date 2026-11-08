@@ -2,6 +2,8 @@
 
 ShakeStir is a cocktail "marketplace" for discovery, with no buying or selling. This monorepo is intended to contain multiple implementations of the same product.
 
+The [FastAPI backend](shakestir-fastapi/README.md) provides an initial public ingredient catalog endpoint, with a SQLAlchemy model and Alembic migrations.
+
 This README records the initial product vision. It does not describe the current implementation status.
 
 ## Product vision

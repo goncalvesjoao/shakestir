@@ -4,6 +4,8 @@ Shared seed catalogs, images, and source notes live here. Rails seed loaders rem
 
 From `shakestir-rails/`, run `bin/rails db:seed` to load the checked-in data offline.
 
+From `shakestir-fastapi/`, run `uv run db-setup` to migrate and seed the ingredient catalog, or `uv run db-seed` after migrations. The FastAPI loader reads `thecocktaildb/ingredients.json`, fills missing catalog fields, and preserves curated values on reruns. See the [backend seed documentation](../../shakestir-fastapi/README.md#seeds-and-project-commands) for its current scope.
+
 Recipe-specific [editorial taste expectations](taste/README.md) cover cached imported and fictional demo recipes, with explicit provenance and conservative fill-missing behavior.
 
 Seed photo reruns preserve uploads, fill missing attachments for known system/demo recipes and their matching canonical identities, and restore a missing original file only when the local cache has the exact same checksum and size as its existing blob. Nonmatching lost uploads are not replaced with unrelated pictures. Missing cache assets are logged. Demo photos intentionally use the relevant canonical cached photograph (for example, Snowfall Sidecar uses `thecocktaildb/images/cocktails/sidecar.jpg`); no external replacement asset is needed.

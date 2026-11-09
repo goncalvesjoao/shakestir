@@ -1,0 +1,6 @@
+<%= form_with url: url_for(action: :index), method: :get, class: "search-form catalog-search-form", data: { catalog_search_target: "form", action: "submit->catalog-search#submit" } do |form| %>
+  <%= form.label :q, (catalog_name == "cocktails" ? "Search cocktails" : "Search #{catalog_name} by name"), class: "navbar-search-label" %>
+  <div role="search">
+    <%= form.search_field :q, value: params[:q], placeholder: (catalog_name == "cocktails" ? "Find a cocktail…" : "Find #{catalog_name.singularize}…"), data: { action: "input->catalog-search#search compositionend->catalog-search#search" } %>
+  </div>
+<% end %>

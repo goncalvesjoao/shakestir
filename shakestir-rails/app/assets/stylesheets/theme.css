@@ -255,7 +255,7 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .catalog-results-toolbar .search-form [role=search] { margin-bottom: 0; }
 [data-catalog-search-target=status]:empty { display: none; }
 
-.catalog-results-toolbar input[type=search]::-webkit-search-cancel-button {
+.catalog-search-form input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   width: 1rem;
   height: 1rem;
@@ -272,20 +272,6 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .brand-link:hover .wordmark-normal { opacity: 0; }
 
 .catalog-page { container-type: inline-size; }
-.catalog-page .page-shell { position: relative; isolation: isolate; }
-.catalog-page .page-shell::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  top: 0;
-  left: 50%;
-  width: 100cqw;
-  height: 34rem;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom, #f7f5ee80, #f7f5eed9 45%, var(--background-color) 98%), var(--catalog-cover) center 45% / cover no-repeat;
-}
-@media print { .catalog-page .page-shell::before { display: none; } }
 
 .catalog-card-image, .catalog-card-image .photo-placeholder { background: transparent; }
 .catalog-card-image img { object-fit: contain; padding: .75rem; box-sizing: border-box; }
@@ -301,3 +287,24 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .utensils-catalog { --catalog-cover: url("covers/utensils.jpg"); }
 .techniques-catalog { --catalog-cover: url("covers/techniques.jpg"); }
 .catalog-card .card-copy p { max-width: 48ch; margin-inline: auto; }
+
+/* Catalogs share the shallow cover treatment of their detail pages. */
+.catalog-page .catalog-cover-heading {
+  margin: 0;
+  min-height: 18rem;
+  align-content: space-between;
+  row-gap: 3rem;
+  padding-block: 1.5rem 2.5rem;
+  color: #fffef9;
+  background: linear-gradient(to bottom, #20292305 20%, #202923b3 100%), var(--catalog-cover) center 45% / cover no-repeat;
+}
+.catalog-page .catalog-cover-heading h1 { color: inherit; max-width: 24ch; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 500; line-height: 1.12; margin: 0; text-wrap: balance; }
+@media (max-width: 45rem) {
+  .catalog-page .catalog-cover-heading { min-height: 17rem; padding-block: 1.5rem 2rem; }
+}
+@media print { .catalog-page .catalog-cover-heading { background: none; color: var(--color); min-height: 0; padding-block: 1rem; } }
+
+.catalog-page .catalog-cover-heading .catalog-search-form { width: min(100%, 22rem); margin: 0; }
+.catalog-search-form [role=search] { margin-bottom: 0; }
+.catalog-page .catalog-cover-description { color: inherit; font-size: 1.0625rem; line-height: 1.6; margin: .875rem 0 0; max-width: 52ch; }
+.catalog-page #marketplace-results { padding-top: 2rem; }

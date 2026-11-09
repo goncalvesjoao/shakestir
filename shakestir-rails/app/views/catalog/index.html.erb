@@ -3,21 +3,20 @@
 
 <% catalog_title = { "cocktails" => "The classics, and their stories.", "ingredients" => "Every good ingredient.", "utensils" => "Tools of the trade.", "techniques" => "A little technique goes a long way." }[catalog_name] %>
 
-<header class="explore-heading">
-  <% if catalog_title %><p class="eyebrow">Build your bar knowledge</p><% end %>
-  <h1><%= catalog_title || catalog_name.capitalize %></h1>
+<div data-controller="catalog-search" class="full-width content-grid">
+<header class="explore-heading catalog-cover-heading full-width content-grid">
+  <%= render "catalog/search", catalog_name: catalog_name %>
+  <div class="catalog-heading-copy">
+    <h1><%= catalog_title || catalog_name.capitalize %></h1>
+    <% description = {
+      "cocktails" => "and explore their stories and recipes.",
+      "ingredients" => "and get to know what goes into your next drink.",
+      "utensils" => "and find the right equipment for your next drink.",
+      "techniques" => "and learn the methods behind a well-made drink."
+    }.fetch(catalog_name) %>
+    <p class="catalog-cover-description" data-catalog-search-target="count" aria-live="polite">Browse <%= pluralize(@pagination.total_count, catalog_name.singularize) %> <%= description %></p>
+  </div>
 </header>
-
-<div data-controller="catalog-search">
-    <div class="catalog-results-toolbar">
-        <%= form_with url: url_for(action: :index), method: :get, class: "search-form", data: { catalog_search_target: "form", action: "submit->catalog-search#submit" } do |form| %>
-          <%= form.label :q, (catalog_name == "cocktails" ? "Search cocktails" : "Search #{catalog_name} by name"), class: "navbar-search-label" %>
-          <div role="search">
-            <%= form.search_field :q, value: params[:q], placeholder: (catalog_name == "cocktails" ? "Find a cocktail…" : "Find #{catalog_name.singularize}…"), data: { action: "input->catalog-search#search compositionend->catalog-search#search" } %>
-          </div>
-        <% end %>
-      <h2 class="catalog-results-count" data-catalog-search-target="count"><%= pluralize(@pagination.total_count, catalog_name.singularize) %></h2>
-    </div>
 
     <p role="status" data-catalog-search-target="status"></p>
 

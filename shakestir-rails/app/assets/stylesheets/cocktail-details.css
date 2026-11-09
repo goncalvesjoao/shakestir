@@ -1558,7 +1558,6 @@
     .catalog-resource-profile .cocktail-profile-image { top: .5rem; }
 }
 
-.cocktail-profile .cocktail-sources > summary,
 .cocktail-recipe-accordion > summary { font-size: 1.125rem; font-weight: 600; }
 .cocktail-recipe-accordion { width: 100%; max-width: 70ch; justify-self: center; margin: 0 auto 2.5rem; }
 .cocktail-recipe-accordion .recipe-grid { margin-top: 1.5rem; }
@@ -1571,14 +1570,12 @@
 
 .cocktail-recipe-accordion { border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
 
-/* Keep both disclosure dividers on the same spacing rhythm. */
+/* Keep the background sections on the same spacing rhythm. */
 .cocktail-profile #cocktail-background .background-story { gap: 0; }
 .cocktail-profile .cocktail-history p:last-child,
 .cocktail-profile .cocktail-sources p:last-child { margin-bottom: 0; }
 .cocktail-profile .cocktail-history + .cocktail-sources { border-top: 1px solid var(--border-color); margin-top: 1.5rem; padding-top: 1.5rem; }
 .cocktail-profile #cocktail-background { padding-bottom: 1.5rem; }
-.cocktail-profile .cocktail-sources > summary { margin-bottom: 0; }
-.cocktail-profile .cocktail-sources[open] > div { margin-top: 1rem; }
 
 .technique-profile-guide .technique-instructions p:last-child { margin-bottom: 0; }
 .technique-profile-guide .technique-tip { margin-top: 1.5rem; padding-top: 1.5rem; }

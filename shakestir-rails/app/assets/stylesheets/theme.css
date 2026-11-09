@@ -270,3 +270,34 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .wordmark-hover { position: absolute; inset: 0; opacity: 0; }
 .brand-link:hover .wordmark-hover { opacity: 1; }
 .brand-link:hover .wordmark-normal { opacity: 0; }
+
+.catalog-page { container-type: inline-size; }
+.catalog-page .page-shell { position: relative; isolation: isolate; }
+.catalog-page .page-shell::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: 0;
+  left: 50%;
+  width: 100cqw;
+  height: 34rem;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #f7f5ee80, #f7f5eed9 45%, var(--background-color) 98%), var(--catalog-cover) center 45% / cover no-repeat;
+}
+@media print { .catalog-page .page-shell::before { display: none; } }
+
+.catalog-card-image, .catalog-card-image .photo-placeholder { background: transparent; }
+.catalog-card-image img { object-fit: contain; padding: .75rem; box-sizing: border-box; }
+.catalog-card .card-copy { text-align: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .catalog-card:hover .catalog-card-image img, .catalog-card:focus-within .catalog-card-image img { transform: scale(1.04); }
+}
+
+.catalog-card:has(.catalog-card-image:hover) .card-copy h3 a { text-decoration: underline; }
+
+.cocktails-catalog { --catalog-cover: url("covers/cocktails.jpg"); }
+.ingredients-catalog { --catalog-cover: url("covers/ingredients.jpg"); }
+.utensils-catalog { --catalog-cover: url("covers/utensils.jpg"); }
+.techniques-catalog { --catalog-cover: url("covers/techniques.jpg"); }
+.catalog-card .card-copy p { max-width: 48ch; margin-inline: auto; }

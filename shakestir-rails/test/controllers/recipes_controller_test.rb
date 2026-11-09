@@ -232,4 +232,14 @@ class StoredRecipesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to recipe_url(recipe)
     assert_equal "梅酒サワー", recipe.reload.display_name
   end
+
+  test "ingredients are a reading list and utensils follow preparation as reference content" do
+    get recipe_url(recipes(:one))
+    assert_response :success
+    assert_select "#ingredients input[type=checkbox]", count: 0
+    assert_select "#ingredients progress", count: 0
+    assert_select "#ingredients .utensil-list", count: 0
+    assert_select ".recipe-footer .recipe-tools h2", text: "Utensils"
+    assert_operator response.body.index('id="preparation"'), :<, response.body.index('class="recipe-tools"')
+  end
 end

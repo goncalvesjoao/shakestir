@@ -23,9 +23,9 @@
 
   </head>
 
-  <body class="content-grid <%= content_for :body_class %>">
+  <body class="<%= content_for :body_class %>">
     <a href="#main-content" class="visually-hidden-focusable">Skip to content</a>
-    <header class="site-header full-width">
+    <header class="site-header content-grid">
       <nav aria-label="Main navigation">
         <%= link_to root_path, class: "brand-link" do %>
           <%= render "shared/wordmark" %>
@@ -65,7 +65,7 @@
 
     <%= flash_messages %>
 
-    <main id="main-content" class="page-shell">
+    <main id="main-content" class="content-grid">
       <%= yield %>
     </main>
     <footer class="justify-content-between site-footer"><%= render "shared/wordmark" %><span>Find a drink. Make it yours.</span></footer>

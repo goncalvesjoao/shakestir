@@ -1,6 +1,6 @@
-<article id="<%= dom_id resource %>">
+<article id="<%= dom_id resource %>" class="catalog-card">
   <% unless resource.is_a?(Technique) %>
-    <%= link_to resource, class: "d-block overflow-hidden card-image", tabindex: "-1", aria: { hidden: true } do %>
+    <%= link_to resource, class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", aria: { hidden: true } do %>
       <%= image_tag polymorphic_path([resource, :image], size: :card), alt: "", loading: "lazy" %>
     <% end %>
   <% end %>

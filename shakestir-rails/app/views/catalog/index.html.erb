@@ -1,38 +1,45 @@
 <% content_for :title, "#{catalog_name == "cocktails" ? "Explore cocktails" : catalog_name.capitalize} · ShakeStir" %>
+<% content_for :body_class, "catalog-page #{catalog_name}-catalog" %>
+
 <% catalog_title = { "cocktails" => "The classics, and their stories.", "ingredients" => "Every good ingredient.", "utensils" => "Tools of the trade.", "techniques" => "A little technique goes a long way." }[catalog_name] %>
+
 <header class="explore-heading">
   <% if catalog_title %><p class="eyebrow">Build your bar knowledge</p><% end %>
   <h1><%= catalog_title || catalog_name.capitalize %></h1>
 </header>
+
 <div data-controller="catalog-search">
-<div class="catalog-results-toolbar">
-<%= form_with url: url_for(action: :index), method: :get, class: "search-form", data: { catalog_search_target: "form", action: "submit->catalog-search#submit" } do |form| %>
-  <%= form.label :q, (catalog_name == "cocktails" ? "Search cocktails" : "Search #{catalog_name} by name"), class: "navbar-search-label" %>
-  <div role="search">
-    <%= form.search_field :q, value: params[:q], placeholder: (catalog_name == "cocktails" ? "Find a cocktail…" : "Find #{catalog_name.singularize}…"), data: { action: "input->catalog-search#search compositionend->catalog-search#search" } %>
-  </div>
-<% end %>
-<h2 class="catalog-results-count" data-catalog-search-target="count"><%= pluralize(@pagination.total_count, catalog_name.singularize) %></h2>
-</div>
-<p role="status" data-catalog-search-target="status"></p>
-<div id="marketplace-results" aria-live="polite" data-catalog-search-target="results">
-  <% if @pagination.empty? %>
-    <section class="empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", url_for(action: :index) %></section>
-  <% end %>
-  <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.current_page}", target: "_top" do %>
-    <div id="<%= "#{catalog_name}_#{@pagination.current_page}" %>" class="auto-grid recipe-grid">
-      <% if catalog_name == "cocktails" %>
-        <%= render @pagination.to_a %>
-      <% else %>
-        <%= render partial: "catalog/resource", collection: @pagination.to_a, as: :resource %>
+    <div class="catalog-results-toolbar">
+        <%= form_with url: url_for(action: :index), method: :get, class: "search-form", data: { catalog_search_target: "form", action: "submit->catalog-search#submit" } do |form| %>
+          <%= form.label :q, (catalog_name == "cocktails" ? "Search cocktails" : "Search #{catalog_name} by name"), class: "navbar-search-label" %>
+          <div role="search">
+            <%= form.search_field :q, value: params[:q], placeholder: (catalog_name == "cocktails" ? "Find a cocktail…" : "Find #{catalog_name.singularize}…"), data: { action: "input->catalog-search#search compositionend->catalog-search#search" } %>
+          </div>
+        <% end %>
+      <h2 class="catalog-results-count" data-catalog-search-target="count"><%= pluralize(@pagination.total_count, catalog_name.singularize) %></h2>
+    </div>
+
+    <p role="status" data-catalog-search-target="status"></p>
+
+    <div id="marketplace-results" aria-live="polite" data-catalog-search-target="results">
+      <% if @pagination.empty? %>
+        <section class="empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", url_for(action: :index) %></section>
+      <% end %>
+
+      <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.current_page}", target: "_top" do %>
+        <div id="<%= catalog_name %>_<%= @pagination.current_page %>" class="auto-grid recipe-grid">
+          <% if catalog_name == "cocktails" %>
+            <%= render @pagination.to_a %>
+          <% else %>
+            <%= render partial: "catalog/resource", collection: @pagination.to_a, as: :resource %>
+          <% end %>
+        </div>
+        <% if @pagination.next_page %>
+          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @pagination.next_page)) %>
+          <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.next_page}", src: next_page_url, loading: :lazy, target: "_top" do %>
+            <p><%= link_to "Load more #{catalog_name}", next_page_url %></p>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
-    <% if @pagination.next_page %>
-      <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @pagination.next_page)) %>
-      <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.next_page}", src: next_page_url, loading: :lazy, target: "_top" do %>
-        <p><%= link_to "Load more #{catalog_name}", next_page_url %></p>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
 </div>

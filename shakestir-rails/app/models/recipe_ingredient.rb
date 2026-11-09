@@ -15,6 +15,8 @@ class RecipeIngredient < ApplicationRecord
   validates :quantity, numericality: { greater_than: 0 }, allow_nil: true
   validates :measuring_unit, presence: true, if: -> { quantity.present? }
 
+  delegate :name, to: :ingredient
+
   private
     def assign_position
       return unless position.nil?

@@ -1,6 +1,5 @@
 <% content_for :title, "#{@recipe.display_name} · ShakeStir" %>
-<% content_for :body_class, "cocktail-journal recipe-journal" %>
-<div class="detail-page cocktail-page recipe-detail-page" data-controller="cocktail-panel" data-action="turbo:before-cache@window->cocktail-panel#close">
+<div class="detail-page recipe-detail-page full-width content-grid" data-controller="cocktail-panel" data-action="turbo:before-cache@window->cocktail-panel#close">
   <%= render "details", recipe: @recipe %>
   <% panel_title = @cocktail ? "#{@cocktail.display_name} cocktail details" : "#{@recipe.user.profile_name} profile" %>
     <dialog id="cocktail-panel" class="position-fixed mw-100 m-0 p-0 cocktail-panel" aria-label="<%= panel_title %>" data-cocktail-panel-target="dialog" data-action="click->cocktail-panel#backdrop close->cocktail-panel#restoreFocus">

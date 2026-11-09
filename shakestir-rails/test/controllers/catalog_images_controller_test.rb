@@ -30,7 +30,7 @@ class CatalogImagesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "submitted requirements appear on recipe details without language metadata" do
+  test "ingredient names and submitted utensils appear without language metadata" do
     ingredient = ingredients(:one)
     utensil = utensils(:jigger)
     ingredient.update!(image: photo_upload)
@@ -38,7 +38,7 @@ class CatalogImagesControllerTest < ActionDispatch::IntegrationTest
     recipe = recipes(:one)
     get recipe_url(recipe)
     assert_response :success
-    assert_select "span.submitted-prose", text: recipe.recipe_ingredients.sole.submitted_text
+    assert_select ".ingredient-copy span.submitted-prose", text: /#{Regexp.escape(recipe.recipe_ingredients.sole.name)}/
     assert_select "span.submitted-prose", text: recipe.recipe_utensils.sole.submitted_text
     assert_select ".submitted-prose[lang]", count: 0
     recipe.update!(visibility: "private")

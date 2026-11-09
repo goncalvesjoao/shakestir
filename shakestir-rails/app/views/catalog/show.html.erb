@@ -1,16 +1,31 @@
 <% content_for :title, "#{@resource.display_name} · #{catalog_name.capitalize} · ShakeStir" %>
-<article class="technique-page">
-  <%= link_to "Back to #{catalog_name}", url_for(action: :index), class: "detail-text-link" %>
-  <h1><%= @resource.display_name %></h1>
-  <%= image_tag polymorphic_path([@resource, :image], size: :detail), alt: @resource.display_name, class: "catalog-detail-image" %>
-  <%= simple_format @resource.description if @resource.description.present? %>
-  <dl>
-    <dt>Category</dt><dd><%= @resource.category.humanize %></dd>
-    <% if @resource.is_a?(Ingredient) %>
-      <dt>Alcohol status</dt><dd><%= @resource.alcohol_status.humanize %></dd>
-      <% if @resource.alcohol_by_volume.present? %><dt>Alcohol by volume</dt><dd><%= @resource.alcohol_by_volume %>%</dd><% end %>
-    <% elsif @resource.capacity_milliliters.present? %>
-      <dt>Capacity</dt><dd><%= @resource.capacity_milliliters %> ml</dd>
+<article class="cocktail-details cocktail-profile catalog-resource-profile <%= catalog_name %>-profile full-width content-grid">
+  <header class="cocktail-profile-hero full-width content-grid">
+    <%= link_to url_for(action: :index), class: "d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
+      Back to <%= catalog_name %>
     <% end %>
-  </dl>
+    <div class="cocktail-profile-intro cocktail-profile-with-image">
+      <div class="cocktail-profile-copy">
+        <h1><%= @resource.display_name %></h1>
+        <% if @resource.description.present? %><p class="submitted-prose"><%= @resource.description %></p><% end %>
+      </div>
+      <%= image_tag polymorphic_path([@resource, :image], size: :detail), alt: @resource.display_name, class: "cocktail-profile-image", fetchpriority: "high", width: 1200, height: 1200 %>
+    </div>
+  </header>
+  <section class="cocktail-background" aria-labelledby="catalog-details-heading">
+    <div class="background-story">
+      <section><h2 id="catalog-details-heading">Details</h2>
+        <dl class="catalog-resource-facts">
+          <div><dt>Category</dt><dd><%= @resource.category.humanize %></dd></div>
+          <% if @resource.is_a?(Ingredient) %>
+            <div><dt>Alcohol status</dt><dd><%= @resource.alcohol_status.humanize %></dd></div>
+            <% if @resource.alcohol_by_volume.present? %><div><dt>Alcohol by volume</dt><dd><%= @resource.alcohol_by_volume %>%</dd></div><% end %>
+          <% elsif @resource.capacity_milliliters.present? %>
+            <div><dt>Capacity</dt><dd><%= @resource.capacity_milliliters %> ml</dd></div>
+          <% end %>
+        </dl>
+      </section>
+    </div>
+  </section>
 </article>

@@ -1,10 +1,9 @@
 <% ingredients_id = "ingredients" %>
 <% preparation_id = "preparation" %>
-<article id="<%= dom_id recipe %>" class="position-relative recipe mixing-recipe">
+<article id="<%= dom_id recipe %>" class="position-relative recipe mixing-recipe recipe-profile full-width content-grid">
   <% photo = recipe_photo(recipe) %>
-  <header class="position-relative d-flex align-items-end overflow-hidden cocktail-cover recipe-cover<%= " cocktail-cover-with-photo" if photo.image.attached? %>">
-    <% if photo.image.attached? %><%= image_tag public_send("#{photo.model_name.singular}_image_path", photo, size: :detail), alt: "Photo of #{recipe.display_name}", class: "position-absolute w-100 h-100 object-fit-cover cocktail-cover-photo", fetchpriority: "high", width: 1200, height: 1200 %><% end %>
-    <%= link_to root_path, class: "d-inline-flex position-absolute align-items-center cocktail-cover-back secondary button" do %>
+  <header class="cocktail-profile-hero full-width content-grid">
+    <%= link_to root_path, class: "d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
       All recipes
     <% end %>
@@ -12,11 +11,16 @@
       <%= render "recipes/star", recipe: recipe %>
       <% if authenticated? %><%= render "collections/picker", recipe: recipe %><% end %>
     </div>
-    <div class="cocktail-cover-copy">
+    <div class="cocktail-profile-intro<%= " cocktail-profile-with-image" if photo.image.attached? %>">
+    <div class="cocktail-profile-copy">
       <h1><%= recipe.display_name.presence || "Untitled recipe" %></h1>
       <p class="recipe-attribution">Recipe by <%= link_to recipe.user.profile_name, profile_path(recipe.user), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{recipe.user.profile_name} profile", panel_kind: "profile" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% if @cocktail %>, for <%= link_to @cocktail.display_name, cocktail_path(@cocktail), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@cocktail.display_name} cocktail details", panel_kind: "cocktail details" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% end %></p>
       <% unless recipe.publication_state == "published" && recipe.visibility == "public" %><p class="recipe-attribution"><%= recipe.publication_state.capitalize %> · <%= recipe.visibility.capitalize %></p><% end %>
 
+    </div>
+    <% if photo.image.attached? %>
+      <%= image_tag public_send("#{photo.model_name.singular}_image_path", photo, size: :detail), alt: "Photo of #{recipe.display_name}", class: "cocktail-profile-image", fetchpriority: "high", width: 1200, height: 1200 %>
+    <% end %>
     </div>
   </header>
   <div class="mixing-layout">
@@ -41,8 +45,18 @@
     </section>
   </div>
   <% show_source = recipe.source_url.present? || recipe.source_reference.present? %>
-  <% if show_source || recipe.techniques.any? || policy(recipe).edit? || policy(recipe).destroy? %>
+  <% if recipe.recipe_utensils.any? || show_source || recipe.techniques.any? || policy(recipe).edit? || policy(recipe).destroy? %>
   <footer class="justify-content-between recipe-footer">
+    <% if recipe.recipe_utensils.any? %>
+      <section class="recipe-tools" aria-labelledby="recipe-tools-heading">
+        <h2 id="recipe-tools-heading">Utensils</h2>
+        <ul class="m-0 p-0 utensil-list">
+          <% recipe.recipe_utensils.each do |requirement| %>
+            <li><span class="submitted-prose"><%= requirement.submitted_text %></span></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
     <div class="auto-grid recipe-reference-grid">
     <% if show_source %>
     <section class="recipe-source"><h2>Recipe source</h2>

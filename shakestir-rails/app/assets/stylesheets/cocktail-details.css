@@ -1,381 +1,1495 @@
 /* The same reading and mixing layout serves canonical cocktails and recipes. */
-.detail-page { max-width: 72rem; margin-inline: auto; }
-.detail-page .cocktail-details { max-width: none; margin-bottom: 0; }
-.detail-page .back-link { margin-bottom: 1.5rem; color: var(--color-muted); text-decoration: none; min-height: 2.75rem; display: inline-flex; align-items: center; }
-.detail-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; margin-bottom: 2rem; align-items: center; }
-.detail-hero h1 { font-size: 3rem; line-height: 1.12; letter-spacing: -.035em; margin: 0 0 1rem; overflow-wrap: anywhere; text-wrap: balance; }
-.detail-hero .recipe-intro { padding: 0; }
-.detail-description { font-size: 1.125rem; line-height: 1.7; color: var(--color-muted); max-width: 48ch; margin-bottom: 1.25rem; }
-.detail-parent, .recipe-attribution { font-size: .9375rem; color: var(--color-muted); margin-bottom: .75rem; }
-.detail-parent a { font-weight: 600; }
-.detail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.5rem; }
-.detail-actions .button { --buttons-background-color-hover: var(--primary-color-hover); --buttons-background-color: var(--primary-color); --buttons-color: var(--card-background-color); --font-weight: 600; }
+.cocktail-bg {
+    background-image: url("covers/cocktails.jpg");
+    background-size: cover;
+}
 
-.detail-text-link { min-height: 2.75rem; font-size: .9375rem; }
-.detail-visual { position: relative; min-width: 0; }
-.detail-visual .recipe-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1rem; background: #e7e8d9; }
-.cocktail-breadcrumb { margin: 0 0 1.25rem; font-size: .875rem; }
-.cocktail-breadcrumb ol { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0; padding: 0; }
-.cocktail-breadcrumb li { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-.cocktail-breadcrumb li + li::before { content: "/"; margin-right: .5rem; color: var(--color-muted); }
-.cocktail-breadcrumb .back-link { display: inline; margin: 0; min-height: 0; }
-.detail-nav { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; padding-block: .5rem; margin-bottom: 2rem; border-block: 1px solid var(--border-color); background: var(--background-color); }
-.detail-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9375rem; font-weight: 600; text-decoration: none; }
-.detail-nav a:hover { text-decoration: underline; }
-.detail-hero .detail-nav { margin: 1.5rem 0 0; }
-.detail-page .mixing-layout { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 2.5rem; align-items: start; }
-.detail-page .recipe-panel { background: var(--card-background-color); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; min-width: 0; margin-bottom: 0; scroll-margin-top: 9rem; }
-.detail-page .recipe-panel h2 { font-size: 1.5rem; margin: 0; }
-.ingredients-heading { gap: .5rem; }
-.recipe-servings { font-size: .875rem; color: var(--color-muted); }
-.checklist-progress { width: 100%; display: block; height: .25rem; margin: 1rem 0 .5rem; accent-color: var(--primary-color); }
-.checklist-progress[hidden], .checklist-status[hidden] { display: none; }
-.checklist-status { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: .5rem; }
-.checklist-status [role=status] { border: 0; padding: 0; margin: 0; background: transparent; box-shadow: none; color: var(--color-muted); font-size: .875rem; }
+.detail-page {
+    max-width: 72rem;
+    margin-inline: auto;
+}
+.detail-page .cocktail-details {
+    max-width: none;
+    margin-bottom: 0;
+}
+.detail-page .back-link {
+    margin-bottom: 1.5rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+}
+.detail-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+.detail-hero h1 {
+    font-size: 3rem;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    margin: 0 0 1rem;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+}
+.detail-hero .recipe-intro {
+    padding: 0;
+}
+.detail-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 48ch;
+    margin-bottom: 1.25rem;
+}
+.detail-parent,
+.recipe-attribution {
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+}
+.detail-parent a {
+    font-weight: 600;
+}
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 1.5rem;
+}
+.detail-actions .button {
+    --buttons-background-color-hover: var(--primary-color-hover);
+    --buttons-background-color: var(--primary-color);
+    --buttons-color: var(--card-background-color);
+    --font-weight: 600;
+}
+
+.detail-text-link {
+    min-height: 2.75rem;
+    font-size: 0.9375rem;
+}
+.detail-visual {
+    position: relative;
+    min-width: 0;
+}
+.detail-visual .recipe-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: #e7e8d9;
+}
+.cocktail-breadcrumb {
+    margin: 0 0 1.25rem;
+    font-size: 0.875rem;
+}
+.cocktail-breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.cocktail-breadcrumb li {
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.cocktail-breadcrumb li + li::before {
+    content: "/";
+    margin-right: 0.5rem;
+    color: var(--color-muted);
+}
+.cocktail-breadcrumb .back-link {
+    display: inline;
+    margin: 0;
+    min-height: 0;
+}
+.detail-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    padding-block: 0.5rem;
+    margin-bottom: 2rem;
+    border-block: 1px solid var(--border-color);
+    background: var(--background-color);
+}
+.detail-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.detail-nav a:hover {
+    text-decoration: underline;
+}
+.detail-hero .detail-nav {
+    margin: 1.5rem 0 0;
+}
+.detail-page .mixing-layout {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+.detail-page .recipe-panel {
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    min-width: 0;
+    margin-bottom: 0;
+    scroll-margin-top: 9rem;
+}
+.detail-page .recipe-panel h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+.ingredients-heading {
+    gap: 0.5rem;
+}
+.recipe-servings {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+.checklist-progress {
+    width: 100%;
+    display: block;
+    height: 0.25rem;
+    margin: 1rem 0 0.5rem;
+    accent-color: var(--primary-color);
+}
+.checklist-progress[hidden],
+.checklist-status[hidden] {
+    display: none;
+}
+.checklist-status {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.checklist-status [role="status"] {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
 .recipe-panel .checklist-reset {
-  --buttons-background-color-hover: transparent;
-  --buttons-color-hover: var(--primary-color);
-  width: auto;
-  min-height: 2.75rem;
-  --buttons-background-color: transparent;
-  --buttons-color: var(--primary-color);
-  border: 0;
-  box-shadow: none;
-  margin: 0;
-  text-decoration: underline;
+    --buttons-background-color-hover: transparent;
+    --buttons-color-hover: var(--primary-color);
+    width: auto;
+    min-height: 2.75rem;
+    --buttons-background-color: transparent;
+    --buttons-color: var(--primary-color);
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    text-decoration: underline;
 }
-.recipe-panel .checklist-reset:disabled { opacity: .5; cursor: default; text-decoration: none; }
-.detail-page .checklist { margin: 0; }
-.detail-page .checklist li { border-top: 1px solid var(--border-color); }
-.detail-page .checklist label { display: flex; align-items: flex-start; gap: .875rem; padding: 1rem .25rem; margin: 0; cursor: pointer; border-radius: .25rem; }
-.detail-page .checklist input[type=checkbox] { appearance: auto; position: static; width: 1.375rem; height: 1.375rem; min-width: 1.375rem; margin: .2rem 0 0; accent-color: var(--primary-color); clip-path: none; }
-.detail-page .checklist label:focus-within { outline: 3px solid var(--primary-outline-color); outline-offset: 2px; }
-.detail-page .checklist label:has(:checked) { background: #eff2e7; }
-.detail-page .checklist label:has(:checked) .step-body { text-decoration: line-through; text-decoration-thickness: 1px; }
-.detail-page .ingredient-copy { gap: .25rem; }
-.detail-page .ingredient-copy > .submitted-prose { font-size: 1.125rem; }
-.detail-page .requirement-photo { width: 2.5rem; height: 2.5rem; object-fit: contain; margin-left: auto; flex: 0 0 auto; }
-.detail-page .step-number { color: var(--color-muted); font-size: .875rem; font-weight: 600; margin-bottom: .25rem; letter-spacing: normal; text-transform: none; }
-.detail-page .step-number::before { content: "Step "; }
-.detail-page .step-body { font-size: 1.25rem; line-height: 1.75; color: var(--color); }
-.preparation-back { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .875rem; margin-bottom: .5rem; }
-.ingredients-footer { margin-top: 1rem; padding-top: .5rem; border-top: 1px solid var(--border-color); }
-.ingredients-footer a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.detail-page .recipe-footer { margin: 1.5rem 0 2rem; padding: 1rem 0; font-size: .875rem; }
-.recipe-footer h2 { font-size: 1rem; }
-.recipe-footer p { margin: 0; }
-.cocktail-background { margin-top: 3rem; padding-block: 2rem; border-top: 1px solid var(--border-color); grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 2.5rem; scroll-margin-top: 9rem; }
-.background-story:only-child { grid-column: 1 / -1; }
-.background-story .section-heading { margin-bottom: 1rem; }
-.cocktail-background h2, .related-recipes-section h2 { font-size: 1.5rem; margin: 0; }
-.background-sources h3 { font-size: 1.125rem; margin: 0 0 1rem; }
-.detail-disclosure { border: 0; padding: 0; }
-.detail-disclosure summary { min-height: 2.75rem; font-weight: 600; }
-.detail-disclosure p { max-width: 70ch; overflow-wrap: anywhere; }
-.related-recipes-section { padding-block: 2rem; border-top: 1px solid var(--border-color); scroll-margin-top: 9rem; }
-.related-recipes-section > p { color: var(--color-muted); }
+.recipe-panel .checklist-reset:disabled {
+    opacity: 0.5;
+    cursor: default;
+    text-decoration: none;
+}
+.detail-page .checklist {
+    margin: 0;
+}
+.detail-page .checklist li {
+    border-top: 1px solid var(--border-color);
+}
+.detail-page .checklist label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1rem 0.25rem;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+.detail-page .checklist input[type="checkbox"] {
+    appearance: auto;
+    position: static;
+    width: 1.375rem;
+    height: 1.375rem;
+    min-width: 1.375rem;
+    margin: 0.2rem 0 0;
+    accent-color: var(--primary-color);
+    clip-path: none;
+}
+.detail-page .checklist label:focus-within {
+    outline: 3px solid var(--primary-outline-color);
+    outline-offset: 2px;
+}
+.detail-page .checklist label:has(:checked) {
+    background: #eff2e7;
+}
+.detail-page .checklist label:has(:checked) .step-body {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+.detail-page .ingredient-copy {
+    gap: 0.25rem;
+}
+.detail-page .ingredient-copy > .submitted-prose {
+    font-size: 1.125rem;
+}
+.detail-page .requirement-photo {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+.detail-page .step-number {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    letter-spacing: normal;
+    text-transform: none;
+}
+.detail-page .step-number::before {
+    content: "Step ";
+}
+.detail-page .step-body {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: var(--color);
+}
+.preparation-back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+.ingredients-footer {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.ingredients-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+}
+.detail-page .recipe-footer {
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+}
+.recipe-footer h2 {
+    font-size: 1rem;
+}
+.recipe-footer p {
+    margin: 0;
+}
+.cocktail-background {
+    margin-top: 3rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--border-color);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    scroll-margin-top: 9rem;
+}
+.background-story:only-child {
+    grid-column: 1 / -1;
+}
+.background-story .section-heading {
+    margin-bottom: 1rem;
+}
+.cocktail-background h2,
+.related-recipes-section h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+.background-sources h3 {
+    font-size: 1.125rem;
+    margin: 0 0 1rem;
+}
+.detail-disclosure {
+    border: 0;
+    padding: 0;
+}
+.detail-disclosure summary {
+    min-height: 2.75rem;
+    font-weight: 600;
+}
+.detail-disclosure p {
+    max-width: 70ch;
+    overflow-wrap: anywhere;
+}
+.related-recipes-section {
+    padding-block: 2rem;
+    border-top: 1px solid var(--border-color);
+    scroll-margin-top: 9rem;
+}
+.related-recipes-section > p {
+    color: var(--color-muted);
+}
 .collection-trigger {
-  position: absolute;
-  top: .75rem;
-  right: .75rem;
-  width: 3rem;
-  height: 3rem;
-  border: 0;
-  --buttons-border-radius: 50%;
-  box-shadow: 0 3px 16px #20292320;
-  --buttons-font-size: 1.8rem;
-  display: grid;
-  place-items: center;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    --buttons-border-radius: 50%;
+    box-shadow: 0 3px 16px #20292320;
+    --buttons-font-size: 1.8rem;
+    display: grid;
+    place-items: center;
 }
 
-.collection-dialog { width: min(28rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); margin: auto; padding: 1.5rem; border: 0; border-radius: 1rem; background: var(--card-background-color); color: var(--color); box-shadow: 0 1.5rem 5rem #20292333; }
-.collection-dialog::backdrop { background: #20292380; }
-.collection-dialog-heading { display: flex; gap: 1rem; }
-.collection-dialog-heading h2 { margin: 0; font-size: 1.5rem; }
-.collection-close { width: 2.75rem; height: 2.75rem; border: 0; --buttons-background-color: transparent; --buttons-color: var(--color); --buttons-font-size: 1.6rem; }
-.collection-recipe-name, .collection-picker-hint { color: var(--color-muted); margin: .5rem 0 1rem; }
-.collection-choices { gap: .5rem; max-height: 40dvh; }
+.collection-dialog {
+    width: min(28rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 1.5rem;
+    border: 0;
+    border-radius: 1rem;
+    background: var(--card-background-color);
+    color: var(--color);
+    box-shadow: 0 1.5rem 5rem #20292333;
+}
+.collection-dialog::backdrop {
+    background: #20292380;
+}
+.collection-dialog-heading {
+    display: flex;
+    gap: 1rem;
+}
+.collection-dialog-heading h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.collection-close {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    --buttons-background-color: transparent;
+    --buttons-color: var(--color);
+    --buttons-font-size: 1.6rem;
+}
+.collection-recipe-name,
+.collection-picker-hint {
+    color: var(--color-muted);
+    margin: 0.5rem 0 1rem;
+}
+.collection-choices {
+    gap: 0.5rem;
+    max-height: 40dvh;
+}
 .collection-choice {
-  --buttons-color-hover: var(--color);
-  --buttons-background-color-hover: #eff2e7;
-  gap: .75rem;
-  --buttons-padding-block: .9rem;
-  --buttons-padding-inline: 1rem;
-  border: 1px solid var(--border-color);
-  --buttons-border-radius: .75rem;
-  --buttons-background-color: transparent;
-  --buttons-color: var(--color);
+    --buttons-color-hover: var(--color);
+    --buttons-background-color-hover: #eff2e7;
+    gap: 0.75rem;
+    --buttons-padding-block: 0.9rem;
+    --buttons-padding-inline: 1rem;
+    border: 1px solid var(--border-color);
+    --buttons-border-radius: 0.75rem;
+    --buttons-background-color: transparent;
+    --buttons-color: var(--color);
 }
 
-.collection-choice small { margin-left: auto; color: var(--color-muted); }
-.collection-choice[aria-pressed=true] { --buttons-background-color: #eff2e7; --buttons-background-color-hover: #eff2e7; border-color: var(--primary-color); }
-.collection-choice-indicator { min-width: 1.25rem; font-weight: 600; }
-.collection-create { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
-.collection-create summary { cursor: pointer; font-weight: 600; }
-.collection-create form { margin-top: 1rem; }
-.collection-dialog [role=status] { margin: 1rem 0 0; font-size: .9rem; }
+.collection-choice small {
+    margin-left: auto;
+    color: var(--color-muted);
+}
+.collection-choice[aria-pressed="true"] {
+    --buttons-background-color: #eff2e7;
+    --buttons-background-color-hover: #eff2e7;
+    border-color: var(--primary-color);
+}
+.collection-choice-indicator {
+    min-width: 1.25rem;
+    font-weight: 600;
+}
+.collection-create {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+.collection-create summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+.collection-create form {
+    margin-top: 1rem;
+}
+.collection-dialog [role="status"] {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+}
 @media (max-width: 55rem) {
-  .detail-hero { gap: 2rem; }
-  .detail-page .mixing-layout { gap: 1.5rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+    .detail-hero {
+        gap: 2rem;
+    }
+    .detail-page .mixing-layout {
+        gap: 1.5rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
 }
 @media (max-width: 45rem) {
-  .detail-hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-  .detail-hero h1 { font-size: 2rem; }
-  .detail-visual .recipe-photo { max-height: 20rem; }
-  .detail-page .mixing-layout, .cocktail-background { grid-template-columns: minmax(0, 1fr); }
-  .detail-page .recipe-panel { padding: 1.25rem; scroll-margin-top: 11rem; }
-  .detail-nav { gap: .25rem 1rem; }
-  .detail-nav a { font-size: .875rem; }
-  .cocktail-background, .related-recipes-section { scroll-margin-top: 11rem; }
+    .detail-hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+    .detail-hero h1 {
+        font-size: 2rem;
+    }
+    .detail-visual .recipe-photo {
+        max-height: 20rem;
+    }
+    .detail-page .mixing-layout,
+    .cocktail-background {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .detail-page .recipe-panel {
+        padding: 1.25rem;
+        scroll-margin-top: 11rem;
+    }
+    .detail-nav {
+        gap: 0.25rem 1rem;
+    }
+    .detail-nav a {
+        font-size: 0.875rem;
+    }
+    .cocktail-background,
+    .related-recipes-section {
+        scroll-margin-top: 11rem;
+    }
 }
 @media print {
-  .site-header, .site-footer, .detail-nav, .detail-actions, .collection-trigger, .checklist-status, .preparation-back, .ingredients-footer, .recipe-actions { display: none; }
-  .detail-page .mixing-layout { display: block; }
-  .detail-page .recipe-panel { border: 0; padding: 0; margin-bottom: 2rem; }
-  .detail-visual { display: none; }
-  .recipe-hero { display: block; }
+    .site-header,
+    .site-footer,
+    .detail-nav,
+    .detail-actions,
+    .collection-trigger,
+    .checklist-status,
+    .preparation-back,
+    .ingredients-footer,
+    .recipe-actions {
+        display: none;
+    }
+    .detail-page .mixing-layout {
+        display: block;
+    }
+    .detail-page .recipe-panel {
+        border: 0;
+        padding: 0;
+        margin-bottom: 2rem;
+    }
+    .detail-visual {
+        display: none;
+    }
+    .recipe-hero {
+        display: block;
+    }
 }
 
 /* Image actions stay legible on both light and dark photos. */
-.recipe-star { position: absolute; top: .75rem; left: .75rem; z-index: 1; max-width: calc(100% - 1.5rem); }
-.recipe-star form { margin: 0; }
+.recipe-star {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1;
+    max-width: calc(100% - 1.5rem);
+}
+.recipe-star form {
+    margin: 0;
+}
 .recipe-star-button {
-  gap: .5rem;
-  min-height: 2.9rem;
-  --font-weight: 600;
-  --line-height: 1.2;
+    gap: 0.5rem;
+    min-height: 2.9rem;
+    --font-weight: 600;
+    --line-height: 1.2;
 }
 
-.recipe-star-button[aria-pressed="true"] { --buttons-color: var(--primary-color); --buttons-color-hover: var(--primary-color); }
-.recipe-star-button[aria-pressed="true"] svg { fill: currentColor; }
-.recipe-star-button svg { flex: 0 0 1.25rem; }
-.recipe-star-count { font-variant-numeric: tabular-nums; }
-.recipe-star-button:disabled { opacity: .65; cursor: wait; }
-@media print { .recipe-star { display: none; } }
+.recipe-star-button[aria-pressed="true"] {
+    --buttons-color: var(--primary-color);
+    --buttons-color-hover: var(--primary-color);
+}
+.recipe-star-button[aria-pressed="true"] svg {
+    fill: currentColor;
+}
+.recipe-star-button svg {
+    flex: 0 0 1.25rem;
+}
+.recipe-star-count {
+    font-variant-numeric: tabular-nums;
+}
+.recipe-star-button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+@media print {
+    .recipe-star {
+        display: none;
+    }
+}
 
-.recipe-star-status:not(.visually-hidden) { display: block; max-width: 28ch; margin-top: .5rem; padding: .5rem .75rem; border-radius: .7rem; background: var(--card-background-color); color: var(--color); font-size: .9rem; }
+.recipe-star-status:not(.visually-hidden) {
+    display: block;
+    max-width: 28ch;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.7rem;
+    background: var(--card-background-color);
+    color: var(--color);
+    font-size: 0.9rem;
+}
 
-.recipe-techniques { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
-.recipe-techniques h3 { margin: 0 0 .5rem; font-size: 1.125rem; }
-.recipe-techniques > p { margin: 0 0 1rem; color: var(--color-muted); font-size: .9375rem; }
-.technique-links { gap: .5rem; list-style: none; }
-.technique-links > li { margin: 0; padding: 0; }
-.technique-link { min-height: 2.75rem; padding: .5rem 1rem; border: 1px solid var(--border-color); border-radius: 3rem; color: var(--primary-color); font-weight: 600; text-underline-offset: .2em; }
-.technique-link:hover { background: var(--checked-color, #eff2e7); }
-.technique-dialog { width: min(36rem, calc(100vw - 2rem)); overscroll-behavior: contain; }
-.technique-dialog-heading { display: flex; gap: 1rem; margin-bottom: 1rem; }
-.technique-dialog-heading h2 { overflow-wrap: anywhere; }
+.recipe-techniques {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.recipe-techniques h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
+}
+.recipe-techniques > p {
+    margin: 0 0 1rem;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+}
+.technique-links {
+    gap: 0.5rem;
+    list-style: none;
+}
+.technique-links > li {
+    margin: 0;
+    padding: 0;
+}
+.technique-link {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+}
+.technique-link:hover {
+    background: var(--checked-color, #eff2e7);
+}
+.technique-dialog {
+    width: min(36rem, calc(100vw - 2rem));
+    overscroll-behavior: contain;
+}
+.technique-dialog-heading {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.technique-dialog-heading h2 {
+    overflow-wrap: anywhere;
+}
 .technique-close {
-  --buttons-color-hover: var(--color);
-  --buttons-background-color-hover: var(--checked-color, #eff2e7);
-  flex: 0 0 auto;
-  width: auto;
-  min-height: 2.75rem;
-  --buttons-padding-block: .5rem;
-  --buttons-padding-inline: .875rem;
-  border: 1px solid var(--border-color);
-  --buttons-background-color: transparent;
-  --buttons-color: var(--color);
-  --buttons-font-size: .9375rem;
+    --buttons-color-hover: var(--color);
+    --buttons-background-color-hover: var(--checked-color, #eff2e7);
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 2.75rem;
+    --buttons-padding-block: 0.5rem;
+    --buttons-padding-inline: 0.875rem;
+    border: 1px solid var(--border-color);
+    --buttons-background-color: transparent;
+    --buttons-color: var(--color);
+    --buttons-font-size: 0.9375rem;
 }
 
-.technique-description { color: var(--color-muted); }
-.technique-instructions h3, .technique-tip h3 { font-size: 1.125rem; margin: 1.5rem 0 .5rem; }
-.technique-instructions p, .technique-tip p { margin: 0; overflow-wrap: anywhere; }
-.technique-tip { border-top: 1px solid var(--border-color); margin-top: 1.5rem; }
-.technique-page { max-width: 65ch; margin: 1rem auto 3rem; }
-.technique-page h1 { margin-top: 1rem; }
-.technique-options { border: 0; }
-.technique-options legend { margin-bottom: .5rem; font-weight: 600; }
-.technique-options > p { margin: 0 0 1rem; color: var(--color-muted); font-size: .9375rem; }
-.technique-options-list { --auto-grid-type: auto-fit; --auto-grid-min-column: 12rem; --auto-grid-gap: .25rem .75rem; }
-.technique-options-list label { display: flex; align-items: center; gap: .5rem; min-height: 2.75rem; margin: 0; }
-.technique-options-list input[type=checkbox] { appearance: auto; flex: 0 0 auto; width: 1.25rem; height: 1.25rem; margin: 0; accent-color: var(--primary-color); }
-@media print { .technique-dialog { display: none; } }
-@media (prefers-reduced-motion: reduce) { .technique-dialog, .technique-dialog::backdrop { transition: none; } }
+.technique-description {
+    color: var(--color-muted);
+}
+.technique-instructions h3,
+.technique-tip h3 {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 0.5rem;
+}
+.technique-instructions p,
+.technique-tip p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+.technique-tip {
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+}
+.technique-page {
+    max-width: 65ch;
+    margin: 1rem auto 3rem;
+}
+.technique-page h1 {
+    margin-top: 1rem;
+}
+.technique-options {
+    border: 0;
+}
+.technique-options legend {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.technique-options > p {
+    margin: 0 0 1rem;
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+}
+.technique-options-list {
+    --auto-grid-type: auto-fit;
+    --auto-grid-min-column: 12rem;
+    --auto-grid-gap: 0.25rem 0.75rem;
+}
+.technique-options-list label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    margin: 0;
+}
+.technique-options-list input[type="checkbox"] {
+    appearance: auto;
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    accent-color: var(--primary-color);
+}
+@media print {
+    .technique-dialog {
+        display: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .technique-dialog,
+    .technique-dialog::backdrop {
+        transition: none;
+    }
+}
 
 /* Recipe details start at the workbench; context follows the instructions. */
-.mixing-header { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem 1.5rem; margin-bottom: 2rem; }
-.mixing-header > div:first-child { flex: 1; min-width: 0; }
-.mixing-header h1 { font-size: 2.5rem; line-height: 1.12; letter-spacing: -.035em; margin: 0 0 .75rem; overflow-wrap: anywhere; text-wrap: balance; }
-.mixing-header .recipe-attribution { margin: 0; }
-.mixing-save-actions { display: flex; gap: .5rem; }
-.mixing-save-actions .recipe-star, .mixing-save-actions .collection-trigger { position: static; max-width: none; }
-.mixing-save-actions .collection-trigger { border: 1px solid var(--border-color); box-shadow: none; }
-.mixing-jumps { display: none; }
-.detail-page .mixing-recipe .recipe-panel { padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
-.mixing-recipe .preparation-heading { margin-bottom: 1rem; }
-.recipe-context { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); align-items: start; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
-.recipe-context h2 { font-size: 1.5rem; margin: 0 0 1rem; }
-.recipe-context p { color: var(--color-muted); max-width: 65ch; }
-.recipe-context .recipe-photo { aspect-ratio: 4 / 3; }
-@media (max-width: 45rem) {
-  .mixing-header { gap: 1rem; margin-bottom: 1.5rem; }
-  .mixing-header h1 { font-size: 2rem; }
-  .mixing-save-actions { flex-basis: auto; }
-  .mixing-jumps { display: flex; flex: 1; justify-content: flex-end; flex-wrap: wrap; gap: .25rem 1rem; }
-  .mixing-header > div:first-child { flex-basis: 100%; }
-  .mixing-jumps a { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; }
-  .recipe-context { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.mixing-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    margin-bottom: 2rem;
 }
-@media print { .mixing-save-actions, .mixing-jumps, .recipe-context { display: none; } }
+.mixing-header > div:first-child {
+    flex: 1;
+    min-width: 0;
+}
+.mixing-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    margin: 0 0 0.75rem;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+}
+.mixing-header .recipe-attribution {
+    margin: 0;
+}
+.mixing-save-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+.mixing-save-actions .recipe-star,
+.mixing-save-actions .collection-trigger {
+    position: static;
+    max-width: none;
+}
+.mixing-save-actions .collection-trigger {
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+.mixing-jumps {
+    display: none;
+}
+.detail-page .mixing-recipe .recipe-panel {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.mixing-recipe .preparation-heading {
+    margin-bottom: 1rem;
+}
+.recipe-context {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    align-items: start;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+.recipe-context h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+}
+.recipe-context p {
+    color: var(--color-muted);
+    max-width: 65ch;
+}
+.recipe-context .recipe-photo {
+    aspect-ratio: 4 / 3;
+}
+@media (max-width: 45rem) {
+    .mixing-header {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .mixing-header h1 {
+        font-size: 2rem;
+    }
+    .mixing-save-actions {
+        flex-basis: auto;
+    }
+    .mixing-jumps {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.25rem 1rem;
+    }
+    .mixing-header > div:first-child {
+        flex-basis: 100%;
+    }
+    .mixing-jumps a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        font-weight: 600;
+    }
+    .recipe-context {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+}
+@media print {
+    .mixing-save-actions,
+    .mixing-jumps,
+    .recipe-context {
+        display: none;
+    }
+}
 
-.mixing-recipe .ingredients-heading { margin-bottom: 1rem; }
-.detail-page .mixing-recipe .checklist li { border: 0; }
-.detail-page .mixing-recipe .checklist label { padding: .625rem 0; }
-.detail-page .mixing-recipe .checklist label:has(:checked) { background: transparent; }
-.mixing-recipe .ingredient-copy .quantity { font-size: 1.125rem; line-height: 1.6; }
-.mixing-recipe .checklist-status { justify-content: flex-start; margin: .5rem 0 0; }
-.mixing-recipe .recipe-panel:not(:has(input:checked)) .checklist-status { display: none; }
+.mixing-recipe .ingredients-heading {
+    margin-bottom: 1rem;
+}
+.detail-page .mixing-recipe .checklist li {
+    border: 0;
+}
+.detail-page .mixing-recipe .checklist label {
+    padding: 0.625rem 0;
+}
+.detail-page .mixing-recipe .checklist label:has(:checked) {
+    background: transparent;
+}
+.mixing-recipe .ingredient-copy .quantity {
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+.mixing-recipe .checklist-status {
+    justify-content: flex-start;
+    margin: 0.5rem 0 0;
+}
+.mixing-recipe .recipe-panel:not(:has(input:checked)) .checklist-status {
+    display: none;
+}
 
 /* The photograph fades into the reading surface before the mixing instructions. */
-.mixing-recipe { isolation: isolate; }
-.recipe-backdrop { position: absolute; z-index: -1; top: -2rem; right: 0; width: min(70%, 42rem); height: 24rem; object-fit: cover; object-position: center; opacity: .24; pointer-events: none; mask-image: linear-gradient(to right, transparent, #000 70%), linear-gradient(to bottom, #000, transparent 95%); mask-composite: intersect; }
-.cocktail-panel-open { overflow: hidden; }
-.cocktail-panel { inset: 0 0 0 auto; width: min(48rem, 100%); height: 100dvh; max-height: 100dvh; border: 0; border-radius: 0; background: var(--background-color); color: var(--color); box-shadow: -1rem 0 4rem #20292326; }
-.cocktail-panel[open] { display: flex; flex-direction: column; animation: cocktail-panel-enter 220ms ease-out; }
-.cocktail-panel::backdrop { background: #20292366; }
-.cocktail-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color); }
-.cocktail-panel-heading h2 { font-size: 1.25rem; margin: 0; overflow-wrap: anywhere; }
-.cocktail-panel iframe { flex: 1; min-height: 0; width: 100%; border: 0; }
-.cocktail-panel-page-link { display: block; padding: .75rem 1.5rem; border-top: 1px solid var(--border-color); }
-.cocktail-panel-content .site-header, .cocktail-panel-content .site-footer { display: none; }
-.cocktail-panel-content .detail-hero { grid-template-columns: 1fr; }
-@keyframes cocktail-panel-enter { from { transform: translateX(100%); } to { transform: translateX(0); } }
-@media (max-width: 45rem) { .recipe-backdrop { width: 100%; height: 18rem; opacity: .18; } }
-@media (prefers-reduced-motion: reduce) { .cocktail-panel[open] { animation: none; } }
-@media print { .recipe-backdrop, .cocktail-panel { display: none; } }
+.mixing-recipe {
+    isolation: isolate;
+}
+.recipe-backdrop {
+    position: absolute;
+    z-index: -1;
+    top: -2rem;
+    right: 0;
+    width: min(70%, 42rem);
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.24;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(to right, transparent, #000 70%),
+        linear-gradient(to bottom, #000, transparent 95%);
+    mask-composite: intersect;
+}
+.cocktail-panel-open {
+    overflow: hidden;
+}
+.cocktail-panel {
+    inset: 0 0 0 auto;
+    width: min(48rem, 100%);
+    height: 100dvh;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    background: var(--background-color);
+    color: var(--color);
+    box-shadow: -1rem 0 4rem #20292326;
+}
+.cocktail-panel[open] {
+    display: flex;
+    flex-direction: column;
+    animation: cocktail-panel-enter 220ms ease-out;
+}
+.cocktail-panel::backdrop {
+    background: #20292366;
+}
+.cocktail-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.cocktail-panel-heading h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+.cocktail-panel iframe {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    border: 0;
+}
+.cocktail-panel-page-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.cocktail-panel-content .site-header,
+.cocktail-panel-content .site-footer {
+    display: none;
+}
+.cocktail-panel-content .detail-hero {
+    grid-template-columns: 1fr;
+}
+@keyframes cocktail-panel-enter {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@media (max-width: 45rem) {
+    .recipe-backdrop {
+        width: 100%;
+        height: 18rem;
+        opacity: 0.18;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cocktail-panel[open] {
+        animation: none;
+    }
+}
+@media print {
+    .recipe-backdrop,
+    .cocktail-panel {
+        display: none;
+    }
+}
 
 /* Canonical cocktails lead with the drink; the story follows on ivory. */
-.cocktail-cover { isolation: isolate; min-height: 24rem; padding: clamp(1.5rem, 5vw, 4rem); border-radius: 1rem; background: #e9ecd9; }
-.cocktail-cover-with-photo { min-height: clamp(30rem, 55vw, 40rem); background: #202923; color: #fffef9; }
-.cocktail-cover-photo { inset: 0; z-index: -2; object-position: center 45%; }
-.cocktail-cover-with-photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, #10180f00 15%, #10180f45 35%, #10180fd6 65%, #10180ff2 100%); }
-.cocktail-cover-copy { max-width: 46rem; }
-.cocktail-cover h1 { margin: 0 0 1rem; color: inherit; font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -.035em; text-wrap: balance; overflow-wrap: anywhere; }
-.cocktail-cover-description { color: inherit; max-width: 48ch; font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.6; overflow-wrap: anywhere; }
-.cocktail-cover-meta { color: inherit; margin: 1.5rem 0 0; font-size: .9375rem; font-weight: 600; }
-.cocktail-page .cocktail-background { margin-top: 2.5rem; }
-.cocktail-page .background-story { grid-column: 1 / -1; width: 100%; }
-.cocktail-page .detail-disclosure + .detail-disclosure { margin-top: 1rem; }
-.cocktail-panel-content .cocktail-cover { min-height: 28rem; padding: 2rem; }
-.cocktail-panel-content .cocktail-cover h1 { font-size: 3rem; }
+.cocktail-cover {
+    isolation: isolate;
+    min-height: 24rem;
+    padding: clamp(1.5rem, 5vw, 4rem);
+    border-radius: 1rem;
+    background: #e9ecd9;
+}
+.cocktail-cover-with-photo {
+    min-height: clamp(30rem, 55vw, 40rem);
+    background: #202923;
+    color: #fffef9;
+}
+.cocktail-cover-photo {
+    inset: 0;
+    z-index: -2;
+    object-position: center 45%;
+}
+.cocktail-cover-with-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        to bottom,
+        #10180f00 15%,
+        #10180f45 35%,
+        #10180fd6 65%,
+        #10180ff2 100%
+    );
+}
+.cocktail-cover-copy {
+    max-width: 46rem;
+}
+.cocktail-cover h1 {
+    margin: 0 0 1rem;
+    color: inherit;
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+.cocktail-cover-description {
+    color: inherit;
+    max-width: 48ch;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+.cocktail-cover-meta {
+    color: inherit;
+    margin: 1.5rem 0 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+.cocktail-page .cocktail-background {
+    margin-top: 2.5rem;
+}
+.cocktail-page .background-story {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+.cocktail-page .detail-disclosure + .detail-disclosure {
+    margin-top: 1rem;
+}
+.cocktail-panel-content .cocktail-cover {
+    min-height: 28rem;
+    padding: 2rem;
+}
+.cocktail-panel-content .cocktail-cover h1 {
+    font-size: 3rem;
+}
 @media (max-width: 45rem) {
-  .cocktail-cover { min-height: 20rem; padding: 1.5rem; }
-  .cocktail-cover-with-photo { min-height: 32rem; }
-  .cocktail-cover-photo { object-position: center top; }
-  .cocktail-cover-with-photo::before { background: linear-gradient(to bottom, #10180f00, #10180f45 30%, #10180fd6 60%, #10180ff2 100%); }
-  .cocktail-page .cocktail-background { margin-top: 2rem; }
+    .cocktail-cover {
+        min-height: 20rem;
+        padding: 1.5rem;
+    }
+    .cocktail-cover-with-photo {
+        min-height: 32rem;
+    }
+    .cocktail-cover-photo {
+        object-position: center top;
+    }
+    .cocktail-cover-with-photo::before {
+        background: linear-gradient(
+            to bottom,
+            #10180f00,
+            #10180f45 30%,
+            #10180fd6 60%,
+            #10180ff2 100%
+        );
+    }
+    .cocktail-page .cocktail-background {
+        margin-top: 2rem;
+    }
 }
 @media print {
-  .cocktail-cover { min-height: 0; padding: 0; background: transparent; color: #202923; }
-  .cocktail-cover-photo, .cocktail-cover-with-photo::before { display: none; }
+    .cocktail-cover {
+        min-height: 0;
+        padding: 0;
+        background: transparent;
+        color: #202923;
+    }
+    .cocktail-cover-photo,
+    .cocktail-cover-with-photo::before {
+        display: none;
+    }
 }
 
-.cocktail-history + .cocktail-sources { margin-top: 2rem; }
-.cocktail-background .cocktail-history h2, .cocktail-background .cocktail-sources h2 { margin-bottom: 1rem; }
-.cocktail-background .submitted-prose, .cocktail-sources p { max-width: none; overflow-wrap: anywhere; }
-.cocktail-background > .detail-text-link { grid-column: 1 / -1; justify-self: start; }
+.cocktail-history + .cocktail-sources {
+    margin-top: 2rem;
+}
+.cocktail-background .cocktail-history h2,
+.cocktail-background .cocktail-sources h2 {
+    margin-bottom: 1rem;
+}
+.cocktail-background .submitted-prose,
+.cocktail-sources p {
+    max-width: none;
+    overflow-wrap: anywhere;
+}
+.cocktail-background > .detail-text-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
 
-.cocktail-cover-back { --buttons-padding-block: .5rem; --buttons-padding-inline: 1rem; --buttons-font-size: .9375rem; --font-weight: 600; top: 1.5rem; left: 1.5rem; gap: .5rem; min-height: 2.75rem; }
-.cocktail-cover-back:hover { text-decoration: underline; }
-.cocktail-cover-copy { padding-top: 0; }
-@media print { .cocktail-cover-back { display: none; } .cocktail-cover-copy { padding-top: 0; } }
+.cocktail-cover-back {
+    --buttons-padding-block: 0.5rem;
+    --buttons-padding-inline: 1rem;
+    --buttons-font-size: 0.9375rem;
+    --font-weight: 600;
+    top: 1.5rem;
+    left: 1.5rem;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+}
+.cocktail-cover-back:hover {
+    text-decoration: underline;
+}
+.cocktail-cover-copy {
+    padding-top: 0;
+}
+@media print {
+    .cocktail-cover-back {
+        display: none;
+    }
+    .cocktail-cover-copy {
+        padding-top: 0;
+    }
+}
 
 /* Let the cover fill the window and dissolve into the reading surface. */
-.cocktail-journal { container-type: inline-size; }
-.cocktail-journal .page-shell { padding-top: 0; }
+.cocktail-journal {
+    container-type: inline-size;
+}
+.cocktail-journal .page-shell {
+    padding-top: 0;
+}
 .cocktail-page .cocktail-cover {
-  width: 100cqw;
-  margin-inline: calc(50% - 50cqw);
-  border-radius: 0;
-  padding-inline: max(1.5rem, calc((100cqw - 72rem) / 2));
-  padding-block: 10rem 2rem;
+    width: 100cqw;
+    margin-inline: calc(50% - 50cqw);
+    border-radius: 0;
+    padding-inline: max(1.5rem, calc((100cqw - 72rem) / 2));
+    padding-block: 10rem 2rem;
 }
-.cocktail-page .cocktail-cover-with-photo { min-height: clamp(26rem, 62svh, 34rem); }
+.cocktail-page .cocktail-cover-with-photo {
+    min-height: clamp(26rem, 62svh, 34rem);
+}
 .cocktail-page .cocktail-cover-with-photo::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 9rem;
-  pointer-events: none;
-  background: linear-gradient(to bottom, #f7f5ee00, var(--background-color));
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 9rem;
+    pointer-events: none;
+    background: linear-gradient(to bottom, #f7f5ee00, var(--background-color));
 }
-.cocktail-page .cocktail-cover-back { left: max(1.5rem, calc((100cqw - 72rem) / 2)); top: 1.5rem; }
-.cocktail-page .cocktail-background { margin-top: 0; border-top: 0; padding-top: 1rem; }
+.cocktail-page .cocktail-cover-back {
+    left: max(1.5rem, calc((100cqw - 72rem) / 2));
+    top: 1.5rem;
+}
+.cocktail-page .cocktail-background {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 1rem;
+}
 @media (max-width: 45rem) {
-  .cocktail-page .cocktail-cover { padding-inline: 1rem; padding-block: 12rem 2rem; }
-  .cocktail-page .cocktail-cover-with-photo { min-height: 28rem; }
-  .cocktail-page .cocktail-cover-with-photo::after { height: 7rem; }
-  .cocktail-page .cocktail-cover-back { left: 1rem; }
+    .cocktail-page .cocktail-cover {
+        padding-inline: 1rem;
+        padding-block: 12rem 2rem;
+    }
+    .cocktail-page .cocktail-cover-with-photo {
+        min-height: 28rem;
+    }
+    .cocktail-page .cocktail-cover-with-photo::after {
+        height: 7rem;
+    }
+    .cocktail-page .cocktail-cover-back {
+        left: 1rem;
+    }
 }
 @media print {
-  .cocktail-page .cocktail-cover { width: auto; margin: 0; min-height: 0; padding: 0; }
-  .cocktail-page .cocktail-cover-with-photo::after { display: none; }
+    .cocktail-page .cocktail-cover {
+        width: auto;
+        margin: 0;
+        min-height: 0;
+        padding: 0;
+    }
+    .cocktail-page .cocktail-cover-with-photo::after {
+        display: none;
+    }
 }
 
 /* Carry the photograph into ivory rather than through a dark band. */
-.cocktail-page .cocktail-cover-with-photo { background: var(--background-color); color: var(--color); }
+.cocktail-page .cocktail-cover-with-photo {
+    background: var(--background-color);
+    color: var(--color);
+}
 .cocktail-page .cocktail-cover-with-photo::before {
-  background: linear-gradient(to bottom, #f7f5ee00 12%, #f7f5ee0d 28%, #f7f5eea6 48%, #f7f5eef5 68%, var(--background-color) 94%);
+    background: linear-gradient(
+        to bottom,
+        #f7f5ee00 12%,
+        #f7f5ee0d 28%,
+        #f7f5eea6 48%,
+        #f7f5eef5 68%,
+        var(--background-color) 94%
+    );
 }
-.cocktail-page .cocktail-cover-with-photo::after { display: none; }
-.cocktail-page .cocktail-cover { padding-bottom: 2rem; }
+.cocktail-page .cocktail-cover-with-photo::after {
+    display: none;
+}
+.cocktail-page .cocktail-cover {
+    padding-bottom: 2rem;
+}
 @media (max-width: 45rem) {
-  .cocktail-page .cocktail-cover-with-photo::before {
-    background: linear-gradient(to bottom, #f7f5ee00 12%, #f7f5ee26 28%, #f7f5eec9 46%, #f7f5eef7 64%, var(--background-color) 94%);
-  }
-  .cocktail-page .cocktail-cover { padding-bottom: 2rem; }
+    .cocktail-page .cocktail-cover-with-photo::before {
+        background: linear-gradient(
+            to bottom,
+            #f7f5ee00 12%,
+            #f7f5ee26 28%,
+            #f7f5eec9 46%,
+            #f7f5eef7 64%,
+            var(--background-color) 94%
+        );
+    }
+    .cocktail-page .cocktail-cover {
+        padding-bottom: 2rem;
+    }
 }
-@media print { .cocktail-page .cocktail-cover { padding-bottom: 0; } }
+@media print {
+    .cocktail-page .cocktail-cover {
+        padding-bottom: 0;
+    }
+}
 
 /* Panel controls float over the cover without taking space from the page. */
-.cocktail-panel-actions { z-index: 2; top: 1.5rem; right: 1.5rem; gap: .5rem; }
-.cocktail-panel-actions > a, .cocktail-panel-actions > button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; min-height: 2.75rem; padding: 0; margin: 0; --buttons-border-radius: 50%; text-decoration: none; }
-.cocktail-panel-content .cocktail-cover-back { display: none; }
-@media (max-width: 45rem) { .cocktail-panel-actions { right: 1rem; } }
+.cocktail-panel-actions {
+    z-index: 2;
+    top: 1.5rem;
+    right: 1.5rem;
+    gap: 0.5rem;
+}
+.cocktail-panel-actions > a,
+.cocktail-panel-actions > button {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    margin: 0;
+    --buttons-border-radius: 50%;
+    text-decoration: none;
+}
+.cocktail-panel-content .cocktail-cover-back {
+    display: none;
+}
+@media (max-width: 45rem) {
+    .cocktail-panel-actions {
+        right: 1rem;
+    }
+}
 
 /* Recipes share the photo-led cover while keeping the workbench close. */
-.recipe-cover .cocktail-cover-copy { max-width: 58rem; }
-.recipe-cover h1 { font-size: clamp(2.25rem, 4.5vw, 4rem); }
-.recipe-cover .recipe-attribution { color: var(--color); margin: 0 0 1rem; font-size: 1rem; }
-.recipe-cover .recipe-attribution a { color: var(--primary-color); font-weight: 600; }
-.recipe-detail-page .mixing-layout { padding-top: 1rem; }
+.recipe-cover .cocktail-cover-copy {
+    max-width: 58rem;
+}
+.recipe-cover h1 {
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+}
+.recipe-cover .recipe-attribution {
+    color: var(--color);
+    margin: 0 0 1rem;
+    font-size: 1rem;
+}
+.recipe-cover .recipe-attribution a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.recipe-detail-page .mixing-layout {
+    padding-top: 1rem;
+}
 
-.recipe-cover-save-actions { top: 1.5rem; right: max(1.5rem, calc((100cqw - 72rem) / 2)); }
-@media (max-width: 45rem) { .recipe-cover-save-actions { right: 1rem; } }
-@media print { .recipe-cover-save-actions { display: none; } }
+.recipe-cover-save-actions {
+    top: 1.5rem;
+    right: max(1.5rem, calc((100cqw - 72rem) / 2));
+}
+@media (max-width: 45rem) {
+    .recipe-cover-save-actions {
+        right: 1rem;
+    }
+}
+@media print {
+    .recipe-cover-save-actions {
+        display: none;
+    }
+}
 
 /* Step numbers are the visible controls; native checkboxes retain keyboard behavior. */
-.preparation-steps { list-style: none; }
-.preparation-steps > li { padding: 0; }
-.preparation-step { grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem; align-items: start; padding-block: .625rem; cursor: pointer; }
-.preparation-step-number { place-items: center; min-height: 2rem; color: var(--color-muted); font-size: 1.125rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-.preparation-step:hover .preparation-step-number { background: #e9ecd9; color: var(--primary-color); }
-.preparation-step:has(:focus-visible) { outline: 3px solid var(--primary-outline-color); outline-offset: 4px; border-radius: .25rem; }
-.preparation-step:has(:checked) .preparation-step-number { background: var(--primary-color); color: var(--card-background-color); }
-.preparation-step:has(:checked) .step-body { text-decoration: line-through; text-decoration-thickness: 1px; }
-
-.cocktail-panel .cocktail-panel-actions .cocktail-panel-external:hover { background: var(--card-background-color); }
-
-.profile-panel-content .page-shell { padding-top: 5.5rem; }
-
-.recipe-grid .card-media > .recipe-star { left: auto; right: .75rem; }
-.recipe-grid .card-media .recipe-star-button {
-  --secondary-background-color: rgb(255 254 248 / .5);
-  --secondary-background-color-hover: rgb(255 254 248);
-  --buttons-color: var(--color);
-  --buttons-color-hover: var(--color);
-  border-color: transparent;
+.preparation-steps {
+    list-style: none;
 }
-.recipe-grid .card-media .recipe-star-button svg { filter: none; }
+.preparation-steps > li {
+    padding: 0;
+}
+.preparation-step {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.5rem;
+    align-items: start;
+    padding-block: 0.625rem;
+    cursor: pointer;
+}
+.preparation-step-number {
+    place-items: center;
+    min-height: 2rem;
+    color: var(--color-muted);
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.preparation-step:hover .preparation-step-number {
+    background: #e9ecd9;
+    color: var(--primary-color);
+}
+.preparation-step:has(:focus-visible) {
+    outline: 3px solid var(--primary-outline-color);
+    outline-offset: 4px;
+    border-radius: 0.25rem;
+}
+.preparation-step:has(:checked) .preparation-step-number {
+    background: var(--primary-color);
+    color: var(--card-background-color);
+}
+.preparation-step:has(:checked) .step-body {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
 
-.recipe-grid .card-media .recipe-star-button:focus-visible { outline-color: #fffef9; }
+.cocktail-panel .cocktail-panel-actions .cocktail-panel-external:hover {
+    background: var(--card-background-color);
+}
 
-.recipe-reference-grid { --auto-grid-type: auto-fit; --auto-grid-min-column: 20rem; --auto-grid-gap: 2rem; margin-top: 1rem; }
-.recipe-reference-grid > .recipe-techniques { margin: 0; padding: 0; border: 0; }
-.recipe-reference-grid .recipe-source h2, .recipe-reference-grid .recipe-techniques h3 { margin: 0 0 .75rem; font-size: 1.125rem; }
-.recipe-reference-grid p { overflow-wrap: anywhere; }
+.profile-panel-content .page-shell {
+    padding-top: 5.5rem;
+}
 
-.detail-page .recipe-footer { display: block; }
-.recipe-reference-grid + .recipe-actions:not(:empty) { margin-top: 1.5rem; }
+.recipe-grid .card-media > .recipe-star {
+    left: auto;
+    right: 0.75rem;
+}
+.recipe-grid .card-media .recipe-star-button {
+    --secondary-background-color: rgb(255 254 248 / 0.5);
+    --secondary-background-color-hover: rgb(255 254 248);
+    --buttons-color: var(--color);
+    --buttons-color-hover: var(--color);
+    border-color: transparent;
+}
+.recipe-grid .card-media .recipe-star-button svg {
+    filter: none;
+}
+
+.recipe-grid .card-media .recipe-star-button:focus-visible {
+    outline-color: #fffef9;
+}
+
+.recipe-reference-grid {
+    --auto-grid-type: auto-fit;
+    --auto-grid-min-column: 20rem;
+    --auto-grid-gap: 2rem;
+    margin-top: 1rem;
+}
+.recipe-reference-grid > .recipe-techniques {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.recipe-reference-grid .recipe-source h2,
+.recipe-reference-grid .recipe-techniques h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.125rem;
+}
+.recipe-reference-grid p {
+    overflow-wrap: anywhere;
+}
+
+.detail-page .recipe-footer {
+    display: block;
+}
+.recipe-reference-grid + .recipe-actions:not(:empty) {
+    margin-top: 1.5rem;
+}
+
+/* The shared cover sets the scene; each drink keeps its own portrait. */
+.cocktail-page .cocktail-identity-cover {
+    padding-top: 7rem;
+}
+.cocktail-identity-content {
+    display: grid;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    width: 100%;
+}
+.cocktail-identity-with-image {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+.cocktail-identity-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 26rem;
+    object-fit: contain;
+}
+.cocktail-page .cocktail-identity-cover::before {
+    background: linear-gradient(
+        to bottom,
+        #f7f5ee80,
+        #f7f5eed9 45%,
+        var(--background-color) 98%
+    );
+}
+@media (max-width: 45rem) {
+    .cocktail-identity-with-image {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .cocktail-identity-image {
+        max-height: 18rem;
+    }
+}
+@media print {
+    .cocktail-page .cocktail-identity-cover {
+        padding-top: 0;
+    }
+    .cocktail-identity-image {
+        display: none;
+    }
+    .cocktail-identity-with-image {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cocktail Flow composition: a shallow cover with an overlapping portrait. */
+.cocktail-details.cocktail-profile { max-width: none; }
+.cocktail-profile-hero {
+    background-image: linear-gradient(to bottom, #20292305 20%, #202923b3 100%), var(--profile-cover, url("covers/cocktails.jpg"));
+    background-position: center 45%;
+    background-size: cover;
+    padding-block: 1.5rem 0;
+    position: relative;
+}
+.cocktail-profile-hero .cocktail-cover-back { justify-self: start; position: static; margin: 0; }
+.cocktail-profile-intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; min-height: 16rem; gap: 3rem; }
+.cocktail-profile-with-image { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); }
+.cocktail-profile-with-image .cocktail-profile-copy { grid-column: 2; }
+.cocktail-profile-copy { padding-block: 3rem 2.5rem; color: #fffef9; min-width: 0; }
+.cocktail-profile-copy h1 { color: inherit; font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 500; line-height: 1.12; margin: 0 0 .75rem; overflow-wrap: anywhere; }
+.cocktail-profile-copy p { color: inherit; font-size: 1.0625rem; line-height: 1.6; max-width: 52ch; margin: 0; }
+.cocktail-profile-image { position: absolute; top: 1rem; left: 0; display: block; object-fit: contain; width: calc((100% - 3rem) / 3.5); height: 24rem; z-index: 1; }
+.cocktail-profile .cocktail-background { display: block; border: 0; margin: 0; padding-block: 4rem 2rem; min-height: 24rem; }
+.cocktail-profile:has(.cocktail-profile-image) .cocktail-background { padding-left: calc((100% - 3rem) / 3.5 + 3rem); }
+.cocktail-profile .background-story { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+.cocktail-profile .cocktail-history, .cocktail-profile .cocktail-sources { margin: 0; }
+.cocktail-profile .cocktail-background h2 { text-align: left; font-size: 1.75rem; font-weight: 600; letter-spacing: -.025em; text-transform: none; margin-bottom: .875rem; color: var(--color); }
+.cocktail-profile .cocktail-sources { border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+.cocktail-profile .cocktail-sources h2 { font-size: 1.125rem; }
+.cocktail-profile .cocktail-sources p { font-size: .9375rem; color: var(--color-muted); }
+.cocktail-profile .cocktail-history p { font-size: 1.125rem; max-width: 65ch; }
+.cocktail-profile .cocktail-background p { margin-block: 0 1rem; line-height: 1.75; }
+@media (max-width: 45rem) {
+    .cocktail-profile-intro, .cocktail-profile-with-image { grid-template-columns: 1fr; min-height: 15rem; gap: 0; }
+    .cocktail-profile-with-image .cocktail-profile-copy { grid-column: 1; }
+    .cocktail-profile-copy { padding-block: 2rem 5rem; }
+    .cocktail-profile-copy h1 { font-size: 2.25rem; }
+    .cocktail-profile-copy p { font-size: 1rem; }
+    .cocktail-profile-image { width: 100%; max-width: 15rem; height: 16rem; top: calc(100% - 4rem); left: 50%; transform: translateX(-50%); }
+    .cocktail-profile:has(.cocktail-profile-image) .cocktail-background { padding-left: 0; padding-top: 14rem; }
+    .cocktail-profile .cocktail-background { padding-bottom: 1rem; }
+}
+@media print {
+    .cocktail-profile-hero { background: none; padding: 0; }
+    .cocktail-profile-image { display: none; }
+    .cocktail-profile-intro { display: block; min-height: 0; }
+    .cocktail-profile-copy { color: var(--color); }
+    .cocktail-profile:has(.cocktail-profile-image) .cocktail-background { padding: 1rem 0; min-height: 0; }
+}
+
+/* Catalog and recipe details share the cocktail portrait and cover composition. */
+.ingredients-profile { --profile-cover: url("covers/ingredients.jpg"); }
+.utensils-profile { --profile-cover: url("covers/utensils.jpg"); }
+.recipe-profile { --profile-cover: url("covers/recipes.jpg"); }
+.detail-page.recipe-detail-page { max-width: none; margin: 0; }
+.recipe-profile .recipe-cover-save-actions { right: 1.5rem; z-index: 2; }
+.recipe-profile .recipe-attribution a { color: inherit; text-decoration: underline; }
+.recipe-profile .mixing-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2.5rem; padding-top: 4rem; min-height: 24rem; }
+.recipe-profile:has(.cocktail-profile-image) .mixing-layout,
+.recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: calc((100% - 3rem) / 2.65 + 3rem); }
+.recipe-profile .recipe-panel h2 { font-size: 1.75rem; margin-bottom: .875rem; }
+.recipe-profile .recipe-footer { margin-top: 2.5rem; }
+.catalog-resource-facts { margin: 0; max-width: 38rem; }
+.catalog-resource-facts > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; padding-block: .875rem; border-bottom: 1px solid var(--border-color); }
+.catalog-resource-facts dt { color: var(--color-muted); font-weight: 400; }
+.catalog-resource-facts dd { margin: 0; }
+@media (max-width: 45rem) {
+    .recipe-profile .recipe-cover-save-actions { right: 1rem; }
+    .recipe-profile:has(.cocktail-profile-image) .mixing-layout { padding-top: 18rem; margin-left: 0; }
+    .recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: 0; }
+}
+@media print {
+    .recipe-profile:has(.cocktail-profile-image) .mixing-layout,
+    .recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: 0; padding-top: 1rem; }
+}
+.detail-page.recipe-detail-page { display: contents; }
+.recipe-profile { container-type: inline-size; }
+.recipe-profile > .cocktail-profile-hero { width: 100cqw; margin-inline: calc((100% - 100cqw) / 2); }
+
+.cocktail-profile-hero .cocktail-cover-back svg { display: block; width: 18px; height: 18px; flex-shrink: 0; }
+
+.recipe-profile .ingredient-list { list-style: none; }
+.recipe-profile .ingredient-list > li { padding-block: .5rem; }
+.recipe-profile .ingredient-copy { gap: .25rem; }
+.recipe-profile .recipe-tools { margin-bottom: 2rem; }
+.recipe-profile .recipe-tools h2 { font-size: 1.125rem; margin: 0 0 .875rem; }
+.recipe-profile .recipe-tools .utensil-list { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; list-style: none; }
+.recipe-profile .recipe-tools .utensil-list li { padding: 0; color: var(--color-muted); font-size: .9375rem; }
+
+.recipe-ingredient-facts > .ingredient-copy { grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1rem; }
+.recipe-ingredient-facts dd { text-align: right; }
+.recipe-ingredient-facts .ingredient-notes { grid-column: 1 / -1; display: grid; text-align: left; color: var(--color-muted); }
+.recipe-profile .mixing-layout > section { min-width: 0; }
+@media (max-width: 65rem) {
+    .recipe-profile .mixing-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Recipes reserve more of the page for the working text. */
+.recipe-profile .cocktail-profile-with-image { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); }
+.recipe-profile .cocktail-profile-image { width: calc((100% - 3rem) / 3.5); height: 24rem; }
+.recipe-profile:has(.cocktail-profile-image) .mixing-layout,
+.recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: calc((100% - 3rem) / 3.5 + 3rem); }
+@media (max-width: 45rem) {
+    .recipe-profile .cocktail-profile-with-image { grid-template-columns: 1fr; }
+    .recipe-profile .cocktail-profile-image { width: 100%; max-width: 15rem; height: 16rem; }
+    .recipe-profile:has(.cocktail-profile-image) .mixing-layout { margin-left: 0; padding-top: 14rem; }
+    .recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: 0; }
+}
+@media print {
+    .recipe-profile:has(.cocktail-profile-image) .mixing-layout,
+    .recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: 0; }
+}
+
+.technique-profile { --profile-cover: url("covers/techniques.jpg"); }
+.technique-profile .cocktail-profile-copy, .technique-profile-guide { width: 100%; max-width: 52rem; margin-inline: auto; }
+.technique-profile-guide { padding-block: 3rem 4rem; }
+.technique-profile-guide .technique-instructions h3 { font-size: 1.75rem; margin: 0 0 1rem; letter-spacing: -.025em; }
+.technique-profile-guide .technique-instructions p { max-width: 65ch; font-size: 1.125rem; line-height: 1.75; }
+.technique-profile-guide .technique-tip { border-top: 1px solid var(--border-color); margin-top: 2.5rem; padding-top: 1.5rem; }
+.technique-profile-guide .technique-tip h3 { margin: 0 0 .875rem; font-size: 1.125rem; }
+.technique-profile-guide .technique-tip p { color: var(--color-muted); }
+@media (max-width: 45rem) {
+    .technique-profile .cocktail-profile-copy { padding-bottom: 2.5rem; }
+    .technique-profile-guide { padding-block: 2rem 3rem; }
+}

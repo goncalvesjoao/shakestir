@@ -194,6 +194,8 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
       source_published_on: "1930-01-01", source_date_note: "Year confirmed")
     get cocktail_url(@cocktail), params: { q: "bright" }
     assert_response :success
+    assert_select "h1", count: 1
+    assert_select ".cocktail-cover-back", count: 1
     assert_select ".cocktail-details" do
       assert_select "h1", text: "Margarita"
       assert_select "p", text: "A classic sour"
@@ -202,7 +204,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
       assert_select "p", text: "Historical source publication: 1930-01-01"
       assert_select "p", text: "Year confirmed"
     end
-    assert_operator response.body.index('class="cocktail-details"'), :<, response.body.index('id="matching-recipes"')
+    assert_operator response.body.index('class="cocktail-details '), :<, response.body.index('id="matching-recipes"')
     assert_select ".search-context strong", text: "bright"
     assert_select ".search-context a[href=?]", cocktail_path(@cocktail), text: "Show all recipes"
     assert_select "a.cocktail-cover-back[href=?]", cocktails_path(q: "bright"), text: /Back to cocktails/

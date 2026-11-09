@@ -1,34 +1,28 @@
-<section id="<%= ingredients_id %>" class="card recipe-panel ingredients-panel mb-0" data-controller="ingredients">
+<section id="<%= ingredients_id %>" class="card recipe-panel ingredients-panel mb-0">
 
   <div class="d-flex align-items-baseline justify-content-between flex-wrap ingredients-heading">
     <h2>Ingredients</h2>
     <% if recipe.servings.present? %><span class="recipe-servings"><%= pluralize(recipe.servings, "serving") %></span><% end %>
   </div>
-  <progress class="checklist-progress visually-hidden" data-ingredients-target="progress" value="0" max="<%= [recipe.recipe_ingredients.size, 1].max %>" aria-label="Ingredients gathered" hidden></progress>
   <% if recipe.recipe_ingredients.any? %>
-    <ul class="p-0 checklist ingredient-list">
-      <% recipe.recipe_ingredients.each do |line| %>
-        <li><label>
-          <input type="checkbox" data-ingredients-target="item" data-action="ingredients#update">
-          <span class="d-grid ingredient-copy">
-            <% if line.quantity.present? %><strong class="quantity"><%= number_with_precision(line.quantity, precision: 3, strip_insignificant_zeros: true) %> <%= line.measuring_unit %></strong><% end %>
-            <span class="submitted-prose"><%= line.submitted_text %></span>
-            <% if line.preparation_note.present? %><small><%= line.preparation_note %></small><% end %>
-            <% if line.optional? %><small>Optional</small><% end %>
-            <% unless line.mixing? %><small><%= line.role.humanize %></small><% end %>
-          </span>
-        </label></li>
+    <dl class="catalog-resource-facts recipe-ingredient-facts">
+      <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
+        <div class="ingredient-copy">
+          <dt><span class="submitted-prose"><%= recipe_ingredient.name %></span></dt>
+          <dd>
+            <% if recipe_ingredient.quantity.present? %>
+              <%= number_with_precision(recipe_ingredient.quantity, precision: 3, strip_insignificant_zeros: true) %> <%= recipe_ingredient.measuring_unit %>
+            <% end %>
+          </dd>
+          <% if recipe_ingredient.preparation_note.present? || recipe_ingredient.optional? || !recipe_ingredient.mixing? %>
+            <dd class="ingredient-notes">
+              <% if recipe_ingredient.preparation_note.present? %><small><%= recipe_ingredient.preparation_note %></small><% end %>
+              <% if recipe_ingredient.optional? %><small>Optional</small><% end %>
+              <% unless recipe_ingredient.mixing? %><small><%= recipe_ingredient.role.humanize %></small><% end %>
+            </dd>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
-    <div class="align-items-center checklist-status" data-ingredients-target="controls" hidden><p class="visually-hidden" role="status" data-ingredients-target="status"></p><button type="button" class="checklist-reset size-sm" data-ingredients-target="reset" data-action="ingredients#reset" disabled>Reset ingredients</button></div>
+    </dl>
   <% else %><p>No ingredients listed.</p><% end %>
-  <% if recipe.recipe_utensils.any? %>
-    <h3>Utensils</h3>
-    <ul class="m-0 p-0 utensil-list">
-      <% recipe.recipe_utensils.each do |requirement| %>
-        <li><span class="submitted-prose"><%= requirement.submitted_text %></span>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
 </section>

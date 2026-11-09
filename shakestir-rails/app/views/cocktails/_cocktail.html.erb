@@ -1,6 +1,6 @@
-<article id="<%= dom_id cocktail %>">
+<article id="<%= dom_id cocktail %>" class="catalog-card">
   <div class="position-relative card-media">
-    <%= link_to cocktail_path(cocktail), class: "d-block overflow-hidden card-image", tabindex: "-1", aria: { hidden: true } do %>
+    <%= link_to cocktail_path(cocktail), class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", aria: { hidden: true } do %>
       <% if cocktail.image.attached? %>
         <%= image_tag cocktail_image_path(cocktail, size: :card), alt: "", loading: "lazy" %>
       <% else %>

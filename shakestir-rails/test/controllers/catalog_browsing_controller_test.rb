@@ -56,4 +56,35 @@ class CatalogBrowsingControllerTest < ActionDispatch::IntegrationTest
       assert_select ".card-copy a[href=?]", polymorphic_path(resource)
     end
   end
+
+  test "catalog cards expose detail panels with normal URL fallbacks" do
+    [ ingredients(:one), utensils(:jigger), techniques(:shake) ].each do |resource|
+      get "/#{resource.model_name.route_key}"
+      assert_select "dialog#cocktail-panel iframe[data-cocktail-panel-target=frame]", count: 1
+      assert_select ".card-copy a[href=?][data-action='cocktail-panel#open'][aria-haspopup=dialog]", polymorphic_path(resource)
+      get polymorphic_path(resource, panel: "1")
+      assert_response :success
+      assert_select "body.cocktail-panel-content"
+      assert_select "h1", text: resource.display_name
+    end
+  end
+
+  test "ingredient details list only public published recipes using that ingredient once" do
+    ingredient = ingredients(:one)
+    recipe = recipes(:one)
+    recipe.recipe_ingredients.create!(ingredient: ingredient, submitted_text: ingredient.name)
+    get ingredient_url(ingredient)
+    assert_response :success
+    assert_select "#matching-recipes .compact-recipe-grid #recipe_#{recipe.id}", count: 1
+    assert_select "#matching-recipes #recipe_#{recipes(:two).id}", count: 0
+    assert_select "#recipes-heading", text: "Recipes"
+    recipe.update!(visibility: "private")
+    sign_in_as(recipe.user)
+    get ingredient_url(ingredient)
+    assert_select "#matching-recipes article", count: 0
+    recipe.update!(visibility: "public", publication_state: "draft")
+    get ingredient_url(ingredient)
+    assert_select "#matching-recipes article", count: 0
+    assert_select "#matching-recipes p", text: "No recipes yet."
+  end
 end

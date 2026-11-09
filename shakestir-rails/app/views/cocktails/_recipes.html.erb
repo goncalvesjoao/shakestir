@@ -9,15 +9,11 @@
     <%= link_to "Show all recipes", cocktail_path(@cocktail) %>
   </section>
 <% end %>
-<section id="matching-recipes" class="related-recipes-section" aria-labelledby="recipes-heading">
-  <div class="d-flex justify-content-between section-heading"><div><h2 id="recipes-heading"><%= local_assigns[:heading] || "Recipes (#{recipes.size})" %></h2></div></div>
-  <% if recipes.empty? %><p><%= filtered ? "No recipes match these filters." : "No recipes yet." %></p><% end %>
-  <div class="auto-grid recipe-grid"><%= render recipes %></div>
-</section>
+<%= render "recipes/catalog_list", recipes: recipes, heading: local_assigns[:heading], empty_message: (filtered ? "No recipes match these filters." : "No recipes yet.") %>
 <% if filtered && other_recipes.any? %>
   <details id="other-recipes" class="other-recipes">
     <summary>Other recipes (<%= other_recipes.size %>)</summary>
     <p>These public recipes do not match your current filters.</p>
-    <div class="auto-grid recipe-grid"><%= render other_recipes %></div>
+    <div class="auto-grid recipe-grid recipe-catalog-grid compact-recipe-grid"><%= render other_recipes %></div>
   </details>
 <% end %>

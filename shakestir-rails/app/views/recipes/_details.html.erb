@@ -47,6 +47,7 @@
   <% show_source = recipe.source_url.present? || recipe.source_reference.present? %>
   <% if recipe.recipe_utensils.any? || show_source || recipe.techniques.any? || policy(recipe).edit? || policy(recipe).destroy? %>
   <footer class="justify-content-between recipe-footer">
+    <div class="auto-grid recipe-reference-grid">
     <% if recipe.recipe_utensils.any? %>
       <section class="recipe-tools" aria-labelledby="recipe-tools-heading">
         <h2 id="recipe-tools-heading">Utensils</h2>
@@ -57,7 +58,6 @@
         </ul>
       </section>
     <% end %>
-    <div class="auto-grid recipe-reference-grid">
     <% if show_source %>
     <section class="recipe-source"><h2>Recipe source</h2>
       <% if recipe.source_url.present? %><p>Source: <%= link_to recipe.source_reference.presence || "Recipe source", recipe.source_url %></p><% elsif recipe.source_reference.present? %><p class="submitted-prose"><%= recipe.source_reference %></p><% end %>

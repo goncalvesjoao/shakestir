@@ -4,11 +4,11 @@ class RecipeRedesignTest < ActionDispatch::IntegrationTest
   test "search groups only the search controls and retains its label and query" do
     get recipes_url, params: { q: "Gin" }
     assert_response :success
-    assert_select "form.marketplace-search" do
-      assert_select "label[for=marketplace-query]", text: "Search recipes"
+    assert_select "form.catalog-search-form" do
+      assert_select "label[for=q]", text: "Search recipes"
       assert_select "div[role=search]" do
         assert_select "input[type=search][name=q][value=Gin]"
-        assert_select "button[type=submit][aria-label=Search]"
+        assert_select "button[type=submit]", count: 0
       end
     end
     assert_select "a.visually-hidden-focusable[href='#main-content']", text: "Skip to content"
@@ -21,11 +21,11 @@ class RecipeRedesignTest < ActionDispatch::IntegrationTest
     get recipe_url(recipe)
     assert_response :success
     assert_equal [ "Stir.\n  Keep this spacing.", "最後に注ぐ。" ], css_select(".step-body").map(&:text)
-    assert_select ".ingredient-list .submitted-prose", text: "Gin"
-    assert_select ".quantity", text: "0.5 oz"
+    assert_select ".recipe-ingredient-facts .submitted-prose", text: "Gin"
+    assert_select ".recipe-ingredient-facts dd", text: "0.5 oz"
     assert_select ".preparation-steps > li", count: 2
     assert_select "#preparation input[type=checkbox].visually-hidden", count: 2
-    assert_select ".recipe-cover h1"
+    assert_select ".cocktail-profile-copy h1"
     assert_operator response.body.index('id="ingredients"'), :<, response.body.index('id="preparation"')
     assert_select "#preparation progress", count: 1
   end

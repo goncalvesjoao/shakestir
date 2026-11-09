@@ -1,11 +1,12 @@
+<% panel_data = { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{resource.display_name} details", panel_kind: "#{resource.model_name.human.downcase} details" } %>
 <article id="<%= dom_id resource %>" class="catalog-card">
   <% unless resource.is_a?(Technique) %>
-    <%= link_to resource, class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", aria: { hidden: true } do %>
+    <%= link_to resource, class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", data: panel_data, aria: { hidden: true } do %>
       <%= image_tag polymorphic_path([resource, :image], size: :card), alt: "", loading: "lazy" %>
     <% end %>
   <% end %>
   <div class="card-copy">
-    <h3><%= link_to resource.display_name, resource %></h3>
+    <h3><%= link_to resource.display_name, resource, data: panel_data, aria: { haspopup: "dialog", controls: "cocktail-panel" } %></h3>
     <% if resource.description.present? %><p><%= truncate(resource.description, length: 160) %></p><% end %>
   </div>
 </article>

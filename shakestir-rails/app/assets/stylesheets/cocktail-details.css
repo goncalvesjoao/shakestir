@@ -1493,3 +1493,13 @@
     .technique-profile .cocktail-profile-copy { padding-bottom: 2.5rem; }
     .technique-profile-guide { padding-block: 2rem 3rem; }
 }
+
+.recipe-ingredient-facts > .ingredient-copy:last-child { border-bottom: 0; }
+.recipe-profile .recipe-reference-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 0; align-items: start; }
+.recipe-profile .recipe-reference-grid > section { min-width: 0; margin: 0; }
+.recipe-profile .recipe-reference-grid > section > :is(h2, h3) { margin: 0 0 .875rem; font-size: 1.125rem; }
+.recipe-profile .recipe-reference-grid p { font-size: .9375rem; color: var(--color-muted); margin: 0 0 1rem; }
+.recipe-profile .recipe-tools .utensil-list { display: grid; gap: .5rem; }
+@media (max-width: 65rem) {
+    .recipe-profile .recipe-reference-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+}

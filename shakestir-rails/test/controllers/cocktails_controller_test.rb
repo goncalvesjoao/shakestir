@@ -63,29 +63,24 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
       assert_select "h3 a", text: "Bright sour"
       assert_select ".empty-state", count: 0
-      assert_select "[data-picker-count]", text: "Add ingredients"
-      assert_select "[data-picker-count]", text: "Add utensils"
+      assert_select ".marketplace-picker", count: 0
     end
     get root_url, params: { makeable: "1", q: "bright" }
     assert_select ".recipe-grid article", count: 1
   end
 
-  test "marketplace search lives above results and retains selections and image badges" do
+  test "compact recipe search lives in the cover and retains the query and recipe cards" do
     get root_url, params: { q: "margarita", ingredient_ids: Ingredient.ids, utensil_ids: Utensil.ids, makeable: "1" }
     assert_response :success
     assert_select "section.discovery-heading", count: 0
     assert_select "nav .marketplace-search", count: 0
-    assert_select "main .marketplace-search[action=?]", root_path do
-      assert_select ".marketplace-submit-wrapper > button.marketplace-submit[type=submit][aria-label=Search]" do
-        assert_select "svg[aria-hidden=true]"
-      end
-      assert_select ".marketplace-mode-summary", count: 0
-      assert_select "[data-picker-count]", text: "#{Ingredient.count} available · Only these"
-      assert_select "[data-picker-count]", text: "#{Utensil.count} available · Only these"
-      assert_select "label[for=marketplace-query]", text: "Search recipes"
+    assert_select ".catalog-cover-heading form.catalog-search-form[action=?]", root_path do
+      assert_select "label[for=q]", text: "Search recipes"
       assert_select "input[type=search][name=q][value=margarita]"
-      assert_select "input[type=checkbox][name='ingredient_ids[]'][checked]", count: Ingredient.count
+      assert_select "button[type=submit]", count: 0
+      assert_select "input[type=checkbox]", count: 0
     end
+    assert_select ".catalog-cover-description", text: /Browse 2 recipes/
     assert_select ".recipe-grid article", count: 2
     assert_select ".card-copy .recipe-count", count: 0
   end
@@ -208,7 +203,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".search-context strong", text: "bright"
     assert_select ".search-context a[href=?]", cocktail_path(@cocktail), text: "Show all recipes"
     assert_select "a.cocktail-cover-back[href=?]", cocktails_path(q: "bright"), text: /Back to cocktails/
-    assert_select "#matching-recipes h2", text: "Recipes (1)"
+    assert_select "#matching-recipes h2", text: "Recipes"
     assert_select "#matching-recipes #recipe_#{recipes(:one).id}"
     assert_select "details#other-recipes:not([open])" do
       assert_select "summary", text: "Other recipes (1)"
@@ -220,7 +215,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
   test "unfiltered and blank searches show all public recipes without collapsed alternatives" do
     [ {}, { q: " " } ].each do |filters|
       get cocktail_url(@cocktail), params: filters
-      assert_select "#matching-recipes h2", text: "Recipes (2)"
+      assert_select "#matching-recipes h2", text: "Recipes"
       assert_select "#matching-recipes article", count: 2
       assert_select "details#other-recipes", count: 0
       assert_select ".search-context", count: 0
@@ -232,7 +227,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
 
   test "zero matching recipes still offers collapsed alternatives and names availability filters" do
     get cocktail_url(@cocktail), params: { ingredient_ids: [ "" ], utensil_ids: Utensil.ids, makeable: "1" }
-    assert_select "#matching-recipes h2", text: "Recipes (0)"
+    assert_select "#matching-recipes h2", text: "Recipes"
     assert_select "#matching-recipes p", text: "No recipes match these filters."
     assert_select ".search-context p", text: "Available ingredients: None"
     assert_select ".search-context p", text: /Available utensils:/

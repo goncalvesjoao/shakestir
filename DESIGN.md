@@ -207,3 +207,7 @@ Recipe ingredient lists display quantities, names and notes without gathering ch
 Recipe ingredients use the catalog facts treatment: muted ingredient names, right-aligned quantities, thin horizontal dividers and notes below their row. Ingredients and Preparation stack below 65rem.
 
 All photo-led detail pages use the same compact portrait proportions: approximately 29% of the desktop header for imagery and 71% for copy, with a 24rem image frame. Mobile portraits use a 16rem frame and reduced space before the details.
+
+The recipe homepage uses the same shallow catalog cover and compact search as the other catalogs, with the total in the description. Availability pickers no longer appear on the homepage. Recipe cards retain author attribution and star controls with contain-sized imagery on the ivory ground.
+
+Cocktail, ingredient, tool and method catalog image/title links open the same right-hand detail panel used by recipe attribution. Detail pages suppress site navigation inside the panel. Normal links preserve no-JavaScript and new-tab behavior; closing restores focus to the originating card. Recipe cards continue to open recipe pages.

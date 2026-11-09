@@ -15,6 +15,10 @@ class RecipesController < ApplicationController
     @pagination = matching_recipes.reorder(published_at: :desc, created_at: :desc, id: :desc)
       .page(params[:page]).per(24)
     @recipes = @pagination
+    respond_to do |format|
+      format.html { render "catalog/index", locals: { catalog_name: "recipes" } }
+      format.json
+    end
   end
 
   # GET /recipes/1 or /recipes/1.json

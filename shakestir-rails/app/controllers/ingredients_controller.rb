@@ -15,6 +15,9 @@ class IngredientsController < ApplicationController
   end
   def show
     @resource = Ingredient.usable.with_attached_image.find(params.expect(:id))
+    @recipes = Recipe.marketplace.where(id: RecipeIngredient.where(ingredient: @resource).select(:recipe_id))
+      .with_attached_image.includes(:user, cocktail: { image_attachment: :blob })
+      .order(published_at: :desc, id: :desc)
     render "catalog/show", locals: { catalog_name: "ingredients" }
   end
 end

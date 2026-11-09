@@ -308,3 +308,17 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .catalog-search-form [role=search] { margin-bottom: 0; }
 .catalog-page .catalog-cover-description { color: inherit; font-size: 1.0625rem; line-height: 1.6; margin: .875rem 0 0; max-width: 52ch; }
 .catalog-page #marketplace-results { padding-top: 2rem; }
+
+.recipes-catalog { --catalog-cover: url("covers/recipes.jpg"); }
+.recipe-catalog-grid article > .card-copy { text-align: center; }
+.recipe-catalog-grid .card-image, .recipe-catalog-grid .photo-placeholder { background: transparent; }
+.recipe-catalog-grid .card-image img { object-fit: contain; padding: .75rem; box-sizing: border-box; }
+.recipe-catalog-grid article:has(.card-image:hover) .card-copy h3 a:not(.recipe-author-link) { text-decoration: underline; }
+@media (prefers-reduced-motion: no-preference) {
+  .recipe-catalog-grid article:hover .card-image img { transform: scale(1.04); }
+}
+
+.compact-recipe-grid { --auto-grid-min-column: min(100%, 10rem); }
+.compact-recipe-grid .card-copy h3 { font-size: 1rem; line-height: 1.4; }
+.compact-recipe-grid .card-image img { padding: .375rem; }
+@media (max-width: 36rem) { .compact-recipe-grid { --auto-grid-gap: 1rem; } }

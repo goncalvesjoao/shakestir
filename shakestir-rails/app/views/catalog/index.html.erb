@@ -1,14 +1,15 @@
-<% content_for :title, "#{catalog_name == "cocktails" ? "Explore cocktails" : catalog_name.capitalize} · ShakeStir" %>
+<% content_for :title, "#{{ "cocktails" => "Explore cocktails", "recipes" => "Discover recipes" }.fetch(catalog_name, catalog_name.capitalize)} · ShakeStir" %>
 <% content_for :body_class, "catalog-page #{catalog_name}-catalog" %>
 
-<% catalog_title = { "cocktails" => "The classics, and their stories.", "ingredients" => "Every good ingredient.", "utensils" => "Tools of the trade.", "techniques" => "A little technique goes a long way." }[catalog_name] %>
+<% catalog_title = { "recipes" => "Find your next drink", "cocktails" => "The classics, and their stories.", "ingredients" => "Every good ingredient.", "utensils" => "Tools of the trade.", "techniques" => "A little technique goes a long way." }[catalog_name] %>
 
-<div data-controller="catalog-search" class="full-width content-grid">
+<div data-controller="catalog-search cocktail-panel" data-action="turbo:before-cache@window->cocktail-panel#close" class="full-width content-grid">
 <header class="explore-heading catalog-cover-heading full-width content-grid">
   <%= render "catalog/search", catalog_name: catalog_name %>
   <div class="catalog-heading-copy">
     <h1><%= catalog_title || catalog_name.capitalize %></h1>
     <% description = {
+      "recipes" => "and find something new to mix, share, and make your own.",
       "cocktails" => "and explore their stories and recipes.",
       "ingredients" => "and get to know what goes into your next drink.",
       "utensils" => "and find the right equipment for your next drink.",
@@ -22,23 +23,26 @@
 
     <div id="marketplace-results" aria-live="polite" data-catalog-search-target="results">
       <% if @pagination.empty? %>
-        <section class="empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", url_for(action: :index) %></section>
+        <section class="empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", (catalog_name == "recipes" ? root_path : url_for(action: :index)) %></section>
       <% end %>
 
       <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.current_page}", target: "_top" do %>
-        <div id="<%= catalog_name %>_<%= @pagination.current_page %>" class="auto-grid recipe-grid">
-          <% if catalog_name == "cocktails" %>
+        <div id="<%= catalog_name %>_<%= @pagination.current_page %>" class="auto-grid recipe-grid<%= " recipe-catalog-grid" if catalog_name == "recipes" %>">
+          <% if %w[cocktails recipes].include?(catalog_name) %>
             <%= render @pagination.to_a %>
           <% else %>
             <%= render partial: "catalog/resource", collection: @pagination.to_a, as: :resource %>
           <% end %>
         </div>
         <% if @pagination.next_page %>
-          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @pagination.next_page)) %>
+          <% next_page_url = catalog_name == "recipes" ? root_path(request.query_parameters.merge(page: @pagination.next_page)) : url_for(request.query_parameters.merge(action: :index, page: @pagination.next_page)) %>
           <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.next_page}", src: next_page_url, loading: :lazy, target: "_top" do %>
             <p><%= link_to "Load more #{catalog_name}", next_page_url %></p>
           <% end %>
         <% end %>
       <% end %>
     </div>
+<% unless catalog_name == "recipes" %>
+  <%= render "shared/detail_panel", title: "Resource details", url: url_for(action: :index) %>
+<% end %>
 </div>

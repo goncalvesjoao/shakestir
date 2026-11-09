@@ -125,3 +125,9 @@ Nullable integer `sweetness`, `sourness` and `bitterness` live in the original `
 Fresh seed runs preserve pending image uploads until the outer seed transaction commits. Reruns fill missing system/demo recipe and matching canonical attachments without rewriting recipe content; existing uploaded images are preserved. If a seed blob exists but its file is missing, the cached original is restored in place only when checksum and byte size match, preserving the blob identity. A missing custom upload with different bytes is left alone rather than replaced by an unrelated cached image. All five demo photos use their relevant cached canonical drink photograph; Snowfall Sidecar uses `sidecar.jpg`, which is present in the repository. The image regression test verifies committed files in isolated storage, not just `image.attached?` inside a rollback-only test.
 
 Recipe JSON includes an authorized `fallback_image_url` for a readable linked canonical photo. React tries that URL if the preferred image request fails, then shows its accessible placeholder; no raw blob/storage identity is exposed and private canonical permissions remain enforced.
+
+## Catalog browsing
+
+The top navigation links to public Ingredients, Utensils and Techniques catalogs. HTML lists search by name with `q`, sort by name and ID, and paginate 24 records at a time. Lazy Turbo Frames load subsequent pages on scroll while retaining the query; each frame includes a normal next-page link. Ingredient and utensil pages expose only usable catalog records. Each result links to its public detail page; techniques retain their slug URLs. Existing JSON catalog lists remain complete for recipe pickers.
+
+Cocktails and the three catalogs share `catalog/index.html.erb` for headings, debounced search, counters, empty states and lazy pagination. Cocktails retain their existing card partial (including the photo fallback) and JSON response. The other catalogs use `catalog/_resource.html.erb`.

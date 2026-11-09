@@ -11,6 +11,10 @@ class CocktailsController < ApplicationController
     cocktails = cocktails.where(id: Recipe.marketplace.select(:cocktail_id))
     @pagination = cocktails.search(params[:q]).order(:id)
       .with_attached_image.page(params[:page]).per(24)
+    respond_to do |format|
+      format.html { render "catalog/index", locals: { catalog_name: "cocktails" } }
+      format.json
+    end
   end
 
   def show

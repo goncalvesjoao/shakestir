@@ -140,7 +140,7 @@ The danger token identifies destructive actions and validation errors; it is not
 
 ## Typography
 
-**Display and body font:** the platform system sans-serif stack in the tokens. No external font asset is required.
+**Display and body font:** the platform system sans-serif stack in the tokens. The wordmark uses transparent 4× PNG renders of the original DM Sans bold lettering and italic Playfair Display ampersand, without the dot. Separate normal and hover images preserve the original font rendering without font requests. Source OFL licenses are retained in `shakestir-rails/docs/wordmark/`.
 
 Detail headlines use the headline role; library and discovery headings use page-title, with mobile-title on narrow screens. Section titles use section-title. Labels are semibold and ordinary body copy follows the body role. Preparation uses the larger preparation role; ingredient prose is slightly smaller (1.125rem). Descriptions constrain reading width, commonly 48ch; disclosure prose reaches 70ch. Preserve multilingual content and wrap long names and submitted prose.
 
@@ -184,7 +184,7 @@ Pill actions and search controls contrast with softly rounded rectangular panels
 
 ### Don't:
 
-- Don't introduce decorative typography or a replacement visual identity.
+- Preserve the system sans-serif headings and body typography, with React-matched typography confined to the wordmark.
 - Don't make secondary background stories compete with preparation.
 - Don't replace native checkbox and radio affordances with ambiguous decoration.
 

@@ -1,0 +1,11 @@
+<article id="<%= dom_id resource %>">
+  <% unless resource.is_a?(Technique) %>
+    <%= link_to resource, class: "d-block overflow-hidden card-image", tabindex: "-1", aria: { hidden: true } do %>
+      <%= image_tag polymorphic_path([resource, :image], size: :card), alt: "", loading: "lazy" %>
+    <% end %>
+  <% end %>
+  <div class="card-copy">
+    <h3><%= link_to resource.display_name, resource %></h3>
+    <% if resource.description.present? %><p><%= truncate(resource.description, length: 160) %></p><% end %>
+  </div>
+</article>

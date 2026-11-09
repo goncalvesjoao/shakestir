@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     resource :star, only: %i[create destroy], controller: "recipe_stars"
     resource :image, only: :show, controller: "recipe_images"
   end
-  resources :ingredients, only: :index do
+  resources :ingredients, only: %i[index show] do
     resource :image, only: :show, controller: "ingredient_images"
   end
-  resources :utensils, only: :index do
+  resources :utensils, only: %i[index show] do
     resource :image, only: :show, controller: "utensil_images"
   end
   scope ActiveStorage.routes_prefix do

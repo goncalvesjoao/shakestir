@@ -1,8 +1,20 @@
 class IngredientsController < ApplicationController
-  allow_unauthenticated_access only: :index
+  include CatalogBrowsing
+
+  allow_unauthenticated_access only: %i[index show]
 
   def index
-    @ingredients = Ingredient.usable.with_attached_image.sort_by { |ingredient| [ ingredient.display_name.downcase, ingredient.id ] }
-    respond_to :json
+    scope = Ingredient.usable.with_attached_image
+    respond_to do |format|
+      format.html do
+        @pagination = catalog_page(scope)
+        render "catalog/index", locals: { catalog_name: "ingredients" }
+      end
+      format.json { @ingredients = scope.order(Arel.sql("LOWER(name)"), :id) }
+    end
+  end
+  def show
+    @resource = Ingredient.usable.with_attached_image.find(params.expect(:id))
+    render "catalog/show", locals: { catalog_name: "ingredients" }
   end
 end

@@ -27,12 +27,15 @@
     <a href="#main-content" class="visually-hidden-focusable">Skip to content</a>
     <header class="site-header full-width">
       <nav aria-label="Main navigation">
-        <%= link_to root_path do %>
-          <strong class="wordmark">ShakeStir<span aria-hidden="true">.</span></strong>
+        <%= link_to root_path, class: "brand-link" do %>
+          <%= render "shared/wordmark" %>
         <% end %>
         <ul class="primary-navigation">
           <li><%= link_to "Explore", root_path, aria: { current: ("page" if controller_name == "recipes" && %w[index show].include?(action_name)) } %></li>
           <li><%= link_to "Cocktails", cocktails_path, aria: { current: ("page" if controller_name == "cocktails") } %></li>
+          <li><%= link_to "Ingredients", ingredients_path, aria: { current: ("page" if controller_name == "ingredients") } %></li>
+          <li><%= link_to "Tools", utensils_path, aria: { current: ("page" if controller_name == "utensils") } %></li>
+          <li><%= link_to "Methods", techniques_path, aria: { current: ("page" if controller_name == "techniques") } %></li>
           <% if authenticated? %>
             <li><%= link_to "My recipes", my_recipes_path, aria: { current: ("page" if controller_name == "account" && action_name == "recipes") } %></li>
             <li><%= link_to "My collections", my_collections_path, aria: { current: ("page" if controller_name == "collections") } %></li>
@@ -65,6 +68,6 @@
     <main id="main-content" class="page-shell">
       <%= yield %>
     </main>
-    <footer class="justify-content-between site-footer"><span class="wordmark">ShakeStir.</span><span>Find a drink. Make it yours.</span></footer>
+    <footer class="justify-content-between site-footer"><%= render "shared/wordmark" %><span>Find a drink. Make it yours.</span></footer>
   </body>
 </html>

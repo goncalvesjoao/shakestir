@@ -29,10 +29,4 @@ class Cocktail < ApplicationRecord
   def display_name
     name
   end
-
-  def self.search(text)
-    return all if text.blank?
-    pattern = "%#{sanitize_sql_like(LookupName.normalize(text))}%"
-    where("normalized_name LIKE ?", pattern)
-  end
 end

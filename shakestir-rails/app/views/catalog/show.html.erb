@@ -1,0 +1,16 @@
+<% content_for :title, "#{@resource.display_name} · #{catalog_name.capitalize} · ShakeStir" %>
+<article class="technique-page">
+  <%= link_to "Back to #{catalog_name}", url_for(action: :index), class: "detail-text-link" %>
+  <h1><%= @resource.display_name %></h1>
+  <%= image_tag polymorphic_path([@resource, :image], size: :detail), alt: @resource.display_name, class: "catalog-detail-image" %>
+  <%= simple_format @resource.description if @resource.description.present? %>
+  <dl>
+    <dt>Category</dt><dd><%= @resource.category.humanize %></dd>
+    <% if @resource.is_a?(Ingredient) %>
+      <dt>Alcohol status</dt><dd><%= @resource.alcohol_status.humanize %></dd>
+      <% if @resource.alcohol_by_volume.present? %><dt>Alcohol by volume</dt><dd><%= @resource.alcohol_by_volume %>%</dd><% end %>
+    <% elsif @resource.capacity_milliliters.present? %>
+      <dt>Capacity</dt><dd><%= @resource.capacity_milliliters %> ml</dd>
+    <% end %>
+  </dl>
+</article>

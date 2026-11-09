@@ -304,7 +304,7 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 }
 @media print { .catalog-page .catalog-cover-heading { background: none; color: var(--color); min-height: 0; padding-block: 1rem; } }
 
-.catalog-page .catalog-cover-heading .catalog-search-form { width: min(100%, 22rem); margin: 0; }
+.catalog-page .catalog-cover-heading .catalog-search-form { width: min(100%, 22rem); margin: 0; justify-self: end; }
 .catalog-search-form [role=search] { margin-bottom: 0; }
 .catalog-page .catalog-cover-description { color: inherit; font-size: 1.0625rem; line-height: 1.6; margin: .875rem 0 0; max-width: 52ch; }
 .catalog-page #marketplace-results { padding-top: 2rem; }

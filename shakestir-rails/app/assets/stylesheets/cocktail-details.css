@@ -1382,16 +1382,16 @@
     padding-block: 1.5rem 0;
     position: relative;
 }
-.cocktail-profile-hero .cocktail-cover-back { justify-self: start; position: static; margin: 0; }
+.cocktail-profile-hero .cocktail-cover-back { justify-self: end; position: static; margin: 0; }
 .cocktail-profile-intro { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; min-height: 16rem; gap: 3rem; }
 .cocktail-profile-with-image { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); }
 .cocktail-profile-with-image .cocktail-profile-copy { grid-column: 2; }
-.cocktail-profile-copy { padding-block: 3rem 2.5rem; color: #fffef9; min-width: 0; }
+.cocktail-profile-copy { padding-block: 3rem 2rem; color: #fffef9; min-width: 0; }
 .cocktail-profile-copy h1 { color: inherit; font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 500; line-height: 1.12; margin: 0 0 .75rem; overflow-wrap: anywhere; }
 .cocktail-profile-copy p { color: inherit; font-size: 1.0625rem; line-height: 1.6; max-width: 52ch; margin: 0; }
-.cocktail-profile-image { position: absolute; top: 1rem; left: 0; display: block; object-fit: contain; width: calc((100% - 3rem) / 3.5); height: 24rem; z-index: 1; }
-.cocktail-profile .cocktail-background { display: block; border: 0; margin: 0; padding-block: 4rem 2rem; min-height: 24rem; }
-.cocktail-profile:has(.cocktail-profile-image) .cocktail-background { padding-left: calc((100% - 3rem) / 3.5 + 3rem); }
+.cocktail-profile-image { position: absolute; top: -1.5rem; left: 0; display: block; object-fit: contain; width: calc((100% - 3rem) / 3.5); height: 20rem; z-index: 1; }
+.cocktail-profile .cocktail-background { display: block; border: 0; margin: 0; padding-block: 3rem 2rem; min-height: 0; }
+.cocktail-profile:has(.cocktail-profile-image) .cocktail-background { padding-left: 0; }
 .cocktail-profile .background-story { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
 .cocktail-profile .cocktail-history, .cocktail-profile .cocktail-sources { margin: 0; }
 .cocktail-profile .cocktail-background h2 { text-align: left; font-size: 1.75rem; font-weight: 600; letter-spacing: -.025em; text-transform: none; margin-bottom: .875rem; color: var(--color); }
@@ -1482,7 +1482,7 @@
 }
 
 .technique-profile { --profile-cover: url("covers/techniques.jpg"); }
-.technique-profile .cocktail-profile-copy, .technique-profile-guide { width: 100%; max-width: 52rem; margin-inline: auto; }
+.technique-profile .cocktail-profile-copy, .technique-profile-guide { width: 100%; max-width: none; margin-inline: 0; }
 .technique-profile-guide { padding-block: 3rem 4rem; }
 .technique-profile-guide .technique-instructions h3 { font-size: 1.75rem; margin: 0 0 1rem; letter-spacing: -.025em; }
 .technique-profile-guide .technique-instructions p { max-width: 65ch; font-size: 1.125rem; line-height: 1.75; }
@@ -1502,4 +1502,58 @@
 .recipe-profile .recipe-tools .utensil-list { display: grid; gap: .5rem; }
 @media (max-width: 65rem) {
     .recipe-profile .recipe-reference-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+}
+
+/* Let the working sections span the page beneath the compact portrait. */
+.recipe-profile .cocktail-profile-hero .cocktail-cover-back { justify-self: end; }
+.recipe-profile .cocktail-profile-image { top: -1.5rem; height: 20rem; }
+.recipe-profile .cocktail-profile-copy { padding-bottom: 2rem; }
+.recipe-meta-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.recipe-meta-row .recipe-attribution { margin: 0; }
+.recipe-meta-row .mixing-save-actions { flex-shrink: 0; }
+.recipe-profile:has(.cocktail-profile-image) .mixing-layout,
+.recipe-profile:has(.cocktail-profile-image) .recipe-footer { margin-left: 0; }
+.recipe-profile .mixing-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); padding-top: 3rem; }
+@media (max-width: 45rem) {
+    .recipe-profile .cocktail-profile-image { top: calc(100% - 4rem); height: 16rem; }
+    .recipe-profile .cocktail-profile-copy { padding-bottom: 5rem; }
+    .recipe-profile .mixing-layout { grid-template-columns: minmax(0, 1fr); }
+    .recipe-profile:has(.cocktail-profile-image) .mixing-layout { padding-top: 14rem; }
+}
+@media print { .recipe-profile:has(.cocktail-profile-image) .mixing-layout { padding-top: 1rem; } }
+
+.catalog-resource-profile .catalog-resource-facts { max-width: none; }
+
+/* Informational details use a comfortable reading measure. */
+.cocktail-profile .cocktail-background,
+.cocktail-profile .technique-profile-guide {
+    width: 100%;
+    max-width: 70ch;
+    justify-self: center;
+    margin-inline: auto;
+}
+
+.technique-profile .cocktail-profile-copy { max-width: 70ch; margin-inline: auto; }
+
+.recipe-profile .mixing-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 3rem; }
+@media (max-width: 45rem) {
+    .recipe-profile .mixing-layout { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+}
+
+@media (min-width: 65.001rem) {
+    .cocktail-profile #cocktail-background,
+    .catalog-resource-profile .cocktail-background {
+        justify-self: start;
+        margin-left: calc((100% - 3rem) / 3.5 + 3rem);
+        width: calc((100% - 3rem) * 2.5 / 3.5);
+    }
+}
+@media (max-width: 65rem) {
+    .cocktail-profile #cocktail-background,
+    .catalog-resource-profile .cocktail-background { max-width: none; margin-inline: 0; }
+}
+
+@media (min-width: 65.001rem) {
+    .cocktail-profile:has(#cocktail-background) .cocktail-profile-image,
+    .catalog-resource-profile .cocktail-profile-image { top: .5rem; }
 }

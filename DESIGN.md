@@ -211,3 +211,9 @@ All photo-led detail pages use the same compact portrait proportions: approximat
 The recipe homepage uses the same shallow catalog cover and compact search as the other catalogs, with the total in the description. Availability pickers no longer appear on the homepage. Recipe cards retain author attribution and star controls with contain-sized imagery on the ivory ground.
 
 Cocktail, ingredient, tool and method catalog image/title links open the same right-hand detail panel used by recipe attribution. Detail pages suppress site navigation inside the panel. Normal links preserve no-JavaScript and new-tab behavior; closing restores focus to the originating card. Recipe cards continue to open recipe pages.
+
+Recipe working content and reference sections span the full content width below the cover. The compact portrait sits higher so only its base overlaps the reading surface. The All recipes link is at the upper-right; star and collection controls sit beside the author attribution beneath the title. Ingredients and Preparation remain side by side until the phone breakpoint.
+
+Cocktail, ingredient, tool and method details follow the same full-width body layout as recipes. Back links align upper-right; photo-led pages use a higher 20rem portrait frame with a small desktop overlap. On phones portraits retain the centered overlap and details stack beneath. Method guides retain readable prose widths within the full content area.
+
+Informational content below the cover on cocktail, ingredient, tool and method details is centered and capped at 70ch for prose readability. Recipe working sections and related recipe grids retain the full content width.

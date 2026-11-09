@@ -4,5 +4,5 @@
 <article class="cocktail-details cocktail-profile full-width content-grid">
   <%= render "cocktails/hero", cocktail: @cocktail %>
   <%= render "cocktails/background", cocktail: @cocktail %>
+  <%= render "cocktails/recipes", recipes: @recipes, filtered: @filtered, other_recipes: @other_recipes %>
 </article>
-<%= render "cocktails/recipes", recipes: @recipes, filtered: @filtered, other_recipes: @other_recipes %>

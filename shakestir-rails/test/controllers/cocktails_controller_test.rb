@@ -203,7 +203,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".search-context strong", text: "bright"
     assert_select ".search-context a[href=?]", cocktail_path(@cocktail), text: "Show all recipes"
     assert_select "a.cocktail-cover-back[href=?]", cocktails_path(q: "bright"), text: /Back to cocktails/
-    assert_select "#matching-recipes h2", text: "Recipes"
+    assert_select "#matching-recipes > summary", text: /Recipes \(\d+\)/
     assert_select "#matching-recipes #recipe_#{recipes(:one).id}"
     assert_select "details#other-recipes:not([open])" do
       assert_select "summary", text: "Other recipes (1)"
@@ -215,7 +215,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
   test "unfiltered and blank searches show all public recipes without collapsed alternatives" do
     [ {}, { q: " " } ].each do |filters|
       get cocktail_url(@cocktail), params: filters
-      assert_select "#matching-recipes h2", text: "Recipes"
+      assert_select "#matching-recipes > summary", text: /Recipes \(\d+\)/
       assert_select "#matching-recipes article", count: 2
       assert_select "details#other-recipes", count: 0
       assert_select ".search-context", count: 0
@@ -227,7 +227,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
 
   test "zero matching recipes still offers collapsed alternatives and names availability filters" do
     get cocktail_url(@cocktail), params: { ingredient_ids: [ "" ], utensil_ids: Utensil.ids, makeable: "1" }
-    assert_select "#matching-recipes h2", text: "Recipes"
+    assert_select "#matching-recipes > summary", text: /Recipes \(\d+\)/
     assert_select "#matching-recipes p", text: "No recipes match these filters."
     assert_select ".search-context p", text: "Available ingredients: None"
     assert_select ".search-context p", text: /Available utensils:/

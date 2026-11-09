@@ -77,7 +77,7 @@ class CatalogBrowsingControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "#matching-recipes .compact-recipe-grid #recipe_#{recipe.id}", count: 1
     assert_select "#matching-recipes #recipe_#{recipes(:two).id}", count: 0
-    assert_select "#recipes-heading", text: "Recipes"
+    assert_select "details#matching-recipes:not([open]) > summary", text: "Recipes (1)"
     recipe.update!(visibility: "private")
     sign_in_as(recipe.user)
     get ingredient_url(ingredient)

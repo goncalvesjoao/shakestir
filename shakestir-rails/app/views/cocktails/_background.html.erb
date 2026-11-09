@@ -2,12 +2,14 @@
   <div class="background-story">
   <% if cocktail.history.present? %><section class="cocktail-history"><h2>History</h2><p class="submitted-prose"><%= cocktail.history %></p></section><% end %>
   <% if cocktail.source_reference.present? || cocktail.source_url.present? || cocktail.source_published_on.present? || cocktail.source_date_note.present? %>
-    <section class="cocktail-sources">
-      <h2>Sources</h2>
+    <details class="cocktail-sources">
+      <summary>Source</summary>
+      <div>
       <% if cocktail.source_url.present? %><p>Source: <%= link_to cocktail.source_reference.presence || "Cocktail source", cocktail.source_url %></p><% elsif cocktail.source_reference.present? %><p class="submitted-prose"><%= cocktail.source_reference %></p><% end %>
       <% if cocktail.source_published_on.present? %><p>Historical source publication: <%= cocktail.source_published_on %></p><% end %>
       <% if cocktail.source_date_note.present? %><p class="submitted-prose"><%= cocktail.source_date_note %></p><% end %>
-    </section>
+      </div>
+    </details>
   <% end %>
   </div>
 </section>

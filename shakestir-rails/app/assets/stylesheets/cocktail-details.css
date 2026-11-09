@@ -1395,7 +1395,7 @@
 .cocktail-profile .background-story { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
 .cocktail-profile .cocktail-history, .cocktail-profile .cocktail-sources { margin: 0; }
 .cocktail-profile .cocktail-background h2 { text-align: left; font-size: 1.75rem; font-weight: 600; letter-spacing: -.025em; text-transform: none; margin-bottom: .875rem; color: var(--color); }
-.cocktail-profile .cocktail-sources { border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+.cocktail-profile .cocktail-sources { border: 0; padding: 0; }
 .cocktail-profile .cocktail-sources h2 { font-size: 1.125rem; }
 .cocktail-profile .cocktail-sources p { font-size: .9375rem; color: var(--color-muted); }
 .cocktail-profile .cocktail-history p { font-size: 1.125rem; max-width: 65ch; }
@@ -1557,3 +1557,32 @@
     .cocktail-profile:has(#cocktail-background) .cocktail-profile-image,
     .catalog-resource-profile .cocktail-profile-image { top: .5rem; }
 }
+
+.cocktail-profile .cocktail-sources > summary,
+.cocktail-recipe-accordion > summary { font-size: 1.125rem; font-weight: 600; }
+.cocktail-recipe-accordion { width: 100%; max-width: 70ch; justify-self: center; margin: 0 auto 2.5rem; }
+.cocktail-recipe-accordion .recipe-grid { margin-top: 1.5rem; }
+@media (min-width: 65.001rem) {
+    .cocktail-recipe-accordion { justify-self: start; margin-left: calc((100% - 3rem) / 3.5 + 3rem); width: calc((100% - 3rem) * 2.5 / 3.5); }
+}
+@media (max-width: 65rem) {
+    .cocktail-recipe-accordion { max-width: none; margin-inline: 0; }
+}
+
+.cocktail-recipe-accordion { border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+
+/* Keep both disclosure dividers on the same spacing rhythm. */
+.cocktail-profile #cocktail-background .background-story { gap: 0; }
+.cocktail-profile .cocktail-history p:last-child,
+.cocktail-profile .cocktail-sources p:last-child { margin-bottom: 0; }
+.cocktail-profile .cocktail-history + .cocktail-sources { border-top: 1px solid var(--border-color); margin-top: 1.5rem; padding-top: 1.5rem; }
+.cocktail-profile #cocktail-background { padding-bottom: 1.5rem; }
+.cocktail-profile .cocktail-sources > summary { margin-bottom: 0; }
+.cocktail-profile .cocktail-sources[open] > div { margin-top: 1rem; }
+
+.technique-profile-guide .technique-instructions p:last-child { margin-bottom: 0; }
+.technique-profile-guide .technique-tip { margin-top: 1.5rem; padding-top: 1.5rem; }
+
+.catalog-resource-profile .catalog-resource-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.ingredients-profile .cocktail-background { padding-bottom: 1.5rem; }
+.catalog-resource-profile .background-story > section { margin-bottom: 0; }

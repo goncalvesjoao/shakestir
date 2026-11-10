@@ -5,14 +5,14 @@
   <div class="position-relative card-media">
   <%= link_to destination, class: "d-block overflow-hidden card-image", tabindex: "-1", aria: { hidden: true } do %>
     <% if photo.image.attached? %>
-      <%= image_tag public_send(photo_path, photo, size: :card), alt: "", loading: "lazy", srcset: "#{public_send(photo_path, photo, size: :card)} 320w, #{public_send(photo_path, photo, size: :detail)} 1200w", sizes: "(max-width: 36rem) calc(100vw - 2rem), (max-width: 55rem) calc((100vw - 4.3rem) / 2), (max-width: 81rem) calc((100vw - 7rem) / 3), 25rem" %>
+      <%= image_tag public_send(photo_path, photo, size: :card), alt: "", loading: "lazy", srcset: "#{public_send(photo_path, photo, size: :card)} 320w, #{public_send(photo_path, photo, size: :detail)} 1200w", sizes: "(max-width: 36rem) calc(100vw - 2rem), (max-width: 55rem) calc((100vw - 4.3rem) / 2), (max-width: 81rem) calc((100vw - 7rem) / 3), 25rem", class: "w-100 h-100" %>
     <% else %>
       <span class="d-grid h-100 photo-placeholder">J<span aria-hidden="true">.</span></span>
     <% end %>
   <% end %>
   <%= render "recipes/star", recipe: recipe %>
   </div>
-  <div class="card-copy<%= " pb-3" if local_assigns[:personal] %>">
+  <div class="py-4 px-1 card-copy<%= " pb-3" if local_assigns[:personal] %>">
     <h3><%= link_to recipe_author(recipe), profile_path(recipe.user), class: "recipe-author-link" %> / <%= link_to recipe.display_name.presence || "Untitled recipe", destination %></h3>
   </div>
 </article>

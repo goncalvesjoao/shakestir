@@ -1,4 +1,4 @@
-        <%= link_to collection, class: "d-block library-card" do %>
+        <%= link_to collection, class: "text-decoration-none d-block library-card" do %>
           <%= render "collections/artwork", collection: collection, recipes: (@previews[collection.id] || []).map(&:recipe) %>
           <div class="py-3 px-1 library-card-copy"><h3><%= collection.name %></h3><div class="row-gap-2 column-gap-3 d-flex align-items-center flex-wrap justify-content-between library-card-meta"><span><%= pluralize(@recipe_counts.fetch(collection.id, 0), "recipe") %></span><span class="gap-1 d-inline-flex align-items-center library-visibility"><%= render "collections/icon", name: collection.visibility %><%= collection.visibility.capitalize %></span></div></div>
         <% end %>

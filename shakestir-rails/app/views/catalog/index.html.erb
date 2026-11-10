@@ -4,10 +4,10 @@
 <% catalog_title = { "recipes" => "Find your next drink", "cocktails" => "The classics, and their stories.", "ingredients" => "Every good ingredient.", "utensils" => "Tools of the trade.", "techniques" => "A little technique goes a long way." }[catalog_name] %>
 
 <div data-controller="catalog-search cocktail-panel" data-action="turbo:before-cache@window->cocktail-panel#close" class="full-width content-grid">
-<header class="explore-heading catalog-cover-heading full-width content-grid">
+<header class="m-0 align-content-between row-gap-5 explore-heading catalog-cover-heading full-width content-grid">
   <%= render "catalog/search", catalog_name: catalog_name %>
   <div class="catalog-heading-copy">
-    <h1><%= catalog_title || catalog_name.capitalize %></h1>
+    <h1 class="m-0 text-reset fw-medium"><%= catalog_title || catalog_name.capitalize %></h1>
     <% description = {
       "recipes" => "and find something new to mix, share, and make your own.",
       "cocktails" => "and explore their stories and recipes.",
@@ -15,15 +15,15 @@
       "utensils" => "and find the right equipment for your next drink.",
       "techniques" => "and learn the methods behind a well-made drink."
     }.fetch(catalog_name) %>
-    <p class="catalog-cover-description" data-catalog-search-target="count" aria-live="polite">Browse <%= pluralize(@pagination.total_count, catalog_name.singularize) %> <%= description %></p>
+    <p class="text-reset catalog-cover-description" data-catalog-search-target="count" aria-live="polite">Browse <%= pluralize(@pagination.total_count, catalog_name.singularize) %> <%= description %></p>
   </div>
 </header>
 
     <p role="status" data-catalog-search-target="status"></p>
 
-    <div id="marketplace-results" aria-live="polite" data-catalog-search-target="results">
+    <div class="pt-4" id="marketplace-results" aria-live="polite" data-catalog-search-target="results">
       <% if @pagination.empty? %>
-        <section class="empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", (catalog_name == "recipes" ? root_path : url_for(action: :index)) %></section>
+        <section class="p-4 empty-state"><h3>No <%= catalog_name %> found.</h3><p><%= catalog_name == "cocktails" ? "Try another name to find a cocktail." : "Try another name." %></p><%= link_to "All #{catalog_name}", (catalog_name == "recipes" ? root_path : url_for(action: :index)) %></section>
       <% end %>
 
       <%= turbo_frame_tag "#{catalog_name}_page_#{@pagination.current_page}", target: "_top" do %>

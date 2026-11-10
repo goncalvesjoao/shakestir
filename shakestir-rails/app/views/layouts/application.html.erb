@@ -25,39 +25,39 @@
 
   <body class="<%= content_for :body_class %>">
     <a href="#main-content" class="visually-hidden-focusable">Skip to content</a>
-    <header class="site-header content-grid">
-      <nav aria-label="Main navigation">
-        <%= link_to root_path, class: "brand-link" do %>
+    <header class="position-sticky top-0 site-header content-grid">
+      <nav class="d-grid align-items-center row-gap-1 column-gap-3 gap-lg-4 py-2" aria-label="Main navigation">
+        <%= link_to root_path, class: "d-flex align-items-center text-decoration-none brand-link" do %>
           <%= render "shared/wordmark" %>
         <% end %>
-        <ul class="primary-navigation">
-          <li><%= link_to "Explore", root_path, aria: { current: ("page" if controller_name == "recipes" && %w[index show].include?(action_name)) } %></li>
-          <li><%= link_to "Cocktails", cocktails_path, aria: { current: ("page" if controller_name == "cocktails") } %></li>
-          <li><%= link_to "Ingredients", ingredients_path, aria: { current: ("page" if controller_name == "ingredients") } %></li>
-          <li><%= link_to "Tools", utensils_path, aria: { current: ("page" if controller_name == "utensils") } %></li>
-          <li><%= link_to "Methods", techniques_path, aria: { current: ("page" if controller_name == "techniques") } %></li>
+        <ul class="d-flex align-items-center gap-4 m-0 p-0 flex-nowrap overflow-x-auto primary-navigation">
+          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Explore", root_path, aria: { current: ("page" if controller_name == "recipes" && %w[index show].include?(action_name)) } %></li>
+          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Cocktails", cocktails_path, aria: { current: ("page" if controller_name == "cocktails") } %></li>
+          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Ingredients", ingredients_path, aria: { current: ("page" if controller_name == "ingredients") } %></li>
+          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Tools", utensils_path, aria: { current: ("page" if controller_name == "utensils") } %></li>
+          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Methods", techniques_path, aria: { current: ("page" if controller_name == "techniques") } %></li>
           <% if authenticated? %>
-            <li><%= link_to "My recipes", my_recipes_path, aria: { current: ("page" if controller_name == "account" && action_name == "recipes") } %></li>
-            <li><%= link_to "My collections", my_collections_path, aria: { current: ("page" if controller_name == "collections") } %></li>
+            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "My recipes", my_recipes_path, aria: { current: ("page" if controller_name == "account" && action_name == "recipes") } %></li>
+            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "My collections", my_collections_path, aria: { current: ("page" if controller_name == "collections") } %></li>
           <% end %>
         </ul>
-        <ul class="navigation-actions">
+        <ul class="d-flex align-items-center gap-2 gap-md-4 m-0 p-0 flex-nowrap navigation-actions">
           <% if authenticated? %>
-            <li>
+            <li class="d-flex align-items-center my-0 flex-shrink-0">
               <details class="position-relative account-dropdown">
-                <summary aria-label="User account">
+                <summary class="d-flex align-items-center gap-2 rounded-circle" aria-label="User account">
                   <%= profile_avatar(Current.user, size: 40, css_class: "rounded-circle object-fit-cover user-avatar") %>
                 </summary>
-                <div class="position-absolute account-dropdown-items">
-                  <%= link_to "My profile", my_profile_path %>
-                  <%= link_to "My account", my_account_path %>
-                  <%= link_to "Log out", session_path, data: { turbo_method: :delete } %>
+                <div class="end-0 p-2 position-absolute account-dropdown-items">
+                  <%= link_to "My profile", my_profile_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
+                  <%= link_to "My account", my_account_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
+                  <%= link_to "Log out", session_path, data: { turbo_method: :delete }, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
                 </div>
               </details>
             </li>
           <% else %>
-            <li><%= link_to "Log in", new_session_path %></li>
-            <li><%= link_to "Create account", new_registration_path, class: "d-inline-flex align-items-center button navigation-create" %></li>
+            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Log in", new_session_path %></li>
+            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Create account", new_registration_path, class: "text-nowrap d-inline-flex align-items-center button navigation-create" %></li>
           <% end %>
         </ul>
       </nav>

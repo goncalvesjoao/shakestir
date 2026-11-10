@@ -240,6 +240,6 @@ class StoredRecipesControllerTest < ActionDispatch::IntegrationTest
     assert_select "#ingredients progress", count: 0
     assert_select "#ingredients .utensil-list", count: 0
     assert_select ".recipe-footer .recipe-tools h2", text: "Utensils"
-    assert_operator response.body.index('id="preparation"'), :<, response.body.index('class="recipe-tools"')
+    assert_equal "preparation", css_select("#preparation, .recipe-tools").first["id"]
   end
 end

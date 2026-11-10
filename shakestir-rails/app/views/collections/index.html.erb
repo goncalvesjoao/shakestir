@@ -1,13 +1,13 @@
 <% content_for :title, "My collections · ShakeStir" %>
 <div class="library-page">
-  <header class="d-flex justify-content-between library-heading">
+  <header class="align-items-start align-items-md-center gap-3 gap-md-4 flex-column flex-md-row d-flex justify-content-between library-heading">
     <div><h1>My collections</h1><p class="m-0 library-description">Good recipes, kept together. Ready for your next pour.</p></div>
-    <%= link_to new_collection_path, class: "gap-2 d-inline-flex justify-content-center m-0 align-items-center button library-action primary size-md" do %><%= render "icon", name: "plus" %>Create collection<% end %>
+    <%= link_to new_collection_path, class: "text-nowrap gap-2 d-inline-flex justify-content-center m-0 align-items-center button library-action primary size-md" do %><%= render "icon", name: "plus" %>Create collection<% end %>
   </header>
   <% if @collections.empty? %>
-    <section class="p-5 d-flex flex-column align-items-center text-center library-empty"><span class="d-grid mb-4 library-empty-symbol"><%= render "icon", name: "collection" %></span><h2>A place for your next favorite.</h2><p>Keep the recipes you love in collections made for you.</p><%= link_to "Create your first collection", new_collection_path, class: "gap-2 d-inline-flex justify-content-center m-0 align-items-center button library-action primary size-md" %></section>
+    <section class="p-5 d-flex flex-column align-items-center text-center library-empty"><span class="d-grid mb-4 library-empty-symbol"><%= render "icon", name: "collection" %></span><h2 class="fs-3 mb-2 lh-sm">A place for your next favorite.</h2><p>Keep the recipes you love in collections made for you.</p><%= link_to "Create your first collection", new_collection_path, class: "text-nowrap gap-2 d-inline-flex justify-content-center m-0 align-items-center button library-action primary size-md" %></section>
   <% else %>
-    <div class="mb-4 gap-2 d-flex align-items-baseline justify-content-between flex-wrap library-section-label"><h2>All collections</h2><span><%= pluralize(@collections.size, "collection") %></span></div>
+    <div class="mb-4 gap-2 d-flex align-items-baseline justify-content-between flex-wrap library-section-label"><h2 class="m-0 fs-5">All collections</h2><span><%= pluralize(@collections.size, "collection") %></span></div>
     <div class="auto-grid library-grid">
       <% @collections.each do |collection| %>
         <%= render "collections/card", collection: collection %>

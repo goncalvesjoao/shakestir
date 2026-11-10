@@ -2,10 +2,10 @@
 <article id="<%= dom_id resource %>" class="catalog-card">
   <% unless resource.is_a?(Technique) %>
     <%= link_to resource, class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", data: panel_data, aria: { hidden: true } do %>
-      <%= image_tag polymorphic_path([resource, :image], size: :card), alt: "", loading: "lazy" %>
+      <%= image_tag polymorphic_path([resource, :image], size: :card), alt: "", loading: "lazy", class: "w-100 h-100" %>
     <% end %>
   <% end %>
-  <div class="card-copy">
+  <div class="py-4 px-1 card-copy">
     <h3><%= link_to resource.display_name, resource, data: panel_data, aria: { haspopup: "dialog", controls: "cocktail-panel" } %></h3>
     <% if resource.description.present? %><p><%= truncate(resource.description, length: 160) %></p><% end %>
   </div>

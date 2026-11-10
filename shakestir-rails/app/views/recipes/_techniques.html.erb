@@ -1,16 +1,16 @@
 <% if recipe.techniques.any? %>
-  <section class="recipe-techniques" aria-labelledby="recipe-techniques-title">
-    <h3 id="recipe-techniques-title">Techniques</h3>
+  <section class="m-0 p-0 border-0 recipe-techniques" aria-labelledby="recipe-techniques-title">
+    <h3 class="mt-0 mx-0 mb-3 fs-5" id="recipe-techniques-title">Techniques</h3>
     <p>Open a quick guide.</p>
     <ul class="gap-2 d-flex flex-wrap m-0 p-0 technique-links">
       <% recipe.techniques.each do |technique| %>
         <% dialog_id = dom_id(technique, "recipe_#{recipe.id}_guide") %>
-        <li data-controller="technique-help" data-action="turbo:before-cache@window->technique-help#close">
+        <li class="m-0 p-0" data-controller="technique-help" data-action="turbo:before-cache@window->technique-help#close">
           <%= link_to technique.display_name, technique_path(technique), class: "d-inline-flex align-items-center technique-link", data: { action: "technique-help#open", technique_help_target: "trigger" }, aria: { controls: dialog_id } %>
-          <dialog id="<%= dialog_id %>" class="overflow-y-auto collection-dialog technique-dialog" aria-labelledby="<%= dialog_id %>_title" data-technique-help-target="dialog" data-action="click->technique-help#backdrop close->technique-help#restoreFocus">
-            <div class="d-flex gap-3 align-items-start justify-content-between technique-dialog-heading">
+          <dialog id="<%= dialog_id %>" class="m-auto border-0 p-4 p-md-5 overflow-y-auto collection-dialog technique-dialog" aria-labelledby="<%= dialog_id %>_title" data-technique-help-target="dialog" data-action="click->technique-help#backdrop close->technique-help#restoreFocus">
+            <div class="mb-3 d-flex gap-3 align-items-start justify-content-between technique-dialog-heading">
               <h2 id="<%= dialog_id %>_title"><%= technique.display_name %></h2>
-              <button type="button" class="m-0 technique-close" data-action="technique-help#close" autofocus>Close</button>
+              <button type="button" class="w-auto m-0 technique-close" data-action="technique-help#close" autofocus>Close</button>
             </div>
             <%= render "techniques/content", technique: technique %>
           </dialog>

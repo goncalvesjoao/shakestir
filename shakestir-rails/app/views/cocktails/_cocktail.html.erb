@@ -3,13 +3,13 @@
   <div class="position-relative card-media">
     <%= link_to cocktail_path(cocktail), class: "d-block overflow-hidden card-image catalog-card-image", tabindex: "-1", data: panel_data, aria: { hidden: true } do %>
       <% if cocktail.image.attached? %>
-        <%= image_tag cocktail_image_path(cocktail, size: :card), alt: "", loading: "lazy" %>
+        <%= image_tag cocktail_image_path(cocktail, size: :card), alt: "", loading: "lazy", class: "w-100 h-100" %>
       <% else %>
         <span class="d-grid h-100 photo-placeholder">J<span aria-hidden="true">.</span></span>
       <% end %>
     <% end %>
   </div>
-  <div class="card-copy">
+  <div class="py-4 px-1 card-copy">
     <h3><%= link_to cocktail.display_name, cocktail_path(cocktail), data: panel_data, aria: { haspopup: "dialog", controls: "cocktail-panel" } %></h3>
   </div>
 </article>

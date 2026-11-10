@@ -1,6 +1,4 @@
 .profile-heading {
-    align-items: center;
-    gap: var(--spacing-4);
     margin-block: var(--spacing-3) var(--spacing-5);
 }
 .profile-avatar {
@@ -11,20 +9,11 @@
     background: #e4e7d8;
     color: #55673b;
     font-size: 2.25rem;
-    font-weight: 600;
     letter-spacing: -0.035em;
-}
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 .profile-intro {
     flex: 1;
     min-width: 0;
-}
-.profile-intro h1 {
-    margin-bottom: var(--spacing-2);
 }
 .profile-bio {
     max-width: 48ch;
@@ -39,12 +28,9 @@
     color: var(--color-muted);
 }
 .profile-sections a {
-    padding-block: var(--spacing-2);
     min-height: 2.75rem;
     color: var(--color);
-    text-decoration: none;
     font-size: var(--text-label);
-    font-weight: 600;
     border-bottom: 2px solid transparent;
 }
 .profile-sections a:hover,
@@ -54,7 +40,6 @@
 .profile-sections span {
     font-size: 0.75rem;
     color: var(--color-muted);
-    font-weight: 400;
 }
 .profile-content {
     scroll-margin-top: var(--space-36);
@@ -64,7 +49,6 @@
     min-height: 2.75rem;
     color: var(--primary-color);
     font-size: var(--text-small);
-    font-weight: 600;
     text-decoration: none;
 }
 .profile-section-action:hover,
@@ -82,15 +66,12 @@
 .profile-all-link {
     min-height: 2.75rem;
     font-size: var(--text-small);
-    font-weight: 600;
     text-decoration: none;
 }
 .profile-all-link:hover {
     text-decoration: underline;
 }
 .profile-empty {
-    gap: var(--spacing-3);
-    padding: var(--spacing-4);
     border: 1px dashed #bdc4af;
     border-radius: var(--card-border-radius);
     background: #fffef950;
@@ -103,24 +84,11 @@
 .profile-empty > div {
     flex: 1;
 }
-.profile-empty h3 {
-    font-size: var(--h5-font-size);
-    margin: 0 0 var(--spacing-2);
-}
 .profile-empty p {
     font-size: var(--text-small);
     color: var(--color-muted);
-    margin: 0;
-}
-.profile-editor textarea {
-    margin-bottom: 0;
-    border-radius: var(--border-radius);
 }
 @media (width < 768px) {
-    .profile-heading {
-        flex-wrap: wrap;
-        align-items: flex-start;
-    }
     .profile-avatar {
         width: 4.5rem;
         height: 4.5rem;
@@ -131,9 +99,6 @@
     }
     .profile-heading > .button {
         margin-left: calc(4.5rem + var(--spacing-4));
-    }
-    .profile-empty {
-        flex-wrap: wrap;
     }
     .profile-empty > .button {
         margin-left: calc(var(--spacing-4) + var(--spacing-3));
@@ -167,18 +132,6 @@
 .profile-photo-remove {
     min-height: 2.9rem;
 }
-.profile-photo-remove input {
-    margin: 0;
-    flex: 0 0 auto;
-}
-
-.account-details {
-    padding-block: var(--spacing-3);
-}
-.account-details h2 {
-    font-size: var(--h4-font-size);
-    margin-bottom: var(--spacing-2);
-}
 .account-email {
     overflow-wrap: anywhere;
 }
@@ -189,7 +142,6 @@
 }
 .account-deletion h2 {
     color: var(--danger-color);
-    margin-bottom: var(--spacing-2);
 }
 .account-deletion > p {
     max-width: 65ch;

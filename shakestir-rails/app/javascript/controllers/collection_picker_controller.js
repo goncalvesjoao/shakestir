@@ -54,13 +54,14 @@ export default class extends Controller {
         choice.type = "submit"
         choice.name = "collection_id"
         choice.value = collection.id
-        choice.className = "collection-choice d-flex align-items-center w-100 m-0 text-start"
+        choice.className = "gap-2 collection-choice d-flex align-items-center w-100 m-0 text-start"
         const name = document.createElement("span")
         name.textContent = collection.name
         const visibility = document.createElement("small")
+        visibility.className = "ms-auto"
         visibility.textContent = collection.visibility === "public" ? "Public" : "Private"
         const indicator = document.createElement("span")
-        indicator.className = "collection-choice-indicator text-center"
+        indicator.className = "fw-semibold collection-choice-indicator text-center"
         indicator.setAttribute("aria-hidden", "true")
         choice.append(name, visibility, indicator)
         this.updateChoice(choice, collection.saved)

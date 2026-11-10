@@ -1,4 +1,4 @@
-<details id="matching-recipes" class="cocktail-recipe-accordion">
+<details id="matching-recipes" class="pt-4 cocktail-recipe-accordion">
   <summary>Recipes (<%= recipes.size %>)</summary>
   <% if recipes.empty? %><p><%= local_assigns[:empty_message] || "No recipes yet." %></p><% end %>
   <div class="auto-grid recipe-grid recipe-catalog-grid compact-recipe-grid"><%= render recipes %></div>

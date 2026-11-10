@@ -139,33 +139,20 @@ input[type="submit"]:active {
 .site-header {
     padding-block: 0;
     margin-block: 0;
-    position: sticky;
-    top: 0;
     z-index: 10;
     background: var(--background-color);
     box-shadow: 0 1px 0 #20292315;
 }
 .site-header nav {
-    display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: var(--spacing-4);
-    align-items: center;
     --nav-link-gap: var(--spacing-2);
     --links-color: var(--color);
     min-height: 4.75rem;
-    padding-block: var(--spacing-2);
 }
 .site-header nav > a {
-    display: flex;
-    align-items: center;
     justify-self: start;
 }
 .site-header nav > ul {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
-    margin: 0;
-    padding: 0;
     list-style: none;
 }
 .site-header nav > .primary-navigation {
@@ -195,32 +182,13 @@ input[type="submit"]:active {
     --buttons-background-color: var(--primary-color);
     --buttons-color: #fffef9;
     --buttons-font-size: var(--text-label);
-    white-space: nowrap;
-}
-
-.site-header nav li {
-    display: flex;
-    align-items: center;
-    margin-block: 0;
 }
 .site-header nav li form {
     margin: 0;
 }
-.navbar-search-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
 .wordmark {
-    position: relative;
-    display: block;
     width: 146.734375px;
     height: 46.796875px;
-    flex-shrink: 0;
 }
 .visually-hidden-focusable:focus {
     position: fixed;
@@ -229,10 +197,6 @@ input[type="submit"]:active {
     z-index: 20;
     background: white;
     padding: var(--spacing-3);
-}
-.discovery-heading > p:not(.eyebrow) {
-    font-size: var(--h5-font-size);
-    color: var(--color-muted);
 }
 .search-form {
     margin: var(--spacing-4) 0 0;
@@ -256,8 +220,6 @@ input[type="submit"]:active {
     background: #e7e8d9;
 }
 .card-image img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     transition: transform 0.25s ease;
 }
@@ -271,21 +233,12 @@ input[type="submit"]:active {
     letter-spacing: -0.04em;
     background: #e4e7d8;
 }
-.card-copy {
-    padding: var(--spacing-4) var(--spacing-1);
-}
 .card-copy h3 a {
     color: var(--color);
     text-decoration: none;
 }
 .card-copy h3 a:hover {
     text-decoration: underline;
-}
-.recipe-photo {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: var(--card-border-radius);
 }
 .mixing-layout {
     display: grid;
@@ -299,36 +252,6 @@ input[type="submit"]:active {
 }
 .card {
     --color-muted: #596155;
-}
-.checklist {
-    margin: var(--spacing-4) 0 0;
-    list-style: none;
-}
-.checklist li {
-    border-top: 1px solid var(--border-color);
-    margin: 0;
-    padding: 0;
-}
-.checklist label {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-3);
-    padding: var(--spacing-4) 0;
-    margin: 0;
-    min-height: 3rem;
-}
-.checklist input[type="checkbox"] {
-    flex: 0 0 auto;
-    width: 1.4rem;
-    height: 1.4rem;
-    margin: var(--spacing-1) 0 0;
-}
-.checklist label:has(input:checked) {
-    background: #f1f3e9;
-}
-.checklist input:checked + span .submitted-prose {
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
 }
 .ingredient-copy {
     flex: 1;
@@ -350,30 +273,13 @@ input[type="submit"]:active {
     list-style: none;
 }
 .utensil-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-3);
     padding: var(--spacing-2) 0;
 }
-.step-number {
-    display: block;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: #59673e;
-    font-weight: 700;
-    margin-bottom: var(--spacing-2);
-}
 .step-body {
-    font-size: var(--h4-font-size);
     line-height: 1.7;
 }
 .recipe-footer {
-    display: flex;
-    gap: var(--spacing-4);
     border-top: 1px solid var(--border-color);
-    margin-top: var(--spacing-5);
     padding-top: var(--spacing-4);
 }
 .recipe-footer h2 {
@@ -381,7 +287,6 @@ input[type="submit"]:active {
 }
 .recipe-actions {
     display: flex;
-    gap: var(--spacing-3);
 }
 .form-page {
     --h1-font-size: 2rem;
@@ -414,7 +319,6 @@ input[type="submit"]:active {
     color: var(--color-muted);
 }
 .empty-state {
-    padding: var(--spacing-4);
     border: 1px solid var(--border-color);
     border-radius: var(--card-border-radius);
 }
@@ -434,22 +338,12 @@ input[type="submit"]:active {
     .content-grid {
         --content-grid-padding-inline: var(--spacing-3);
     }
-    .site-header nav {
-        gap: var(--spacing-2);
-    }
     .site-header nav ul {
         --nav-link-gap: var(--spacing-2);
         font-size: var(--text-small);
-        flex-wrap: wrap;
     }
     .site-header button {
         font-size: var(--text-small);
-    }
-    .recipe-photo {
-        aspect-ratio: 4 / 3;
-    }
-    .recipe-footer {
-        flex-direction: column;
     }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -487,9 +381,6 @@ input[type="submit"]:active {
     .card {
         --color-muted: #30382d;
     }
-    .step-number {
-        color: #35421e;
-    }
 }
 
 .ingredient-copy > .submitted-prose {
@@ -517,12 +408,8 @@ input[type="submit"]:active {
 }
 
 .account-dropdown > summary {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
     cursor: pointer;
     list-style: none;
-    border-radius: 50%;
 }
 .account-dropdown > summary::after {
     transform: rotate(0deg);
@@ -542,30 +429,18 @@ input[type="submit"]:active {
 }
 .account-dropdown-items {
     top: calc(100% + var(--spacing-3));
-    right: 0;
     min-width: 11rem;
-    padding: var(--spacing-2);
     background: #f7f5ee;
     border: 1px solid #20292330;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.5rem #20292320;
 }
 .account-dropdown-items > a {
-    display: block;
-    width: 100%;
-    padding: var(--spacing-3) var(--spacing-3);
-    text-align: left;
-    white-space: nowrap;
-    border: 0;
     border-radius: 0.25rem;
-    margin: 0;
     font: inherit;
     line-height: inherit;
-    color: inherit;
-    text-decoration: none;
     background: transparent;
     min-height: 0;
-    box-shadow: none;
     cursor: pointer;
 }
 .account-dropdown-items > a:hover {
@@ -579,15 +454,8 @@ input[type="submit"]:active {
 }
 
 @media (width < 768px) {
-    .site-header nav {
-        padding-block: var(--spacing-2);
-    }
     .site-header nav > .primary-navigation {
         font-size: var(--text-small);
-    }
-    .site-header nav > .navigation-actions {
-        gap: var(--spacing-2);
-        flex-wrap: nowrap;
     }
     .site-header .navigation-create {
         --buttons-padding-block: var(--spacing-2);
@@ -621,44 +489,29 @@ textarea::placeholder {
     font-size: var(--text-card-title);
 }
 .auth-page {
-    padding: var(--spacing-4);
     border: 1px solid var(--border-color);
     border-radius: var(--card-border-radius);
 }
 .auth-page h1 {
     font-size: 2rem;
     line-height: 1.2;
-    margin-bottom: var(--spacing-2);
-}
-.auth-page form {
-    display: grid;
-    gap: var(--spacing-2);
-    margin-top: var(--spacing-4);
 }
 .auth-page form label {
     font-size: var(--text-label);
     margin: var(--spacing-2) 0 0;
 }
 .auth-page input:not([type="submit"]) {
-    width: 100%;
     margin: 0 0 var(--spacing-2);
     font-size: 1rem;
     min-height: 3rem;
 }
 .auth-page input[type="submit"] {
-    width: 100%;
     margin: var(--spacing-3) 0 var(--spacing-2);
 }
 .auth-page .auth-links {
-    display: grid;
-    gap: var(--spacing-1);
-    margin-top: var(--spacing-4);
-    padding-top: var(--spacing-3);
     border-top: 1px solid var(--border-color);
 }
 .auth-links a {
-    display: inline-flex;
-    align-items: center;
     min-height: 2.75rem;
 }
 .auth-page .field_with_errors {
@@ -709,19 +562,12 @@ textarea::placeholder {
 @media (width < 1024px) {
     .site-header nav {
         grid-template-columns: 1fr auto;
-        gap: var(--spacing-1) var(--spacing-3);
     }
     .site-header nav > .primary-navigation {
         grid-column: 1 / -1;
         grid-row: 2;
         justify-self: stretch;
-        flex-wrap: nowrap;
-        overflow-x: auto;
         min-width: 0;
-        gap: var(--spacing-4);
-    }
-    .primary-navigation li {
-        flex-shrink: 0;
     }
     .primary-navigation a {
         white-space: nowrap;
@@ -731,13 +577,8 @@ textarea::placeholder {
         grid-row: 1;
     }
 }
-
-.site-header .brand-link {
-    text-decoration: none;
-}
 .site-header .brand-link:hover {
     color: #486139;
-    text-decoration: none;
 }
 .site-header .brand-link .wordmark {
     color: inherit;
@@ -758,14 +599,7 @@ textarea::placeholder {
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 4 8 8M12 4l-8 8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
         center / contain no-repeat;
 }
-
-.wordmark img {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 .wordmark-hover {
-    position: absolute;
     inset: 0;
     opacity: 0;
 }
@@ -822,10 +656,7 @@ textarea::placeholder {
 
 /* Catalogs share the shallow cover treatment of their detail pages. */
 .catalog-page .catalog-cover-heading {
-    margin: 0;
     min-height: 18rem;
-    align-content: space-between;
-    row-gap: var(--spacing-5);
     padding-block: var(--spacing-4) var(--spacing-5);
     color: #fffef9;
     background:
@@ -833,12 +664,9 @@ textarea::placeholder {
         var(--catalog-cover) center 45% / cover no-repeat;
 }
 .catalog-page .catalog-cover-heading h1 {
-    color: inherit;
     max-width: 24ch;
     font-size: clamp(2.25rem, 4vw, 3.75rem);
-    font-weight: 500;
     line-height: 1.12;
-    margin: 0;
     text-wrap: balance;
 }
 @media (width < 768px) {
@@ -858,21 +686,16 @@ textarea::placeholder {
 
 .catalog-page .catalog-cover-heading .catalog-search-form {
     width: min(100%, 22rem);
-    margin: 0;
     justify-self: end;
 }
 .catalog-search-form [role="search"] {
     margin-bottom: 0;
 }
 .catalog-page .catalog-cover-description {
-    color: inherit;
     font-size: 1.0625rem;
     line-height: 1.6;
     margin: var(--spacing-3) 0 0;
     max-width: 52ch;
-}
-.catalog-page #marketplace-results {
-    padding-top: var(--spacing-4);
 }
 
 .recipes-catalog {
@@ -922,7 +745,6 @@ textarea::placeholder {
 /* Shared footer and readable informational pages. */
 .site-footer {
     display: grid;
-    gap: 0;
 }
 .footer-content {
     gap: var(--spacing-4) var(--spacing-5);
@@ -939,17 +761,9 @@ textarea::placeholder {
     margin-block: 0 var(--spacing-2);
 }
 .footer-navigation ul {
-    display: block;
     list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.footer-navigation li {
-    display: block;
 }
 .footer-navigation a {
-    display: inline-flex;
-    align-items: center;
     min-height: 2.75rem;
     color: var(--color-muted);
 }
@@ -957,7 +771,6 @@ textarea::placeholder {
     color: var(--primary-color);
 }
 .policy-page {
-    width: 100%;
     max-width: 70ch;
     margin-inline: auto;
     overflow-wrap: anywhere;
@@ -966,12 +779,7 @@ textarea::placeholder {
     line-height: 1.15;
 }
 .policy-page h2 {
-    font-size: var(--h3-font-size);
     line-height: 1.3;
-    margin-bottom: var(--spacing-2);
-}
-.policy-page section {
-    margin-top: var(--spacing-4);
 }
 .policy-page p {
     line-height: 1.75;
@@ -982,13 +790,9 @@ textarea::placeholder {
 .policy-notice {
     border: 1px solid var(--border-color);
     padding: var(--spacing-3) var(--spacing-4);
-    border-radius: var(--border-radius);
 }
 .policy-notice p {
     margin-block: var(--spacing-2) 0;
-}
-.policy-back {
-    margin-top: var(--spacing-5);
 }
 @media (width < 576px) {
     .footer-content {

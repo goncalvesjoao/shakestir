@@ -5,8 +5,8 @@
     <% 4.times do |index| %>
       <div class="overflow-hidden library-artwork-tile">
         <% if recipes[index]&.image&.attached? %>
-          <%= image_tag recipe_image_path(recipes[index], size: :card), alt: "", loading: "lazy", width: 320, height: 320 %>
-        <% else %><span>J.</span><% end %>
+          <%= image_tag recipe_image_path(recipes[index], size: :card), alt: "", loading: "lazy", class: "w-100 h-100 object-fit-cover", width: 320, height: 320 %>
+        <% else %><span class="h-100 d-grid fw-semibold">J.</span><% end %>
       </div>
     <% end %>
   <% end %>

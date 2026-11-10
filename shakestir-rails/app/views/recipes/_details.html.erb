@@ -2,72 +2,72 @@
 <% preparation_id = "preparation" %>
 <article id="<%= dom_id recipe %>" class="position-relative recipe mixing-recipe recipe-profile full-width content-grid">
   <% photo = recipe_photo(recipe) %>
-  <header class="cocktail-profile-hero full-width content-grid">
+  <header class="position-relative cocktail-profile-hero full-width content-grid">
     <%= link_to root_path, class: "gap-2 d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
+      <svg class="d-block flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
       All recipes
     <% end %>
-    <div class="cocktail-profile-intro<%= " cocktail-profile-with-image" if photo.image.attached? %>">
+    <div class="position-relative gap-0 gap-md-5 cocktail-profile-intro<%= " cocktail-profile-with-image" if photo.image.attached? %>">
     <div class="cocktail-profile-copy">
-      <h1><%= recipe.display_name.presence || "Untitled recipe" %></h1>
+      <h1 class="text-reset fw-medium"><%= recipe.display_name.presence || "Untitled recipe" %></h1>
       <div class="row-gap-2 column-gap-3 d-flex flex-wrap align-items-center recipe-meta-row">
       <p class="recipe-attribution">Recipe by <%= link_to recipe.user.profile_name, profile_path(recipe.user), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{recipe.user.profile_name} profile", panel_kind: "profile" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% if @cocktail %>, for <%= link_to @cocktail.display_name, cocktail_path(@cocktail), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@cocktail.display_name} cocktail details", panel_kind: "cocktail details" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% end %></p>
-    <div class="d-flex gap-2 align-items-start mixing-save-actions">
+    <div class="flex-shrink-0 d-flex gap-2 align-items-start mixing-save-actions">
       <%= render "recipes/star", recipe: recipe %>
       <% if authenticated? %><%= render "collections/picker", recipe: recipe %><% end %>
     </div>
       </div>
-      <% unless recipe.publication_state == "published" && recipe.visibility == "public" %><p class="recipe-attribution"><%= recipe.publication_state.capitalize %> · <%= recipe.visibility.capitalize %></p><% end %>
+      <% unless recipe.publication_state == "published" && recipe.visibility == "public" %><p class="mb-2 recipe-attribution"><%= recipe.publication_state.capitalize %> · <%= recipe.visibility.capitalize %></p><% end %>
 
     </div>
     <% if photo.image.attached? %>
-      <%= image_tag public_send("#{photo.model_name.singular}_image_path", photo, size: :detail), alt: "Photo of #{recipe.display_name}", class: "cocktail-profile-image", fetchpriority: "high", width: 1200, height: 1200 %>
+      <%= image_tag public_send("#{photo.model_name.singular}_image_path", photo, size: :detail), alt: "Photo of #{recipe.display_name}", class: "position-absolute z-1 cocktail-profile-image", fetchpriority: "high", width: 1200, height: 1200 %>
     <% end %>
     </div>
   </header>
   <div class="mixing-layout">
     <%= render "recipes/requirements", recipe: recipe, ingredients_id: ingredients_id, preparation_id: preparation_id %>
-    <section id="<%= preparation_id %>" class="card recipe-panel mb-0" data-controller="preparation">
-      <div class="preparation-heading">
-      <h2>Preparation</h2>
+    <section id="<%= preparation_id %>" class="p-0 border-0 rounded-0 shadow-none card recipe-panel mb-0" data-controller="preparation">
+      <div class="mb-3 preparation-heading">
+      <h2 class="mt-0 mx-0 mb-3 fs-2">Preparation</h2>
       <% if recipe.recipe_steps.any? %><progress class="checklist-progress visually-hidden" data-preparation-target="progress" value="0" max="<%= recipe.recipe_steps.size %>" aria-label="Preparation progress" hidden></progress><% end %>
       </div>
       <% if recipe.recipe_steps.any? %>
         <ol class="m-0 p-0 steps-list preparation-steps" role="list">
           <% recipe.recipe_steps.each_with_index do |step, index| %>
-            <li><label class="position-relative d-grid m-0 preparation-step">
+            <li class="p-0"><label class="gap-2 position-relative d-grid m-0 preparation-step">
               <input class="visually-hidden" type="checkbox" aria-label="Complete step <%= index + 1 %>" data-preparation-target="step" data-action="preparation#update">
-              <span class="d-grid rounded-circle preparation-step-number" aria-hidden="true"><%= index + 1 %></span>
-              <span class="d-block submitted-prose step-body"><%= step.body %></span>
+              <span class="fs-5 fw-semibold d-grid rounded-circle preparation-step-number" aria-hidden="true"><%= index + 1 %></span>
+              <span class="fs-4 d-block submitted-prose step-body"><%= step.body %></span>
             </label></li>
           <% end %>
         </ol>
       <% else %><p>No preparation steps listed.</p><% end %>
-      <% if recipe.recipe_steps.any? %><div class="align-items-center checklist-status" data-preparation-target="controls" hidden><p class="visually-hidden" role="status" data-preparation-target="status"></p><button type="button" class="checklist-reset size-sm" data-preparation-target="reset" data-action="preparation#reset" disabled>Reset steps</button></div><% end %>
+      <% if recipe.recipe_steps.any? %><div class="align-items-center checklist-status" data-preparation-target="controls" hidden><p class="visually-hidden" role="status" data-preparation-target="status"></p><button type="button" class="w-auto border-0 shadow-none m-0 checklist-reset size-sm" data-preparation-target="reset" data-action="preparation#reset" disabled>Reset steps</button></div><% end %>
     </section>
   </div>
   <% show_source = recipe.source_url.present? || recipe.source_reference.present? %>
   <% if recipe.recipe_utensils.any? || show_source || recipe.techniques.any? || policy(recipe).edit? || policy(recipe).destroy? %>
-  <footer class="justify-content-between recipe-footer">
-    <div class="auto-grid recipe-reference-grid">
+  <footer class="d-block mt-5 justify-content-between recipe-footer">
+    <div class="gap-4 auto-grid recipe-reference-grid">
     <% if recipe.recipe_utensils.any? %>
-      <section class="recipe-tools" aria-labelledby="recipe-tools-heading">
-        <h2 id="recipe-tools-heading">Utensils</h2>
-        <ul class="m-0 p-0 utensil-list">
+      <section class="m-0 recipe-tools" aria-labelledby="recipe-tools-heading">
+        <h2 class="mt-0 mx-0 mb-3 fs-5" id="recipe-tools-heading">Utensils</h2>
+        <ul class="d-grid gap-2 m-0 p-0 utensil-list">
           <% recipe.recipe_utensils.each do |requirement| %>
-            <li><span class="submitted-prose"><%= requirement.submitted_text %></span></li>
+            <li class="d-flex align-items-center justify-content-between gap-3 p-0"><span class="submitted-prose"><%= requirement.submitted_text %></span></li>
           <% end %>
         </ul>
       </section>
     <% end %>
     <% if show_source %>
-    <section class="recipe-source"><h2>Recipe source</h2>
+    <section class="m-0 recipe-source"><h2 class="mt-0 mx-0 mb-3 fs-5">Recipe source</h2>
       <% if recipe.source_url.present? %><p>Source: <%= link_to recipe.source_reference.presence || "Recipe source", recipe.source_url %></p><% elsif recipe.source_reference.present? %><p class="submitted-prose"><%= recipe.source_reference %></p><% end %>
     </section>
     <% end %>
     <%= render "recipes/techniques", recipe: recipe %>
     </div>
-    <div class="flex-wrap align-items-start recipe-actions">
+    <div class="gap-3 flex-wrap align-items-start recipe-actions">
       <% if policy(recipe).edit? %><%= link_to "Edit this recipe", edit_recipe_path(recipe) %><% end %>
       <% if policy(recipe).destroy? %><%= button_to "Delete recipe", recipe, method: :delete, class: "ghost danger", data: { turbo_confirm: "Delete this recipe? This cannot be undone." } %><% end %>
     </div>

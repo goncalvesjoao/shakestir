@@ -196,3 +196,92 @@ failures are in `DetailPagesTest`, whose HTML assertions still expect
 `.cocktail-profile-hero` / `img.cocktail-profile-image`. These integration tests
 inspect response HTML and do not execute the changed CSS. This styling pass
 leaves those template/test mismatches untouched. `git diff --check` passes.
+
+## Systematic utility pruning (2026-11-10)
+
+Audited all five loaded application stylesheets (`theme`, `cocktail-details`,
+`collections`, `my-recipes`, `profiles`) plus the empty application manifest,
+against the installed Semanticus **3.4.1** build. React does not load this
+framework and was outside this migration. Reviewed the rules against their
+ERB partials, helper-produced avatars/controls, and JavaScript-created collection
+choices. The working inventory contains 1,708 single-class selectors, their
+actual declarations, importance and enclosing media conditions. It includes
+responsive classes; it is not a list inferred from current online documentation.
+Working inventory and candidate/migration reports are in `/tmp/shakestir-prune/`.
+
+### Reduction and migrations
+
+| Measure (five custom stylesheets only) | Before | After | Reduction |
+| --- | ---: | ---: | ---: |
+| Rules | 633 | 541 | 92 (14.5%) |
+| Declarations, including custom properties | 1,603 | 1,191 | 412 (25.7%) |
+| Uncompressed bytes | 77,425 | 63,522 | 13,903 (18.0%) |
+
+These are CSS measurements, not transfer-size savings; utilities add markup.
+The vendor stylesheet is unchanged. No typography, radius or breakpoint changes
+were intended in this pass.
+
+- Replaced layout and responsive alignment/gaps in library/profile headings,
+  navigation, editors and reference sections using verified display, flex,
+  alignment, wrapping, gap and responsive utilities.
+- Moved invariant margins, padding, field rounding, heading sizes/weights,
+  list resets, media dimensions/fitting, borders and pointer behavior into
+  templates. Shared footer/policy and authentication templates are included,
+  along with partials used by empty/error states and account deletion.
+- Updated both server-rendered and dynamically created collection choices,
+  including the visibility label's auto margin. Avatar helpers accept an
+  image-only class list so frame sizing does not stretch the initials fallback
+  or the unrelated navigation avatar.
+- Used explicit selected/unselected font-weight utilities for personal filters:
+  the installed navigation renderer gives the current link weight 500, while
+  other links resolve to 600. An unconditional semibold utility would change
+  the current link and the shrink-to-fit library width.
+- Pruned 29 obsolete rules (86 declarations) for the old `.checklist`,
+  `.step-number`, `.recipe-photo`, `.cocktail-cover` and discovery heading.
+  Exact class references were checked across views, helpers and controllers;
+  similarly prefixed live hooks such as `.checklist-reset`,
+  `.cocktail-cover-back` and `.recipe-photo-field` remain.
+
+### Retained custom CSS after the second candidate pass
+
+| Remaining pattern | Concrete reason |
+| --- | --- |
+| Application/theme defaults, component variables, label/status defaults | Configure the native component or shared typographic role once; repeating utilities on every native label, alert, mark or code fragment would replace a shared theme with scattered markup. |
+| Header/footer/panel visibility, dialog `[open]`, progress/status `[hidden]`, empty live regions, print rules | State and print selectors must override ordinary layout. Unconditional important display/width utilities can reveal closed dialogs, hidden progress, frame navigation or print controls. |
+| Button/control palettes, local sizing slots, press/focus/busy/contrast states | Public component variables retain native rendering; utilities would override stateful borders, decoration or inherited palette behavior. For example reset decoration disappears while disabled; ordinary links acquire underlines on hover. |
+| Portrait widths/overlap, working columns, reading measures, image containment, cover gradients and crop, icon/control dimensions | Exact composition or component-specific values/relationships are not represented by installed utilities. Portrait placement and column offsets also change at documented component thresholds. |
+| Recipe-panel padding and mixing gaps, footer print spacing, main/sidebar typography | Contextual and print overrides are part of the actual cascade. Invariant main-panel resets and heading roles moved into markup; remaining general/context rules serve their own rendering conditions. |
+| Recipe attribution, source paragraphs and adjacent History/Source sections | Spacing differs between metadata rows, standalone copy, and the presence/absence of History. In particular important `m-0`/`p-0` on Source suppress its later adjacent-section margin and padding (48px in the sampled page); those declarations remain normal-priority CSS. |
+| Card image padding/fitting, compact recipe grids and card text alignment | The same recipe partial serves catalog, compact related lists, public profiles and personal libraries. Existing contextual rules choose cover/contain and compact padding without forcing a catalog treatment on every rendering. |
+| Last-child fact borders/padding and prose margins, checked preparation treatments, active navigation, pseudo-elements and search decoration | These selectors express structural or interaction conditions; the build has no equivalent selector variants that can replace them with unconditional element classes. |
+| Nonstandard responsive exceptions and inherited/conditional typography | Existing 25/55/65rem constraints and display clamps remain; standard responsive utility migrations use the established 576/768/1024px transitions. |
+
+The retained candidates include conditional declarations, not just unavailable
+utility values. No competing important overrides were added to rescue a utility
+migration. Exact matches were rechecked after migration; matching text alone was
+not treated as equivalent cascade behavior.
+
+### Verification
+
+- 18 signed-in routes at 1440, 768 and 390px before/after (54 states each):
+  successful responses, no browser page errors or horizontal document overflow.
+  The final comparison has identical sampled heading geometry and document
+  heights. This is not a claim of pixel identity or every element's equivalence.
+- 72 additional page/viewport checks immediately below/at/above 576, 768,
+  1024 and 1280px cover discovery, recipe detail, profile, both editors and
+  collections. No horizontal overflow.
+- Desktop/tablet/phone interactions: detail iframe opens/closes, collection
+  dialog opens/closes, preparation checks/reset, and technique-option flex/gap
+  behavior. Print hides portrait/header. Inspected phone editor and desktop
+  cocktail detail screenshots, and captured print/high-contrast/reduced-motion.
+- 61 relevant Rails tests / 621 assertions pass. Updated one exact class-string
+  ordering assertion to inspect parsed DOM order so adding utilities preserves
+  the test's actual requirement.
+- Full suite earlier in the pass ran 251 tests: the same five pre-existing
+  `DetailPagesTest` cover-markup failures documented above, plus that exact
+  class-string assertion, which is now fixed and covered by the passing subset.
+- JavaScript star tests: 3 pass. The existing marketplace-search test cannot
+  start because it imports the removed `marketplace_search_controller.js`;
+  this pass does not change that test or remove the controller.
+- `git diff --check` passes. Temporary screenshots/comparisons are under
+  `/tmp/shakestir-css-prune-*` and `/tmp/shakestir-prune/`.

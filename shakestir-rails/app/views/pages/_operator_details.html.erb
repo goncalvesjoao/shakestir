@@ -1,5 +1,5 @@
-<section>
-  <h2>Who operates ShakeStir</h2>
+<section class="mt-4">
+  <h2 class="fs-3 mb-2">Who operates ShakeStir</h2>
   <% if ENV["SHAKESTIR_OPERATOR_NAME"].present? %>
     <p>ShakeStir is a personal, noncommercial recipe-sharing project operated by <%= ENV.fetch("SHAKESTIR_OPERATOR_NAME") %><% if ENV["SHAKESTIR_OPERATOR_COUNTRY"].present? %>, based in <%= ENV.fetch("SHAKESTIR_OPERATOR_COUNTRY") %><% end %>.</p>
   <% else %>

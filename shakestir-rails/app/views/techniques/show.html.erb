@@ -1,28 +1,28 @@
 <% content_for :body_class, "cocktail-panel-content" if params[:panel] == "1" %>
 <% content_for :title, "#{@technique.display_name} · Techniques · ShakeStir" %>
 <article class="cocktail-details cocktail-profile technique-profile full-width content-grid">
-  <header class="cocktail-profile-hero full-width content-grid">
+  <header class="position-relative cocktail-profile-hero full-width content-grid">
     <% unless params[:panel] == "1" %>
     <%= link_to techniques_path, class: "gap-2 d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
+      <svg class="d-block flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
       Back to techniques
     <% end %>
     <% end %>
-    <div class="cocktail-profile-intro">
+    <div class="position-relative gap-0 gap-md-5 cocktail-profile-intro">
       <div class="cocktail-profile-copy">
-        <h1><%= @technique.display_name %></h1>
+        <h1 class="text-reset fw-medium"><%= @technique.display_name %></h1>
         <p class="submitted-prose"><%= @technique.description %></p>
       </div>
     </div>
   </header>
   <div class="technique-profile-guide">
     <section class="technique-instructions" aria-labelledby="technique-instructions-heading">
-      <h3 id="technique-instructions-heading">How to do it</h3>
+      <h3 class="mt-0 mx-0 mb-3 fs-2" id="technique-instructions-heading">How to do it</h3>
       <%= simple_format @technique.instructions %>
     </section>
     <% if @technique.tip.present? %>
-      <section class="technique-tip" aria-labelledby="technique-tip-heading">
-        <h3 id="technique-tip-heading">Beginner tip</h3>
+      <section class="mt-4 pt-4 border-top technique-tip" aria-labelledby="technique-tip-heading">
+        <h3 class="mt-0 mx-0 mb-3 fs-5" id="technique-tip-heading">Beginner tip</h3>
         <%= simple_format @technique.tip %>
       </section>
     <% end %>

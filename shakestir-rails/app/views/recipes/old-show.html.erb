@@ -1,0 +1,6 @@
+<% content_for :title, "#{@recipe.display_name} · ShakeStir" %>
+<div class="detail-page recipe-detail-page full-width content-grid" data-controller="cocktail-panel" data-action="turbo:before-cache@window->cocktail-panel#close">
+  <%= render "details", recipe: @recipe %>
+  <% panel_title = @cocktail ? "#{@cocktail.display_name} cocktail details" : "#{@recipe.user.profile_name} profile" %>
+  <%= render "shared/detail_panel", title: panel_title, url: (@cocktail ? cocktail_path(@cocktail) : profile_path(@recipe.user)) %>
+</div>

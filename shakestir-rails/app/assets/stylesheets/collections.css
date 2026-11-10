@@ -36,7 +36,7 @@
 }
 .library-section-label > span {
     color: var(--color-muted);
-    font-size: var(--text-small);
+    font-size: var(--small-font-size);
 }
 .library-grid {
     --auto-grid-type: auto-fill;
@@ -101,7 +101,7 @@
 .library-card-meta,
 .library-detail-meta {
     color: var(--color-muted);
-    font-size: var(--text-small);
+    font-size: var(--small-font-size);
 }
 .library-visibility .library-icon {
     width: 1rem;
@@ -164,7 +164,7 @@
     --buttons-color-hover: var(--danger-color);
     --buttons-background-color: transparent;
     --buttons-color: var(--color-muted);
-    --buttons-font-size: var(--text-small);
+    --buttons-font-size: var(--small-font-size);
     --buttons-padding-block: var(--spacing-2);
     --buttons-padding-inline: var(--spacing-2);
     min-height: 2.75rem;
@@ -191,7 +191,7 @@
 }
 .library-form-section > p {
     color: var(--color-muted);
-    font-size: var(--text-small);
+    font-size: var(--small-font-size);
     margin-bottom: var(--spacing-2);
 }
 .library-privacy .library-privacy-option {
@@ -217,7 +217,7 @@
     font-size: var(--text-label);
 }
 .library-privacy-option small {
-    font-size: var(--text-small);
+    font-size: var(--small-font-size);
     color: var(--color-muted);
 }
 .library-cancel {
@@ -236,7 +236,7 @@
     font-size: var(--text-label);
 }
 .library-danger {
-    font-size: var(--text-small);
+    font-size: var(--small-font-size);
     color: var(--color-muted);
 }
 .library-danger > summary {
@@ -260,7 +260,7 @@
     --buttons-background-color: transparent;
     --buttons-color: var(--danger-color);
     border: 1px solid #9a312660;
-    --buttons-font-size: var(--text-small);
+    --buttons-font-size: var(--small-font-size);
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .library-card .library-artwork {
@@ -294,7 +294,7 @@
         height: 1.5rem;
     }
     .library-detail-copy .library-description {
-        font-size: var(--text-small);
+        font-size: var(--small-font-size);
     }
     .library-grid {
         --auto-grid-gap: var(--spacing-3);

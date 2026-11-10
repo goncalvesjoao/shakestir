@@ -150,7 +150,7 @@ cocktail details, collections, personal recipes, profiles. This section supersed
 older observations above about the application's spacing mismatch: the current
 root spacing is 1rem (steps .25, .5, 1, 1.5 and 3rem).
 
-- Ordinary small text now shares `--text-small: .875rem` (previously .8/.85/.875),
+- Ordinary small text now shares `--small-font-size: .875rem` (previously .8/.85/.875),
   and labels/actions share `--text-label: .9375rem` (previously .9/.9375/.95).
   Card titles share `--text-card-title: 1.375rem` (previously 1.3/1.375).
   Custom section/body sizes reuse verified `--h2`–`--h5-font-size` slots; nearby

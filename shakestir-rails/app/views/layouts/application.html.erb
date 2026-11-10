@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
     <title><%= content_for(:title) || "ShakeStir" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="ShakeStir">
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,37 +22,38 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= stylesheet_link_tag "semanticus", "theme", "cocktail-details", "collections", "my-recipes", "profiles", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "semanticus", "theme", "recipes", "cocktail-details", "collections", "my-recipes", "profiles", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
   </head>
 
-  <body class="<%= content_for :body_class %>">
+  <body>
     <a href="#main-content" class="visually-hidden-focusable">Skip to content</a>
-    <header class="position-sticky top-0 site-header content-grid">
-      <nav class="d-grid align-items-center row-gap-1 column-gap-3 gap-lg-4 py-2" aria-label="Main navigation">
-        <%= link_to root_path, class: "d-flex align-items-center text-decoration-none brand-link" do %>
+
+    <header class="site-header content-grid py-3 m-0 border-bottom">
+      <nav class="flex-wrap" aria-label="Main navigation">
+        <%= link_to root_path, class: "brand-link order-0" do %>
           <%= render "shared/wordmark" %>
         <% end %>
-        <ul class="d-flex align-items-center gap-4 m-0 p-0 flex-nowrap overflow-x-auto primary-navigation">
-          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Explore", root_path, aria: { current: ("page" if controller_name == "recipes" && %w[index show].include?(action_name)) } %></li>
-          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Cocktails", cocktails_path, aria: { current: ("page" if controller_name == "cocktails") } %></li>
-          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Ingredients", ingredients_path, aria: { current: ("page" if controller_name == "ingredients") } %></li>
-          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Tools", utensils_path, aria: { current: ("page" if controller_name == "utensils") } %></li>
-          <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Methods", techniques_path, aria: { current: ("page" if controller_name == "techniques") } %></li>
-          <% if authenticated? %>
-            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "My recipes", my_recipes_path, aria: { current: ("page" if controller_name == "account" && action_name == "recipes") } %></li>
-            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "My collections", my_collections_path, aria: { current: ("page" if controller_name == "collections") } %></li>
-          <% end %>
+
+        <ul class="primary-navigation order-2 order-lg-1">
+          <li><%= link_to "Explore", root_path, aria: { current: ("page" if controller_name == "recipes" && %w[index show].include?(action_name)) } %></li>
+          <li><%= link_to "Cocktails", cocktails_path, aria: { current: ("page" if controller_name == "cocktails") } %></li>
+          <li><%= link_to "Ingredients", ingredients_path, aria: { current: ("page" if controller_name == "ingredients") } %></li>
+          <li><%= link_to "Tools", utensils_path, aria: { current: ("page" if controller_name == "utensils") } %></li>
+          <li><%= link_to "Methods", techniques_path, aria: { current: ("page" if controller_name == "techniques") } %></li>
         </ul>
-        <ul class="d-flex align-items-center gap-2 gap-md-4 m-0 p-0 flex-nowrap navigation-actions">
+
+        <ul class="gap-2 gap-lg-4 order-1 order-lg-2">
           <% if authenticated? %>
-            <li class="d-flex align-items-center my-0 flex-shrink-0">
+            <li>
               <details class="position-relative account-dropdown">
                 <summary class="d-flex align-items-center gap-2 rounded-circle" aria-label="User account">
                   <%= profile_avatar(Current.user, size: 40, css_class: "rounded-circle object-fit-cover user-avatar") %>
                 </summary>
+
                 <div class="end-0 p-2 position-absolute account-dropdown-items">
+                  <%= link_to "My recipes", my_recipes_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
+                  <%= link_to "My collections", my_collections_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
                   <%= link_to "My profile", my_profile_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
                   <%= link_to "My account", my_account_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
                   <%= link_to "Log out", session_path, data: { turbo_method: :delete }, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
@@ -56,8 +61,8 @@
               </details>
             </li>
           <% else %>
-            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Log in", new_session_path %></li>
-            <li class="d-flex align-items-center my-0 flex-shrink-0"><%= link_to "Create account", new_registration_path, class: "text-nowrap d-inline-flex align-items-center button navigation-create" %></li>
+            <li><%= link_to "Log in", new_session_path %></li>
+            <li><%= link_to "Create account", new_registration_path, class: "d-inline-flex align-items-center button" %></li>
           <% end %>
         </ul>
       </nav>
@@ -65,9 +70,44 @@
 
     <%= flash_messages %>
 
-    <main id="main-content" class="content-grid">
+    <main id="main-content">
       <%= yield %>
     </main>
-    <%= render "shared/footer" %>
+
+    <footer class="content-grid mt-3 mt-md-5 border-top py-4">
+      <nav class="fs-small">
+        <div>
+          <%= link_to root_path, class: "brand-link" do %>
+            <%= render "shared/wordmark" %>
+          <% end %>
+
+          <p class="mt-2 mb-1">Find a drink. Make it yours.</p>
+
+          <small>&copy; <%= Date.current.year %> ShakeStir</small>
+        </div>
+
+        <ul class="gap-5" aria-label="Policies and help">
+          <li>
+            <p class="fs-6 fw-semibold mb-3">Policies</p>
+
+            <ul class="d-flex flex-column gap-3 align-items-start">
+              <li><%= link_to "Terms of service", terms_path %></li>
+              <li><%= link_to "Privacy policy", privacy_path %></li>
+              <li><%= link_to "Cookie policy", cookies_path %></li>
+            </ul>
+          </li>
+
+          <li>
+            <p class="fs-6 fw-semibold mb-3">Using ShakeStir</p>
+
+            <ul class="d-flex flex-column gap-3 align-items-start">
+              <li><%= link_to "Community guidelines", community_guidelines_path %></li>
+              <li><%= link_to "Responsible drinking", responsible_drinking_path %></li>
+              <li><%= link_to "Help & contact", help_path %></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </footer>
   </body>
 </html>

@@ -1,13 +1,13 @@
 <section id="<%= ingredients_id %>" class="card recipe-panel ingredients-panel mb-0">
 
-  <div class="d-flex align-items-baseline justify-content-between flex-wrap ingredients-heading">
+  <div class="gap-2 d-flex align-items-baseline justify-content-between flex-wrap ingredients-heading">
     <h2>Ingredients</h2>
     <% if recipe.servings.present? %><span class="recipe-servings"><%= pluralize(recipe.servings, "serving") %></span><% end %>
   </div>
   <% if recipe.recipe_ingredients.any? %>
     <dl class="catalog-resource-facts recipe-ingredient-facts">
       <% recipe.recipe_ingredients.each do |recipe_ingredient| %>
-        <div class="ingredient-copy">
+        <div class="row-gap-1 column-gap-3 ingredient-copy">
           <dt><span class="submitted-prose"><%= recipe_ingredient.name %></span></dt>
           <dd>
             <% if recipe_ingredient.quantity.present? %>

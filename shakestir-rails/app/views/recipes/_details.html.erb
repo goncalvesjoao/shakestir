@@ -3,16 +3,16 @@
 <article id="<%= dom_id recipe %>" class="position-relative recipe mixing-recipe recipe-profile full-width content-grid">
   <% photo = recipe_photo(recipe) %>
   <header class="cocktail-profile-hero full-width content-grid">
-    <%= link_to root_path, class: "d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
+    <%= link_to root_path, class: "gap-2 d-inline-flex align-items-center cocktail-cover-back secondary button" do %>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12" /></svg>
       All recipes
     <% end %>
     <div class="cocktail-profile-intro<%= " cocktail-profile-with-image" if photo.image.attached? %>">
     <div class="cocktail-profile-copy">
       <h1><%= recipe.display_name.presence || "Untitled recipe" %></h1>
-      <div class="recipe-meta-row">
+      <div class="row-gap-2 column-gap-3 d-flex flex-wrap align-items-center recipe-meta-row">
       <p class="recipe-attribution">Recipe by <%= link_to recipe.user.profile_name, profile_path(recipe.user), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{recipe.user.profile_name} profile", panel_kind: "profile" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% if @cocktail %>, for <%= link_to @cocktail.display_name, cocktail_path(@cocktail), data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@cocktail.display_name} cocktail details", panel_kind: "cocktail details" }, aria: { haspopup: "dialog", controls: "cocktail-panel" } %><% end %></p>
-    <div class="align-items-start mixing-save-actions">
+    <div class="d-flex gap-2 align-items-start mixing-save-actions">
       <%= render "recipes/star", recipe: recipe %>
       <% if authenticated? %><%= render "collections/picker", recipe: recipe %><% end %>
     </div>

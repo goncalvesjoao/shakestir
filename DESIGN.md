@@ -217,3 +217,30 @@ Recipe working content and reference sections span the full content width below 
 Cocktail, ingredient, tool and method details follow the same full-width body layout as recipes. Back links align upper-right; photo-led pages use a higher 20rem portrait frame with a small desktop overlap. On phones portraits retain the centered overlap and details stack beneath. Method guides retain readable prose widths within the full content area.
 
 Informational content below the cover on cocktail, ingredient, tool and method details is centered and capped at 70ch for prose readability. Recipe working sections and related recipe grids retain the full content width.
+
+
+## Shared spacing scale
+
+The Rails theme sets Semanticus's public `--spacing` to 1rem. Prefer its five
+native spacing steps throughout components and templates: `--spacing-1`
+through `--spacing-5` resolve to 4, 8, 16, 24 and 48px. Utility suffixes use the
+same steps. Compact metadata/label gaps use 8px, field groups and notes 16px,
+ordinary sections and compact form padding 24px, and larger separations or
+roomy desktop form padding 48px. Form scopes do not redefine `--spacing`.
+
+Prefer a nearby native step when the distance is ordinary whitespace.
+Eleven `--space-N` exceptions retain exact composition distances, with N
+counting the 4px base (`--spacing-1`). Keep those exceptions named so they
+can be reviewed as potential Semanticus additions; the spacing review lists
+their values and uses. Use calculations for structural relationships such as
+an icon width plus its gap. Adopt spacing utilities where their invariant `!important`
+behavior is appropriate; retain CSS for responsive component spacing. Split
+spacing between parent and child only when both have a structural purpose.
+Typography, dimensions, borders and radii keep their independent scales.
+
+Detail portraits share a single overlap variable: 2rem normally, the approved
+4.5rem above 65rem, and 12rem in the centered phone composition, expressed through
+the tracked custom spacing exceptions. Their height cap preserves at least the panel
+actions' 1.5rem top inset on side-by-side covers. See
+[the CSS spacing review](shakestir-rails/docs/css-spacing-review.md) for the
+current decisions, earlier migration history and verification.

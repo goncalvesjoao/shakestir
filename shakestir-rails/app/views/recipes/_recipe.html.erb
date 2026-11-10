@@ -12,7 +12,7 @@
   <% end %>
   <%= render "recipes/star", recipe: recipe %>
   </div>
-  <div class="card-copy">
+  <div class="card-copy<%= " pb-3" if local_assigns[:personal] %>">
     <h3><%= link_to recipe_author(recipe), profile_path(recipe.user), class: "recipe-author-link" %> / <%= link_to recipe.display_name.presence || "Untitled recipe", destination %></h3>
   </div>
 </article>

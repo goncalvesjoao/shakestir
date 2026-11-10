@@ -1,0 +1,4 @@
+interface:
+  display_name: "Semanticus Styling"
+  short_description: "Creative styling with a shared Semanticus foundation"
+  default_prompt: "Use $semanticus-styling to implement or review these styles using Semanticus components, utilities, shared spacing, font sizes, radius tokens, and breakpoints while preserving creative freedom."

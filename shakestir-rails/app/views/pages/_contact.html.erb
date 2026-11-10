@@ -1,0 +1,5 @@
+<% if ENV["SHAKESTIR_SUPPORT_EMAIL"].present? %>
+  <p>For <%= purpose %>, email <%= mail_to ENV.fetch("SHAKESTIR_SUPPORT_EMAIL") %>.</p>
+<% else %>
+  <p>Contact details have not been published yet. Check <%= link_to "Help & contact", help_path %> for updates.</p>
+<% end %>

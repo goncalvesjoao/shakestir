@@ -133,3 +133,37 @@ The top navigation links to public Ingredients, Utensils and Techniques catalogs
 Cocktails and the three catalogs share `catalog/index.html.erb` for headings, debounced search, counters, empty states and lazy pagination. Cocktails retain their existing card partial (including the photo fallback) and JSON response. The other catalogs use `catalog/_resource.html.erb`.
 
 The homepage and `/recipes` now use the shared catalog cover and compact, debounced name search. The ingredient/utensil picker UI has been removed; existing filter query parameters remain supported by the search endpoints. Recipe attribution, star controls, pagination and JSON responses are preserved.
+
+## Footer and policy drafts
+
+The public footer links to `/terms`, `/privacy`, `/cookies`, `/community-guidelines`,
+`/responsible-drinking`, and `/help`. Legal pages are explicitly marked as drafts.
+Operator details use `SHAKESTIR_OPERATOR_NAME`, `SHAKESTIR_OPERATOR_COUNTRY`, and
+`SHAKESTIR_SUPPORT_EMAIL`. These are public values shown on Terms, Privacy and Help.
+The contact email also receives privacy and content reports. Missing values show a
+plain unavailable message; setting them does not remove the draft notices.
+
+`.env.example` contains fictional examples. Copy it to `.env` if needed and replace
+the example values. Rails automatically loads dotenv files from `shakestir-rails/`
+in all environments, including production; no shell sourcing is needed.
+
+Precedence, highest first:
+
+1. Existing process environment variables (for example, values set by your host).
+2. `.env.<environment>.local`
+3. `.env.local` (skipped in test)
+4. `.env.<environment>` (such as `.env.development`, `.env.test`, or `.env.production`)
+5. `.env`
+
+Missing files are fine. `.env.example` is documentation only and is never loaded.
+All actual `.env` files remain ignored by Git. Start normally with `bin/dev`,
+`bin/rails console`, or `bin/rails runner`; restart after changing these files.
+Set `RAILS_ENV` through the process environment or Rails command options to select
+the environment; do not rely on an env file to select itself.
+
+Before public launch, confirm the legal operator and jurisdiction, review the terms,
+and complete privacy disclosures for production providers, processing grounds,
+retention, transfers and rights requests. Verify deployed cookies and any consent
+requirements. The pages do not add analytics, consent management, or a reporting backend.
+
+Privacy notice review reference: https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/what-privacy-information-should-we-provide/

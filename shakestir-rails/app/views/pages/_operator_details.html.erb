@@ -1,0 +1,9 @@
+<section>
+  <h2>Who operates ShakeStir</h2>
+  <% if ENV["SHAKESTIR_OPERATOR_NAME"].present? %>
+    <p>ShakeStir is a personal, noncommercial recipe-sharing project operated by <%= ENV.fetch("SHAKESTIR_OPERATOR_NAME") %><% if ENV["SHAKESTIR_OPERATOR_COUNTRY"].present? %>, based in <%= ENV.fetch("SHAKESTIR_OPERATOR_COUNTRY") %><% end %>.</p>
+  <% else %>
+    <p>Operator details have not been published yet.</p>
+  <% end %>
+  <%= render "contact", purpose: "support or privacy questions" %>
+</section>

@@ -322,3 +322,28 @@ input::placeholder, textarea::placeholder { color: var(--inputs-placeholder-colo
 .compact-recipe-grid .card-copy h3 { font-size: 1rem; line-height: 1.4; }
 .compact-recipe-grid .card-image img { padding: .375rem; }
 @media (max-width: 36rem) { .compact-recipe-grid { --auto-grid-gap: 1rem; } }
+
+/* Shared footer and readable informational pages. */
+.site-footer { display: grid; gap: 0; }
+.footer-content { display: flex; justify-content: space-between; gap: 2rem 4rem; flex-wrap: wrap; }
+.footer-brand p { margin-block: .75rem .25rem; }
+.footer-navigation { display: flex; flex-wrap: wrap; gap: 1.5rem 4rem; }
+.footer-navigation h2 { font-size: 1rem; letter-spacing: normal; margin-block: 0 .5rem; }
+.footer-navigation ul { display: block; list-style: none; margin: 0; padding: 0; }
+.footer-navigation li { display: block; }
+.footer-navigation a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-muted); }
+.footer-navigation a:hover { color: var(--primary-color); }
+.policy-page { width: 100%; max-width: 70ch; margin-inline: auto; overflow-wrap: anywhere; }
+.policy-page h1 { line-height: 1.15; }
+.policy-page h2 { font-size: 1.5rem; line-height: 1.3; margin-bottom: .75rem; }
+.policy-page section { margin-top: 2rem; }
+.policy-page p { line-height: 1.75; }
+.policy-date { color: var(--color-muted); }
+.policy-notice { border: 1px solid var(--border-color); padding: 1rem 1.25rem; border-radius: var(--border-radius); }
+.policy-notice p { margin-block: .5rem 0; }
+.policy-back { margin-top: 3rem; }
+@media (max-width: 36rem) {
+  .footer-content { gap: 1.5rem; }
+  .footer-navigation { gap: 1.5rem 2rem; }
+  .policy-page h1 { font-size: 2rem; }
+}

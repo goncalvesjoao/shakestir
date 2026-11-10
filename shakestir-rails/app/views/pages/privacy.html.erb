@@ -1,0 +1,39 @@
+<% content_for :title, "Privacy policy · ShakeStir" %>
+<article class="policy-page page-shell">
+  <header>
+    <h1>Privacy policy</h1>
+    <p class="policy-date">Draft updated <time datetime="2026-11-10">November 10, 2026</time></p>
+  </header>
+  <%= render "operator_details" %>
+  <%= render "draft_notice" %>
+  <section>
+    <h2>Information used by ShakeStir</h2>
+    <p>Account records include your email address, password hash and public handle. The service stores the recipes, collections and photos you create, along with Favorites memberships. Sign-in session records contain an IP address and browser user agent. Hosting infrastructure may also keep request logs.</p>
+  </section>
+  <section>
+    <h2>Why this information is used</h2>
+    <p>This information supports sign-in, password resets, recipe publishing, collection management, photo delivery and account security. The final policy must confirm the operator’s legal basis for each purpose and any additional production processing.</p>
+  </section>
+  <section>
+    <h2>What other people can see</h2>
+    <p>Your handle, profile and profile photo are public. Published public recipes and public collections are visible to others. Drafts, private recipes, private collections and individual Favorites memberships are not publicly listed. Star totals are public. Your account email appears on your private My account page; a handle initially derived from your email may reveal part of it, and can be changed in profile settings.</p>
+  </section>
+  <section>
+    <h2>Service providers and external sites</h2>
+    <p>When no uploaded profile photo is available, your own account avatar may load from Gravatar using a hash of your email address. That request shares the hash, your IP address and browser request information with Gravatar. External recipe source links take you to sites with their own privacy practices. Production hosting, email and storage providers, their locations and any international transfers must be confirmed before launch.</p>
+  </section>
+  <section>
+    <h2>Storage and deletion</h2>
+    <p>Account content remains stored while your account exists unless you remove it. My account lets you delete your account after confirming your password. This removes associated recipes, collections and sessions; uploaded files are queued for deletion. Log and backup retention periods, exceptions and the timing of file cleanup must be documented for the production deployment.</p>
+  </section>
+  <section>
+    <h2>Your choices and rights</h2>
+    <p>You can change your handle and photo, edit content, adjust recipe and collection visibility, and delete your account. Other rights, such as access, correction, portability, objection or complaints to a regulator, depend on applicable law.</p>
+  </section>
+  <section>
+    <h2>Privacy questions and requests</h2>
+    <%= render "contact", purpose: "privacy questions or requests about your personal information" %>
+    <p>Describe your request and the account it relates to. Never send your password.</p>
+  </section>
+  <p class="policy-back"><%= link_to "Back to recipes", root_path %></p>
+</article>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "terms", to: "pages#terms", as: :terms
+  get "privacy", to: "pages#privacy", as: :privacy
+  get "cookies", to: "pages#cookie_policy", as: :cookies
+  get "community-guidelines", to: "pages#community", as: :community_guidelines
+  get "responsible-drinking", to: "pages#responsible_drinking", as: :responsible_drinking
+  get "help", to: "pages#help", as: :help
   get "my/account", to: "account#show", as: :my_account
   delete "my/account", to: "account#destroy"
   get "my/recipes", to: "account#recipes", as: :my_recipes

@@ -1595,3 +1595,22 @@
         bottom: -12rem;
     }
 }
+
+/* Wide detail layouts leave room for a lower portrait. */
+@media (min-width: 65.001rem) {
+    :is(.cocktail-profile:has(#cocktail-background), .catalog-resource-profile, .recipe-profile) .cocktail-profile-image {
+        bottom: -4.5rem;
+    }
+}
+
+/* Cap portraits at the intro's top inset, matching the panel action margin. */
+@media (min-width: 45.001rem) {
+    :is(.cocktail-profile:has(#cocktail-background), .catalog-resource-profile, .recipe-profile) .cocktail-profile-image {
+        height: min(20rem, calc(100% + 2rem));
+    }
+}
+@media (min-width: 65.001rem) {
+    :is(.cocktail-profile:has(#cocktail-background), .catalog-resource-profile, .recipe-profile) .cocktail-profile-image {
+        height: min(20rem, calc(100% + 4.5rem));
+    }
+}

@@ -142,3 +142,57 @@ Updated the vendored full CSS and notices from Semanticus commit `c0187a7` (`fea
 The app now sets `--buttons-border-radius: 3rem` at the root. General `--border-radius` stays `.7rem`. Removed the broad `--border-radius: 3rem` override from button selectors and the redundant navigation/technique-close radius assignments. Circular collection/picker/panel controls, collection choice rows and picker match controls override `--buttons-border-radius` locally. Other fields, panels and non-button links keep their existing radius rules. This uses the public token; no internal radius alias override is needed.
 
 Validation: **59 Rails tests / 484 assertions pass**. The **26 before/after desktop/phone page captures** have no element geometry or sampled computed-style differences. **22 radius checks** verify pill buttons/links, circular controls, rectangular choice rows, picker controls and independent general/input radii. File-selector buttons now also follow the pill button theme through the new framework token. Inspected phone profile rendering. Mechanical detector and whitespace checks pass. QA files are under `/tmp/shakestir-button-341/`.
+
+## Shared typography, radius and breakpoint review (2026-11-10)
+
+Reviewed the current 3.4.1 bundle in its actual load order: Semanticus, theme,
+cocktail details, collections, personal recipes, profiles. This section supersedes
+older observations above about the application's spacing mismatch: the current
+root spacing is 1rem (steps .25, .5, 1, 1.5 and 3rem).
+
+- Ordinary small text now shares `--text-small: .875rem` (previously .8/.85/.875),
+  and labels/actions share `--text-label: .9375rem` (previously .9/.9375/.95).
+  Card titles share `--text-card-title: 1.375rem` (previously 1.3/1.375).
+  Custom section/body sizes reuse verified `--h2`–`--h5-font-size` slots; nearby
+  1.1/1.15rem treatments use the existing 1.125rem step. Line heights and heading
+  semantics stay contextual. Display clamps, portrait initials, quantity type,
+  small count badges and icon glyph sizes remain deliberate exceptions.
+- General/field radius is .75rem (previously .7), cards/media use the existing
+  `--card-border-radius: 1rem`, including nearby .9/1.2rem treatments. Buttons
+  retain the independent 3rem pill token and local circular overrides. Small
+  .25/.5rem menu/checklist details and zero-radius edge panels remain intentional.
+- Common mobile transitions now use `width < 768px` and roomy controls use
+  `width >= 768px`, matching Semanticus md instead of 45/45.001rem. Collections'
+  40rem layout joins that transition. Small layouts use `< 576px`; content-grid
+  and navigation use complementary `< 1024px` / `>= 1024px`, and wide content
+  uses `>= 1280px`. These are intentional threshold changes, not unit conversions.
+  No framework build or vendor edits were needed. No JavaScript media conditions
+  were found; existing image `sizes` hints describe image selection independently.
+- Retained breakpoint exceptions: 25rem compresses the personal-filter labels
+  only on very narrow phones; 55rem stacks the generic mixing layout and detail
+  references before columns become cramped; 65rem coordinates the portrait,
+  reading-column offset and reference-grid composition. These are component
+  constraints rather than shared device transitions. The 65rem complement now
+  uses `width > 65rem` rather than leaving a .001rem gap.
+- Pruned unused navbar-search layout rules (the catalog's accessible label is
+  still used), superseded header grid/gap rules, repeated panel spacing and
+  profile padding/gaps, footer flex behavior overridden by its grid, and detail
+  margin/column rules superseded by the final recipe composition. Existing
+  utilities remain in place; this pass primarily consolidates shared tokens.
+
+Browser verification: 18 signed-in routes at 1440, 768 and 390px before and after
+(54 page states each), with no page errors or horizontal document overflow.
+An additional 72 page/viewport checks cover immediately below, at and above
+576, 768, 1024 and 1280px across discovery, recipe detail, both editors, profile
+and collections; none overflowed. Inspected desktop detail and phone editor
+captures, and captured recipe print and reduced-motion/high-contrast states.
+These checks do not establish pixel identity: typography, rounding and transition
+widths intentionally changed. Temporary artifacts are under
+`/tmp/shakestir-css-review-{before,after}/` and `/tmp/shakestir-review-*`.
+
+Rails suite: **251 tests, 4,084 assertions, five failures, zero errors**. All five
+failures are in `DetailPagesTest`, whose HTML assertions still expect
+`.cocktail-cover` / `img.cocktail-cover-photo`; the unchanged templates render
+`.cocktail-profile-hero` / `img.cocktail-profile-image`. These integration tests
+inspect response HTML and do not execute the changed CSS. This styling pass
+leaves those template/test mismatches untouched. `git diff --check` passes.

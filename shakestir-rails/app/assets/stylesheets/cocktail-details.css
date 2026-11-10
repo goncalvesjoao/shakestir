@@ -1583,3 +1583,15 @@
 .catalog-resource-profile .catalog-resource-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
 .ingredients-profile .cocktail-background { padding-bottom: 1.5rem; }
 .catalog-resource-profile .background-story > section { margin-bottom: 0; }
+
+/* Keep detail-page portraits grounded as its contained image scales. */
+:is(.cocktail-profile:has(#cocktail-background), .catalog-resource-profile, .recipe-profile) .cocktail-profile-image {
+    top: auto;
+    bottom: -2rem;
+    object-position: center bottom;
+}
+@media (max-width: 45rem) {
+    :is(.cocktail-profile:has(#cocktail-background), .catalog-resource-profile, .recipe-profile) .cocktail-profile-image {
+        bottom: -12rem;
+    }
+}

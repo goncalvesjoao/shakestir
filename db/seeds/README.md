@@ -9,3 +9,19 @@ The remaining shared JSON describes a larger graph: fictional accounts, six cock
 The [taste notes](taste/README.md), [technique catalog](techniques/README.md), [utensil catalog](utensils/README.md), and [fictional avatars](avatars/README.md) document their scope and provenance. Dummy credentials and `.example` addresses are development fixtures only.
 
 Reruns preserve existing records, curation, assigned authors and uploaded images. Missing stored seed files are restored only when their bytes match the existing image identity. Seeding does not remove data from earlier datasets; use a fresh local database/storage pair for a clean demo.
+
+### Normalize catalog image padding
+
+Catalog PNGs use tight artwork bounds with a 2% safety margin. To normalize new
+images without resizing their pixels, run from the repository root:
+
+```sh
+python3 scripts/normalize_catalog_images.py --manifest /tmp/catalog-images.json
+cd shakestir-rails
+mise exec -- ruby bin/rails runner script/refresh_catalog_images.rb /tmp/catalog-images.json
+```
+
+The manifest records the original checksums. The refresh command updates only
+matching local cocktail, recipe, ingredient, and utensil attachments, preserving
+unrelated uploads. Run it with the manifest from the normalization pass before
+running normalization again. Fresh databases use the normalized seed files.

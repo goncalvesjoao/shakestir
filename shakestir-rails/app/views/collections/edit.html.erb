@@ -4,6 +4,6 @@
   <header class="align-items-start align-items-md-center gap-3 gap-md-4 flex-column flex-md-row d-flex justify-content-between library-heading"><div><h1>Edit collection</h1><p class="m-0 library-description">Give it a name. Choose who can see it.</p></div></header>
   <%= render "form", collection: @collection %>
   <% unless @collection.system_key == "favorites" %>
-  <details class="mt-4 library-danger"><summary>Delete collection</summary><p>This permanently deletes the collection. Your recipes will stay in ShakeStir.</p><%= button_to "Delete collection", @collection, method: :delete, class: "library-delete", data: { turbo_confirm: "Delete #{@collection.name}? This cannot be undone. Your recipes will not be deleted." } %></details>
+  <details class="mt-4 library-danger"><summary class="d-flex align-items-center">Delete collection</summary><p>This permanently deletes the collection. Your recipes will stay in ShakeStir.</p><%= button_to "Delete collection", @collection, method: :delete, class: "library-delete", data: { turbo_confirm: "Delete #{@collection.name}? This cannot be undone. Your recipes will not be deleted." } %></details>
   <% end %>
 </div>

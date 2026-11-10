@@ -285,3 +285,83 @@ not treated as equivalent cascade behavior.
   this pass does not change that test or remove the controller.
 - `git diff --check` passes. Temporary screenshots/comparisons are under
   `/tmp/shakestir-css-prune-*` and `/tmp/shakestir-prune/`.
+
+## Whole-selector orphan review (2026-11-10)
+
+Revisited all five custom stylesheets with the updated orphan audit. Rebuilt the
+utility inventory against the unchanged 3.4.1 vendor asset. Browser selector
+matching supplied candidates; decisions also traced templates, partial callers,
+helper output, conditional branches and JavaScript state changes. Absence from a
+sampled DOM was not used as deletion proof.
+
+**This pass:** 541 → 484 rules (**57 fewer**), 1,191 → 1,078 declarations
+(**113 fewer**), 63,522 → 57,274 uncompressed bytes (**6,248 fewer**).
+Counts combine the distinct categories below; removing a branch from a shared
+selector list does not necessarily remove its declarations.
+
+### Confirmed orphan dispositions
+
+Removed **22 selector branches**, including responsive/print repeats:
+
+| Selector or family | Rendering evidence |
+| --- | --- |
+| `.site-header nav li form`, `.site-header button` | Header renders links, lists, account details/summary and avatar; no form or button producer. Log out uses a Turbo navigation link. |
+| `.quantity`, `.mixing-recipe .ingredient-copy .quantity` | Current requirements render quantities directly in `dd`; no quantity-class element is produced. Model/JSON fields named quantity are not CSS class consumers. |
+| `.ingredient-copy > .submitted-prose`, detail variant | Ingredient prose lives inside `dt > span`; optional notes live in `dd`. Neither is a direct prose child of ingredient-copy. |
+| `.detail-page .cocktail-details` | Recipe wrapper contains recipe details and the iframe dialog. Canonical cocktail articles render on separate pages/documents, not inside that wrapper. |
+| `.detail-nav` and anchor/responsive/print variants | `_section_nav.html.erb` has no callers in the current views, controllers, helpers or JavaScript. The current cover/back navigation replaces it. The unused partial itself was not deleted. |
+| `.profile-panel-content .page-shell` | Public/private profile rendering uses library-page/profile-page; page-shell belongs to policy pages. |
+| `.page-shell > [role="status"]` | Policy page-shells do not produce direct status children. Flash output is outside main, and catalog live status belongs to the catalog wrapper. |
+| `.form-page input[type="checkbox"]`, textarea, img | The four authentication/password templates are the only form-page consumers; none produces those controls/media. Profile and recipe editors use other wrappers. |
+| `.catalog-card-image .photo-placeholder` | Resource partial renders an image endpoint or omits media for techniques; it never renders the recipe fallback span inside catalog-card-image. Removed only the orphan branch, retaining catalog-card-image's background rule. |
+| `.recipe-editor .button:active` | Editor has native submit input and ordinary back/cancel links; no button-class anchor. Other live branches in the shared rule were preserved before redundant global motion resets were consolidated. |
+| `.icon-link`, `.size-lg` | No current template/helper/JavaScript producer. Removed only local custom rules; vendor APIs remain available. |
+
+Removed the inert size-sm details-menu slot because size-sm is used on controls,
+not a details menu. Removed `--space-22` and `--space-28` after their last consumers
+were eliminated and references across application sources were checked.
+
+### Cascade cleanup and utility migration
+
+Removed superseded legacy mixing columns/gaps, panel and reference-grid defaults,
+heading sizes/margins already supplied by important utilities, duplicate
+background/heading configuration and repeated mobile values. Removed per-component
+motion resets already covered by the global important transition/animation/scroll
+reset; pressed transforms are covered globally or defined only under no-preference.
+The technique dialog backdrop keeps its separate transition reset because the
+global rule does not select `::backdrop`.
+
+Moved invariant footer gaps (including the existing 576px change), policy-notice
+padding, collection-create border, collection-delete summary layout, search-group
+margin, related-recipes heading/grid spacing and editor-extra padding into verified
+utilities. Mixing alignment remains explicit through `align-items-start` after
+removing its superseded base layout rule. No breakpoint, typography or radius
+changes were intended.
+
+Retained unmatched candidates with concrete producers: authenticated/signed-out
+header actions, error/empty states, collection detail/delete controls, drafts,
+editor photos, optional ingredient notes, filtered recipe sections, pressed/busy
+star and picker states, open dialogs/account details, hidden preparation controls
+and iframe body classes. Rails supplies field_with_errors; catalog body classes
+and resource-profile classes interpolate catalog_name. Native theme defaults
+remain shared configuration. These are not orphans just because one sampled page
+or a literal class search misses them.
+
+### Verification and limits
+
+- 18 routes × desktop/tablet/phone before/after: **54 states**, successful
+  responses, no page errors or horizontal document overflow, identical sampled
+  heading geometry and document heights.
+- **21 additional states** cover collection detail/edit, profile/cocktail iframe
+  contexts, a technique guide, filtered cocktail details and signed-out
+  sign-in/registration/password-reset pages.
+- **72 breakpoint checks** around 576/768/1024/1280px; no horizontal overflow.
+- Panel/picker open-close, preparation check/reset and editor layout checks pass
+  at three widths. Reduced-motion/high-contrast dialog and print recipe captured.
+- **61 Rails tests, 621 assertions, no failures or errors**. Whitespace checks pass.
+  Existing full-suite issues from the prior audit were not changed by this pass.
+- Sources establish conditional producers; this is not exhaustive runtime
+  coverage of every user/content/error state or browser engine.
+
+Working candidate/disposition reports and captures are under
+`/tmp/shakestir-prune/orphan-*` and `/tmp/shakestir-css-orphan-*`.

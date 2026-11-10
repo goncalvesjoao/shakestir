@@ -131,9 +131,6 @@
 .library-detail-copy .library-description {
     font-size: var(--text-label);
 }
-.library-detail-copy .secondary {
-    margin-top: var(--spacing-3);
-}
 .library-empty {
     border: 1px dashed #bdc4af;
     border-radius: var(--card-border-radius);
@@ -245,8 +242,6 @@
 .library-danger > summary {
     cursor: pointer;
     min-height: 2.75rem;
-    display: flex;
-    align-items: center;
     color: var(--danger-color);
 }
 .library-danger > summary::after {
@@ -282,9 +277,6 @@
     }
 }
 @media (width < 768px) {
-    .library-heading {
-        margin-bottom: var(--spacing-5);
-    }
     .library-detail-heading {
         grid-template-columns: 6rem minmax(0, 1fr);
         align-items: start;
@@ -296,7 +288,6 @@
     .library-artwork-symbol {
         width: 3rem;
         height: 3rem;
-        border-radius: var(--card-border-radius);
     }
     .library-artwork-symbol .library-icon {
         width: 1.5rem;
@@ -310,20 +301,6 @@
     }
     .library-recipes {
         --auto-grid-min-column: min(100%, 17rem);
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    .library-page *,
-    .library-page *::before,
-    .library-page *::after {
-        transition: none;
-        animation: none;
-    }
-    .library-page .library-artwork,
-    .library-page button:active,
-    .library-page .button:active,
-    .library-page input[type="submit"]:active {
-        transform: none;
     }
 }
 @media (prefers-contrast: more) {

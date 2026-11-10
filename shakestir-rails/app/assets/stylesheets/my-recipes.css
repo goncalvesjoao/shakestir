@@ -150,9 +150,6 @@
     color: var(--color-muted);
     font-size: 0.75rem;
 }
-.recipe-editor-extra .recipe-section-fields {
-    padding-block: var(--spacing-3);
-}
 @media (width < 768px) {
     .personal-search {
         flex: 1 1 100%;
@@ -176,21 +173,6 @@
 @media (max-width: 25rem) {
     .personal-filters a {
         gap: var(--spacing-1);
-        font-size: var(--text-small);
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    .personal-recipes-page *,
-    .recipe-editor * {
-        transition: none;
-        animation: none;
-    }
-    .personal-recipes-page button:active,
-    .personal-recipes-page .button:active,
-    .personal-recipes-page .card-image:hover img,
-    .recipe-editor input[type="submit"]:active,
-    .recipe-editor .button:active {
-        transform: none;
     }
 }
 @media (prefers-contrast: more) {

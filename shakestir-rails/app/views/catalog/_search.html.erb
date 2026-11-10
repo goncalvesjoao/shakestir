@@ -1,6 +1,6 @@
 <%= form_with url: (catalog_name == "recipes" ? root_path : url_for(action: :index)), method: :get, class: "m-0 search-form catalog-search-form", data: { catalog_search_target: "form", action: "submit->catalog-search#submit" } do |form| %>
   <%= form.label :q, (%w[cocktails recipes].include?(catalog_name) ? "Search #{catalog_name}" : "Search #{catalog_name} by name"), class: "visually-hidden navbar-search-label" %>
-  <div role="search">
+  <div class="mb-0" role="search">
     <%= form.search_field :q, value: params[:q], placeholder: (catalog_name == "cocktails" ? "Find a cocktail…" : "Find #{catalog_name.singularize}…"), data: { action: "input->catalog-search#search compositionend->catalog-search#search" } %>
   </div>
 <% end %>

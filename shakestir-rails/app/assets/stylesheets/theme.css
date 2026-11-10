@@ -10,8 +10,6 @@
     --space-16: calc(var(--spacing-1) * 16);
     --space-18: calc(var(--spacing-1) * 18);
     --space-20: calc(var(--spacing-1) * 20);
-    --space-22: calc(var(--spacing-1) * 22);
-    --space-28: calc(var(--spacing-1) * 28);
     --space-32: calc(var(--spacing-1) * 32);
     --space-36: calc(var(--spacing-1) * 36);
     --space-44: calc(var(--spacing-1) * 44);
@@ -145,7 +143,6 @@ input[type="submit"]:active {
 }
 .site-header nav {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    --nav-link-gap: var(--spacing-2);
     --links-color: var(--color);
     min-height: 4.75rem;
 }
@@ -182,9 +179,6 @@ input[type="submit"]:active {
     --buttons-background-color: var(--primary-color);
     --buttons-color: #fffef9;
     --buttons-font-size: var(--text-label);
-}
-.site-header nav li form {
-    margin: 0;
 }
 .wordmark {
     width: 146.734375px;
@@ -240,27 +234,12 @@ input[type="submit"]:active {
 .card-copy h3 a:hover {
     text-decoration: underline;
 }
-.mixing-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-    gap: var(--spacing-4);
-    align-items: start;
-}
-.recipe-panel {
-    --card-spacing: var(--spacing-4);
-    scroll-margin-top: var(--space-28);
-}
 .card {
     --color-muted: #596155;
 }
 .ingredient-copy {
     flex: 1;
     min-width: 0;
-}
-.quantity {
-    font-size: 1.6rem;
-    line-height: 1.2;
-    font-variant-numeric: tabular-nums;
 }
 .ingredient-copy small {
     color: var(--color-muted);
@@ -272,18 +251,12 @@ input[type="submit"]:active {
 .utensil-list {
     list-style: none;
 }
-.utensil-list li {
-    padding: var(--spacing-2) 0;
-}
 .step-body {
     line-height: 1.7;
 }
 .recipe-footer {
     border-top: 1px solid var(--border-color);
     padding-top: var(--spacing-4);
-}
-.recipe-footer h2 {
-    font-size: var(--text-card-title);
 }
 .recipe-actions {
     display: flex;
@@ -305,16 +278,6 @@ input[type="submit"]:active {
     font-size: var(--text-label);
     margin-bottom: var(--spacing-2);
 }
-.form-page input[type="checkbox"] {
-    margin-bottom: var(--spacing-3);
-}
-.form-page textarea {
-    min-height: 8rem;
-}
-.form-page img {
-    max-height: 14rem;
-    border-radius: var(--border-radius);
-}
 .form-page p {
     color: var(--color-muted);
 }
@@ -329,20 +292,12 @@ input[type="submit"]:active {
     color: var(--color-muted);
     font-size: var(--text-small);
 }
-@media (max-width: 55rem) {
-    .mixing-layout {
-        grid-template-columns: 1fr;
-    }
-}
 @media (width < 576px) {
     .content-grid {
         --content-grid-padding-inline: var(--spacing-3);
     }
     .site-header nav ul {
         --nav-link-gap: var(--spacing-2);
-        font-size: var(--text-small);
-    }
-    .site-header button {
         font-size: var(--text-small);
     }
 }
@@ -381,10 +336,6 @@ input[type="submit"]:active {
     .card {
         --color-muted: #30382d;
     }
-}
-
-.ingredient-copy > .submitted-prose {
-    font-size: var(--h5-font-size);
 }
 
 .cocktail-details {
@@ -520,9 +471,6 @@ textarea::placeholder {
 .auth-page .field_with_errors input {
     border-color: var(--danger-color);
 }
-.page-shell > [role="status"] {
-    margin-bottom: var(--spacing-4);
-}
 @media (width < 768px) {
     .explore-heading h1 {
         font-size: 2rem;
@@ -614,8 +562,7 @@ textarea::placeholder {
     container-type: inline-size;
 }
 
-.catalog-card-image,
-.catalog-card-image .photo-placeholder {
+.catalog-card-image {
     background: transparent;
 }
 .catalog-card-image img {
@@ -688,9 +635,6 @@ textarea::placeholder {
     width: min(100%, 22rem);
     justify-self: end;
 }
-.catalog-search-form [role="search"] {
-    margin-bottom: 0;
-}
 .catalog-page .catalog-cover-description {
     font-size: 1.0625rem;
     line-height: 1.6;
@@ -746,14 +690,8 @@ textarea::placeholder {
 .site-footer {
     display: grid;
 }
-.footer-content {
-    gap: var(--spacing-4) var(--spacing-5);
-}
 .footer-brand p {
     margin-block: var(--spacing-2) var(--spacing-1);
-}
-.footer-navigation {
-    gap: var(--spacing-4) var(--spacing-5);
 }
 .footer-navigation h2 {
     font-size: 1rem;
@@ -789,18 +727,11 @@ textarea::placeholder {
 }
 .policy-notice {
     border: 1px solid var(--border-color);
-    padding: var(--spacing-3) var(--spacing-4);
 }
 .policy-notice p {
     margin-block: var(--spacing-2) 0;
 }
 @media (width < 576px) {
-    .footer-content {
-        gap: var(--spacing-4);
-    }
-    .footer-navigation {
-        gap: var(--spacing-4);
-    }
     .policy-page h1 {
         font-size: 2rem;
     }
@@ -828,18 +759,8 @@ samp {
 mark {
     padding: var(--spacing-1);
 }
-.icon-link {
-    gap: var(--spacing-2);
-}
 :is([role="status"], [role="alert"]) {
     gap: var(--spacing-2);
-}
-.size-lg {
-    --size-padding-block: var(--spacing-3);
-    --size-padding-inline: var(--spacing-3);
-}
-.size-sm {
-    --details-menu-padding-block: var(--spacing-1);
 }
 
 /* Navigation controls use compact grid spacing instead of border subtraction. */

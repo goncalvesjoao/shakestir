@@ -13,7 +13,7 @@
         <% end %>
       </div>
     <% end %>
-    <details class="mt-3 pt-3 collection-create" data-collection-picker-target="create">
+    <details class="mt-3 pt-3 border-top collection-create" data-collection-picker-target="create">
       <summary class="fw-semibold">+ Create new collection</summary>
       <%= form_with url: collection_recipes_path, class: "mt-3", data: { action: "submit->collection-picker#create" } do |form| %>
         <%= form.hidden_field :recipe_id, value: recipe.id, id: dom_id(recipe, :create_collection_recipe) %>

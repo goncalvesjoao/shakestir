@@ -107,18 +107,6 @@
         scroll-margin-top: var(--space-44);
     }
 }
-@media (prefers-reduced-motion: reduce) {
-    .profile-page *,
-    .profile-editor * {
-        transition: none;
-        animation: none;
-        scroll-behavior: auto;
-    }
-    .profile-page .button:active,
-    .profile-editor input[type="submit"]:active {
-        transform: none;
-    }
-}
 @media (prefers-contrast: more) {
     .profile-empty {
         background: #fffef9;

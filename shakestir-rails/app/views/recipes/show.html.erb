@@ -27,7 +27,7 @@
           <span>Recipe by</span>
           <%= link_to(
             @recipe.user.profile_name,
-            profile_path(@recipe.user),
+            user_profile_path(@recipe.user),
             data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@recipe.user.profile_name} profile", panel_kind: "profile" },
             aria: { haspopup: "dialog", controls: "cocktail-panel" }
           ) %>
@@ -108,5 +108,5 @@
 <%= render(
   "shared/detail_panel",
   title: @cocktail ? "#{@cocktail.display_name} cocktail details" : "#{@recipe.user.profile_name} profile",
-  url: (@cocktail ? cocktail_path(@cocktail) : profile_path(@recipe.user))
+  url: (@cocktail ? cocktail_path(@cocktail) : user_profile_path(@recipe.user))
 ) %>

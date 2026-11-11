@@ -45,6 +45,7 @@
   --color-muted: #596155;
   --color: #202923;
   --danger-color: #9a3126;
+  --input-autofill-box-shadow: 0 0 0 100px #eceee3 inset;
   --inputs-background-color-focus: #fffef9;
   --inputs-background-color: #fffef9;
   --inputs-border-color: #a7ad9b;
@@ -84,119 +85,46 @@ button,
 input[type="submit"],
 .button {
   min-height: 2.8rem;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.secondary {
+    --buttons-color: var(--secondary-color);
+    --_buttons-color-hover: var(--secondary-color-hover);
+
+    border: var(--border-width) solid var(--border-color);
+  }
 }
 
-/* Secondary is a near-white action surface; other Semanticus components retain their palettes. */
-:where(
-  button,
-  [type="submit"],
-  [type="reset"],
-  [type="button"],
-  [role="button"],
-  a.button
-).secondary {
-  --buttons-color: var(--secondary-color);
-  --_buttons-color-hover: var(--secondary-color-hover);
-
-  border: var(--border-width) solid var(--border-color);
-}
-
-button:active,
-.button:active,
-input[type="submit"]:active {
-  transform: scale(0.98);
-}
-
-:focus-visible {
-  outline: 3px solid var(--primary-outline-color);
-  outline-offset: 4px;
-}
-
-::selection {
-  background: #dce3c7;
-  color: var(--typography-color);
-}
-
-input,
-textarea {
-  caret-color: var(--primary-color);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--inputs-placeholder-color);
-  opacity: 1;
-}
-
-/* Normalize Semanticus details that use literal or fractional spacing. */
 label,
 fieldset legend {
   margin-bottom: var(--spacing-1);
 }
-code,
-kbd,
-samp {
-  padding: var(--spacing-2);
-}
-mark {
-  padding: var(--spacing-1);
-}
+
 :is([role="status"], [role="alert"]) {
   gap: var(--spacing-2);
 }
 
 /* Navigation controls use compact grid spacing instead of border subtraction. */
-nav
-  :is(
-    button,
-    .button,
-    [role="button"],
-    [type="button"],
-    select,
-    input:not(
-      :is([type="checkbox"], [type="radio"], [type="range"], [type="file"])
-    )
-  ) {
+nav :is(
+  button,
+  .button,
+  [role="button"],
+  [type="button"],
+  select,
+  input:not(
+    :is([type="checkbox"], [type="radio"], [type="range"], [type="file"])
+  )
+) {
   --inputs-padding-block: var(--spacing-2);
   --inputs-padding-inline: var(--spacing-3);
-}
-
-/* Icon clearance follows the same grid even when a search field uses small type. */
-input[type="search"] {
-  padding-inline-start: round(
-    nearest,
-    calc(
-      var(--inputs-padding-inline) + var(--icons-width) +
-        var(--icons-background-position-gap)
-    ),
-    var(--spacing-1)
-  );
-
-  &::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    width: 1rem;
-    height: 1rem;
-    margin-left: var(--spacing-2);
-    cursor: pointer;
-    background-color: var(--primary-color);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 4 8 8M12 4l-8 8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
-      center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 4 8 8M12 4l-8 8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
-      center / contain no-repeat;
-  }
 }
 
 @media (width < 576px) {
   .content-grid {
     --content-grid-padding-inline: var(--spacing-3);
-  }
-}
-
-@media (width < 768px) {
-  input:not([type="checkbox"], [type="radio"], [type="submit"]),
-  select,
-  textarea {
-    font-size: 1rem;
   }
 }
 

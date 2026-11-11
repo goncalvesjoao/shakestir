@@ -9,7 +9,7 @@
   <% end %>
 
   <h2 class="fs-3 text-center">
-    <%= link_to recipe_author(recipe), profile_path(recipe.user) %>
+    <%= link_to recipe_author(recipe), user_profile_path(recipe.user) %>
     <span>/</span>
     <%= link_to recipe.display_name.presence || "Untitled recipe", recipe_path(recipe) %>
   </h2>

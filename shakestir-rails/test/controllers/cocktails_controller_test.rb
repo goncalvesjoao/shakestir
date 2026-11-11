@@ -28,7 +28,7 @@ class CocktailsControllerTest < ActionDispatch::IntegrationTest
   test "canonical names return exact recipe results even for broad searches" do
     get root_url, params: { q: "Margarita" }
     assert_select ".recipe-grid article", count: 2
-    assert_select "#recipe_#{recipes(:one).id} .recipe-author-link[href=?]", profile_path(users(:one)), text: "@mika"
+    assert_select "#recipe_#{recipes(:one).id} .recipe-author-link[href=?]", user_profile_path(users(:one)), text: "@mika"
     assert_select "h3 a[href=?]", recipe_path(recipes(:one)), text: "Bright sour"
     assert_select "h3 a[href=?]", recipe_path(recipes(:two)), text: "Dry sour"
     sign_in_as(users(:two))

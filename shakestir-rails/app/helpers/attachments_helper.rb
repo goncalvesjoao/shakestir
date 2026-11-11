@@ -1,4 +1,19 @@
 module AttachmentsHelper
+  def gravatar_url(user)
+    hash = Digest::SHA256.hexdigest(user.email_address.strip.downcase)
+    "https://gravatar.com/avatar/#{hash}?s=80&d=mp"
+  end
+
+  def profile_avatar(user, size: 112, css_class: nil, image_class: nil)
+    own_profile = Current.user == user
+
+    if user.image.attached?
+      image_tag user_profile_image_path(user, size: :card), alt: "", width: size, height: size, class: class_names(css_class, image_class)
+    else
+      image_tag gravatar_url(user), alt: "", width: size, height: size, class: class_names(css_class, image_class)
+    end
+  end
+
   def recipe_attachment_path(recipe, **kwargs)
     attachment_name = kwargs.delete(:attachment_name) || :image
 

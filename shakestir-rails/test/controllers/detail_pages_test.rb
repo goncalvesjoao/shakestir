@@ -39,7 +39,7 @@ class DetailPagesTest < ActionDispatch::IntegrationTest
     assert_select ".recipe-context, .detail-disclosure", count: 0
     assert_select ".recipe-attribution a[href=?][data-action='cocktail-panel#open']", cocktail_path(@cocktail), text: "Margarita"
     assert_select "dialog#cocktail-panel iframe[title='Margarita cocktail details']"
-    assert_select ".recipe-attribution a[href=?][data-action='cocktail-panel#open'][data-panel-kind=profile]", profile_path(users(:shakestir))
+    assert_select ".recipe-attribution a[href=?][data-action='cocktail-panel#open'][data-panel-kind=profile]", user_profile_path(users(:shakestir))
     assert_select "#matching-recipes", count: 0
     assert_select ".cocktail-panel-heading, .cocktail-panel-page-link", count: 0
     assert_select "button.cocktail-panel-close[aria-label='Close cocktail details']"
@@ -82,7 +82,7 @@ class DetailPagesTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select ".cocktail-background", count: 0
     assert_select "dialog#cocktail-panel iframe"
-    assert_select ".recipe-attribution a[href=?][data-panel-kind=profile]", profile_path(users(:two))
+    assert_select ".recipe-attribution a[href=?][data-panel-kind=profile]", user_profile_path(users(:two))
     assert_select "#matching-recipes", count: 0
     assert_select "img.cocktail-cover-photo[src=?]", recipe_image_path(@other_recipe, size: :detail)
     assert_unique_ids_and_valid_section_links

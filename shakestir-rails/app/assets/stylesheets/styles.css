@@ -3,6 +3,11 @@
   cursor: progress;
 }
 
+:focus-visible {
+  outline: 3px solid var(--primary-outline-color);
+  outline-offset: 4px;
+}
+
 .site-header {
   nav {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);

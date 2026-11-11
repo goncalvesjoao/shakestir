@@ -46,18 +46,18 @@
         <ul class="gap-2 gap-lg-4 order-1 order-lg-2">
           <% if authenticated? %>
             <li>
-              <details class="position-relative account-dropdown">
-                <summary class="d-flex align-items-center gap-2 rounded-circle" aria-label="User account">
-                  <%= profile_avatar(Current.user, size: 40, css_class: "rounded-circle object-fit-cover user-avatar") %>
+              <details>
+                <summary aria-haspopup="menu" class="bg-transparent border-0">
+                  <%= profile_avatar(Current.user, size: 40, css_class: "rounded-circle object-fit-cover") %>
                 </summary>
 
-                <div class="end-0 p-2 position-absolute account-dropdown-items">
-                  <%= link_to "My recipes", my_recipes_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
-                  <%= link_to "My collections", my_collections_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
-                  <%= link_to "My profile", my_profile_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
-                  <%= link_to "My account", my_account_path, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
-                  <%= link_to "Log out", session_path, data: { turbo_method: :delete }, class: "d-block w-100 p-3 text-start text-nowrap border-0 m-0 text-reset text-decoration-none shadow-none" %>
-                </div>
+                <ul dir="rtl" role="menu">
+                  <li><%= link_to "My recipes", my_recipes_path, role: "menuitem" %></li>
+                  <li><%= link_to "My collections", my_collections_path, role: "menuitem" %></li>
+                  <li><%= link_to "My profile", user_profile_path("me"), role: "menuitem" %></li>
+                  <li><%= link_to "My account", my_account_path, role: "menuitem" %></li>
+                  <li><%= link_to "Log out", session_path, data: { turbo_method: :delete }, role: "menuitem" %></li>
+                </ul>
               </details>
             </li>
           <% else %>

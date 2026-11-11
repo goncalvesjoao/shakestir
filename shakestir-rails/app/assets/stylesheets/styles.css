@@ -49,6 +49,25 @@
   height: 46.796875px;
 }
 
+/* Recolor both raster states while preserving their alpha channel. */
+.wordmark img {
+  filter: var(--wordmark-filter, none);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wordmark-filter: url("branding/wordmark-dark.svg#cream");
+  }
+}
+
+[data-theme="light"] {
+  --wordmark-filter: none;
+}
+
+[data-theme="dark"] {
+  --wordmark-filter: url("branding/wordmark-dark.svg#cream");
+}
+
 .wordmark-hover {
   inset: 0;
   opacity: 0;

@@ -39,31 +39,32 @@
   --text-underline-offset: 0.22em;
   --typography-margin-block: var(--spacing-3);
 
-  --background-color: #f7f5ee;
-  --border-color: #d9dbcf;
-  --card-background-color: #fffef8;
-  --color-muted: #596155;
-  --color: #202923;
-  --danger-color: #9a3126;
-  --input-autofill-box-shadow: 0 0 0 100px #eceee3 inset;
-  --inputs-background-color-focus: #fffef9;
-  --inputs-background-color: #fffef9;
-  --inputs-border-color: #a7ad9b;
-  --inputs-color: #202923;
-  --inputs-placeholder-color: #62695d;  
-  --primary-background-color-hover: #35421e;
-  --primary-background-color: #4d5b2e;
-  --primary-color-hover: #35421e;
-  --primary-color: #4d5b2e;
-  --primary-outline-color: #63733a;
-  --progress-accent-color: #4d5b2e;
-  --progress-track-background-color: #d9dbcf;
-  --secondary-background-color-hover: #eceee3;
-  --secondary-background-color: #fffef9;
+  /* Preserve the cream palette in light mode; use warm greens in dark mode. */
+  --background-color: light-dark(#f7f5ee, #191e19);
+  --border-color: light-dark(#d9dbcf, #3c4639);
+  --card-background-color: light-dark(#fffef8, #232a22);
+  --color-muted: light-dark(#596155, #b1baa8);
+  --color: light-dark(#202923, #eceee3);
+  --danger-color: light-dark(#9a3126, #f2a293);
+  --input-autofill-box-shadow: 0 0 0 100px light-dark(#eceee3, #2d362a) inset;
+  --inputs-background-color-focus: light-dark(#fffef9, #2d362a);
+  --inputs-background-color: light-dark(#fffef9, #232a22);
+  --inputs-border-color: light-dark(#a7ad9b, #738067);
+  --inputs-color: light-dark(#202923, #eceee3);
+  --inputs-placeholder-color: light-dark(#62695d, #a7b19e);
+  --primary-background-color-hover: light-dark(#35421e, #526331);
+  --primary-background-color: light-dark(#4d5b2e, #435229);
+  --primary-color-hover: light-dark(#35421e, #d1dfa9);
+  --primary-color: light-dark(#4d5b2e, #b7cd8b);
+  --primary-outline-color: light-dark(#63733a, #a2ba73);
+  --progress-accent-color: light-dark(#4d5b2e, #b7cd8b);
+  --progress-track-background-color: light-dark(#d9dbcf, #3c4639);
+  --secondary-background-color-hover: light-dark(#eceee3, #343e2f);
+  --secondary-background-color: light-dark(#fffef9, #232a22);
   --secondary-color-hover: var(--color);
   --secondary-color: var(--color);
   --secondary-outline-color: var(--primary-outline-color);
-  --typography-color: #202923;
+  --typography-color: var(--color);
 }
 
 h1,

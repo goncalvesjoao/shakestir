@@ -12,13 +12,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @pagination = matching_recipes.reorder(published_at: :desc, created_at: :desc, id: :desc)
-      .page(params[:page]).per(24)
-    @recipes = @pagination
-    respond_to do |format|
-      format.html { render "catalog/index", locals: { catalog_name: "recipes" } }
-      format.json
-    end
+    @recipes = matching_recipes.reorder(published_at: :desc, created_at: :desc, id: :desc).page(params[:page]).per(24)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -28,6 +22,7 @@ class RecipesController < ApplicationController
       recipe_utensils: { utensil: { image_attachment: :blob } },
       techniques: {}
     }).call
+
     if @recipe.cocktail && policy(@recipe.cocktail).show?
       @cocktail = @recipe.cocktail
       @related_recipes = Recipe.marketplace.where(cocktail: @cocktail)

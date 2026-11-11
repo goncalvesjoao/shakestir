@@ -43,7 +43,7 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.getElementById("content")?.focus({ preventScroll: true });
-    document.title = `${location.pathname === "/" ? "Discover recipes" : location.pathname.split("/").filter(Boolean).join(" · ")} · ShakeStir`;
+    document.title = `${location.pathname === "/" ? "Discover recipes" : location.pathname.split("/").filter(Boolean).join(" · ")}`;
   }, [location.pathname]);
   return (
     <>

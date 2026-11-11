@@ -1,0 +1,41 @@
+<% content_for :title, "Ingredients" %>
+
+<article class="content-grid" data-module="ingredients">
+  <header class="hero full-width">
+    <hgroup class="mt-5">
+      <h1>Every good ingredient.</h1>
+      <p>Browse <%= pluralize(@ingredients.total_count, Ingredient.model_name.name.downcase) %> and get to know what goes into your next drink.</p>
+    </hgroup>
+  </header>
+
+  <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
+    <fieldset>
+      <%= form.label :q, "Filter ingredients by name", hidden: true %>
+
+      <%= form.search_field :q, value: params[:q], placeholder: "Find an ingredient..." %>
+    </fieldset>
+  <% end %>
+
+  <div class="pt-4" id="ingredients-results" aria-live="polite" data-catalog-search-target="results"> 
+    <% if @ingredients.empty? %>
+      <section class="card text-center">
+        <h3>No ingredients found.</h3>
+        <p>Try another name or <%= link_to "browse all", url_for(action: :index) %>.</p>
+      </section>
+    <% else %>
+      <%= turbo_frame_tag "#ingredient_page_#{@ingredients.current_page}_frame", target: "_top" do %>
+        <div id="ingredients_<%= @ingredients.current_page %>" class="auto-grid">
+          <%= render @ingredients %>
+        </div>
+
+        <% if @ingredients.next_page %>
+          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @ingredients.next_page)) %>
+
+          <%= turbo_frame_tag "#ingredient_page_#{@ingredients.next_page}_frame", src: next_page_url, loading: :lazy, target: "_top" do %>
+            <%= link_to "Load more...", next_page_url %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</article>

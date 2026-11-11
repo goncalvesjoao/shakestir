@@ -1,0 +1,41 @@
+<% content_for :title, "Techniques" %>
+
+<article class="content-grid" data-module="techniques">
+  <header class="hero full-width">
+    <hgroup class="mt-5">
+      <h1>A little technique goes a long way.</h1>
+      <p>Browse <%= pluralize(@techniques.total_count, Technique.model_name.name.downcase) %> and learn the methods behind a well-made drink.</p>
+    </hgroup>
+  </header>
+
+  <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
+    <fieldset>
+      <%= form.label :q, "Filter techniques by name", hidden: true %>
+
+      <%= form.search_field :q, value: params[:q], placeholder: "Find a technique..." %>
+    </fieldset>
+  <% end %>
+
+  <div class="pt-4" id="techniques-results" aria-live="polite" data-catalog-search-target="results"> 
+    <% if @techniques.empty? %>
+      <section class="card text-center">
+        <h3>No techniques found.</h3>
+        <p>Try another name or <%= link_to "browse all", url_for(action: :index) %>.</p>
+      </section>
+    <% else %>
+      <%= turbo_frame_tag "#technique_page_#{@techniques.current_page}_frame", target: "_top" do %>
+        <div id="techniques_<%= @techniques.current_page %>" class="auto-grid">
+          <%= render @techniques %>
+        </div>
+
+        <% if @techniques.next_page %>
+          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @techniques.next_page)) %>
+
+          <%= turbo_frame_tag "#technique_page_#{@techniques.next_page}_frame", src: next_page_url, loading: :lazy, target: "_top" do %>
+            <%= link_to "Load more...", next_page_url %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</article>

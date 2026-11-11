@@ -7,19 +7,19 @@ class CocktailsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    cocktails = Cocktail.all
-    cocktails = cocktails.where(id: Recipe.marketplace.select(:cocktail_id))
-    @pagination = cocktails.search(params[:q]).order(:id)
-      .with_attached_image.page(params[:page]).per(24)
-    respond_to do |format|
-      format.html { render "catalog/index", locals: { catalog_name: "cocktails" } }
-      format.json
-    end
+    @cocktails = Cocktail
+      .where(id: Recipe.marketplace.select(:cocktail_id))
+      .search(params[:q])
+      .order(:id)
+      .with_attached_image
+      .page(params[:page])
+      .per(24)
   end
 
   def show
     @recipes = matching_recipes.where(cocktail: @cocktail)
     @filtered = params[:q].present? || makeable_filter? || Array(params[:ingredient_ids]).reject(&:blank?).any? || Array(params[:utensil_ids]).reject(&:blank?).any?
+
     if @filtered
       @other_recipes = Recipe.marketplace.where(cocktail: @cocktail)
         .where.not(id: @recipes.except(:includes, :order).select(:id))
@@ -32,7 +32,8 @@ class CocktailsController < ApplicationController
   end
 
   private
-    def set_cocktail
-      @cocktail = Cocktail.find(params.expect(:id))
-    end
+
+  def set_cocktail
+    @cocktail = Cocktail.find(params.expect(:id))
+  end
 end

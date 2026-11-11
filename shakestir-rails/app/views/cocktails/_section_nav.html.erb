@@ -1,9 +1,0 @@
-<nav class="detail-nav<%= " detail-nav-tiles" unless recipe_page %>" aria-label="On this page">
-  <% if recipe_page %>
-    <%= link_to "Ingredients", "#ingredients" %><%= link_to "Preparation", "#preparation" %>
-
-  <% else %>
-    <%= link_to "About the cocktail", "#cocktail-background" %>
-    <%= link_to "Recipes", "#matching-recipes" %>
-  <% end %>
-</nav>

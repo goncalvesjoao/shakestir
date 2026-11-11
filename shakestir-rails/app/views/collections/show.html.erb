@@ -1,4 +1,4 @@
-<% content_for :title, "#{@collection.name} · ShakeStir" %>
+<% content_for :title, "#{@collection.name}" %>
 <% owned = Current.user == @collection.user %>
 <div class="library-page">
   <%= link_to owned ? my_collections_path : cocktails_path, class: "gap-2 mb-4 d-inline-flex align-items-center library-back" do %><%= render "icon", name: "back" %><%= owned ? "My collections" : "Explore recipes" %><% end %>

@@ -7,7 +7,7 @@
     gap: var(--spacing-2);
     min-height: 2.75rem;
     color: var(--color-muted);
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
 }
 .personal-filters a[aria-current="page"] {
     background: #fffef9;
@@ -30,10 +30,10 @@
     min-width: 0;
     height: 2.9rem;
     border-radius: 3rem;
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
 }
 .personal-search button {
-    --buttons-font-size: var(--small-font-size);
+    --buttons-font-size: var(--font-size-sm);
     min-height: 2.9rem;
     --buttons-padding-block: var(--spacing-2);
     --buttons-padding-inline: var(--spacing-3);
@@ -72,7 +72,7 @@
 }
 .personal-recipe-actions a {
     min-height: 2.75rem;
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
     text-decoration: none;
     color: var(--primary-color);
 }
@@ -105,7 +105,7 @@
     letter-spacing: -0.025em;
 }
 .recipe-section-intro p {
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
     color: var(--color-muted);
     line-height: 1.65;
     max-width: 26ch;
@@ -117,13 +117,13 @@
     min-width: 0;
 }
 .recipe-section-fields label {
-    font-size: var(--text-label);
+    font-size: var(--font-size-md);
 }
 .recipe-section-fields :is(input:not([type="checkbox"]), select, textarea) {
     font-size: 1rem;
 }
 .recipe-section-fields small {
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
     color: var(--color-muted);
     line-height: 1.6;
 }
@@ -138,12 +138,12 @@
 }
 .recipe-editor-note {
     background: #f3f1e5;
-    font-size: var(--small-font-size);
+    font-size: var(--font-size-sm);
     color: var(--color-muted);
 }
 .recipe-editor-extra summary {
     min-height: 2.75rem;
-    font-size: var(--text-label);
+    font-size: var(--font-size-md);
     cursor: pointer;
 }
 .recipe-editor-extra summary span {

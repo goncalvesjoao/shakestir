@@ -1,0 +1,16 @@
+<article id="<%= dom_id ingredient %>">
+  <%= link_to(ingredient, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+    <%= image_tag(
+      ingredient_attachment_path(ingredient, size: :card),
+      alt: "Photo of #{ingredient.display_name}",
+      loading: "lazy",
+      class: "w-100"
+    ) %>
+
+    <h2 class="fs-3 text-center"><%= ingredient.display_name %></h2>
+    
+    <% if ingredient.description.present? %>
+      <p class="mb-0 text-muted text-center"><%= truncate(ingredient.description, length: 160) %></p>
+    <% end %>
+  <% end %>
+</article>

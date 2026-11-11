@@ -12,6 +12,10 @@ class Cocktail < ApplicationRecord
   validates :source_url, format: { with: /\Ahttps?:\/\/[^\s]+\z/i }, allow_blank: true
   validates :name, presence: true
 
+  def source_info?
+    source_reference.present? || source_url.present? || source_published_on.present? || source_date_note.present?
+  end
+
   def parent_must_not_form_cycle
     ancestor = parent_cocktail
     visited = [ self ]

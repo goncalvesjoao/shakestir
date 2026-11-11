@@ -1,8 +1,65 @@
-<% content_for :title, "#{@cocktail.display_name} · ShakeStir" %>
-<% content_for :body_class, "cocktail-panel-content" if params[:panel] == "1" %>
+<% content_for :title, "#{@cocktail.display_name} · Cocktails" %>
 
-<article class="cocktail-details cocktail-profile full-width content-grid">
-  <%= render "cocktails/hero", cocktail: @cocktail %>
-  <%= render "cocktails/background", cocktail: @cocktail %>
-  <%= render "cocktails/recipes", recipes: @recipes, filtered: @filtered, other_recipes: @other_recipes %>
+<article id="<%= dom_id @cocktail %>" class="content-grid" data-module="cocktail-details">
+  <header class="hero full-width">
+    <div class="row g-0 g-md-5 align-items-end">
+      <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
+        <%= image_tag(
+          cocktail_attachment_path(@cocktail, size: :detail),
+          alt: "Photo of #{@cocktail.display_name}",
+          class: "hero--portrait",
+          fetchpriority: "high",
+          width: 1200,
+          height: 1200
+        ) %>
+      </div>
+
+      <hgroup class="col-12 col-md-9 col-lg-7 col-xl-6 order-1 order-md-2 mb-0 mt-3">
+        <h1><%= @cocktail.display_name.presence || "Untitled cocktail" %></h1>
+        <p><%= @cocktail.description.presence || "No description available." %></p>
+      </hgroup>
+    </div>
+  </header>
+
+  <div class="row g-0 g-md-5 mt-5">
+    <div class="col-12 col-md-3"></div>
+
+    <section class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <h2>History</h2>
+      <p><%= @cocktail.history || "No history available." %></p>
+
+      <% if @cocktail.source_info? %>
+        <% if @cocktail.history.present? %><hr class="my-4"><% end %>
+
+        <section>
+          <h3 class="fs-5 text-muted">Source</h3>
+          <ul>
+            <% if @cocktail.source_url.present? %>
+              <li class="text-muted fs-md"><%= link_to @cocktail.source_reference.presence || "Cocktail source", @cocktail.source_url %></li>
+            <% elsif @cocktail.source_reference.present? %>
+              <li><%= @cocktail.source_reference %></li>
+            <% end %>
+            <% if @cocktail.source_published_on.present? %>
+              <li class="text-muted fs-md">Historical source publication: <%= @cocktail.source_published_on %></li>
+            <% end %>
+            <% if @cocktail.source_date_note.present? %>
+              <li class="text-muted fs-md"><%= @cocktail.source_date_note %></li>
+            <% end %>
+          </ul>
+        </section>
+      <% end %>
+
+      <% if @recipes.present? %>
+        <hr class="my-4">
+
+        <details>
+          <summary><h3 class="fs-5 d-inline text-muted">Recipes (<%= @recipes.count %>)</h3></summary>
+
+          <div class="mt-4 auto-grid">
+            <%= render @recipes %>
+          </div>
+        </details>
+      <% end %>
+    </section>
+  </div>
 </article>

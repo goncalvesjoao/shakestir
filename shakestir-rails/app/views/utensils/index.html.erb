@@ -1,0 +1,41 @@
+<% content_for :title, "Utensils" %>
+
+<article class="content-grid" data-module="utensils">
+  <header class="hero full-width">
+    <hgroup class="mt-5">
+      <h1>Tools of the trade.</h1>
+      <p>Browse <%= pluralize(@utensils.total_count, Utensil.model_name.name.downcase) %> and find the right equipment for your next drink.</p>
+    </hgroup>
+  </header>
+
+  <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
+    <fieldset>
+      <%= form.label :q, "Filter utensils by name", hidden: true %>
+
+      <%= form.search_field :q, value: params[:q], placeholder: "Find a utensil..." %>
+    </fieldset>
+  <% end %>
+
+  <div class="pt-4" id="utensils-results" aria-live="polite" data-catalog-search-target="results"> 
+    <% if @utensils.empty? %>
+      <section class="card text-center">
+        <h3>No utensils found.</h3>
+        <p>Try another name or <%= link_to "browse all", url_for(action: :index) %>.</p>
+      </section>
+    <% else %>
+      <%= turbo_frame_tag "#utensil_page_#{@utensils.current_page}_frame", target: "_top" do %>
+        <div id="utensils_<%= @utensils.current_page %>" class="auto-grid">
+          <%= render @utensils %>
+        </div>
+
+        <% if @utensils.next_page %>
+          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @utensils.next_page)) %>
+
+          <%= turbo_frame_tag "#utensil_page_#{@utensils.next_page}_frame", src: next_page_url, loading: :lazy, target: "_top" do %>
+            <%= link_to "Load more...", next_page_url %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</article>

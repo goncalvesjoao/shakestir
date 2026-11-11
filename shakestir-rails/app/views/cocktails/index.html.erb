@@ -1,0 +1,41 @@
+<% content_for :title, "Cocktails" %>
+
+<article class="content-grid" data-module="cocktails">
+  <header class="hero full-width">
+    <hgroup class="mt-5">
+      <h1>The classics, and their stories.</h1>
+      <p>Browse <%= pluralize(@cocktails.total_count, Cocktail.model_name.name.downcase) %> and explore their stories and recipes.</p>
+    </hgroup>
+  </header>
+
+  <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
+    <fieldset>
+      <%= form.label :q, "Filter cocktails by name", hidden: true %>
+
+      <%= form.search_field :q, value: params[:q], placeholder: "Find a cocktail..." %>
+    </fieldset>
+  <% end %>
+
+  <div class="pt-4" id="cocktails-results" aria-live="polite" data-catalog-search-target="results"> 
+    <% if @cocktails.empty? %>
+      <section class="card text-center">
+        <h3>No cocktails found.</h3>
+        <p>Try another name or <%= link_to "browse all", url_for(action: :index) %>.</p>
+      </section>
+    <% else %>
+      <%= turbo_frame_tag "#cocktail_page_#{@cocktails.current_page}_frame", target: "_top" do %>
+        <div id="cocktails_<%= @cocktails.current_page %>" class="auto-grid">
+          <%= render @cocktails %>
+        </div>
+
+        <% if @cocktails.next_page %>
+          <% next_page_url = url_for(request.query_parameters.merge(action: :index, page: @cocktails.next_page)) %>
+
+          <%= turbo_frame_tag "#cocktail_page_#{@cocktails.next_page}_frame", src: next_page_url, loading: :lazy, target: "_top" do %>
+            <%= link_to "Load more...", next_page_url %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</article>

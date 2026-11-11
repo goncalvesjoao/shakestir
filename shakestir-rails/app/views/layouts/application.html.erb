@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
 
-    <title><%= content_for(:title) || "ShakeStir" %></title>
+    <title><%= "#{content_for(:title)} · ShakeStir" || "ShakeStir" %></title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="ShakeStir">
@@ -22,7 +22,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= stylesheet_link_tag "semanticus", "theme", "recipes", "cocktail-details", "collections", "my-recipes", "profiles", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "semanticus", "theme", "styles", "data-turbo-track": "reload", integrity: true %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -61,14 +61,12 @@
               </details>
             </li>
           <% else %>
-            <li><%= link_to "Log in", new_session_path %></li>
+            <li><%= link_to "Log in", new_session_path, class: "d-inline-flex align-items-center button secondary" %></li>
             <li><%= link_to "Create account", new_registration_path, class: "d-inline-flex align-items-center button" %></li>
           <% end %>
         </ul>
       </nav>
     </header>
-
-    <%= flash_messages %>
 
     <main id="main-content">
       <%= yield %>

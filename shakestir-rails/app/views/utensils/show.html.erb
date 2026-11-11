@@ -1,0 +1,44 @@
+<% content_for :title, "#{@utensil.display_name} · Utensils" %>
+
+<article id="<%= dom_id @utensil %>" class="content-grid" data-module="utensil-details">
+  <header class="hero full-width">
+    <div class="row g-0 g-md-5 align-items-end">
+      <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
+        <%= image_tag(
+          utensil_attachment_path(@utensil, size: :detail),
+          alt: "Photo of #{@utensil.display_name}",
+          class: "hero--portrait",
+          fetchpriority: "high",
+          width: 1200,
+          height: 1200
+        ) %>
+      </div>
+
+      <hgroup class="col-12 col-md-9 col-lg-7 col-xl-6 order-1 order-md-2 mb-0 mt-3">
+        <h1><%= @utensil.display_name.presence || "Untitled utensil" %></h1>
+        <p><%= @utensil.description.presence || "No description available." %></p>
+      </hgroup>
+    </div>
+  </header>
+
+  <div class="row g-0 g-md-5 mt-5">
+    <div class="col-12 col-md-3"></div>
+
+    <section class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <h2>Details</h2>
+
+      <ul class="card border-0">
+        <li class="d-flex justify-content-between">
+          <span>Category</span>
+          <strong><%= @utensil.category.humanize %></strong>
+        </li>
+        <% if @utensil.capacity_milliliters.present? %>
+          <li class="d-flex justify-content-between">
+            <span>Capacity</span>
+            <strong><%= @utensil.capacity_milliliters %> ml</strong>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+</article>

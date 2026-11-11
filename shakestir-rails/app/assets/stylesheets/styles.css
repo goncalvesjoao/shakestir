@@ -1,0 +1,213 @@
+[aria-busy="true"] {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.site-header {
+  nav {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+
+    ul.primary-navigation {
+      justify-self: center;
+      gap: var(--spacing-4);
+      overflow-x: auto;
+
+      li {
+        align-items: center;
+        display: flex;
+        flex-shrink: 0;
+
+        a {
+          padding-block: var(--spacing-2);
+          font-size: var(--font-size-md);
+          text-decoration: none;
+          color: var(--color-muted);
+          border-bottom: 2px solid transparent;
+
+          &:hover,
+          &[aria-current="page"] {
+            color: var(--color);
+            border-bottom-color: var(--primary-color);
+          }
+
+          &[aria-current="page"] {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.wordmark {
+  width: 146.734375px;
+  height: 46.796875px;
+}
+
+.wordmark-hover {
+  inset: 0;
+  opacity: 0;
+}
+
+.brand-link:hover {
+  .wordmark-hover {
+    opacity: 1;
+  }
+  .wordmark-normal {
+    opacity: 0;
+  }
+}
+
+.hero {
+  .hero--portrait {
+    --portrait-overlap: calc(var(--spacing) * 4);
+
+    position: absolute;
+    top: auto;
+    left: 0;
+    display: block;
+    object-fit: contain;
+    height: min(
+      20rem,
+      calc(100% + var(--portrait-overlap) - (var(--spacing) / 2))
+    );
+    bottom: calc(var(--portrait-overlap) * -1);
+    object-position: center bottom;
+  }
+}
+
+[data-module="recipe-details"],
+[data-module="cocktail-details"],
+[data-module="ingredient-details"],
+[data-module="utensil-details"],
+[data-module="technique-details"] {
+  .hero {
+    background-position: center 45%;
+    background-size: cover;
+    min-height: 13rem;
+
+    hgroup {
+      & > :where(h1, h2, h3, h4, h5, h6),
+      p {
+        color: var(--card-background-color);
+      }
+    }
+  }
+}
+
+[data-module="recipe-details"] {
+  .hero {
+    background-image:
+      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
+      url("covers/recipes.jpg");
+  }
+
+  .recipe-step {
+    .number {
+      align-self: start;
+      display: grid;
+      place-items: center;
+      min-height: 2rem;
+      color: var(--color-muted);
+      font-variant-numeric: tabular-nums;
+      padding: 2px 12px;
+    }
+    .body {
+      padding-top: 2px;
+    }
+
+    &:hover {
+      .number {
+        background: #e9ecd9;
+        color: var(--primary-color);
+      }
+    }
+
+    &:has(:checked) {
+      .number {
+        background: var(--primary-color);
+        color: var(--card-background-color);
+      }
+
+      .body {
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+      }
+    }
+  }
+}
+
+[data-module="cocktail-details"] {
+  .hero {
+    background-image:
+      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
+      url("covers/cocktails.jpg");
+  }
+}
+
+[data-module="ingredient-details"] {
+  .hero {
+    background-image:
+      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
+      url("covers/ingredients.jpg");
+  }
+}
+
+[data-module="utensil-details"] {
+  .hero {
+    background-image:
+      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
+      url("covers/utensils.jpg");
+  }
+}
+
+[data-module="technique-details"] {
+  .hero {
+    background-image:
+      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
+      url("covers/techniques.jpg");
+  }
+}
+
+@media (width < 576px) {
+  .site-header nav ul {
+    --nav-link-gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (width < 768px) {
+  .site-header {
+    .primary-navigation {
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  .hero {
+    min-height: unset;
+
+    .hero--portrait {
+      position: relative;
+      height: 15rem;
+    }
+  }
+}
+
+@media (width < 1024px) {
+  .site-header {
+    nav {
+      grid-template-columns: 1fr auto;
+
+      > .primary-navigation {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: stretch;
+        min-width: 0;
+
+        a {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

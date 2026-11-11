@@ -1,0 +1,60 @@
+<% content_for :title, "#{@ingredient.display_name} · Ingredients" %>
+
+<article id="<%= dom_id @ingredient %>" class="content-grid" data-module="ingredient-details">
+  <header class="hero full-width">
+    <div class="row g-0 g-md-5 align-items-end">
+      <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
+        <%= image_tag(
+          ingredient_attachment_path(@ingredient, size: :detail),
+          alt: "Photo of #{@ingredient.display_name}",
+          class: "hero--portrait",
+          fetchpriority: "high",
+          width: 1200,
+          height: 1200
+        ) %>
+      </div>
+
+      <hgroup class="col-12 col-md-9 col-lg-7 col-xl-6 order-1 order-md-2 mb-0 mt-3">
+        <h1><%= @ingredient.display_name.presence || "Untitled ingredient" %></h1>
+        <p><%= @ingredient.description.presence || "No description available." %></p>
+      </hgroup>
+    </div>
+  </header>
+
+  <div class="row g-0 g-md-5 mt-5">
+    <div class="col-12 col-md-3"></div>
+
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <section>
+        <h2>Details</h2>
+
+        <ul class="card border-0">
+          <li class="d-flex justify-content-between">
+            <span>Category</span>
+            <strong><%= @ingredient.category.humanize %></strong>
+          </li>
+          <li class="d-flex justify-content-between">
+            <span>Alcohol status</span>
+            <strong><%= @ingredient.alcohol_status.humanize %></strong>
+          </li>
+          <li class="d-flex justify-content-between">
+            <span>Alcohol by volume</span>
+            <strong><%= @ingredient.alcohol_by_volume %>%</strong>
+          </li>
+        </ul>
+      </section>
+
+      <% if @recipes.present? %>
+        <hr class="my-4">
+
+        <details>
+          <summary><h3 class="fs-5 d-inline text-muted">Recipes (<%= @recipes.count %>)</h3></summary>
+
+          <div class="mt-4 auto-grid">
+            <%= render @recipes %>
+          </div>
+        </details>
+      <% end %>
+    </div>
+  </div>
+</article>

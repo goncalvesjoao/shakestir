@@ -1,0 +1,16 @@
+<article id="<%= dom_id utensil %>">
+  <%= link_to(utensil, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+    <%= image_tag(
+      utensil_attachment_path(utensil, size: :card),
+      alt: "Photo of #{utensil.display_name}",
+      loading: "lazy",
+      class: "w-100"
+    ) %>
+
+    <h2 class="fs-3 text-center"><%= utensil.display_name %></h2>
+    
+    <% if utensil.description.present? %>
+      <p class="mb-0 text-muted text-center"><%= truncate(utensil.description, length: 160) %></p>
+    <% end %>
+  <% end %>
+</article>

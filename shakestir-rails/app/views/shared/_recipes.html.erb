@@ -9,7 +9,19 @@
     <%= link_to "Show all recipes", cocktail_path(@cocktail) %>
   </section>
 <% end %>
-<%= render "recipes/catalog_list", recipes: recipes, empty_message: (filtered ? "No recipes match these filters." : "No recipes yet.") %>
+
+<details id="matching-recipes">
+  <summary><h2 class="fs-5 d-inline text-muted">Recipes (<%= recipes.size %>)</h2></summary>
+
+  <% if recipes.empty? %>
+    <p><%= filtered ? "No recipes match these filters." : "No recipes yet." %></p>
+  <% else %>
+    <div class="mt-4 auto-grid">
+      <%= render recipes %>
+    </div>
+  <% end %>
+</details>
+
 <% if filtered && other_recipes.any? %>
   <details id="other-recipes" class="other-recipes">
     <summary>Other recipes (<%= other_recipes.size %>)</summary>

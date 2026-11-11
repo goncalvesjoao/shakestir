@@ -1,0 +1,9 @@
+<article id="<%= dom_id technique %>">
+  <%= link_to(technique, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+    <h2 class="fs-3 text-center"><%= technique.display_name %></h2>
+    
+    <% if technique.description.present? %>
+      <p class="mb-0 text-muted text-center"><%= truncate(technique.description, length: 160) %></p>
+    <% end %>
+  <% end %>
+</article>

@@ -1,5 +1,5 @@
 <% content_for :body_class, "cocktail-panel-content profile-panel-content" if params[:panel] == "1" %>
-<% content_for :title, "#{@owned ? "My profile" : @profile.profile_name} · ShakeStir" %>
+<% content_for :title, "#{@owned ? "My profile" : @profile.profile_name}" %>
 <div class="library-page profile-page">
   <header class="align-items-start align-items-md-center gap-4 flex-wrap flex-md-nowrap d-flex profile-heading">
     <div class="fw-semibold d-grid rounded-circle overflow-hidden profile-avatar"><%= profile_avatar(@profile, image_class: "w-100 h-100 object-fit-cover") %></div>

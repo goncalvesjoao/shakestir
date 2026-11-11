@@ -1,23 +1,29 @@
-<% content_for :title, "Responsible drinking · ShakeStir" %>
-<article class="w-100 policy-page page-shell">
-  <header>
-    <h1>Responsible drinking</h1>
-  </header>
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Choose what works for you</h2>
-    <p>ShakeStir includes alcoholic and alcohol-free recipes. You do not need alcohol to explore recipes or enjoy making drinks. Follow the legal drinking age and alcohol laws where you are.</p>
-  </section>
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Recipes are not safety guidance</h2>
-    <p>A serving size in a recipe is a preparation quantity, not a safe drinking recommendation. Alcohol content varies with ingredients, measures and substitutions. Check product labels and local public-health guidance.</p>
-  </section>
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Plan ahead</h2>
-    <p>Do not drink and drive or operate machinery. Avoid encouraging others to drink. Check allergens and ingredient labels, and seek qualified medical advice if you have questions about alcohol, medication or your health.</p>
-  </section>
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Report unsafe content</h2>
-    <%= render "contact", purpose: "concerns about unsafe content on ShakeStir" %>
-  </section>
-  <p class="mt-5 policy-back"><%= link_to "Back to recipes", root_path %></p>
-</article>
+<% content_for :title, "Responsible drinking" %>
+
+<div class="content-grid">
+  <div class="row mt-4 mt-md-5">
+    <article class="col-12 col-md-8 col-offset-md-2">
+      <hgroup>
+        <h1>Responsible drinking</h1>
+        <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
+      </hgroup>
+
+      <section class="mt-4">
+        <h2 class="fs-3 mb-2">Choose what works for you</h2>
+        <p>ShakeStir includes alcoholic and alcohol-free recipes. You do not need alcohol to explore recipes or enjoy making drinks. Follow the legal drinking age and alcohol laws where you are.</p>
+      </section>
+      <section class="mt-4">
+        <h2 class="fs-3 mb-2">Recipes are not safety guidance</h2>
+        <p>A serving size in a recipe is a preparation quantity, not a safe drinking recommendation. Alcohol content varies with ingredients, measures and substitutions. Check product labels and local public-health guidance.</p>
+      </section>
+      <section class="mt-4">
+        <h2 class="fs-3 mb-2">Plan ahead</h2>
+        <p>Do not drink and drive or operate machinery. Avoid encouraging others to drink. Check allergens and ingredient labels, and seek qualified medical advice if you have questions about alcohol, medication or your health.</p>
+      </section>
+      <section class="mt-4">
+        <h2 class="fs-3 mb-2">Report unsafe content</h2>
+        <%= render "contact", purpose: "concerns about unsafe content on ShakeStir" %>
+      </section>
+    </article>
+  </div>
+</div>

@@ -24,7 +24,7 @@
       </section>
     <% else %>
       <%= turbo_frame_tag "#utensil_page_#{@utensils.current_page}_frame", target: "_top" do %>
-        <div id="utensils_<%= @utensils.current_page %>" class="auto-grid">
+        <div id="utensils_<%= @utensils.current_page %>" class="auto-grid catalog-grid">
           <%= render @utensils %>
         </div>
 

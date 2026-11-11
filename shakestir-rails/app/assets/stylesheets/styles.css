@@ -76,6 +76,23 @@
   }
 }
 
+.catalog-grid {
+  --auto-grid-type: auto-fill;
+  --auto-grid-min-column: 14rem;
+  --auto-grid-gap: var(--spacing-4);
+
+  > article {
+    min-width: 0;
+
+    img {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      padding: var(--spacing-3);
+      box-sizing: border-box;
+    }
+  }
+}
+
 [data-module="recipe-details"],
 [data-module="cocktail-details"],
 [data-module="ingredient-details"],

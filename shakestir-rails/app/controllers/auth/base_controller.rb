@@ -11,5 +11,9 @@ module Auth
     def prevent_session_caching
       response.headers["Cache-Control"] = "private, no-store"
     end
+
+    def redirect_when_authenticated
+      redirect_to root_url, alert: "You are already signed in." if current_user
+    end
   end
 end

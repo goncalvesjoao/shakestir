@@ -1,5 +1,7 @@
 module Auth
   class RegistrationsController < BaseController
+    before_action :redirect_when_authenticated
+
     def new
       @user = User.new
     end

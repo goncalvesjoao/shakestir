@@ -1,7 +1,7 @@
 <% content_for :title, "#{@ingredient.display_name} · Ingredients" %>
 
 <article id="<%= dom_id @ingredient %>" class="content-grid" data-module="ingredient-details">
-  <header class="hero full-width" data-theme="contrast">
+  <header class="hero full-width mb-3">
     <div class="row g-0 g-md-5 align-items-end">
       <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
         <%= image_tag(
@@ -14,7 +14,7 @@
         ) %>
       </div>
 
-      <hgroup class="col-12 col-md-9 col-lg-7 col-xl-6 order-1 order-md-2 mb-0 mt-3">
+      <hgroup class="col-12 col-md-9 order-1 order-md-2 mb-0 mt-3">
         <h1><%= @ingredient.display_name.presence || "Untitled ingredient" %></h1>
         <p><%= @ingredient.description.presence || "No description available." %></p>
       </hgroup>
@@ -24,7 +24,7 @@
   <div class="row g-0 g-md-5 mt-5">
     <div class="col-12 col-md-3"></div>
 
-    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+    <section class="col-12 col-md-9">
       <section>
         <h2>Details</h2>
 

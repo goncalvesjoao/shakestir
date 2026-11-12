@@ -3,10 +3,12 @@
   cursor: progress;
 }
 
+form:has(+footer) {
+  margin-bottom: 0 !important;
+}
+
 .site-header {
   nav {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-
     ul.primary-navigation {
       justify-self: center;
 
@@ -118,6 +120,12 @@
     background-position: center 45%;
     background-size: cover;
     min-height: 13rem;
+
+    hgroup {
+      h1, p {
+        color: #eceee3;
+      }
+    }
   }
 }
 

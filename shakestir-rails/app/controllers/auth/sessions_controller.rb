@@ -1,6 +1,7 @@
 module Auth
   class SessionsController < BaseController
-    before_action :require_authentication, only: %i[ destroy ]    
+    before_action :require_authentication, only: %i[ destroy ]
+    before_action :redirect_when_authenticated, except: %i[ destroy ]
 
     def new; end
 

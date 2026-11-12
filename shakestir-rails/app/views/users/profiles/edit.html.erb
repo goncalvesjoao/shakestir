@@ -1,72 +1,68 @@
-<% content_for :title, "Edit profile" %>
+<% content_for :title, "Edit my profile" %>
 
-<div class="content-grid">
-  <div class="row mt-5">
-    <article class="col-12 col-md-8 col-offset-md-2">
-      <header>
-        <hgroup>
-          <h1>Edit profile</h1>
-          <p>Your profile is public. Your recipes and collections keep their own visibility settings.</p>
-        </hgroup>
-      </header>
-      
-      <%= form_with model: @user, url: user_profile_path("my"), method: :patch, id: "edit-profile-form", class: "card" do |form| %>
-        <% if @user.errors.any? %>
-          <div class="p-3 mb-4 rounded library-errors" role="alert">
-            <strong>Check your profile details</strong>
-            <ul class="mb-0 ps-4">
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+<article class="content-grid mt-3 mt-md-4">
+  <header>
+    <hgroup>
+      <h1>Edit my profile</h1>
+      <p>Your profile is public. Your recipes and collections keep their own visibility settings.</p>
+    </hgroup>
+  </header>
+  
+  <%= form_with model: @user, url: user_profile_path("my"), method: :patch, id: "edit-profile-form", class: "card" do |form| %>
+    <% if @user.errors.any? %>
+      <div class="p-3 mb-4 rounded library-errors" role="alert">
+        <strong>Check your profile details</strong>
+        <ul class="mb-0 ps-4">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-        <fieldset class="mb-4">
-          <%= form.label :image, "Profile picture", class: "fw-semibold mb-2" %>
+    <fieldset class="mb-4">
+      <%= form.label :image, "Profile picture", class: "fw-semibold mb-2" %>
 
-          <div class="d-flex gap-4">
-            <div class="rounded-circle overflow-hidden w-25">
-              <%= profile_avatar(@user, image_class: "w-100 h-100 object-fit-cover") %>
-            </div>
+      <div class="d-flex gap-4">
+        <div class="rounded-circle overflow-hidden w-25">
+          <%= profile_avatar(@user, image_class: "w-100 h-100 object-fit-cover") %>
+        </div>
 
-            <div>
-              <%= form.file_field :image, accept: "image/jpeg,image/png,image/webp", aria: { describedby: "input-image-helper" } %>
-              <small id="input-image-helper">Upload a JPEG, PNG, or WebP, up to 10 MB. Your profile and photo are public. Without one, we’ll use your avatar.</small>
+        <div>
+          <%= form.file_field :image, accept: "image/jpeg,image/png,image/webp", aria: { describedby: "input-image-helper" } %>
+          <small id="input-image-helper">Upload a JPEG, PNG, or WebP, up to 10 MB. Your profile and photo are public. Without one, we’ll use your avatar.</small>
 
-              <% if @user.image.attached? %><label class="gap-2 mt-2 d-flex align-items-center profile-photo-remove"><%= check_box_tag "user[remove_image]", "1", false, class: "m-0 flex-shrink-0" %>Remove photo and use my avatar</label><% end %>
-            </div>
-          </div>
-        </fieldset>
+          <% if @user.image.attached? %><label class="gap-2 mt-2 d-flex align-items-center profile-photo-remove"><%= check_box_tag "user[remove_image]", "1", false, class: "m-0 flex-shrink-0" %>Remove photo and use my avatar</label><% end %>
+        </div>
+      </div>
+    </fieldset>
 
-        <fieldset class="mb-3">
-          <%= form.label :handle %>
-          <%= form.text_field :handle, required: true, minlength: 3, maxlength: 40, aria: { describedby: "input-handle-helper" } %>
-          <small id="input-handle-helper">Your public handle starts from your email name and credits your recipes. You can change it here. Use 3–40 lowercase letters, numbers, hyphens or underscores.</small>
-        </fieldset>
+    <fieldset class="mb-3">
+      <%= form.label :handle %>
+      <%= form.text_field :handle, required: true, minlength: 3, maxlength: 40, aria: { describedby: "input-handle-helper" } %>
+      <small id="input-handle-helper">Your public handle starts from your email name and credits your recipes. You can change it here. Use 3–40 lowercase letters, numbers, hyphens or underscores.</small>
+    </fieldset>
 
-        <fieldset class="mb-3">
-          <%= form.label :display_name %>
-          <%= form.text_field :display_name, maxlength: 80, autocomplete: "nickname", placeholder: "What should we call you?", aria: { describedby: "input-display_name-helper" } %>  
-          <small id="input-display_name-helper">The name people see on your public profile. Your email stays private.</small>
-        </fieldset>
+    <fieldset class="mb-3">
+      <%= form.label :display_name %>
+      <%= form.text_field :display_name, maxlength: 80, autocomplete: "nickname", placeholder: "What should we call you?", aria: { describedby: "input-display_name-helper" } %>  
+      <small id="input-display_name-helper">The name people see on your public profile. Your email stays private.</small>
+    </fieldset>
 
-        <fieldset>
-          <%= form.label :bio %>
-          <%= form.textarea :bio, rows: 3, maxlength: 280, placeholder: "Usually experimenting with…", aria: { describedby: "input-bio-help" } %>
-          <small id="input-bio-help">A favorite drink, a little inspiration, or a few words about you. Up to 280 characters.</small>
-        </fieldset>
-      <% end %>
+    <fieldset>
+      <%= form.label :bio %>
+      <%= form.textarea :bio, rows: 3, maxlength: 280, placeholder: "Usually experimenting with…", aria: { describedby: "input-bio-help" } %>
+      <small class="mb-0" id="input-bio-help">A favorite drink, a little inspiration, or a few words about you. Up to 280 characters.</small>
+    </fieldset>
+  <% end %>
 
-      <footer>
-        <nav>
-          <ul></ul>
-          <ul>
-            <li><%= button_tag "Update", form: "edit-profile-form", data: { turbo_submits_with: "Updating..." } %></li>
-            <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
-          </ul>
-        </nav>
-      </footer>
-    </article>
-  </div>
-</div>
+  <footer>
+    <nav>
+      <ul></ul>
+      <ul>
+        <li><%= button_tag "Update", form: "edit-profile-form", data: { turbo_submits_with: "Updating..." } %></li>
+        <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
+      </ul>
+    </nav>
+  </footer>
+</article>

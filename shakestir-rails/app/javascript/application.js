@@ -4,7 +4,27 @@ import "controllers"
 
 class App {
   constructor() {
-    console.log("App initialized");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    }
+  }
+
+  toggleTheme(_element) {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme");
+
+    if (currentTheme === "light") {
+      localStorage.setItem("theme", "dark");
+      html.setAttribute("data-theme", "dark");
+    } else if (currentTheme === "dark") {
+      localStorage.removeItem("theme");
+      html.removeAttribute("data-theme");
+    } else {
+      localStorage.setItem("theme", "light");
+      html.setAttribute("data-theme", "light");
+    }
   }
 
   goBack(element) {

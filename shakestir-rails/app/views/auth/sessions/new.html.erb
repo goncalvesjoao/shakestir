@@ -1,35 +1,37 @@
 <% content_for :title, "Log in" %>
 
-<div class="content-grid">
-  <div class="row mt-4 mt-md-5">
-    <article class="card p-4 col-10 col-offset-1 col-md-8 col-offset-md-2 col-lg-6 col-offset-lg-3">
+<article class="content-grid mt-3 mt-md-4">
+  <turbo-frame id="new_session_frame" class="px-0 mx-0 mx-md-5 px-md-5">
+    <header>
       <hgroup>
         <h1>Welcome back</h1>
         <p>Sign in to save drinks, organize collections, and work on your recipes.</p>
       </hgroup>
+    </header>
 
-      <%= flash_messages %>
+    <%= flash_messages %>
 
-      <%= form_with url: session_path, class: "mt-4" do |form| %>
-        <fieldset>
-          <%= form.label :email_address %>
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "email", value: params[:email_address] %>
-        </fieldset>
+    <%= form_with url: session_path, class: "card", id: "new_session_form" do |form| %>
+      <fieldset>
+        <%= form.label :email_address %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "email", value: params[:email_address] %>
+      </fieldset>
 
-        <fieldset>
-          <%= form.label :password %>
-          <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72 %>
-        </fieldset>
+      <fieldset>
+        <%= form.label :password %>
+        <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72 %>
+      </fieldset>
+    <% end %>
 
-        <%= form.submit "Sign in", class: "mt-2 mb-0", data: { turbo_submits_with: "Signing in..." } %>      
-      <% end %>
+    <footer>
+      <%= button_tag "Sign in", class: "w-100", form: "new_session_form", data: { turbo_submits_with: "Signing in..." } %>
 
       <hr class="my-4">
 
       <nav class="vstack">
-        <%= link_to "Forgot password?", new_password_path %>
-        <%= link_to "Don't have an account, yet? Create account", new_registration_path %>
+        <%= link_to "Forgot password?", new_password_path, data: { turbo_frame: "_top" } %>
+        <%= link_to "Don't have an account, yet? Create account", new_registration_path, data: { turbo_frame: "_top" } %>
       </nav>
-    </article>
-  </div>
-</div>
+    </footer>
+  </turbo-frame>
+</article>

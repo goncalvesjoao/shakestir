@@ -1,7 +1,7 @@
 <% content_for :title, "#{@cocktail.display_name} · Cocktails" %>
 
 <article id="<%= dom_id @cocktail %>" class="content-grid" data-module="cocktail-details">
-  <header class="hero full-width" data-theme="contrast">
+  <header class="hero full-width mb-3">
     <div class="row g-0 g-md-5 align-items-end">
       <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
         <%= image_tag(
@@ -14,7 +14,7 @@
         ) %>
       </div>
 
-      <hgroup class="col-12 col-md-9 col-lg-7 col-xl-6 order-1 order-md-2 mb-0 mt-3">
+      <hgroup class="col-12 col-md-9 order-1 order-md-2 mb-0 mt-3">
         <h1><%= @cocktail.display_name.presence || "Untitled cocktail" %></h1>
         <p><%= @cocktail.description.presence || "No description available." %></p>
       </hgroup>
@@ -24,7 +24,7 @@
   <div class="row g-0 g-md-5 mt-5">
     <div class="col-12 col-md-3"></div>
 
-    <section class="col-12 col-md-9 col-lg-7 col-xl-6">
+    <section class="col-12 col-md-9">
       <h2>History</h2>
       <p><%= @cocktail.history || "No history available." %></p>
 

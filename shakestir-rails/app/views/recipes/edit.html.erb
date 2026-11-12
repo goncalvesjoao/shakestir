@@ -1,26 +1,22 @@
 <% content_for :title, "Edit #{@recipe.display_name.presence || "recipe"}" %>
 
-<div class="content-grid">
-  <div class="row mt-5">
-    <article class="col-12 col-md-8 col-offset-md-2">
-      <header>
-        <hgroup>
-          <h1>Edit <%= @recipe.display_name.presence || "recipe" %></h1>
-          <p><%= @recipe.display_name.presence || "A little refinement goes a long way." %></p>
-        </hgroup>
-      </header>
+<article class="content-grid mt-3 mt-md-4">
+  <header>
+    <hgroup>
+      <h1>Edit <%= @recipe.display_name.presence || "recipe" %></h1>
+      <p><%= @recipe.display_name.presence || "A little refinement goes a long way." %></p>
+    </hgroup>
+  </header>
 
-      <%= render "form", recipe: @recipe %>
+  <%= render "form", recipe: @recipe %>
 
-      <footer>
-        <nav>
-          <ul></ul>
-          <ul>
-            <li><%= button_tag "Update", form: "recipe-form", data: { turbo_submits_with: "Updating..." } %></li>
-            <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
-          </ul>
-        </nav>
-      </footer>
-    </article>
-  </div>
-</div>
+  <footer>
+    <nav>
+      <ul></ul>
+      <ul>
+        <li><%= button_tag "Update", form: "recipe-form", data: { turbo_submits_with: "Updating..." } %></li>
+        <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
+      </ul>
+    </nav>
+  </footer>
+</article>

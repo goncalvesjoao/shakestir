@@ -22,12 +22,12 @@ Rails.application.routes.draw do
   end
 
   scope module: "pages" do
-    get "terms"
-    get "privacy"
+    get "terms-of-service"
+    get "privacy-policy"
     get "cookies-policy"
     get "community-guidelines"
     get "responsible-drinking"
-    get "help"
+    get "help-and-contact"
   end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

@@ -1,6 +1,7 @@
 module Auth
   class PasswordsController < BaseController
     before_action :set_user_by_token, only: %i[ edit update ]
+    before_action :redirect_when_authenticated, except: %i[ edit update ]
 
     def new; end
 

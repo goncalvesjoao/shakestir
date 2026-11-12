@@ -65,6 +65,69 @@
   --secondary-color: var(--color);
   --secondary-outline-color: var(--primary-outline-color);
   --typography-color: var(--color);
+
+  /* Dropdowns and overlays share the site's elevated surfaces. */
+  --details-menu-background-color: var(--card-background-color);
+  --details-menu-background-color-hover: var(--secondary-background-color-hover);
+  --details-menu-border-color: var(--border-color);
+  --details-menu-color: var(--color);
+  --menu-box-shadow: 0 0.5rem 1.5rem light-dark(rgb(32 41 35 / 15%), rgb(0 0 0 / 35%));
+  --backdrop-background-color: light-dark(rgb(32 41 35 / 35%), rgb(9 13 9 / 75%));
+  --dialog-marginals-background-color: var(--secondary-background-color-hover);
+  --dialog-marginals-border-color: var(--border-color);
+
+  /* Controls and inline text treatments. */
+  --color-hover-shade: light-dark(#35421e, #d1dfa9);
+  --inputs-accent-color-muted: light-dark(#d9dbcf, #3c4639);
+  --input-radio-background-color: light-dark(#fffef9, #eceee3);
+  --input-switch-thumb-background-color: light-dark(#fffef9, #eceee3);
+  --code-background-color: light-dark(#eceee3, #2d362a);
+  --code-color: light-dark(#35421e, #d1dfa9);
+  --mark-background-color: light-dark(#795817, #69501f);
+  --selection-color: var(--color);
+  --selection-background-color: light-dark(#dce4c8, #435229);
+  --tooltip-background-color: light-dark(#202923, #eceee3);
+  --tooltip-color: light-dark(#fffef8, #202923);
+
+  /* Keep semantic status colors distinct, with muted botanical tones. */
+  --success-background-color: light-dark(#3e6240, #35553a);
+  --success-background-color-hover: light-dark(#2e4c30, #456d4b);
+  --success-color: light-dark(#3e6240, #a9d1a5);
+  --success-color-hover: light-dark(#2e4c30, #c8e4bd);
+  --success-outline-color: light-dark(#527a50, #a9d1a5);
+  --info-background-color: light-dark(#356171, #2e5362);
+  --info-background-color-hover: light-dark(#264b59, #3a697b);
+  --info-color: light-dark(#356171, #a3ccd8);
+  --info-color-hover: light-dark(#264b59, #c4e3e9);
+  --info-outline-color: light-dark(#47798a, #a3ccd8);
+  --warning-background-color: light-dark(#795817, #69501f);
+  --warning-background-color-hover: light-dark(#604410, #806329);
+  --warning-color: light-dark(#795817, #e2c17b);
+  --warning-color-hover: light-dark(#604410, #efdaa5);
+  --warning-outline-color: light-dark(#8c6a27, #e2c17b);
+  --danger-background-color: light-dark(#9a3126, #833b32);
+  --danger-background-color-hover: light-dark(#7c251d, #a0493e);
+  --danger-color-hover: light-dark(#7c251d, #f7c2b7);
+  --danger-outline-color: light-dark(#b2493b, #f2a293);
+
+  --contrast-background-color: light-dark(#202923, #eceee3);
+  --contrast-background-color-hover: light-dark(#35421e, #d1dfa9);
+  --contrast-color: var(--color);
+  --contrast-color-hover: light-dark(#35421e, #d1dfa9);
+  --contrast-outline-color: var(--primary-outline-color);
+
+  /* Explicit subtle fills avoid Semanticus's internal slate mixing shade. */
+  --primary-subtle-background-color: light-dark(#e4e9d7, #303c28);
+  --secondary-subtle-background-color: light-dark(#eceee3, #2d362a);
+  --contrast-subtle-background-color: light-dark(#e2e5dc, #343e2f);
+  --success-subtle-background-color: light-dark(#e3ecdf, #293b2b);
+  --info-subtle-background-color: light-dark(#e0ebeb, #25383e);
+  --warning-subtle-background-color: light-dark(#f1e7cc, #3e3522);
+  --danger-subtle-background-color: light-dark(#f3e1da, #402b27);
+
+  --shadow-sm: 0 0.05rem 0.3rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
+  --shadow-md: 0 0.15rem 0.6rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
+  --shadow-lg: 0 0.15rem 1rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
 }
 
 h1,

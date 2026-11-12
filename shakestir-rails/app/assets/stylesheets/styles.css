@@ -3,11 +3,6 @@
   cursor: progress;
 }
 
-:focus-visible {
-  outline: 3px solid var(--primary-outline-color);
-  outline-offset: 4px;
-}
-
 .site-header {
   nav {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -126,13 +121,6 @@
     background-position: center 45%;
     background-size: cover;
     min-height: 13rem;
-
-    hgroup {
-      & > :where(h1, h2, h3, h4, h5, h6),
-      p {
-        color: var(--card-background-color);
-      }
-    }
   }
 }
 

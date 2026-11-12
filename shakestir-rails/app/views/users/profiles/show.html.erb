@@ -57,7 +57,7 @@
         <% else %>
           <div class="auto-grid library-grid">
             <% @collections.each do |collection| %>
-              <%= render "users/collections/collection", collection: collection %>
+              <%= render "collection", collection: collection %>
             <% end %>
           </div>
         <% end %>
@@ -86,7 +86,7 @@
         <% else %>
           <div class="auto-grid recipe-grid personal-recipe-grid">
             <% @recipes.each do |recipe| %>
-              <%= render "recipes/recipe", recipe: recipe %>
+              <%= render "recipe", recipe: recipe %>
             <% end %>
           </div>
         <% end %>

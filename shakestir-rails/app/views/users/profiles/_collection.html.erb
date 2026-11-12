@@ -1,0 +1,10 @@
+<article class="card">
+  <nav class="align-items-start">
+    <hgroup>
+      <h3><%= collection.name %></h3>
+      <p class="d-flex gap-2">
+        <span><%= pluralize(@recipe_counts.fetch(collection.id, 0), "recipe") %></span>
+      </p>
+    </hgroup>
+  </nav>
+</article>

@@ -1,54 +1,58 @@
 <% content_for :title, "Terms of service" %>
 
 <article class="content-grid mt-3 mt-md-4">
-  <header>
-    <hgroup>
-    <h1>Terms of service</h1>
-    <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
-    </hgroup>
-  </header>
+  <turbo-frame id="terms-of-service-frame">
+    <header>
+      <hgroup>
+        <h1>Terms of service</h1>
+        <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
+      </hgroup>
 
-  <%= render "operator_details" %>
+      <button aria-label="Close" class="icon-close align-self-start" commandfor="terms-of-service-modal" command="close"></button>
+    </header>
 
-  <%= render "draft_notice" %>
+    <%= render "operator_details" %>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Using the service</h2>
-    <p>ShakeStir helps you discover, create and share drink recipes and collections. It does not sell alcohol. Follow the laws that apply to you, including the legal drinking age where you are when using alcoholic recipes.</p>
-  </section>
+    <%= render "draft_notice" %>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Your account</h2>
-    <p>Keep your sign-in details secure and provide accurate account information. You are responsible for the content and activity you submit through your account. Do not impersonate another person or access someone else’s account.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Using the service</h2>
+      <p>ShakeStir helps you discover, create and share drink recipes and collections. It does not sell alcohol. Follow the laws that apply to you, including the legal drinking age where you are when using alcoholic recipes.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Your recipes and photos</h2>
-    <p>You retain ownership of your original content. By uploading it, you give ShakeStir permission to store, process and display it as needed to operate the service, respecting your visibility settings. Only share material you own or have permission to use, and credit your sources. Public content can be viewed and copied by others.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Your account</h2>
+      <p>Keep your sign-in details secure and provide accurate account information. You are responsible for the content and activity you submit through your account. Do not impersonate another person or access someone else’s account.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Acceptable use</h2>
-    <p>Do not post unlawful, abusive, discriminatory, misleading or infringing content, spam the service, distribute malware, or attempt to bypass access controls. Read our <%= link_to "community guidelines", community_guidelines_path %> for more detail.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Your recipes and photos</h2>
+      <p>You retain ownership of your original content. By uploading it, you give ShakeStir permission to store, process and display it as needed to operate the service, respecting your visibility settings. Only share material you own or have permission to use, and credit your sources. Public content can be viewed and copied by others.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Recipe information and safety</h2>
-    <p>Recipes and other contributions may contain mistakes or omit allergens. Check ingredients, equipment and preparation methods yourself. Content is general information and is not medical advice. Do not rely on recipe quantities as a measure of safe alcohol consumption.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Acceptable use</h2>
+      <p>Do not post unlawful, abusive, discriminatory, misleading or infringing content, spam the service, distribute malware, or attempt to bypass access controls. Read our <%= link_to "community guidelines", community_guidelines_path %> for more detail.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Leaving ShakeStir</h2>
-    <p>You can edit or remove your own recipes and collections. To permanently delete your account and its associated content, use My account. Copies made by other people are outside ShakeStir’s control.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Recipe information and safety</h2>
+      <p>Recipes and other contributions may contain mistakes or omit allergens. Check ingredients, equipment and preparation methods yourself. Content is general information and is not medical advice. Do not rely on recipe quantities as a measure of safe alcohol consumption.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Service and policy changes</h2>
-    <p>Features and availability may change. These draft terms do not limit rights that cannot be excluded under applicable law. Final terms must confirm the governing law and any appropriate rules for suspension, disputes and liability before launch.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Leaving ShakeStir</h2>
+      <p>You can edit or remove your own recipes and collections. To permanently delete your account and its associated content, use My account. Copies made by other people are outside ShakeStir’s control.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Questions about these terms</h2>
-    <%= render "contact", purpose: "questions about these terms" %>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Service and policy changes</h2>
+      <p>Features and availability may change. These draft terms do not limit rights that cannot be excluded under applicable law. Final terms must confirm the governing law and any appropriate rules for suspension, disputes and liability before launch.</p>
+    </section>
+
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Questions about these terms</h2>
+      <%= render "contact", purpose: "questions about these terms" %>
+    </section>
+  </turbo-frame>
 </article>

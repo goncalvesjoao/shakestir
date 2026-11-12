@@ -14,7 +14,7 @@
 
     <ul>
       <li>
-        <%= link_to edit_collection_path(collection) do %>
+        <%= modal_link_to edit_collection_path(collection), modal: "edit-collection-#{collection.id}" do %>
           <%= icon_tag "pencil", text: "Edit" %>
         <% end %>
       </li>

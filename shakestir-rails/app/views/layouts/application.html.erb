@@ -111,9 +111,9 @@
             <p class="fs-6 fw-semibold mb-3">Policies</p>
 
             <ul class="d-flex flex-column gap-3 align-items-start">
-              <li><%= link_to "Terms of service", terms_of_service_path %></li>
-              <li><%= link_to "Privacy policy", privacy_policy_path %></li>
-              <li><%= link_to "Cookie policy", cookies_policy_path %></li>
+              <li><%= modal_link_to "Terms of service", terms_of_service_path, modal: "terms-of-service" %></li>
+              <li><%= modal_link_to "Privacy policy", privacy_policy_path, modal: "privacy-policy" %></li>
+              <li><%= modal_link_to "Cookies policy", cookies_policy_path, modal: "cookies-policy" %></li>
             </ul>
           </li>
 
@@ -121,9 +121,9 @@
             <p class="fs-6 fw-semibold mb-3">Using ShakeStir</p>
 
             <ul class="d-flex flex-column gap-3 align-items-start">
-              <li><%= link_to "Community guidelines", community_guidelines_path %></li>
-              <li><%= link_to "Responsible drinking", responsible_drinking_path %></li>
-              <li><%= link_to "Help & contact", help_and_contact_path %></li>
+              <li><%= modal_link_to "Community guidelines", community_guidelines_path, modal: "community-guidelines" %></li>
+              <li><%= modal_link_to "Responsible drinking", responsible_drinking_path, modal: "responsible-drinking" %></li>
+              <li><%= modal_link_to "Help & contact", help_and_contact_path, modal: "help-and-contact" %></li>
             </ul>
           </li>
         </ul>

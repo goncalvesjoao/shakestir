@@ -1,37 +1,41 @@
 <% content_for :title, "Help & contact" %>
 
 <article class="content-grid mt-3 mt-md-4">
-  <header>
-    <hgroup>
-      <h1>Help & contact</h1>
-      <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
-    </hgroup>
-  </header>
+  <turbo-frame id="help-and-contact-frame">
+    <header>
+      <hgroup>
+        <h1>Help & contact</h1>
+        <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
+      </hgroup>
 
-  <%= render "operator_details" %>
+      <button aria-label="Close" class="icon-close align-self-start" commandfor="help-and-contact-modal" command="close"></button>
+    </header>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Manage your account</h2>
-    <p>Use My profile to change your public handle or profile photo. My account shows your account email and lets you permanently delete your account after confirming your password. You will be asked to sign in to access these pages.</p>
-  </section>
+    <%= render "operator_details" %>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Control what you share</h2>
-    <p>Manage drafts and private recipes in My recipes, and collection visibility in My collections. Profiles are public and show eligible public content. Favorites remain private, although recipe star totals are public.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Manage your account</h2>
+      <p>Use My profile to change your public handle or profile photo. My account shows your account email and lets you permanently delete your account after confirming your password. You will be asked to sign in to access these pages.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Sign-in trouble</h2>
-    <p>Use the password reset link on the sign-in page if you cannot remember your password. Password reset email delivery depends on the service’s email configuration.</p>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Control what you share</h2>
+      <p>Manage drafts and private recipes in My recipes, and collection visibility in My collections. Profiles are public and show eligible public content. Favorites remain private, although recipe star totals are public.</p>
+    </section>
 
-  <section class="mt-4">
-    <h2 class="fs-3 mb-2">Contact and reports</h2>
-    <% if ENV["SHAKESTIR_SUPPORT_EMAIL"].present? %>
-      <p>For support, privacy requests, accessibility feedback or content and copyright reports, email <%= mail_to ENV.fetch("SHAKESTIR_SUPPORT_EMAIL") %>. Include the relevant page link and a short description. Never send your password.</p>
-    <% else %>
-      <p>A support and privacy contact has not been published yet. Contact details must be added before public launch.</p>
-    <% end %>
-  </section>
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Sign-in trouble</h2>
+      <p>Use the password reset link on the sign-in page if you cannot remember your password. Password reset email delivery depends on the service’s email configuration.</p>
+    </section>
+
+    <section class="mt-4">
+      <h2 class="fs-3 mb-2">Contact and reports</h2>
+      <% if ENV["SHAKESTIR_SUPPORT_EMAIL"].present? %>
+        <p>For support, privacy requests, accessibility feedback or content and copyright reports, email <%= mail_to ENV.fetch("SHAKESTIR_SUPPORT_EMAIL") %>. Include the relevant page link and a short description. Never send your password.</p>
+      <% else %>
+        <p>A support and privacy contact has not been published yet. Contact details must be added before public launch.</p>
+      <% end %>
+    </section>
+    </turbo-frame>
 </article>
   

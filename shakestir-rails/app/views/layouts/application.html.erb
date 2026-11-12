@@ -41,9 +41,9 @@
           <li><%= link_to "Methods", techniques_path, class: "p-2", aria: { current: ("page" if controller_name == "techniques") } %></li>
         </ul>
 
-        <ul class="order-1 order-md-2 gap-1">
+        <ul class="order-1 order-md-2">
           <li>
-            <button class="px-2 text-muted bg-transparent border-0 rounded-1" onclick="app.toggleTheme(this)">
+            <button class="fs-lg py-1 px-2 text-muted bg-transparent border-0 rounded-1" onclick="app.toggleTheme(this)">
               <%= icon_svg_tag("sun-moon", class: "d-theme-system-none") %>
               <%= icon_svg_tag("sun-filled", class: "d-theme-manual-none d-theme-light-none") %>
               <%= icon_svg_tag("moon-filled", class: "d-theme-manual-none d-theme-dark-none") %>
@@ -52,7 +52,7 @@
 
           <li>
             <details>
-              <summary aria-haspopup="menu" class="bg-transparent border-0">
+              <summary aria-haspopup="menu" class="fs-lg bg-transparent border-0">
                 <%= icon_svg_tag("language") %>
               </summary>
 
@@ -66,7 +66,7 @@
             <details>
               <summary aria-haspopup="menu" class="bg-transparent border-0">
                 <% if authenticated? %>
-                  <%= profile_avatar(current_user, size: 40, css_class: "rounded-circle object-fit-cover") %>
+                  <%= profile_avatar(current_user, size: 30, css_class: "rounded-circle object-fit-cover") %>
                 <% else %>
                   <%= icon_svg_tag("user-filled") %>
                 <% end %>

@@ -25,20 +25,20 @@
 
     <ul>
       <li>
-        <%= link_to recipe_path(recipe) do %>
-          <%= icon_svg_tag "eye" %>
+        <%= link_to recipe_path(recipe), class: "secondary" do %>
+          <%= icon_tag "eye", text: "View" %>
         <% end %>
       </li>
 
       <li>
         <%= link_to edit_recipe_path(recipe) do %>
-          <%= icon_svg_tag "pencil" %>
+          <%= icon_tag "pencil", text: "Edit" %>
         <% end %>
       </li>
 
       <li>
-        <%= link_to recipe_path(recipe), class: "text-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
-          <%= icon_svg_tag "trash-filled" %>
+        <%= link_to recipe_path(recipe), class: "danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
+          <%= icon_tag "trash-filled", text: "Delete" %>
         <% end %>
       </li>
     </ul>

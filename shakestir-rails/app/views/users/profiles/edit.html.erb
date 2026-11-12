@@ -37,13 +37,13 @@
       </div>
     </fieldset>
 
-    <fieldset class="mb-3">
+    <fieldset>
       <%= form.label :handle %>
       <%= form.text_field :handle, required: true, minlength: 3, maxlength: 40, aria: { describedby: "input-handle-helper" } %>
       <small id="input-handle-helper">Your public handle starts from your email name and credits your recipes. You can change it here. Use 3–40 lowercase letters, numbers, hyphens or underscores.</small>
     </fieldset>
 
-    <fieldset class="mb-3">
+    <fieldset>
       <%= form.label :display_name %>
       <%= form.text_field :display_name, maxlength: 80, autocomplete: "nickname", placeholder: "What should we call you?", aria: { describedby: "input-display_name-helper" } %>  
       <small id="input-display_name-helper">The name people see on your public profile. Your email stays private.</small>

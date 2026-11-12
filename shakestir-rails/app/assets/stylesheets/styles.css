@@ -3,6 +3,14 @@
   cursor: progress;
 }
 
+/* Keep inline icons proportional to the text of their containing control. */
+svg.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
 form:has(+footer) {
   margin-bottom: 0 !important;
 }

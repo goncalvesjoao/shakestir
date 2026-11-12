@@ -15,13 +15,13 @@
     <ul>
       <li>
         <%= link_to edit_collection_path(collection) do %>
-          <%= icon_svg_tag "pencil" %>
+          <%= icon_tag "pencil", text: "Edit" %>
         <% end %>
       </li>
 
       <li>
-        <%= link_to collection_path(collection), class: "text-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
-          <%= icon_svg_tag "trash-filled" %>
+        <%= link_to collection_path(collection), class: "danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
+          <%= icon_tag "trash-filled", text: "Delete" %>
         <% end %>
       </li>
     </ul>

@@ -5,13 +5,13 @@ module AttachmentsHelper
   end
 
   def profile_avatar(user, size: 112, css_class: nil, image_class: nil)
-    own_profile = Current.user == user
-
-    if user.image.attached?
-      image_tag user_profile_image_path(user, size: :card), alt: "", width: size, height: size, class: class_names(css_class, image_class)
-    else
-      image_tag gravatar_url(user), alt: "", width: size, height: size, class: class_names(css_class, image_class)
-    end
+    image_tag(
+      user.image.attached? ? user_profile_image_path(user, size: :card) : gravatar_url(user),
+      alt: "",
+      width: size,
+      height: size,
+      class: class_names(css_class, image_class)
+    )
   end
 
   def recipe_attachment_path(recipe, **kwargs)

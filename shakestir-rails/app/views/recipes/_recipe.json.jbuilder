@@ -23,7 +23,7 @@ json.own_image_url(recipe.image.attached? ? recipe_image_url(recipe, size: :deta
 json.fallback_image_url(recipe.cocktail && policy(recipe.cocktail).show? && recipe.cocktail.image.attached? ? cocktail_image_url(recipe.cocktail, size: :detail) : nil)
 
 if local_assigns[:detail]
-  json.saved_collection_ids(authenticated? ? Current.user.collections.joins(:collection_recipes)
+  json.saved_collection_ids(authenticated? ? current_user.collections.joins(:collection_recipes)
     .where(collection_recipes: { recipe_id: recipe.id }).order(:created_at).pluck(:id) : [])
   json.recipe_ingredients recipe.recipe_ingredients do |line|
     json.extract! line, :id, :ingredient_id, :position, :quantity, :measuring_unit, :submitted_text, :preparation_note, :optional, :role

@@ -1,6 +1,26 @@
 <% content_for :title, "New recipe" %>
-<div class="library-page recipe-editor">
-  <%= link_to my_recipes_path, class: "gap-2 mb-4 d-inline-flex align-items-center library-back" do %><%= render "collections/icon", name: "back" %>My recipes<% end %>
-  <header class="align-items-start align-items-md-center gap-3 gap-md-4 flex-column flex-md-row d-flex justify-content-between library-heading"><div><h1>New recipe</h1><p class="m-0 library-description">Start with an idea. Refine it at your own pace.</p></div></header>
-  <%= render "form", recipe: @recipe %>
+
+<div class="content-grid">
+  <div class="row mt-5">
+    <article class="col-12 col-md-8 col-offset-md-2">
+      <header>
+        <hgroup>
+          <h1>New recipe</h1>
+          <p>Start with an idea. Refine it at your own pace.</p>
+        </hgroup>
+      </header>
+
+      <%= render "form", recipe: @recipe %>
+
+      <footer>
+        <nav>
+          <ul></ul>
+          <ul>
+            <li><%= button_tag "Create", form: "recipe-form", data: { turbo_submits_with: "Creating..." } %></li>
+            <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
+          </ul>
+        </nav>
+      </footer>
+    </article>
+  </div>
 </div>

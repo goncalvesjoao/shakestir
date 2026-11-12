@@ -25,16 +25,22 @@ class ApplicationController < ActionController::Base
     raise error unless request.format.json?
     render_json_errors("Resource could not be deleted.", status: :unprocessable_content)
   end
+
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
 
+  before_action :prevent_json_response_caching
+
   private
 
+  def prevent_json_response_caching
+    response.headers["Cache-Control"] = "private, no-store" if request.format.json?
+  end
+
   def render_json_errors(errors, status:)
-    response.headers["Cache-Control"] = "private, no-store"
     render json: { errors: errors.is_a?(Hash) ? errors : { base: Array(errors) } }, status: status
   end
 
@@ -48,7 +54,6 @@ class ApplicationController < ActionController::Base
   end
 
   def pundit_user
-    resume_session
-    Current.user
+    current_user
   end
 end

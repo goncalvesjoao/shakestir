@@ -3,6 +3,11 @@ require "digest"
 module ApplicationHelper
   FLASH_TYPE_CSS_CLASS = { info: "info", alert: "danger", notice: "success" }
 
+  def icon_svg_tag(name, **options)
+    # https://github.com/jamesmartin/inline_svg
+    inline_svg_tag("icons/#{name}.svg", **options)
+  end
+
   def flash_messages
     safe_join([ :alert, :notice ].filter_map do |type|
       flash_message(flash[type], type)

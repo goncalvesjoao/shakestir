@@ -1,24 +1,54 @@
-<%= form_with model: recipe, class: "p-4 p-md-5 m-0 shadow-none recipe-form recipe-editor-form" do |form| %>
-  <% if recipe.errors.any? %>
-    <div role="alert" class="p-3 mb-4 rounded library-errors"><strong>Check your recipe details</strong><ul class="mb-0 ps-4"><% recipe.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div>
-  <% end %>
-  <section class="gap-3 gap-md-5 pb-4 mb-4 border-bottom d-grid recipe-editor-section" aria-labelledby="recipe-basics-title">
-    <div class="recipe-section-intro"><h2 class="mt-0 mx-0 mb-2 fs-5" id="recipe-basics-title">The basics</h2><p class="m-0">Give your drink a name and a little character.</p></div>
-    <div class="gap-3 d-grid recipe-section-fields">
-      <div><%= form.label :name, "Recipe name", class: "d-block fw-semibold mb-2" %><%= form.text_field :name, placeholder: "e.g. My Sunday Negroni", class: "m-0 rounded" %></div>
-<div><%= form.label :servings, class: "d-block fw-semibold mb-2" %><%= form.number_field :servings, min: 1, step: 1, class: "m-0 rounded" %></div>
-    </div>
+<%= form_with model: recipe, id: "recipe-form", class: "card" do |form| %>
+  <section>
+    <hgroup>
+      <h2 class="mt-0 mx-0 mb-2 fs-5">The basics</h2>
+      <p class="m-0">Give your drink a name and a little character.</p>
+    </hgroup>
+
+    <fieldset>
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true, placeholder: "e.g. My Sunday Negroni", aria: { describedby: "input-name-help" } %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.label :servings %>
+      <%= form.number_field :servings, required: true %>
+    </fieldset>
   </section>
-  <section class="gap-3 gap-md-5 pb-4 mb-4 border-bottom d-grid recipe-editor-section" aria-labelledby="recipe-preparation-title">
-    <div class="recipe-section-intro"><h2 class="mt-0 mx-0 mb-2 fs-5" id="recipe-preparation-title">Preparation</h2><p class="m-0">Make it easy to get every pour right.</p></div>
+
+  <hr>
+
+  <section>
+    <hgroup>
+      <h2>Preparation</h2>
+      <p>Make it easy to get every pour right.</p>
+    </hgroup>
+
     <div class="gap-3 d-grid recipe-section-fields">
-      <p class="rounded p-3 recipe-editor-note">Ingredient and utensil editing isn’t available in this form yet. <%= recipe.recipe_ingredients.any? ? "Your existing requirements are preserved." : "Save your idea as a draft; publishing requires ingredient lines." %></p>
+      <p class="rounded p-3">
+        Ingredient and utensil editing isn't available in this form yet.
+        <%= recipe.recipe_ingredients.any? ? "Your existing requirements are preserved." : "Save your idea as a draft; publishing requires ingredient lines." %>
+      </p>
+
       <% multi_step = recipe.recipe_steps.reject(&:marked_for_destruction?).size > 1 %>
-      <div><%= form.label :steps, "Preparation steps", class: "d-block fw-semibold mb-2" %><% if multi_step %><p id="recipe-steps-help" class="rounded p-3 recipe-editor-note">This recipe has multiple steps. They’re shown here for reference and can’t be changed in this editor yet.</p><% end %><%= form.textarea :steps, rows: 6, readonly: multi_step, placeholder: "Add the ingredients, stir with ice, and strain…", aria: { describedby: ("recipe-steps-help" if multi_step) }, class: "m-0 rounded" %></div>
+
+      <div>
+        <%= form.label :steps, "Preparation steps", class: "d-block fw-semibold mb-2" %>
+        
+        <% if multi_step %>
+          <p id="recipe-steps-help" class="rounded p-3 recipe-editor-note">This recipe has multiple steps. They’re shown here for reference and can’t be changed in this editor yet.</p>
+        <% end %>
+
+        <%= form.textarea :steps, rows: 6, readonly: multi_step, placeholder: "Add the ingredients, stir with ice, and strain…", aria: { describedby: ("recipe-steps-help" if multi_step) }, class: "m-0 rounded" %>
+      </div>
+
       <fieldset class="border-0 p-0 m-0 technique-options" aria-describedby="recipe-techniques-help">
         <legend class="mb-2 fw-semibold">Techniques used</legend>
+
         <p id="recipe-techniques-help">Choose all that appear in your steps. Readers can open a beginner guide for each one.</p>
+
         <% techniques = Technique.order(:slug) %>
+
         <% if techniques.any? %>
           <div class="auto-grid technique-options-list">
             <%= form.collection_check_boxes :technique_ids, techniques, :id, :display_name do |choice| %>
@@ -31,6 +61,7 @@
       </fieldset>
     </div>
   </section>
+
   <section class="gap-3 gap-md-5 pb-4 mb-4 border-bottom d-grid recipe-editor-section" aria-labelledby="recipe-photo-title">
     <div class="recipe-section-intro"><h2 class="mt-0 mx-0 mb-2 fs-5" id="recipe-photo-title">A photo to remember</h2><p class="m-0">Optional, but a good drink deserves a good close-up.</p></div>
     <div class="gap-3 d-grid recipe-section-fields"><div class="recipe-photo-field">
@@ -46,5 +77,4 @@
     </div>
   </section>
   <details class="py-2 m-0 recipe-editor-extra"><summary class="d-flex align-items-center fw-semibold">Source &amp; inspiration <span class="ms-2 fw-normal">Optional</span></summary><div class="py-3 gap-3 d-grid recipe-section-fields"><div><%= form.label :source_reference, "Source or credit", class: "d-block fw-semibold mb-2" %><%= form.text_field :source_reference, placeholder: "A book, a bartender, an inspiration…", class: "m-0 rounded" %></div><div><%= form.label :source_url, "Source link", class: "d-block fw-semibold mb-2" %><%= form.url_field :source_url, placeholder: "https://", class: "m-0 rounded" %></div></div></details>
-  <div class="pt-4 mt-3 border-top gap-4 d-flex align-items-center recipe-editor-actions"><%= form.submit recipe.persisted? ? "Save changes" : "Create recipe", class: "text-nowrap gap-2 d-inline-flex justify-content-center align-items-center m-0 library-action primary size-md w-auto", data: { turbo_submits_with: "Saving…" } %><%= link_to "Cancel", recipe.persisted? ? recipe_path(recipe) : my_recipes_path, class: "d-inline-flex align-items-center library-cancel" %></div>
 <% end %>

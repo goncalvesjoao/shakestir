@@ -1,0 +1,46 @@
+<article class="card p-4">
+  <nav class="gap-3">
+    <div class="overflow-hidden">
+      <%= image_tag(
+        recipe_attachment_path(recipe, size: :card),
+        alt: "Photo of #{recipe.display_name}",
+        loading: "lazy",
+        fetchpriority: "high",
+        width: 50,
+        height: 50
+      ) %>
+    </div>
+
+    <hgroup class="flex-grow-1">
+      <h3><%= recipe.name %></h3>
+      <p class="d-flex gap-2">
+        <span><%= pluralize(0, "star") %></span>
+
+        <small>
+          <%= icon_svg_tag({ public: "world", private: "lock-filled" }[recipe.visibility.to_sym]) %>
+          <%= recipe.visibility.capitalize %>
+        </small>
+      </p>
+    </hgroup>
+
+    <ul>
+      <li>
+        <%= link_to recipe_path(recipe) do %>
+          <%= icon_svg_tag "eye" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to edit_recipe_path(recipe) do %>
+          <%= icon_svg_tag "pencil" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to recipe_path(recipe), class: "text-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
+          <%= icon_svg_tag "trash-filled" %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</article>

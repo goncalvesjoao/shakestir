@@ -1,0 +1,20 @@
+<% content_for :title, "#{@user.display_name} collections" %>
+
+<div class="content-grid">
+  <div class="row mt-5">
+    <article class="col-12 col-md-8 col-offset-md-2">
+      <header>
+        <nav>
+          <hgroup>
+            <h1><%= @user.display_name %>'s collections</h1>
+            <p>Good recipes, kept together. Ready for your next pour.</p>
+          </hgroup>
+        </nav>
+      </header>
+
+      <% @collections.each do |collection| %>
+        <%= render "collection", collection: collection %>
+      <% end %>
+    </article>
+  </div>
+</div>

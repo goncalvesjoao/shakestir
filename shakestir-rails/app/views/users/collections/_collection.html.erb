@@ -1,0 +1,29 @@
+<article class="card">
+  <nav class="align-items-start">
+    <hgroup>
+      <h3><%= collection.name %></h3>
+      <p class="d-flex gap-2">
+        <span><%= pluralize(@recipe_counts.fetch(collection.id, 0), "recipe") %></span>
+
+        <small>
+          <%= icon_svg_tag({ public: "world", private: "lock-filled" }[collection.visibility.to_sym]) %>
+          <%= collection.visibility.capitalize %>
+        </small>
+      </p>
+    </hgroup>
+
+    <ul>
+      <li>
+        <%= link_to edit_collection_path(collection) do %>
+          <%= icon_svg_tag "pencil" %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to collection_path(collection), class: "text-danger", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
+          <%= icon_svg_tag "trash-filled" %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</article>

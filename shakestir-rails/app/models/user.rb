@@ -5,6 +5,10 @@ class User < ApplicationRecord
   validates :display_name, length: { maximum: 80 }
   validates :bio, length: { maximum: 280 }
 
+  def to_param
+    handle
+  end
+
   def profile_name
     display_name.presence || "@#{handle}"
   end

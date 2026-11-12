@@ -1,0 +1,42 @@
+<div class="card">
+  <%= link_to collection, class: "text-decoration-none d-block" do %>
+    <% recipes = (@previews[collection.id] || []).map(&:recipe) %>
+
+    <div class="gap-1 d-grid overflow-hidden" aria-hidden="true">
+      <% if recipes.empty? %>
+        <span class="d-grid library-artwork-symbol">
+          <%= icon_svg_tag collection.name == "Favorites" ? "heart-filled" : "bookmarks" %>
+        </span>
+      <% else %>
+        <% 4.times do |index| %>
+          <% next if recipes[index].nil? %>
+
+          <div class="overflow-hidden">
+            <%= image_tag(
+              recipe_attachment_path(recipes[index], size: :card),
+              alt: "",
+              loading: "lazy",
+              class: "w-100 h-100 object-fit-cover",
+              width: 320,
+              height: 320
+            ) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <section class="py-3 px-1">
+      <h3><%= collection.name %></h3>
+
+      <div class="row-gap-2 column-gap-3 d-flex align-items-center flex-wrap justify-content-between">
+        <span><%= pluralize(@recipe_counts.fetch(collection.id, 0), "recipe") %></span>
+
+        <span class="gap-1 d-inline-flex align-items-center">
+          <%# render "collections/icon", name: collection.visibility %>
+
+          <%= collection.visibility.capitalize %>
+        </span>
+      </div>
+    </section>
+  <% end %>
+</div>

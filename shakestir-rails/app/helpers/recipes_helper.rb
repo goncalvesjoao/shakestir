@@ -1,6 +1,6 @@
 module RecipesHelper
   def recipe_starred?(recipe)
-    @starred_recipe_ids ||= Current.user.favorites_collection.collection_recipes.pluck(:recipe_id).to_set
+    @starred_recipe_ids ||= current_user.favorites_collection.collection_recipes.pluck(:recipe_id).to_set
     @starred_recipe_ids.include?(recipe.id)
   end
 

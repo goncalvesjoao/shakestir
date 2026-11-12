@@ -148,8 +148,6 @@ h3 {
 button,
 input[type="submit"],
 .button {
-  min-height: 2.8rem;
-
   &:active {
     transform: scale(0.98);
   }

@@ -9,8 +9,6 @@
 
     ul.primary-navigation {
       justify-self: center;
-      gap: var(--spacing-4);
-      overflow-x: auto;
 
       li {
         align-items: center;
@@ -18,7 +16,6 @@
         flex-shrink: 0;
 
         a {
-          padding-block: var(--spacing-2);
           font-size: var(--font-size-md);
           text-decoration: none;
           color: var(--color-muted);

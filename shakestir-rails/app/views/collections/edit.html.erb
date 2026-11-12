@@ -1,9 +1,69 @@
 <% content_for :title, "Edit #{@collection.name}" %>
-<div class="library-page library-editor">
-  <%= link_to @collection, class: "gap-2 mb-4 d-inline-flex align-items-center library-back" do %><%= render "icon", name: "back" %>Back to collection<% end %>
-  <header class="align-items-start align-items-md-center gap-3 gap-md-4 flex-column flex-md-row d-flex justify-content-between library-heading"><div><h1>Edit collection</h1><p class="m-0 library-description">Give it a name. Choose who can see it.</p></div></header>
-  <%= render "form", collection: @collection %>
-  <% unless @collection.system_key == "favorites" %>
-  <details class="mt-4 library-danger"><summary class="d-flex align-items-center">Delete collection</summary><p>This permanently deletes the collection. Your recipes will stay in ShakeStir.</p><%= button_to "Delete collection", @collection, method: :delete, class: "library-delete", data: { turbo_confirm: "Delete #{@collection.name}? This cannot be undone. Your recipes will not be deleted." } %></details>
-  <% end %>
+
+<div class="content-grid">
+  <div class="row mt-5">
+    <article class="col-12 col-md-8 col-offset-md-2">
+      <header>
+        <hgroup>
+          <h1>Edit collection</h1>
+          <p>Give it a name. Choose who can see it.</p>
+        </hgroup>
+      </header>
+
+      <%= form_with model: @collection, method: :patch, id: "edit-collection-form", class: "card" do |form| %>
+        <% if @collection.errors.any? %>
+          <div class="p-3 mb-4 rounded library-errors" role="alert">
+            <strong>Check your collection details</strong>
+            <ul class="mb-0 ps-4">
+              <% @collection.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <fieldset>
+          <%= form.label :name %>
+          <%= form.text_field :name, required: true, placeholder: "e.g. Friday night favorites", aria: { describedby: "input-name-help" } %>
+          <small id="input-name-help">A mood, an occasion, or simply your favorites.</small>
+        </fieldset>
+
+        <% if @collection.system_key == "favorites" %>
+          <p>Your starred recipes stay in this private Favorites collection. You can rename it.</p>
+        <% else %>
+          <fieldset>
+            <legend class="fw-semibold mb-2">Who can see this collection?</legend>
+
+            <label class="hstack gap-2 mb-3">
+              <%= form.radio_button :visibility, "private", class: "m-0 flex-shrink-0" %>
+
+              <span class="vstack">
+                <span><%= icon_svg_tag("lock-filled") %><strong>Private</strong></span>
+                <small class="text-muted">Only you. Keep your discoveries to yourself.</small>
+              </span>
+            </label>
+
+            <label class="d-flex gap-2 align-items-center">
+              <%= form.radio_button :visibility, "public", class: "m-0 flex-shrink-0" %>
+              
+              <span class="vstack">
+                <span><%= icon_svg_tag("world") %><strong>Public</strong></span>
+                <small class="text-muted">Anyone with the link can view this collection.</small>
+              </span>
+            </label>
+          </fieldset>
+        <% end %>
+      <% end %>
+
+      <footer>
+        <nav>
+          <ul></ul>
+          <ul>
+            <li><%= button_tag "Update", form: "edit-collection-form", data: { turbo_submits_with: "Updating..." } %></li>
+            <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
+          </ul>
+        </nav>
+      </footer>
+    </article>
+  </div>
 </div>

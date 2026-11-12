@@ -3,9 +3,6 @@ class RecipesController < ApplicationController
 
   allow_unauthenticated_access only: %i[ index show ]
   before_action :set_recipe, only: %i[ show edit update destroy ]
-  before_action only: %i[index show] do
-    response.headers["Cache-Control"] = "private, no-store" if request.format.json?
-  end
 
   before_action :authorize_recipe
   after_action :verify_authorized
@@ -42,7 +39,7 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = Current.user
+    @recipe.user = current_user
 
     respond_to do |format|
       if @recipe.save
@@ -79,28 +76,29 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params.expect(:id))
-    end
 
-    def authorize_recipe
-      authorize @recipe || Recipe
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params.expect(:id))
+  end
 
-    # Only allow a list of trusted parameters through.
-    def recipe_params
-      fields = [ :name, :steps, :servings, :source_reference, :source_url, :visibility, :publication_state, :image ]
-      fields += [ :sweetness, :sourness, :bitterness, { technique_ids: [],
-        recipe_ingredients_attributes: [ :id, :ingredient_id, :submitted_text, :quantity, :measuring_unit, :position, :optional, :role, :preparation_note, :_destroy ],
-        recipe_utensils_attributes: [ :id, :utensil_id, :submitted_text, :role, :_destroy ],
-        recipe_steps_attributes: [ :id, :position, :body, :_destroy ] } ]
-      permitted = params.require(:recipe).permit(*fields)
-      if permitted[:image].blank?
-        permitted.delete(:image)
-      elsif !permitted[:image].is_a?(ActionDispatch::Http::UploadedFile)
-        raise ActionController::BadRequest, "image must be an uploaded file"
-      end
-      permitted
+  def authorize_recipe
+    authorize @recipe || Recipe
+  end
+
+  # Only allow a list of trusted parameters through.
+  def recipe_params
+    fields = [ :name, :steps, :servings, :source_reference, :source_url, :visibility, :publication_state, :image ]
+    fields += [ :sweetness, :sourness, :bitterness, { technique_ids: [],
+      recipe_ingredients_attributes: [ :id, :ingredient_id, :submitted_text, :quantity, :measuring_unit, :position, :optional, :role, :preparation_note, :_destroy ],
+      recipe_utensils_attributes: [ :id, :utensil_id, :submitted_text, :role, :_destroy ],
+      recipe_steps_attributes: [ :id, :position, :body, :_destroy ] } ]
+    permitted = params.require(:recipe).permit(*fields)
+    if permitted[:image].blank?
+      permitted.delete(:image)
+    elsif !permitted[:image].is_a?(ActionDispatch::Http::UploadedFile)
+      raise ActionController::BadRequest, "image must be an uploaded file"
     end
+    permitted
+  end
 end

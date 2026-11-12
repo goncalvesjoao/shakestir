@@ -1,12 +1,14 @@
 <% content_for :title, "Help & contact" %>
 
 <div class="content-grid">
-  <div class="row mt-4 mt-md-5">
+  <div class="row mt-5">
     <article class="col-12 col-md-8 col-offset-md-2">
-      <hgroup>
-        <h1>Help & contact</h1>
-        <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
-      </hgroup>
+      <header>
+        <hgroup>
+          <h1>Help & contact</h1>
+          <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
+        </hgroup>
+      </header>
 
       <%= render "operator_details" %>
 
@@ -14,14 +16,17 @@
         <h2 class="fs-3 mb-2">Manage your account</h2>
         <p>Use My profile to change your public handle or profile photo. My account shows your account email and lets you permanently delete your account after confirming your password. You will be asked to sign in to access these pages.</p>
       </section>
+
       <section class="mt-4">
         <h2 class="fs-3 mb-2">Control what you share</h2>
         <p>Manage drafts and private recipes in My recipes, and collection visibility in My collections. Profiles are public and show eligible public content. Favorites remain private, although recipe star totals are public.</p>
       </section>
+
       <section class="mt-4">
         <h2 class="fs-3 mb-2">Sign-in trouble</h2>
         <p>Use the password reset link on the sign-in page if you cannot remember your password. Password reset email delivery depends on the service’s email configuration.</p>
       </section>
+
       <section class="mt-4">
         <h2 class="fs-3 mb-2">Contact and reports</h2>
         <% if ENV["SHAKESTIR_SUPPORT_EMAIL"].present? %>
@@ -29,7 +34,6 @@
         <% else %>
           <p>A support and privacy contact has not been published yet. Contact details must be added before public launch.</p>
         <% end %>
-        <p><%= link_to "My profile", my_profile_path %> · <%= link_to "My account", my_account_path %> · <%= link_to "Sign in", new_session_path %></p>
       </section>
     </article>
   </div>

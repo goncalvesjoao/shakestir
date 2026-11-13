@@ -1,7 +1,7 @@
 <% content_for :title, "#{@cocktail.display_name} · Cocktails" %>
 
 <article id="<%= dom_id @cocktail %>" class="content-grid" data-module="cocktail-details">
-  <header class="hero full-width mb-3">
+  <header class="hero full-width mb-3 border-bottom">
     <div class="row g-0 g-md-5 align-items-end">
       <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
         <%= image_tag(

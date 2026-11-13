@@ -1,21 +1,21 @@
 <% content_for :title, "My account" %>
 
 <article class="content-grid mt-3 mt-md-4">
-  <header>
+  <header class="nav border-bottom mb-4">
     <hgroup>
       <h1>My account</h1>
       <p>Your private account details.</p>
     </hgroup>
   </header>
 
-  <section class="card">
-    <fieldset>
-      <label>Email address</label>
-      <input type="email" value="<%= @user.email_address %>" readonly>
-    </fieldset>
-  </section>
-
-  <hr class="my-4">
+  <div>
+    <ul class="card border-0">
+      <li class="d-flex justify-content-between">
+        <span>Email address</span>
+        <strong><%= @user.email_address %></strong>
+      </li>
+    </ul>
+  </div>
 
   <section class="mb-0">
     <header>
@@ -36,13 +36,12 @@
     <% end %>
   </section>
 
-  <footer>
+  <footer class="nav">
+    <ul></ul>
+
     <nav>
-      <ul></ul>
-      <ul>
-        <li><%= button_tag "Delete my account", class: "danger ghost", form: "delete-account-form", data: { turbo_submits_with: "Deleting..." } %></li>
-        <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
-      </ul>
+      <%= button_tag "Delete my account", class: "danger ghost", form: "delete-account-form", data: { turbo_submits_with: "Deleting..." } %>
+      <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
     </nav>
   </footer>
 </article>

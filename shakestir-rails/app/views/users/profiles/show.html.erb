@@ -1,10 +1,10 @@
 <% content_for :title, "#{@owned ? "My" : @user.profile_name} profile" %>
 
 <article class="content-grid mt-3 mt-md-4">
-  <section class="hstack gap-3 mt-3">
+  <header class="nav border-bottom mb-4">
     <%= profile_avatar(@user, image_class: "object-fit-cover rounded-circle") %>
 
-    <div>
+    <div class="flex-grow-1">
       <hgroup>
         <h1 class="mb-2">
           <%= @user.profile_name %>
@@ -24,18 +24,20 @@
         <span>Joined <%= @user.created_at.strftime("%B %Y") %></span>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="profile-collections" class="my-5" aria-labelledby="profile-collections-title">
-    <nav class="mb-3">
+  <section id="profile-collections" aria-labelledby="profile-collections-title">
+    <header class="nav pb-3">
       <h2 class="fs-5" id="profile-collections-title">Public collections</h2>
       
       <% if @owned %>
-        <%= link_to user_collections_path("my"), class: "d-inline-flex align-items-center" do %>
-          <span>Manage collections</span><%= icon_svg_tag "arrow-narrow-right" %>
-        <% end %>
+        <nav>
+          <%= link_to user_collections_path("my"), class: "d-inline-flex align-items-center" do %>
+            <span>Manage collections</span><%= icon_svg_tag "arrow-narrow-right" %>
+          <% end %>
+        </nav>
       <% end %>
-    </nav>
+    </header>
 
     <% if @collections.empty? %>
       <div class="card d-flex gap-3 align-items-center">
@@ -60,15 +62,17 @@
   </section>
 
   <section class="mb-5" aria-labelledby="profile-recipes-title">
-    <nav class="mb-3">
+    <header class="nav pb-3">
       <h2 class="fs-5" id="profile-recipes-title">Public recipes</h2>
 
       <% if @owned %>
-        <%= link_to user_recipes_path("my"), class: "d-inline-flex align-items-center" do %>
-          <span>Manage recipes</span><%= icon_svg_tag "arrow-narrow-right" %>
-        <% end %>
+        <nav>
+          <%= link_to user_recipes_path("my"), class: "d-inline-flex align-items-center" do %>
+            <span>Manage recipes</span><%= icon_svg_tag "arrow-narrow-right" %>
+          <% end %>
+        </nav>
       <% end %>
-    </nav>
+    </header>
 
     <% if @recipes.empty? %>
       <div class="card d-flex gap-3 align-items-center">

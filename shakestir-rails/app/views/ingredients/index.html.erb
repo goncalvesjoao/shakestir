@@ -1,8 +1,8 @@
 <% content_for :title, "Ingredients" %>
 
-<article class="content-grid" data-module="ingredients">
-  <header class="hero full-width">
-    <hgroup class="mt-5">
+<article class="content-grid mt-3 mt-md-4" data-module="ingredients">
+  <header class="border-bottom mb-4">
+    <hgroup>
       <h1>Every good ingredient.</h1>
       <p>Browse <%= pluralize(@ingredients.total_count, Ingredient.model_name.name.downcase) %> and get to know what goes into your next drink.</p>
     </hgroup>

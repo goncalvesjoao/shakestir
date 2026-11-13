@@ -1,13 +1,11 @@
 <% content_for :title, "#{@user.display_name} collections" %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <header>
-    <nav>
-      <hgroup>
-        <h1><%= @user.display_name %>'s collections</h1>
-        <p>Good recipes, kept together. Ready for your next pour.</p>
-      </hgroup>
-    </nav>
+<article class="content-grid mt-3 mt-md-4" data-module="techniques">
+  <header class="nav border-bottom mb-4">
+    <hgroup>
+      <h1><%= @user.display_name %>'s collections</h1>
+      <p>Good recipes, kept together. Ready for your next pour.</p>
+    </hgroup>
   </header>
 
   <% @collections.each do |collection| %>

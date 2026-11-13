@@ -1,18 +1,9 @@
-[aria-busy="true"] {
-  opacity: 0.55;
-  cursor: progress;
-}
-
 /* Keep inline icons proportional to the text of their containing control. */
 svg.icon {
   width: 1em;
   height: 1em;
   vertical-align: -0.125em;
   flex-shrink: 0;
-}
-
-form:has(+footer) {
-  margin-bottom: 0 !important;
 }
 
 .site-header {
@@ -125,13 +116,18 @@ form:has(+footer) {
 [data-module="utensil-details"],
 [data-module="technique-details"] {
   .hero {
+    --hero-background-image: url("covers/recipes.jpg");
+
     background-position: center 45%;
     background-size: cover;
+    background-image:
+      linear-gradient(to bottom, transparent 30%, var(--card-background-color) 110%),
+      var(--hero-background-image);
     min-height: 13rem;
 
     hgroup {
       h1, p {
-        color: #eceee3;
+        text-shadow: 0 0 5px var(--card-background-color);
       }
     }
   }
@@ -139,9 +135,7 @@ form:has(+footer) {
 
 [data-module="recipe-details"] {
   .hero {
-    background-image:
-      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
-      url("covers/recipes.jpg");
+    --hero-background-image:  url("covers/recipes.jpg");
   }
 
   .recipe-step {
@@ -181,33 +175,25 @@ form:has(+footer) {
 
 [data-module="cocktail-details"] {
   .hero {
-    background-image:
-      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
-      url("covers/cocktails.jpg");
+    --hero-background-image: url("covers/cocktails.jpg");
   }
 }
 
 [data-module="ingredient-details"] {
   .hero {
-    background-image:
-      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
-      url("covers/ingredients.jpg");
+    --hero-background-image: url("covers/ingredients.jpg");
   }
 }
 
 [data-module="utensil-details"] {
   .hero {
-    background-image:
-      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
-      url("covers/utensils.jpg");
+    --hero-background-image: url("covers/utensils.jpg");
   }
 }
 
 [data-module="technique-details"] {
   .hero {
-    background-image:
-      linear-gradient(to bottom, #20292305 20%, #202923b3 100%),
-      url("covers/techniques.jpg");
+    --hero-background-image: url("covers/techniques.jpg");
   }
 }
 

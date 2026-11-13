@@ -55,13 +55,12 @@
     <% end %>
     
 
-    <footer>
+    <footer class="nav">
+      <ul></ul>
+      
       <nav>
-        <ul></ul>
-        <ul>
-          <li><%= button_tag "Update", form: "edit-collection-form", data: { turbo_submits_with: "Updating..." } %></li>
-          <li><%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %></li>
-        </ul>
+        <%= button_tag "Update", form: "edit-collection-form", data: { turbo_submits_with: "Updating..." } %>
+        <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
       </nav>
     </footer>
   </turbo-frame>

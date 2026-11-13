@@ -365,3 +365,23 @@ or a literal class search misses them.
 
 Working candidate/disposition reports and captures are under
 `/tmp/shakestir-prune/orphan-*` and `/tmp/shakestir-css-orphan-*`.
+
+
+## 2026-11-13 orphan sweep
+
+Reviewed the current Rails custom stylesheets (`theme.css`, `styles.css`) and
+React stylesheets against templates, helpers, JavaScript, and TSX components.
+Included vendored Semanticus references when checking theme-variable consumers;
+left the vendored framework intact. This pass removes dead code only, without
+utility migrations.
+
+| Candidate | Evidence and disposition |
+| --- | --- |
+| `--space-8`, `--space-18`, `--space-20`, `--space-36`, `--space-44`, `--space-48`, `--space-56` | No runtime source references; removed definitions and stale entries in the spacing exception register. |
+| `--fs-size-lg` | No current application or Semanticus consumer; removed. Earlier card-title migration notes are historical. |
+| React `src/App.css` | Unimported starter stylesheet; its counter, Vite artwork, next-steps/docs layout, spacer and ticks have no rendering path. Deleted the file. |
+| Remaining custom class selectors | Source producers exist, including helper-generated icons, theme visibility classes, React conditional states, hero portraits and checked recipe steps. Retained. |
+| Semanticus classes and theme slots | Shared vendored API and framework consumers; retained rather than pruning based on sampled page coverage. |
+
+This is a source audit, not exhaustive runtime coverage of every conditional
+selector relationship or a purge of unused markup hooks.

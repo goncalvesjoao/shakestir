@@ -32,22 +32,16 @@ width plus the selected gap, rather than an independent numbered distance.
 
 ### Exact distances retained for review
 
+The 2026-11-13 orphan sweep removed tokens whose portrait and scroll-clearance
+consumers no longer exist. Only the current content-gutter exceptions remain below.
+
 The number in `--space-N` counts `--spacing-1` units (4px), not Semanticus's
 utility index. Definitions live together in `theme.css`.
 
 | Token | Default size | Current purpose |
 | --- | --- | --- |
-| `--space-8` | 32px | Normal portrait overlap |
 | `--space-16` | 64px | Desktop content gutter |
-| `--space-18` | 72px | Approved wide-screen portrait overlap |
-| `--space-20` | 80px | Phone cover copy clearance |
-| `--space-22` | 88px | Profile panel top clearance |
-| `--space-28` | 112px | Sticky-header scroll clearance |
 | `--space-32` | 128px | Large-desktop content gutter |
-| `--space-36` | 144px | Detail/profile scroll clearance |
-| `--space-44` | 176px | Narrow-screen scroll clearance |
-| `--space-48` | 192px | Phone portrait overlap |
-| `--space-56` | 224px | Body clearance below the phone portrait |
 
 This follow-up names the retained calculations without changing their values.
 Structural relationships, such as profile action indentation following the

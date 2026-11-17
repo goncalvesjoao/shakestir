@@ -1,12 +1,12 @@
 <% content_for :title, "Explore" %>
 
-<article class="content-grid mt-3 mt-md-4" data-module="recipes">
-  <header class="border-bottom mb-4">
+<%= main_article(data: { module: "recipes" }) do %>
+  <%= border_header do %>
     <hgroup>
       <h1>Find your next drink.</h1>
       <p>Browse <%= pluralize(@recipes.total_count, Recipe.model_name.name.downcase) %> and find something new to mix, share, and make your own.</p>
     </hgroup>
-  </header>
+  <% end %>
 
   <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
     <fieldset>
@@ -16,7 +16,7 @@
     </fieldset>
   <% end %>
 
-  <div class="pt-4" id="recipes-results" aria-live="polite" data-catalog-search-target="results"> 
+  <div id="recipes-results" aria-live="polite" data-catalog-search-target="results"> 
     <% if @recipes.empty? %>
       <section class="card text-center">
         <h3>No recipes found.</h3>
@@ -38,4 +38,4 @@
       <% end %>
     <% end %>
   </div>
-</article>
+<% end %>

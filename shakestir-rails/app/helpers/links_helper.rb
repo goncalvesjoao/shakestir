@@ -12,8 +12,8 @@ module LinksHelper
     if modal.present?
       html_options["onclick"] = "document.getElementById('#{modal}-modal').showModal(); return false"
 
-      return content_tag("a", name || url, html_options, &block) + content_tag("dialog", id: "#{modal}-modal", class: "py-0") do
-        content_tag("turbo-frame", id: "#{modal}-frame", src: url, loading: "lazy", class: "card p-0") {}
+      return content_tag("a", name || url, html_options, &block) + content_tag("dialog", id: "#{modal}-modal", class: "p-0") do
+        content_tag("turbo-frame", id: "#{modal}-frame", src: url, loading: "lazy", class: "card mb-0") {}
       end
     end
 

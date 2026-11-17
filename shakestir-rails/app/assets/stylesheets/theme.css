@@ -1,34 +1,10 @@
 :root,
 :host {
-  --spacing: 1rem;
   --border-radius: 0.75rem;
   --buttons-border-radius: 3rem;
-  --buttons-padding-block: var(--spacing-2);
-  --buttons-padding-inline: var(--spacing-3);
   --card-border-radius: 1rem;
-  --card-spacing: var(--spacing-4);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-size-md: 0.9375rem;
-  --font-size-sm: 0.875rem;
-  --font-size: 100%;
-  --fs-size-lg: 1.375rem;
-  --h1-font-size: 2.5rem;
-  --h1-line-height: 1.05;
-  --h1-margin-top: 0;
-  --h2-font-size: 1.75rem;
-  --h2-margin-top: 0;
-  --h3-font-size: 1.5rem;
-  --h3-margin-top: 0;
-  --h4-margin-top: var(--spacing-4);
-  --h5-margin-top: var(--spacing-4);
-  --h6-margin-top: var(--spacing-4);
-  --heading-font-weight: 600;
-  --inputs-padding-block: var(--spacing-2);
-  --inputs-padding-inline: var(--spacing-3);
-  --line-height: 1.6;
-  --nav-link-gap: var(--spacing-2);
   --text-underline-offset: 0.22em;
-  --typography-margin-block: var(--spacing-3);
 
   /* Preserve the cream palette in light mode; use warm greens in dark mode. */
   --background-color: light-dark(#f7f5ee, #191e19);
@@ -58,14 +34,14 @@
   --typography-color: var(--color);
 
   /* Dropdowns and overlays share the site's elevated surfaces. */
-  --details-menu-background-color: var(--card-background-color);
-  --details-menu-background-color-hover: var(--secondary-background-color-hover);
-  --details-menu-border-color: var(--border-color);
-  --details-menu-color: var(--color);
+  --menu-background-color: var(--card-background-color);
+  --menu-background-color-hover: var(--secondary-background-color-hover);
+  --menu-border-color: var(--border-color);
+  --menu-color: var(--color);
   --menu-box-shadow: 0 0.5rem 1.5rem light-dark(rgb(32 41 35 / 15%), rgb(0 0 0 / 35%));
   --backdrop-background-color: light-dark(rgb(32 41 35 / 35%), rgb(9 13 9 / 75%));
-  --dialog-marginals-background-color: var(--secondary-background-color-hover);
-  --dialog-marginals-border-color: var(--border-color);
+  --pane-nav-background-color: var(--secondary-background-color-hover);
+  --pane-nav-border-color: var(--border-color);
 
   /* Controls and inline text treatments. */
   --color-hover-shade: light-dark(#35421e, #d1dfa9);
@@ -119,6 +95,17 @@
   --shadow-sm: 0 0.05rem 0.3rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
   --shadow-md: 0 0.15rem 0.6rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
   --shadow-lg: 0 0.15rem 1rem light-dark(rgb(32 41 35 / 20%), rgb(0 0 0 / 35%));
+
+  --h1-font-size: 2.5rem;
+  --h1-line-height: 1.05;
+  --h1-margin-top: 0;
+  --h2-font-size: 1.75rem;
+  --h2-margin-top: 0;
+  --h3-font-size: 1.5rem;
+  --h3-margin-top: 0;
+  --h4-margin-top: var(--spacing-4);
+  --h5-margin-top: var(--spacing-4);
+  --h6-margin-top: var(--spacing-4);
 }
 
 h1,
@@ -148,71 +135,5 @@ input[type="submit"],
     --_buttons-color-hover: var(--secondary-color-hover);
 
     border: var(--border-width) solid var(--border-color);
-  }
-}
-
-label,
-fieldset legend {
-  margin-bottom: var(--spacing-1);
-}
-
-form:has(+footer) {
-  margin-bottom: 0 !important;
-}
-
-:is([role="status"], [role="alert"]) {
-  gap: var(--spacing-2);
-}
-
-header,
-footer { 
-  margin-block: 0;
-  padding-block: var(--spacing-4);
-}
-
-fieldset {
-  margin-bottom: var(--spacing-4);
-}
-
-fieldset,
-.card {
-  >:last-child {
-    margin-bottom: 0 !important;
-  }
-}
-
-/* Navigation controls use compact grid spacing instead of border subtraction. */
-nav :is(
-  button,
-  .button,
-  [role="button"],
-  [type="button"],
-  select,
-  input:not(
-    :is([type="checkbox"], [type="radio"], [type="range"], [type="file"])
-  )
-) {
-  --inputs-padding-block: var(--spacing-2);
-  --inputs-padding-inline: var(--spacing-3);
-}
-
-@media (width < 576px) {
-  .content-grid {
-    --content-grid-padding-inline: var(--spacing-3);
-  }
-}
-
-@media (width >= 1024px) {
-  .content-grid {
-    --content-grid-content-max-width: 80ch;
-    --content-grid-breakout-max-width: 95ch;
-    --content-grid-padding-inline: calc(var(--spacing-4) * 4);
-  }
-}
-
-@media (width >= 1280px) {
-  .content-grid {
-    --content-grid-breakout-max-width: 110ch;
-    --content-grid-padding-inline: calc(var(--spacing-4) * 8);
   }
 }

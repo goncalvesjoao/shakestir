@@ -1,7 +1,7 @@
 <% content_for :title, "#{@user.display_name} recipes" %>
 
-<article class="content-grid mt-3 mt-md-4" data-module="techniques">
-  <header class="nav border-bottom mb-4">
+<%= main_article do %>
+  <%= border_header do %>
     <hgroup>
       <h1><%= @user.display_name %>'s recipes</h1>
       <p>Good recipes, kept together. Ready for your next pour.</p>
@@ -10,9 +10,9 @@
     <nav>
       <%= link_to "New Recipe", new_recipe_path, class: "button" %>
     </nav>
-  </header>
+  <% end %>
 
   <% @recipes.each do |recipe| %>
     <%= render "recipe", recipe: recipe %>
   <% end %>
-</article>
+<% end %>

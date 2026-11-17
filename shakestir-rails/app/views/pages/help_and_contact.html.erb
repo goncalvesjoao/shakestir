@@ -1,15 +1,15 @@
 <% content_for :title, "Help & contact" %>
 
-<article class="content-grid mt-3 mt-md-4">
+<%= main_article do %>
   <turbo-frame id="help-and-contact-frame">
-    <header>
+    <%= border_header do %>
       <hgroup>
         <h1>Help & contact</h1>
         <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
       </hgroup>
 
       <button aria-label="Close" class="icon-close align-self-start" commandfor="help-and-contact-modal" command="close"></button>
-    </header>
+    <% end %>
 
     <%= render "operator_details" %>
 
@@ -37,5 +37,5 @@
       <% end %>
     </section>
     </turbo-frame>
-</article>
+<% end %>
   

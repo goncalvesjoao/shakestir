@@ -11,4 +11,8 @@ module TagsHelper
 
     icon_svg_tag(name, **options) + (text.present? ? tag.span(text, class: "ms-1") : "")
   end
+
+  def article_tag(options = {}, &block)
+    content_tag :article, options, &block
+  end
 end

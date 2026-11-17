@@ -1,12 +1,12 @@
 <% content_for :title, "My account" %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <header class="nav border-bottom mb-4">
+<%= main_article do %>
+  <%= border_header do %>
     <hgroup>
       <h1>My account</h1>
       <p>Your private account details.</p>
     </hgroup>
-  </header>
+  <% end %>
 
   <div>
     <ul class="card border-0">
@@ -18,12 +18,8 @@
   </div>
 
   <section class="mb-0">
-    <header>
-      <hgroup>
-        <h2>Delete account</h2>
+    <h2>Delete account</h2>
         <p>This permanently deletes your profile, uploaded photos, all your recipes (including published recipes), collections, Favorites, and sign-in sessions. Your recipes will also be removed from other people’s collections. This cannot be undone.</p>
-      </hgroup>
-    </header>
 
     <%= form_with url: user_account_path("my"), method: :delete, class: "card mb-0", id: "delete-account-form", data: { turbo_confirm: "Permanently delete your account and all your recipes, collections, and photos? This cannot be undone." } do |form| %>
       <% if @user.errors.any? %><div class="p-3 mb-4 rounded library-errors" role="alert"><strong>Account was not deleted</strong><ul class="mb-0 ps-4"><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
@@ -44,4 +40,4 @@
       <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
     </nav>
   </footer>
-</article>
+<% end %>

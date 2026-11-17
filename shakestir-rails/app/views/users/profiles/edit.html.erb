@@ -1,12 +1,12 @@
 <% content_for :title, "Edit my profile" %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <header>
+<%= main_article do %>
+  <%= border_header do %>
     <hgroup>
       <h1>Edit my profile</h1>
       <p>Your profile is public. Your recipes and collections keep their own visibility settings.</p>
     </hgroup>
-  </header>
+  <% end %>
   
   <%= form_with model: @user, url: user_profile_path("my"), method: :patch, id: "edit-profile-form", class: "card" do |form| %>
     <% if @user.errors.any? %>
@@ -64,4 +64,4 @@
       <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
     </nav>
   </footer>
-</article>
+<% end %>

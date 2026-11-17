@@ -6,37 +6,6 @@ svg.icon {
   flex-shrink: 0;
 }
 
-.site-header {
-  nav {
-    ul.primary-navigation {
-      justify-self: center;
-
-      li {
-        align-items: center;
-        display: flex;
-        flex-shrink: 0;
-
-        a {
-          font-size: var(--font-size-md);
-          text-decoration: none;
-          color: var(--color-muted);
-          border-bottom: 2px solid transparent;
-
-          &:hover,
-          &[aria-current="page"] {
-            color: var(--color);
-            border-bottom-color: var(--primary-color);
-          }
-
-          &[aria-current="page"] {
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-}
-
 .wordmark {
   width: 146.734375px;
   height: 46.796875px;
@@ -77,17 +46,14 @@ svg.icon {
 
 .hero {
   .hero--portrait {
-    --portrait-overlap: calc(var(--spacing) * 4);
+    --portrait-overlap: var(--spacing-6);
 
     position: absolute;
     top: auto;
     left: 0;
     display: block;
     object-fit: contain;
-    height: min(
-      20rem,
-      calc(100% + var(--portrait-overlap) - (var(--spacing) / 2))
-    );
+    height: 100%;
     bottom: calc(var(--portrait-overlap) * -1);
     object-position: center bottom;
   }
@@ -95,8 +61,8 @@ svg.icon {
 
 .catalog-grid {
   --auto-grid-type: auto-fill;
-  --auto-grid-min-column: 14rem;
-  --auto-grid-gap: var(--spacing-4);
+  --auto-grid-min-column: 10rem;
+  --auto-grid-gap: var(--spacing);
 
   > article {
     min-width: 0;
@@ -197,20 +163,7 @@ svg.icon {
   }
 }
 
-@media (width < 576px) {
-  .site-header nav ul {
-    --nav-link-gap: var(--spacing-2);
-    font-size: var(--font-size-sm);
-  }
-}
-
 @media (width < 768px) {
-  .site-header {
-    .primary-navigation {
-      font-size: var(--font-size-sm);
-    }
-  }
-
   .hero {
     min-height: unset;
 
@@ -221,21 +174,34 @@ svg.icon {
   }
 }
 
-@media (width < 1024px) {
-  .site-header {
-    nav {
-      grid-template-columns: 1fr auto;
+ul.primary-navigation {
+  li {
+    a {
+      text-decoration: none;
+      color: var(--color-muted);
+      border-bottom: 2px solid transparent;
 
-      > .primary-navigation {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        justify-self: stretch;
-        min-width: 0;
-
-        a {
-          white-space: nowrap;
-        }
+      &:hover,
+      &[aria-current="page"] {
+        text-decoration: none;
+        color: var(--color);
+        border-bottom-color: var(--primary-color);
       }
+
+      &[aria-current="page"] {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media (width < 1024px) {
+  nav:has(ul.primary-navigation) {
+    grid-template-columns: 1fr auto;
+
+    > .primary-navigation {
+      grid-column: 1 / -1;
+      grid-row: 2;
     }
   }
 }

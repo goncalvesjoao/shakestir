@@ -7,7 +7,7 @@
       class: "w-100"
     ) %>
 
-    <h2 class="fs-3 text-center"><%= utensil.display_name %></h2>
+    <h2 class="fs-3 text-center m-0"><%= utensil.display_name %></h2>
     
     <% if utensil.description.present? %>
       <p class="mb-0 text-muted text-center"><%= truncate(utensil.description, length: 160) %></p>

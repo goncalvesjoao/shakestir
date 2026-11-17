@@ -1,13 +1,8 @@
 <% content_for :title, "#{@recipe.display_name} · Recipes" %>
 
-<article
-  id="<%= dom_id @recipe %>"
-  class="content-grid"
-  data-module="recipe-details"
-  data-action="turbo:before-cache@window->cocktail-panel#close"
->
-  <header class="hero full-width mb-3 border-bottom">
-    <div class="row g-0 g-md-5 align-items-end">
+<%= hero_article(id: dom_id(@recipe), data: { module: "recipe-details", action: "turbo:before-cache@window->cocktail-panel#close" }) do %>
+  <header class="hero full-width border-bottom mb-2">
+    <div class="row g-0 g-md-4 align-items-end">
       <div class="col-12 col-md-4 order-2 order-md-1 position-relative h-100">
         <%= image_tag(
           recipe_attachment_path(@recipe, size: :detail),
@@ -19,7 +14,7 @@
         ) %>
       </div>
 
-      <hgroup class="col-12 col-md-8 order-1 order-md-2 mb-0 mt-3">
+      <hgroup class="col-12 col-md-8 order-1 order-md-2 mb-d">
         <h1><%= @recipe.display_name.presence || "Untitled recipe" %></h1>
 
         <p>
@@ -44,7 +39,7 @@
     </div>
   </header>
 
-  <div class="row g-0 g-md-5 mt-5">
+  <div class="row g-0 g-md-4">
     <section class="col-12 col-md-4">
       <div class="d-flex align-items-baseline justify-content-between">
         <h2>Ingredients</h2>
@@ -102,7 +97,7 @@
       </ul>
     </section>
   </div>
-</article>
+<% end %>
 
 <%= render(
   "shared/detail_panel",

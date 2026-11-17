@@ -1,13 +1,13 @@
 <% content_for :title, "Edit #{@collection.name}" %>
 
-<article class="content-grid mt-3 mt-md-4">
+<%= main_article do %>
   <turbo-frame id="edit-collection-<%= @collection.id %>-frame">
-    <header>
+    <%= border_header do %>
       <hgroup>
         <h1>Edit collection</h1>
         <p>Give it a name. Choose who can see it.</p>
       </hgroup>
-    </header>
+    <% end %>
 
     <%= form_with model: @collection, method: :patch, id: "edit-collection-form", class: "card" do |form| %>
       <% if @collection.errors.any? %>
@@ -64,4 +64,4 @@
       </nav>
     </footer>
   </turbo-frame>
-</article>
+<% end %>

@@ -1,12 +1,12 @@
 <% content_for :title, "Techniques" %>
 
-<article class="content-grid mt-3 mt-md-4" data-module="techniques">
-  <header class="border-bottom mb-4">
+<%= main_article(data: { module: "techniques" }) do %>
+  <%= border_header do %>
     <hgroup>
       <h1>A little technique goes a long way.</h1>
       <p>Browse <%= pluralize(@techniques.total_count, Technique.model_name.name.downcase) %> and learn the methods behind a well-made drink.</p>
     </hgroup>
-  </header>
+  <% end %>
 
   <%= form_with(url: url_for(action: :index), method: :get, class: "d-flex") do |form| %>
     <fieldset>
@@ -16,7 +16,7 @@
     </fieldset>
   <% end %>
 
-  <div class="pt-4" id="techniques-results" aria-live="polite" data-catalog-search-target="results"> 
+  <div id="techniques-results" aria-live="polite" data-catalog-search-target="results"> 
     <% if @techniques.empty? %>
       <section class="card text-center">
         <h3>No techniques found.</h3>
@@ -38,4 +38,4 @@
       <% end %>
     <% end %>
   </div>
-</article>
+<% end %>

@@ -1,12 +1,12 @@
 <% content_for :title, "New recipe" %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <header>
+<%= main_article do %>
+  <%= border_header do %>
     <hgroup>
       <h1>New recipe</h1>
       <p>Start with an idea. Refine it at your own pace.</p>
     </hgroup>
-  </header>
+  <% end %>
 
   <%= render "form", recipe: @recipe %>
 
@@ -18,4 +18,4 @@
       <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
     </nav>
   </footer>
-</article>
+<% end %>

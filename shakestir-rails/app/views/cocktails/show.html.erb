@@ -1,8 +1,8 @@
 <% content_for :title, "#{@cocktail.display_name} · Cocktails" %>
 
-<article id="<%= dom_id @cocktail %>" class="content-grid" data-module="cocktail-details">
-  <header class="hero full-width mb-3 border-bottom">
-    <div class="row g-0 g-md-5 align-items-end">
+<%= hero_article(id: dom_id(@cocktail), data: { module: "cocktail-details" }) do %>
+  <header class="hero full-width border-bottom mb-2">
+    <div class="row g-0 g-md-4 align-items-end">
       <div class="col-12 col-md-3 order-2 order-md-1 position-relative h-100">
         <%= image_tag(
           cocktail_attachment_path(@cocktail, size: :detail),
@@ -14,14 +14,14 @@
         ) %>
       </div>
 
-      <hgroup class="col-12 col-md-9 order-1 order-md-2 mb-0 mt-3">
+      <hgroup class="col-12 col-md-9 order-1 order-md-2 mb-d">
         <h1><%= @cocktail.display_name.presence || "Untitled cocktail" %></h1>
         <p><%= @cocktail.description.presence || "No description available." %></p>
       </hgroup>
     </div>
   </header>
 
-  <div class="row g-0 g-md-5 mt-5">
+  <div class="row g-0 g-md-4">
     <div class="col-12 col-md-3"></div>
 
     <section class="col-12 col-md-9">
@@ -29,10 +29,10 @@
       <p><%= @cocktail.history || "No history available." %></p>
 
       <% if @cocktail.source_info? %>
-        <% if @cocktail.history.present? %><hr class="my-4"><% end %>
+        <% if @cocktail.history.present? %><hr><% end %>
 
         <section>
-          <h3 class="fs-5 text-muted">Source</h3>
+          <h3 class="fs-4 text-muted mt-0">Source</h3>
           <ul>
             <% if @cocktail.source_url.present? %>
               <li class="text-muted fs-md"><%= link_to @cocktail.source_reference.presence || "Cocktail source", @cocktail.source_url %></li>
@@ -50,10 +50,10 @@
       <% end %>
 
       <% if @recipes.present? %>
-        <hr class="my-4">
+        <hr>
 
         <details>
-          <summary><h3 class="fs-5 d-inline text-muted">Recipes (<%= @recipes.count %>)</h3></summary>
+          <summary><h3 class="fs-4 d-inline text-muted mt-0">Recipes (<%= @recipes.count %>)</h3></summary>
 
           <div class="mt-4 auto-grid">
             <%= render @recipes %>
@@ -62,4 +62,4 @@
       <% end %>
     </section>
   </div>
-</article>
+<% end %>

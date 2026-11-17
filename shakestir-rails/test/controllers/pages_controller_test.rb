@@ -5,7 +5,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get new_session_url
     assert_response :success
     paths = css_select("footer nav a").map { |link| link["href"] }
-    assert_equal [ terms_path, privacy_path, cookies_path, community_guidelines_path, responsible_drinking_path, help_path ], paths
+    assert_equal [ terms_of_service_path, privacy_policy_path, cookies_policy_path, community_guidelines_path, responsible_drinking_path, help_and_contact_path ], paths
 
     paths.each do |path|
       get path
@@ -17,7 +17,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "legal pages clearly disclose their draft status" do
-    [ terms_path, privacy_path, cookies_path ].each do |path|
+    [ terms_of_service_path, privacy_policy_path, cookies_path ].each do |path|
       get path
       assert_select ".policy-notice", text: /Draft for review/
     end
@@ -39,7 +39,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     previous = ENV.to_h.slice(*values.keys)
     begin
       ENV.update(values)
-      [ terms_path, privacy_path, cookies_path, help_path ].each do |path|
+      [ terms_of_service_path, privacy_policy_path, cookies_path, help_and_contact_path ].each do |path|
         get path
         assert_response :success
         assert_select "section p", text: /operated by Alex Example, based in Example Country/

@@ -7,7 +7,7 @@
       class: "w-100"
     ) %>
 
-    <h2 class="fs-3 text-center"><%= ingredient.display_name %></h2>
+    <h2 class="fs-3 text-center m-0"><%= ingredient.display_name %></h2>
     
     <% if ingredient.description.present? %>
       <p class="mb-0 text-muted text-center"><%= truncate(ingredient.description, length: 160) %></p>

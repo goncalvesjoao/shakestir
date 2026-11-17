@@ -419,7 +419,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.1)
   image_processing (~> 1.2)
   importmap-rails
-  inline_svg
+  inline_svg (~> 1.10.0)
   jbuilder
   kamal
   kaminari (~> 1.2.2)

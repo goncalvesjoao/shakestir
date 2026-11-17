@@ -1,15 +1,15 @@
 <% content_for :title, "Responsible drinking" %>
 
-<article class="content-grid mt-3 mt-md-4">
+<%= main_article do %>
   <turbo-frame id="responsible-drinking-frame">
-    <header>
+    <%= border_header do %>
       <hgroup>
         <h1>Responsible drinking</h1>
         <p>Updated on <time datetime="2026-11-10">November 10, 2026</time></p>
       </hgroup>
 
       <button aria-label="Close" class="icon-close align-self-start" commandfor="responsible-drinking-modal" command="close"></button>
-    </header>
+    <% end %>
 
     <section class="mt-4">
       <h2 class="fs-3 mb-2">Choose what works for you</h2>
@@ -31,4 +31,4 @@
       <%= render "contact", purpose: "concerns about unsafe content on ShakeStir" %>
     </section>
   </turbo-frame>
-</article>
+<% end %>

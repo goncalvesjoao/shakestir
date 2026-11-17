@@ -1,7 +1,7 @@
 <% content_for :title, "Reset password " %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <turbo-frame id="new_session_frame" class="px-0 mx-0 mx-md-5 px-md-5">
+<%= compact_article do %>
+  <turbo-frame id="new_session_frame">
     <header>
       <hgroup>
         <h1>Reset your password</h1>
@@ -21,11 +21,13 @@
     <footer>
       <%= button_tag "Email reset instructions", class: "w-100", form: "new_password_form", data: { turbo_submits_with: "Sending…" } %>
 
-      <hr class="my-4">
+      <hr>
 
-      <nav class="vstack">
-        <%= link_to "Back to sign in", new_session_path, data: { turbo_frame: "_top" } %>
-      </nav>
+      <aside>
+        <nav class="text-center">
+          <%= link_to "Back to sign in", new_session_path, data: { turbo_frame: "_top" } %>
+        </nav>
+      </aside>
     </footer>
   </turbo-frame>
-</article>
+<% end %>

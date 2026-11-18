@@ -11,6 +11,11 @@ svg.icon {
   height: 46.796875px;
 }
 
+.content-grid.compact {
+  --content-grid-content-max-width: 50ch;
+  --content-grid-breakout-max-width: 70ch;
+}
+
 /* Recolor both raster states while preserving their alpha channel. */
 .wordmark img {
   filter: var(--wordmark-filter, none);

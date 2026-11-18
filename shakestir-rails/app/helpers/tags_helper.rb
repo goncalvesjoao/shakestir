@@ -2,11 +2,11 @@ module TagsHelper
   MAIN_STYLES = {
     default: "content-grid my-2 my-md-3 py-3",
     with_hero: "mb-2 mb-md-3 pb-3",
-    compact: "my-2 my-md-3 py-3"
+    plain: "my-2 my-md-3 py-3"
   }
   HEADER_STYLES = {
     default: "nav border-bottom pb-d mb-4",
-    compact: "nav",
+    plain: "nav",
   }
 
   def icon_svg_tag(name, **options)

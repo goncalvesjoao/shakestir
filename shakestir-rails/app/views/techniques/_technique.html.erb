@@ -1,5 +1,5 @@
 <article id="<%= dom_id technique %>">
-  <%= link_to(technique, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+  <%= sidebar_link_to(technique, sidebar: dom_id(technique), class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
     <h2 class="fs-3 text-center"><%= technique.display_name %></h2>
     
     <% if technique.description.present? %>

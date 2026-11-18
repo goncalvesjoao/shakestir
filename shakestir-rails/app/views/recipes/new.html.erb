@@ -1,21 +1,23 @@
 <% content_for :title, "New recipe" %>
 
-<%= main_article do %>
-  <%= border_header do %>
-    <hgroup>
-      <h1>New recipe</h1>
-      <p>Start with an idea. Refine it at your own pace.</p>
-    </hgroup>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@recipe, :new)) do %>
+    <%= header_tag do %>
+      <hgroup>
+        <h1>New recipe</h1>
+        <p>Start with an idea. Refine it at your own pace.</p>
+      </hgroup>
+    <% end %>
+
+    <%= render "form", recipe: @recipe %>
+
+    <footer class="nav">
+      <ul></ul>
+
+      <nav>
+        <%= button_tag "Create", form: "recipe-form", data: { turbo_submits_with: "Creating..." } %>
+        <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
+      </nav>
+    </footer>
   <% end %>
-
-  <%= render "form", recipe: @recipe %>
-
-  <footer class="nav">
-    <ul></ul>
-
-    <nav>
-      <%= button_tag "Create", form: "recipe-form", data: { turbo_submits_with: "Creating..." } %>
-      <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
-    </nav>
-  </footer>
 <% end %>

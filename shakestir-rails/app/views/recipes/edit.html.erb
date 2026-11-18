@@ -1,8 +1,8 @@
 <% content_for :title, "Edit #{@recipe.display_name.presence || "recipe"}" %>
 
-<%= main_article do %>
-  <turbo-frame id="edit-recipe-<%= @recipe.id %>-frame">
-    <%= border_header do %>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@recipe, :edit)) do %>
+    <%= header_tag do %>
       <hgroup>
         <h1>Edit <%= @recipe.display_name.presence || "recipe" %></h1>
         <p><%= @recipe.display_name.presence || "A little refinement goes a long way." %></p>
@@ -19,5 +19,5 @@
         <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
       </nav>
     </footer>
-  </turbo-frame>
+  <% end %>
 <% end %>

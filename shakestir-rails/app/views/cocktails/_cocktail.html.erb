@@ -1,5 +1,5 @@
 <article id="<%= dom_id cocktail %>">
-  <%= link_to(cocktail, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+  <%= sidebar_link_to(cocktail, sidebar: dom_id(cocktail), class: "d-flex flex-column overflow-hidden", tabindex: "-1") do %>
     <%= image_tag(
       cocktail_attachment_path(cocktail, size: :card),
       alt: "Photo of #{cocktail.display_name}",

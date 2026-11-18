@@ -1,7 +1,7 @@
 <% content_for :title, "Ingredients" %>
 
-<%= main_article(data: { module: "ingredients" }) do %>
-  <%= border_header do %>
+<%= main_tag(data: { module: "ingredients" }) do %>
+  <%= header_tag do %>
     <hgroup>
       <h1>Every good ingredient.</h1>
       <p>Browse <%= pluralize(@ingredients.total_count, Ingredient.model_name.name.downcase) %> and get to know what goes into your next drink.</p>

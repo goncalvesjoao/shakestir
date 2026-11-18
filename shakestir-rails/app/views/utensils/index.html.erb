@@ -1,7 +1,7 @@
 <% content_for :title, "Utensils" %>
 
-<%= main_article(data: { module: "utensils" }) do %>
-  <%= border_header do %>
+<%= main_tag(data: { module: "utensils" }) do %>
+  <%= header_tag do %>
     <hgroup>
       <h1>Tools of the trade.</h1>
       <p>Browse <%= pluralize(@utensils.total_count, Utensil.model_name.name.downcase) %> and find the right equipment for your next drink.</p>

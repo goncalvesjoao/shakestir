@@ -1,5 +1,5 @@
 <article id="<%= dom_id utensil %>">
-  <%= link_to(utensil, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+  <%= sidebar_link_to(utensil, sidebar: dom_id(utensil), class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
     <%= image_tag(
       utensil_attachment_path(utensil, size: :card),
       alt: "Photo of #{utensil.display_name}",

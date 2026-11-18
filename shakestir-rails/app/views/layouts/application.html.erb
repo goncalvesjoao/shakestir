@@ -91,9 +91,7 @@
       </nav>
     </header>
 
-    <main id="main-content" class="content-grid">
-      <%= yield %>
-    </main>
+    <%= yield %>
 
     <footer class="content-grid mt-0 border-top py-4">
       <div class="breakout nav gap-5">
@@ -127,5 +125,7 @@
         </aside>
       </div>
     </footer>
+
+    <%= read_content("sidebars") %>
   </body>
 </html>

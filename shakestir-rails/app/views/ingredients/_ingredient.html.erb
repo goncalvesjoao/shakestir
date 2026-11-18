@@ -1,5 +1,5 @@
 <article id="<%= dom_id ingredient %>">
-  <%= link_to(ingredient, class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
+  <%= sidebar_link_to(ingredient, sidebar: dom_id(ingredient), class: "d-flex flex-column overflow-hidden", tabindex: "-1", data: {}, aria: { hidden: true }) do %>
     <%= image_tag(
       ingredient_attachment_path(ingredient, size: :card),
       alt: "Photo of #{ingredient.display_name}",

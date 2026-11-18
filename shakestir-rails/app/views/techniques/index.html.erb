@@ -1,7 +1,7 @@
 <% content_for :title, "Techniques" %>
 
-<%= main_article(data: { module: "techniques" }) do %>
-  <%= border_header do %>
+<%= main_tag(data: { module: "techniques" }) do %>
+  <%= header_tag do %>
     <hgroup>
       <h1>A little technique goes a long way.</h1>
       <p>Browse <%= pluralize(@techniques.total_count, Technique.model_name.name.downcase) %> and learn the methods behind a well-made drink.</p>

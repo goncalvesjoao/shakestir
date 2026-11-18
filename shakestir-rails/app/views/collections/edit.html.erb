@@ -1,8 +1,8 @@
 <% content_for :title, "Edit #{@collection.name}" %>
 
-<%= main_article do %>
-  <turbo-frame id="edit-collection-<%= @collection.id %>-frame">
-    <%= border_header do %>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@collection, :edit)) do %>
+    <%= header_tag do %>
       <hgroup>
         <h1>Edit collection</h1>
         <p>Give it a name. Choose who can see it.</p>
@@ -63,5 +63,5 @@
         <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
       </nav>
     </footer>
-  </turbo-frame>
+  <% end %>
 <% end %>

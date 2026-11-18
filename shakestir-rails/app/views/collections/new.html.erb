@@ -1,12 +1,14 @@
 <% content_for :title, "Create collection" %>
 
-<article class="content-grid mt-3 mt-md-4">
-  <header>
-    <hgroup>
-      <h1>Create collection</h1>
-      <p>A home for the recipes you want to come back to.</p>
-    </hgroup>
-  </header>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@collection, :new)) do %>
+    <%= header_tag do %>
+      <hgroup>
+        <h1>Create collection</h1>
+        <p>A home for the recipes you want to come back to.</p>
+      </hgroup>
+    <% end %>
 
-  WIP
-</article>
+    WIP
+  <% end %>
+<% end %>

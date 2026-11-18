@@ -1,94 +1,96 @@
 <% content_for :title, "#{@owned ? "My" : @user.profile_name} profile" %>
 
-<%= main_article do %>
-  <%= border_header do %>
-    <%= profile_avatar(@user, image_class: "object-fit-cover rounded-circle") %>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@user, :profile)) do %>
+    <%= header_tag do %>
+      <%= profile_avatar(@user, image_class: "object-fit-cover rounded-circle") %>
 
-    <div class="flex-grow-1">
-      <hgroup class="mt-0">
-        <h1 class="mb-2">
-          <%= @user.profile_name %>
+      <div class="flex-grow-1">
+        <hgroup class="mt-0">
+          <h1 class="mb-2">
+            <%= @user.profile_name %>
 
-          <% if @owned %>
-            <%= link_to edit_user_profile_path(@user), class: "ms-2" do %>
-              <%= icon_svg_tag "pencil" %>
+            <% if @owned %>
+              <%= link_to_top edit_user_profile_path(@user), class: "ms-2" do %>
+                <%= icon_svg_tag "pencil" %>
+              <% end %>
             <% end %>
-          <% end %>
-        </h1>
+          </h1>
 
-        <p><%= @user.bio %></p>
-      </hgroup>
+          <p><%= @user.bio %></p>
+        </hgroup>
 
-      <div class="mt-3 d-flex gap-2">
-        <span>@<%= @user.handle %></span>
-        <span>Joined <%= @user.created_at.strftime("%B %Y") %></span>
+        <div class="mt-3 d-flex gap-2">
+          <span>@<%= @user.handle %></span>
+          <span>Joined <%= @user.created_at.strftime("%B %Y") %></span>
+        </div>
       </div>
-    </div>
+    <% end %>
+
+    <section id="profile-collections" aria-labelledby="profile-collections-title">
+      <header class="nav mb-2">
+        <h2 class="fs-5" id="profile-collections-title">Public collections</h2>
+        
+        <% if @owned %>
+          <nav>
+            <%= link_to_top user_collections_path("my"), class: "d-inline-flex align-items-center" do %>
+              <span>Manage collections</span><%= icon_svg_tag "arrow-narrow-right" %>
+            <% end %>
+          </nav>
+        <% end %>
+      </header>
+
+      <% if @collections.empty? %>
+        <div class="card d-flex gap-3 align-items-center">
+          <%= icon_svg_tag "bookmarks", class: "text-muted" %>
+
+          <hgroup>
+            <h3 class="fs-5">
+              <%= @owned ? "Keep your favorites together." : "No public collections yet." %>
+            </h3>
+            <p>
+              <%= @owned ? "Create a collection for an occasion, a mood, or a drink you love." : "This member hasn’t shared a collection yet." %>
+            </p>
+          </hgroup>
+        </div>
+      <% else %>
+        <div class="auto-grid library-grid">
+          <% @collections.each do |collection| %>
+            <%= render "collection", collection: collection %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+
+    <section aria-labelledby="profile-recipes-title">
+      <header class="nav mb-2">
+        <h2 class="fs-5" id="profile-recipes-title">Public recipes</h2>
+
+        <% if @owned %>
+          <nav>
+            <%= link_to_top user_recipes_path("my"), class: "d-inline-flex align-items-center" do %>
+              <span>Manage recipes</span><%= icon_svg_tag "arrow-narrow-right" %>
+            <% end %>
+          </nav>
+        <% end %>
+      </header>
+
+      <% if @recipes.empty? %>
+        <div class="card d-flex gap-3 align-items-center">
+          <%= icon_svg_tag "cold-drink", class: "text-muted" %>
+
+          <hgroup>
+            <h3 class="fs-5"><%= @owned ? "Your signature drink starts here." : "No public recipes yet." %></h3>
+            <p><%= @owned ? "Capture an idea and refine it at your own pace." : "Come back to discover what's mixed next." %></p>
+          </hgroup>
+        </div>
+      <% else %>
+        <div class="auto-grid recipe-grid personal-recipe-grid">
+          <% @recipes.each do |recipe| %>
+            <%= render "recipe", recipe: recipe %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
   <% end %>
-
-  <section id="profile-collections" aria-labelledby="profile-collections-title">
-    <header class="nav mb-2">
-      <h2 class="fs-5" id="profile-collections-title">Public collections</h2>
-      
-      <% if @owned %>
-        <nav>
-          <%= link_to user_collections_path("my"), class: "d-inline-flex align-items-center" do %>
-            <span>Manage collections</span><%= icon_svg_tag "arrow-narrow-right" %>
-          <% end %>
-        </nav>
-      <% end %>
-    </header>
-
-    <% if @collections.empty? %>
-      <div class="card d-flex gap-3 align-items-center">
-        <%= icon_svg_tag "bookmarks", class: "text-muted" %>
-
-        <hgroup>
-          <h3 class="fs-5">
-            <%= @owned ? "Keep your favorites together." : "No public collections yet." %>
-          </h3>
-          <p>
-            <%= @owned ? "Create a collection for an occasion, a mood, or a drink you love." : "This member hasn’t shared a collection yet." %>
-          </p>
-        </hgroup>
-      </div>
-    <% else %>
-      <div class="auto-grid library-grid">
-        <% @collections.each do |collection| %>
-          <%= render "collection", collection: collection %>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
-
-  <section aria-labelledby="profile-recipes-title">
-    <header class="nav mb-2">
-      <h2 class="fs-5" id="profile-recipes-title">Public recipes</h2>
-
-      <% if @owned %>
-        <nav>
-          <%= link_to user_recipes_path("my"), class: "d-inline-flex align-items-center" do %>
-            <span>Manage recipes</span><%= icon_svg_tag "arrow-narrow-right" %>
-          <% end %>
-        </nav>
-      <% end %>
-    </header>
-
-    <% if @recipes.empty? %>
-      <div class="card d-flex gap-3 align-items-center">
-        <%= icon_svg_tag "cold-drink", class: "text-muted" %>
-
-        <hgroup>
-          <h3 class="fs-5"><%= @owned ? "Your signature drink starts here." : "No public recipes yet." %></h3>
-          <p><%= @owned ? "Capture an idea and refine it at your own pace." : "Come back to discover what's mixed next." %></p>
-        </hgroup>
-      </div>
-    <% else %>
-      <div class="auto-grid recipe-grid personal-recipe-grid">
-        <% @recipes.each do |recipe| %>
-          <%= render "recipe", recipe: recipe %>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
 <% end %>

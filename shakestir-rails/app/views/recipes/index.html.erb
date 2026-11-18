@@ -1,7 +1,7 @@
 <% content_for :title, "Explore" %>
 
-<%= main_article(data: { module: "recipes" }) do %>
-  <%= border_header do %>
+<%= main_tag(data: { module: "recipes" }) do %>
+  <%= header_tag do %>
     <hgroup>
       <h1>Find your next drink.</h1>
       <p>Browse <%= pluralize(@recipes.total_count, Recipe.model_name.name.downcase) %> and find something new to mix, share, and make your own.</p>

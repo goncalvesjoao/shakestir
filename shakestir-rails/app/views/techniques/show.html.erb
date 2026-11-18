@@ -1,32 +1,36 @@
 <% content_for :title, "#{@technique.display_name} · Techniques" %>
 
-<%= hero_article(id: dom_id(@technique), data: { module: "technique-details" }) do %>
-  <header class="hero full-width border-bottom mb-2">
-    <div class="row g-0 g-md-4 align-items-end">
-      <div class="col-12 col-md-1 col-lg-2"></div>
+<%= main_tag(id: dom_id(@technique), style: :with_hero) do %>
+  <%= turbo_frame_tag(dom_id(@technique)) do %>
+    <article class="content-grid" data-module="technique-details">
+      <header class="hero full-width border-bottom mb-2">
+        <div class="row g-0 g-md-4 align-items-end">
+          <div class="col-12 col-md-1 col-lg-2"></div>
 
-      <hgroup class="col-12 col-md-10 col-lg-8 order-1 order-md-2 mb-d">
-        <h1><%= @technique.display_name.presence || "Untitled technique" %></h1>
-        <p><%= @technique.description.presence || "No description available." %></p>
-      </hgroup>
-    </div>
-  </header>
+          <hgroup class="col-12 col-md-10 col-lg-8 order-1 order-md-2 mb-d">
+            <h1><%= @technique.display_name.presence || "Untitled technique" %></h1>
+            <p><%= @technique.description.presence || "No description available." %></p>
+          </hgroup>
+        </div>
+      </header>
 
-  <div class="row g-0 g-md-4">
-    <div class="col-12 col-md-1 col-lg-2"></div>
+      <div class="row g-0 g-md-4">
+        <div class="col-12 col-md-1 col-lg-2"></div>
 
-    <section class="col-12 col-md-10 col-lg-8">
-      <h2>How to use it</h2>
-      <%= simple_format @technique.instructions %>
-      
-      <% if @technique.tip.present? %>
-        <hr>
+        <section class="col-12 col-md-10 col-lg-8">
+          <h2>How to use it</h2>
+          <%= simple_format @technique.instructions %>
+          
+          <% if @technique.tip.present? %>
+            <hr>
 
-        <section>
-          <h3 class="fs-4 text-muted mt-0">Beginner tip</h3>
-          <%= simple_format @technique.tip, class: "text-muted" %>
+            <section>
+              <h3 class="fs-4 text-muted mt-0">Beginner tip</h3>
+              <%= simple_format @technique.tip, class: "text-muted" %>
+            </section>
+          <% end %>
         </section>
-      <% end %>
-    </section>
-  </div>
+      </div>
+    </article>
+  <% end %>
 <% end %>

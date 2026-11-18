@@ -1,102 +1,106 @@
 <% content_for :title, "#{@recipe.display_name} · Recipes" %>
 
-<%= hero_article(id: dom_id(@recipe), data: { module: "recipe-details", action: "turbo:before-cache@window->cocktail-panel#close" }) do %>
-  <header class="hero full-width border-bottom mb-2">
-    <div class="row g-0 g-md-4 align-items-end">
-      <div class="col-12 col-md-4 order-2 order-md-1 position-relative h-100">
-        <%= image_tag(
-          recipe_attachment_path(@recipe, size: :detail),
-          alt: "Photo of #{@recipe.display_name}",
-          class: "hero--portrait",
-          fetchpriority: "high",
-          width: 1200,
-          height: 1200
-        ) %>
-      </div>
-
-      <hgroup class="col-12 col-md-8 order-1 order-md-2 mb-d">
-        <h1><%= @recipe.display_name.presence || "Untitled recipe" %></h1>
-
-        <p>
-          <span>Recipe by</span>
-          <%= link_to(
-            @recipe.user.profile_name,
-            user_profile_path(@recipe.user),
-            data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@recipe.user.profile_name} profile", panel_kind: "profile" },
-            aria: { haspopup: "dialog", controls: "cocktail-panel" }
+<%= main_tag(id: dom_id(@recipe), style: :with_hero) do %>
+  <article class="content-grid" data-module="recipe-details" data-action="turbo:before-cache@window->cocktail-panel#close">
+    <header class="hero full-width border-bottom mb-2">
+      <div class="row g-0 g-md-4 align-items-end">
+        <div class="col-12 col-md-4 order-2 order-md-1 position-relative h-100">
+          <%= image_tag(
+            recipe_attachment_path(@recipe, size: :detail),
+            alt: "Photo of #{@recipe.display_name}",
+            class: "hero--portrait",
+            fetchpriority: "high",
+            width: 1200,
+            height: 1200
           ) %>
-          <% if @cocktail %>
-            <span>, for </span>
-            <%= link_to(
-              @cocktail.display_name,
-              cocktail_path(@cocktail),
-              data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@cocktail.display_name} cocktail details", panel_kind: "cocktail details" },
+        </div>
+
+        <hgroup class="col-12 col-md-8 order-1 order-md-2 mb-d">
+          <h1><%= @recipe.display_name.presence || "Untitled recipe" %></h1>
+
+          <p>
+            <span>Recipe by</span>
+            <%= sidebar_link_to(
+              @recipe.user.profile_name,
+              user_profile_path(@recipe.user),
+              sidebar: dom_id(@recipe.user, :profile),
+              data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@recipe.user.profile_name} profile", panel_kind: "profile" },
               aria: { haspopup: "dialog", controls: "cocktail-panel" }
             ) %>
-          <% end %>
-        </p>
-      </hgroup>
-    </div>
-  </header>
-
-  <div class="row g-0 g-md-4">
-    <section class="col-12 col-md-4">
-      <div class="d-flex align-items-baseline justify-content-between">
-        <h2>Ingredients</h2>
-
-        <% if @recipe.servings.present? %>
-          <small class="text-muted"><%= pluralize(@recipe.servings, "serving") %></small>
-        <% end %>
+            <% if @cocktail %>
+              <span>, for </span>
+              <%= sidebar_link_to(
+                @cocktail.display_name,
+                cocktail_path(@cocktail),
+                sidebar: dom_id(@cocktail),
+                data: { action: "cocktail-panel#open", cocktail_panel_target: "trigger", panel_title: "#{@cocktail.display_name} cocktail details", panel_kind: "cocktail details" },
+                aria: { haspopup: "dialog", controls: "cocktail-panel" }
+              ) %>
+            <% end %>
+          </p>
+        </hgroup>
       </div>
+    </header>
 
-      <% if @recipe.recipe_ingredients.any? %>
-        <ul class="card border-0">
-          <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-            <li>
-              <div class="d-flex justify-content-between">
-                <span><%= recipe_ingredient.name %></span>
-                <span class="m-0">
-                  <% if recipe_ingredient.quantity.present? %>
-                    <%= number_with_precision(recipe_ingredient.quantity, precision: 3, strip_insignificant_zeros: true) %> <%= recipe_ingredient.measuring_unit %>
-                  <% end %>
-                </span>
-              </div>
+    <div class="row g-0 g-md-4">
+      <section class="col-12 col-md-4">
+        <div class="d-flex align-items-baseline justify-content-between">
+          <h2>Ingredients</h2>
 
-              <% if recipe_ingredient.preparation_note.present? || recipe_ingredient.optional? || !recipe_ingredient.mixing? %>
-                <div class="d-grid text-start">
-                  <% if recipe_ingredient.preparation_note.present? %><small><%= recipe_ingredient.preparation_note %></small><% end %>
-                  <% if recipe_ingredient.optional? %><small>Optional</small><% end %>
-                  <% unless recipe_ingredient.mixing? %><small><%= recipe_ingredient.role.humanize %></small><% end %>
+          <% if @recipe.servings.present? %>
+            <small class="text-muted"><%= pluralize(@recipe.servings, "serving") %></small>
+          <% end %>
+        </div>
+
+        <% if @recipe.recipe_ingredients.any? %>
+          <ul class="card border-0">
+            <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+              <li>
+                <div class="d-flex justify-content-between">
+                  <span><%= recipe_ingredient.name %></span>
+                  <span class="m-0">
+                    <% if recipe_ingredient.quantity.present? %>
+                      <%= number_with_precision(recipe_ingredient.quantity, precision: 3, strip_insignificant_zeros: true) %> <%= recipe_ingredient.measuring_unit %>
+                    <% end %>
+                  </span>
                 </div>
-              <% end %>
-            </li>
+
+                <% if recipe_ingredient.preparation_note.present? || recipe_ingredient.optional? || !recipe_ingredient.mixing? %>
+                  <div class="d-grid text-start">
+                    <% if recipe_ingredient.preparation_note.present? %><small><%= recipe_ingredient.preparation_note %></small><% end %>
+                    <% if recipe_ingredient.optional? %><small>Optional</small><% end %>
+                    <% unless recipe_ingredient.mixing? %><small><%= recipe_ingredient.role.humanize %></small><% end %>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No ingredients listed.</p>
+        <% end %>
+      </section>
+
+      <section class="col-12 col-md-8">
+        <h2>Preparation</h2>
+
+        <ul class="card border-0">
+          <% if @recipe.recipe_steps.any? %>
+            <% @recipe.recipe_steps.each_with_index do |step, index| %>
+              <li class="recipe-step">
+                <label class="d-flex gap-3">
+                  <input hidden type="checkbox" aria-label="Complete step <%= index + 1 %>">
+                  <span class="number fs-4 fw-semibold rounded-circle" aria-hidden="true"><%= index + 1 %></span>
+                  <span class="body fs-4 mb-0"><%= step.body %></span>
+                </label>
+              </li>
+            <% end %>
+          <% else %>
+            <li>No preparation steps listed.</li>
           <% end %>
         </ul>
-      <% else %>
-        <p>No ingredients listed.</p>
-      <% end %>
-    </section>
-
-    <section class="col-12 col-md-8">
-      <h2>Preparation</h2>
-
-      <ul class="card border-0">
-        <% if @recipe.recipe_steps.any? %>
-          <% @recipe.recipe_steps.each_with_index do |step, index| %>
-            <li class="recipe-step">
-              <label class="d-flex gap-3">
-                <input hidden type="checkbox" aria-label="Complete step <%= index + 1 %>">
-                <span class="number fs-4 fw-semibold rounded-circle" aria-hidden="true"><%= index + 1 %></span>
-                <span class="body fs-4 mb-0"><%= step.body %></span>
-              </label>
-            </li>
-          <% end %>
-        <% else %>
-          <li>No preparation steps listed.</li>
-        <% end %>
-      </ul>
-    </section>
-  </div>
+      </section>
+    </div>
+  </article>
 <% end %>
 
 <%= render(

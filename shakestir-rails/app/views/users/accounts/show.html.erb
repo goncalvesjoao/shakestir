@@ -1,43 +1,45 @@
 <% content_for :title, "My account" %>
 
-<%= main_article do %>
-  <%= border_header do %>
-    <hgroup>
-      <h1>My account</h1>
-      <p>Your private account details.</p>
-    </hgroup>
-  <% end %>
-
-  <div>
-    <ul class="card border-0">
-      <li class="d-flex justify-content-between">
-        <span>Email address</span>
-        <strong><%= @user.email_address %></strong>
-      </li>
-    </ul>
-  </div>
-
-  <section class="mb-0">
-    <h2>Delete account</h2>
-        <p>This permanently deletes your profile, uploaded photos, all your recipes (including published recipes), collections, Favorites, and sign-in sessions. Your recipes will also be removed from other people’s collections. This cannot be undone.</p>
-
-    <%= form_with url: user_account_path("my"), method: :delete, class: "card mb-0", id: "delete-account-form", data: { turbo_confirm: "Permanently delete your account and all your recipes, collections, and photos? This cannot be undone." } do |form| %>
-      <% if @user.errors.any? %><div class="p-3 mb-4 rounded library-errors" role="alert"><strong>Account was not deleted</strong><ul class="mb-0 ps-4"><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
-
-      <fieldset>
-        <%= form.label :password, "Confirm your current password" %>
-        <%= form.password_field :password, required: true, autocomplete: "current-password", aria: { describedby: "delete-account-help" } %>
-        <small id="delete-account-help">Enter your password to confirm that you want to delete this account.</small>
-      </fieldset>
+<%= main_tag do %>
+  <%= turbo_frame_tag(dom_id(@user, :account)) do %>
+    <%= header_tag do %>
+      <hgroup>
+        <h1>My account</h1>
+        <p>Your private account details.</p>
+      </hgroup>
     <% end %>
-  </section>
 
-  <footer class="nav">
-    <ul></ul>
+    <div>
+      <ul class="card border-0">
+        <li class="d-flex justify-content-between">
+          <span>Email address</span>
+          <strong><%= @user.email_address %></strong>
+        </li>
+      </ul>
+    </div>
 
-    <nav>
-      <%= button_tag "Delete my account", class: "danger ghost", form: "delete-account-form", data: { turbo_submits_with: "Deleting..." } %>
-      <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
-    </nav>
-  </footer>
+    <section class="mb-0">
+      <h2>Delete account</h2>
+          <p>This permanently deletes your profile, uploaded photos, all your recipes (including published recipes), collections, Favorites, and sign-in sessions. Your recipes will also be removed from other people’s collections. This cannot be undone.</p>
+
+      <%= form_with url: user_account_path("my"), method: :delete, class: "card mb-0", id: "delete-account-form", data: { turbo_confirm: "Permanently delete your account and all your recipes, collections, and photos? This cannot be undone." } do |form| %>
+        <% if @user.errors.any? %><div class="p-3 mb-4 rounded library-errors" role="alert"><strong>Account was not deleted</strong><ul class="mb-0 ps-4"><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
+
+        <fieldset>
+          <%= form.label :password, "Confirm your current password" %>
+          <%= form.password_field :password, required: true, autocomplete: "current-password", aria: { describedby: "delete-account-help" } %>
+          <small id="delete-account-help">Enter your password to confirm that you want to delete this account.</small>
+        </fieldset>
+      <% end %>
+    </section>
+
+    <footer class="nav">
+      <ul></ul>
+
+      <nav>
+        <%= button_tag "Delete my account", class: "danger ghost", form: "delete-account-form", data: { turbo_submits_with: "Deleting..." } %>
+        <%= button_tag "Cancel", onclick: "app.goBack(this)", class: "secondary" %>
+      </nav>
+    </footer>
+  <% end %>
 <% end %>
